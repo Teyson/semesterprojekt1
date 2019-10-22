@@ -65,7 +65,12 @@
 
 - Sarah medtages i gruppen.
 
-- Plakat færdiggjort.
+- Plakat næsten færdiggjort.
+
+### 10/10 - 2019
+
+- De sidste små ting ændret på plakat, navn, udviklingslande er slettet og omskrevet.
+- Teis er semi ringe til TFT idag.
 
 
 
