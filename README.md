@@ -82,6 +82,14 @@
 - vi begynder på at skrive nogle klasser hver i sær.
 - efter snak møde med Jeppe, har vi snakket om at, vi skal bremse en smule op og gå tilbage til selve spillets kerne, og kigge mere på det igen.
 
+### 24/10 - 2019
+
+- spillet udformning har vi tænkt til ende. (synes vi selv)
+- vi føler os klar til næste skridt
+- Vi er forvirret omkring, hvad vi skal nu.
+- skal vi lave domænediagram?
+- Vi er tidspresset. 
+- Vi skriver en mail til Jeppe, om feedback på spilbeskrivelsen, og om hjælp til at, hvordan vi skal gå videre. 
 
 
 
