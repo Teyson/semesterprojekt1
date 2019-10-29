@@ -72,6 +72,8 @@
 - De sidste små ting ændret på plakat, navn, udviklingslande er slettet og omskrevet.
 - Teis er semi ringe til TFT idag.
 
+<<<<<<< Updated upstream
+=======
 ### 22/10 - 2019
 
 - Vi har udviklet på spil idé via udarbejdelse af map
@@ -91,6 +93,7 @@
 - Vi er tidspresset. 
 - Vi skriver en mail til Jeppe, om feedback på spilbeskrivelsen, og om hjælp til at, hvordan vi skal gå videre. 
 
+>>>>>>> Stashed changes
 
 
  

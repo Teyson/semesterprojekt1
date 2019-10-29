@@ -1,0 +1,31 @@
+NPC navne:
+
+Drenge:
+- Faizal
+- Momed
+- Leonildo
+- Nelton
+- Nazir
+- Brayton
+- Eka
+- Riyadh
+- Mingo
+- Kelven
+- Naguib
+- Abubakar
+- Edmilson
+
+Piger:
+
+- Yuran
+- Henda
+- Tendai
+- Kishor
+- Hedy
+- Ikbal
+- Benildo
+- Kiri
+- France
+- Gani
+- Jojo
+- Themba
