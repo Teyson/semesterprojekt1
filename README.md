@@ -72,6 +72,28 @@
 - De sidste små ting ændret på plakat, navn, udviklingslande er slettet og omskrevet.
 - Teis er semi ringe til TFT idag.
 
+<<<<<<< Updated upstream
+=======
+### 22/10 - 2019
+
+- Vi har udviklet på spil idé via udarbejdelse af map
+- Begyndt at udarbejde UML diagram.
+- dialog class bliver ikke udarbejdet i første iteration, muligvis i anden.
+- mulighed for halv point, i forhold til tid og antal gange man går ind i rum, laver i ikke til minimum re.
+- opdeling af cure points, prevention points og utility points kan ske i anden iteration.
+- vi begynder på at skrive nogle klasser hver i sær.
+- efter snak møde med Jeppe, har vi snakket om at, vi skal bremse en smule op og gå tilbage til selve spillets kerne, og kigge mere på det igen.
+
+### 24/10 - 2019
+
+- spillet udformning har vi tænkt til ende. (synes vi selv)
+- vi føler os klar til næste skridt
+- Vi er forvirret omkring, hvad vi skal nu.
+- skal vi lave domænediagram?
+- Vi er tidspresset. 
+- Vi skriver en mail til Jeppe, om feedback på spilbeskrivelsen, og om hjælp til at, hvordan vi skal gå videre. 
+
+>>>>>>> Stashed changes
 
 
  
