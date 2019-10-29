@@ -128,7 +128,18 @@ public class Game
     public static void main(String[] args) {
 
         Game game = new Game();
-
+        
+        Interaction root = new Interaction("ROOT", "TEST LOL");
+        
+        NPC npcrask = new NPC("morten", root);
+        
+        NPC npcsyg = new NPC("nichlas", "herpes og klamydia og HIV", root);
+        
+        System.out.println(npcrask.getName());
+        System.out.println(npcsyg.getName() + " har " + npcsyg.getIllnessName() + " hahahahahhaha");
+       
+        npcsyg.getInteraction().start();
+        
         game.play();
 
     }

@@ -5,8 +5,8 @@ public class NPC {
     private String name;
     private String illnessName;
     private boolean alive;
-    private int points;
     private boolean treatAttempted;
+    private final int points = 50;
     private Interaction interaction;
     
     //Constructors
@@ -30,25 +30,17 @@ public class NPC {
         this.name = name;
         this.illnessName = null;
         this.alive = true;
-        this.points = 0;
         this.treatAttempted = false;
         this.interaction = interaction;
     }
     
     //Methods
-    /**
-     * 
-     * @param points is the value wanted to be added to the total points.
-     */
-    public void addPoints(int points) {
-        this.points += points;
-    }
     
     /*
     public boolean treat(MedicineItem medicine) {
         this.treatAttempted = true;
         if (this.illnessName.equals(medicine.getName())) { //Correct treatment
-            this.addPoints(10);
+            Evaluation.addPoints(this.points);
             this.illnessName = null;
         }
         else 
@@ -57,7 +49,7 @@ public class NPC {
     */
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -65,7 +57,10 @@ public class NPC {
     }
 
     public String getIllnessName() {
-        return illnessName;
+        if (this.illnessName == null)
+            return "none";
+        else
+            return this.illnessName;
     }
 
     public void setIllnessName(String illnessName) {
@@ -73,7 +68,7 @@ public class NPC {
     }
 
     public boolean isAlive() {
-        return alive;
+        return this.alive;
     }
 
     public void setAlive(boolean alive) {
@@ -81,15 +76,11 @@ public class NPC {
     }
 
     public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
+        return this.points;
     }
 
     public boolean isTreatAttempted() {
-        return treatAttempted;
+        return this.treatAttempted;
     }
 
     public void setTreatAttempted(boolean treatAttempted) {
@@ -97,7 +88,7 @@ public class NPC {
     }
     
     public Interaction getInteraction() {
-        return interaction;
+        return this.interaction;
     }
 
     public void setInteraction(Interaction interaction) {

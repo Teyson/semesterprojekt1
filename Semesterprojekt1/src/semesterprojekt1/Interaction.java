@@ -45,14 +45,14 @@ public class Interaction {
         return this.message;
     }
     
-    public void start(Interaction node){
-        System.out.println(node.message);
+    public void start(){
+        System.out.println(this.message);
         
-        node.printOptions();
+        this.printOptions();
         
-        if(!node.children.isEmpty()){
+        if(!this.children.isEmpty()){
             input = sc.next().charAt(0) - 48;
-            start(node.children.get(input));
+            this.children.get(input).start();
         }   
     }
 }
