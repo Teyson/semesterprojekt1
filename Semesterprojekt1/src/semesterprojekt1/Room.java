@@ -13,14 +13,23 @@ public class Room {
     private Inventory items;
     private Inventory truckInventory;
 
+    /**
+     *  contructor to room with the truck inside
+     * @param description Description of the room
+     * @param truckSize Size of the trucks inventory
+     */
     public Room(String description, int truckSize) {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.items = new Inventory();
-        this.truckInventory = new Inventory(truckSize);
+        //this.truckInventory = new Inventory(truckSize);
+        // Will work in master
         this.NPCs = new HashMap<String, NPC>();
     }
-
+/**
+ * contructor to room without the truck inside.
+ * @param description  Description of the room
+ */
     public Room(String description) {
         this.description = description;
         exits = new HashMap<String, Room>();
@@ -28,14 +37,15 @@ public class Room {
         this.NPCs = new HashMap<String, NPC>();
     }
 
-    public void setNPC(NPC npc) {
+    /*public void setNPC(NPC npc) {
         if (npc instanceof NPC) {
             this.NPCs.put(npc.getName(), npc);
         } else {
             System.out.println("Not an NPC");
         }
 
-    }
+    }*/
+    // will work in master
 
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
