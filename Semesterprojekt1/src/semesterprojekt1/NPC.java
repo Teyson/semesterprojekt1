@@ -6,7 +6,7 @@ public class NPC {
     private String illnessName;
     private boolean alive;
     private boolean treatAttempted;
-    private final int points = 50;
+    private static int points = 50;
     private Interaction interaction;
     
     //Constructors
@@ -35,7 +35,6 @@ public class NPC {
     }
     
     //Methods
-    
     /*
     public boolean treat(MedicineItem medicine) {
         this.treatAttempted = true;
@@ -47,7 +46,7 @@ public class NPC {
             this.alive = false;   
     }
     */
-
+    
     public String getName() {
         return this.name;
     }

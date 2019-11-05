@@ -8,12 +8,16 @@ import java.util.Iterator;
 public class Room 
 {
     private String description;
+    private HashMap<String, NPC> npcs;
     private HashMap<String, Room> exits;
+    private HashMap<String, Item> items;
 
     public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
+        npcs = new HashMap<String, NPC>();
+        items = new HashMap<String, Item>();
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -21,6 +25,14 @@ public class Room
         exits.put(direction, neighbor);
     }
 
+    public void addNPC(String name, NPC npc) {
+        npcs.put(name, npc);
+    }
+    
+    public void addItem(String name, Item item) {
+        items.put(name, item);
+    }
+    
     public String getShortDescription()
     {
         return description;
@@ -28,7 +40,19 @@ public class Room
 
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        String returnString = "You are " + description + ".\n" + getExitString();
+        
+        if (!npcs.isEmpty()) {
+            returnString += ".\n";
+            returnString += getNPCString();
+        }
+                
+        if (!items.isEmpty()) {
+            returnString += ".\n";
+            returnString += getItemString();
+        }
+
+        return returnString;
     }
 
     private String getExitString()
@@ -40,10 +64,41 @@ public class Room
         }
         return returnString;
     }
+    
+    private String getNPCString() {
+        String returnString = "NPCs: ";
+
+        for (String key : npcs.keySet()) {
+            returnString += (key + ", ");
+        }
+        
+        return returnString;
+    }
+    
+    private String getItemString() {
+        String returnString = "Items: ";
+
+        for (String key : items.keySet()) {
+            returnString += (key + ", ");
+        }
+        
+        return returnString;
+    }
+    
 
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    public NPC getNPC(String name) {
+        return npcs.get(name);
+    }
+    
+    public Item getItem(String name) {
+        Item returnItem = items.get(name);
+        items.remove(name);
+        return returnItem;
     }
 }
 

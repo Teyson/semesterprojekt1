@@ -1,17 +1,24 @@
 package semesterprojekt1;
 
+import java.util.HashMap;
+
 public class Game
 {
     private Parser parser;
     private Room currentRoom;
 
-
+    Interaction samtale1 = new Interaction("rod", "Hej jeg hedder samba");
+    Interaction samtale2 = new Interaction("rodd", "Jeg er boomer mogens");
+    NPC samba = new NPC("Samba", samtale1);
+    NPC mogens = new NPC("Mogens", samtale2);
+    MedicineItem kanyle = new MedicineItem("Kanyle", "testitem", 2, "cancer");
+    
+    
     public Game()
     {
         createRooms();
         parser = new Parser();
     }
-
 
     private void createRooms()
     {
@@ -26,7 +33,10 @@ public class Game
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
-
+        outside.addNPC(samba.getName(), samba);
+        outside.addNPC(mogens.getName(), mogens);
+        outside.addItem(kanyle.getName(), kanyle);
+        
         theatre.setExit("west", outside);
 
         pub.setExit("east", outside);
@@ -82,6 +92,12 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        else if (commandWord == CommandWord.INTERACT) {
+            interactNPC(command);
+        }
+        else if (commandWord == CommandWord.TAKE) {
+            takeItem(command);
+        }
         return wantToQuit;
     }
 
@@ -112,6 +128,30 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+    
+    private void interactNPC(Command command) {
+        try {
+            String name = command.getSecondWord();
+            NPC tempNPC = currentRoom.getNPC(name);
+
+            tempNPC.getInteraction().start();
+        }
+        catch (NullPointerException e) {
+            System.out.println("No NPC with that name here.");
+        }
+    }
+    
+    private void takeItem(Command command) {
+        try {
+            String name = command.getSecondWord();
+            Item tempItem = currentRoom.getItem(name);
+            System.out.println("You picked up: " + tempItem.getName());
+        }
+        catch (NullPointerException e) {
+            System.out.println("No Item with that name here.");
+        }
+        
     }
 
     private boolean quit(Command command)
