@@ -16,7 +16,7 @@ public abstract class Item {
     private String description;
     
     /**
-     * Constructor for child classes to inherit from, in constructor via super(....)
+     * Constructor for child classes to inherit from, in sub-item constructors via super(....)
      * @param name name on Item
      * @param description the description of the Item.
      * @param itemSize the the amount of spaces take in inventory.
