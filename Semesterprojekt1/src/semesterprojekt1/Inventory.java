@@ -29,11 +29,12 @@ public class Inventory {
 
     /**
      *
+     * @param name
      * @param item added to the itemList
      */
-    public void addItem(Item item) {
+    public void addItem(String name, Item item) {
         if (spaceUsed + item.getItemSize() < inventorySize){
-            itemList.put(item.getName(), item);
+            itemList.put(name, item);
             spaceUsed += item.getItemSize();
             //System.out.println(item.getName() + " was successfully added to inventory.");
         }

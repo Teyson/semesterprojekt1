@@ -1,60 +1,104 @@
 package semesterprojekt1;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Game
 {
     private Parser parser;
     private Room currentRoom;
-
-    Interaction samtale1 = new Interaction("rod", "Hej jeg hedder samba");
-    Interaction samtale2 = new Interaction("rodd", "Jeg er boomer mogens");
-    NPC samba = new NPC("Samba", samtale1);
-    NPC mogens = new NPC("Mogens", samtale2);
-    MedicineItem kanyle = new MedicineItem("Kanyle", "testitem", 2, "cancer");
-    Inventory inventory = new Inventory(10);
+    private Inventory playerInventory;
     
+    private String playerName;
     
+    private Room spawn, info, testRoom;
+    private Interaction MariaI, MariaI2, MariaInfoI, MariaInfoI2, MariaInfoI3, HandbookI, HandbookHIV, HandbookTUR, HandbookMAL, patientI, patientI2, patientI3;
+    private NPC Maria, MariaInfo, patient;
+    private UtilityItem Handbook;
+    private MedicineItem medicine;
     
-    public Game()
-    {
+    public Game() {
         createRooms();
+        createInteraction();
+        createNPC();
+        createItem();
+        playerInventory = new Inventory(10);
         parser = new Parser();
     }
 
-    private void createRooms()
-    {
-        Room outside, theatre, pub, lab, office;
+    private void createRooms() {
+        spawn = new Room("in the 'WHO' training facilities in Genéva");
+        info = new Room("in the information center");
+        testRoom = new Room("in a test facility. Here you will try to cure a patient");
 
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        outside.addNPC(samba.getName(), samba);
-        outside.addNPC(mogens.getName(), mogens);
-        outside.addItem(kanyle.getName(), kanyle);
+        spawn.setExit("west", info);
+        info.setExit("west", testRoom);
+  
         
-        theatre.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        currentRoom = outside;
+        currentRoom = spawn;
     }
+    
+    private void createInteraction() {
+        //Spawn
+        MariaI = new Interaction("root", "Hello my name is Maria, thank you for volunteering, i'll be your guide.");
+        MariaI2 = new Interaction("What do i do now?", "Go to the information center to the west to learn more about your role in the operation.");
+        MariaI.addChild(MariaI2);
+        
+        //Information center
+        MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll have to deal with.");
+        MariaInfoI2 = new Interaction("Which diseases will I encounter?", "You will encounter HIV, Tuberculosis and Malaria");
+        MariaInfoI3 = new Interaction("I think I'm ready can I go now?", "No! Not before you have the Doctor's Handbook, grab one from the shelf before you leave");
+        MariaInfoI.addChild(MariaInfoI2);
+        MariaInfoI.addChild(MariaInfoI3);
+        MariaInfoI2.addChild(MariaInfoI3);
+        
+        //Handbook
+        HandbookI = new Interaction("root", "Table of contents:");
+        HandbookHIV = new Interaction("HIV", "People with HIV usually have these symptoms headache and fatigue.");
+        HandbookTUR = new Interaction("Tuberculosis", "People with Turberculosis usually have these symptoms coughing and chest pain.");
+        HandbookMAL = new Interaction("Malaria", "People with Malaria usually have these symptoms fever and nausea.");
+        HandbookI.addChild(HandbookHIV);
+        HandbookI.addChild(HandbookTUR);
+        HandbookI.addChild(HandbookMAL);
+        
+        //TestRoom
+        patientI = new Interaction("root", "Please help me! My body is very warm and my skin is red");
+        patientI2 = new Interaction("Look for more Symptoms", "You see that the patient's throat is red, she has a high fever and a red rash all over her body");
+        patientI3 = new Interaction("Treat", "Thank you for helping me");
+        patientI.addChild(patientI2);
+        patientI.addChild(patientI3);
+        patientI2.addChild(patientI3);
+                
+    }
+    
+    private void createNPC() {
+        //Spawn 
+        Maria = new NPC("Maria", MariaI);
+        spawn.addNPC(Maria.getName(), Maria);
+        
+        //Information center
+        MariaInfo = new NPC("Maria", MariaInfoI);
+        info.addNPC(MariaInfo.getName(), MariaInfo);
+        
+        //TestRoom
+        patient = new NPC("patient", patientI);
+        testRoom.addNPC(patient.getName(), patient);
+    }
+    
+    private void createItem() {
+        //Information center
+        Handbook = new UtilityItem("Handbook", "You can use this book to gain knowledge about diseases you might not know yet or have forgotten.", 0, 0);
+        info.addItem(Handbook.getName(), Handbook);
+        
+        //TestRoom
+        medicine = new MedicineItem("Medicine", "This will treat the patient.", 1, "HIV");
+        testRoom.addItem(medicine.getName(), medicine);
+    }
+    
 
     public void play()
     {
         printWelcome();
-
 
         boolean finished = false;
         while (! finished) {
@@ -67,8 +111,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to Kill the Killers!");
+        System.out.println("Where your job is to stop the spread of some of the biggest epidemics.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -103,7 +147,9 @@ public class Game
                 break;
             case OPEN:
                 if ("Inventory".equals(command.getSecondWord()))
-                    inventory.printItemList();
+                    playerInventory.printItemList();
+                else if ("Handbook".equals(command.getSecondWord()))
+                    HandbookI.start();
                 else
                     System.out.println("Can't open " + command.getSecondWord());
             default:
@@ -114,8 +160,6 @@ public class Game
 
     private void printHelp()
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
@@ -157,11 +201,12 @@ public class Game
         try {
             String name = command.getSecondWord();
             Item tempItem = currentRoom.getItem(name);
-            inventory.addItem(tempItem);
+            playerInventory.addItem(tempItem.getName(), tempItem);
             System.out.println(tempItem.getName() + " was added to the inventory.");
         }
         catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
+            e.printStackTrace();
         }
     }
 
@@ -181,6 +226,7 @@ public class Game
         Game game = new Game();
         
         game.play();
+        System.out.println("hello world");
 
     }
 
