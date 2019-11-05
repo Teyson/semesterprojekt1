@@ -1,17 +1,13 @@
 package semesterprojekt1;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 
-/**
- *
- * @author sarahmanon
- */
 
 public class Inventory {
 
     private int inventorySize;
     private int spaceUsed; 
-    private ArrayList<Item> itemList;
+    private HashMap<String, Item> itemList;
 
     /**
      * Constructor to create inventory of limited size
@@ -19,7 +15,7 @@ public class Inventory {
      * @param inventorySize determines the size of the inventory
      */
     public Inventory(int inventorySize) {
-        this.itemList = new ArrayList<>();
+        this.itemList = new HashMap<>();
         this.inventorySize = inventorySize;
     }
 
@@ -27,7 +23,7 @@ public class Inventory {
      * Constructor of unlimited size to create an inventory for rooms
      */
     public Inventory() { //perhaps add spaceUsed to make it possible to see how many items are actually in this room-inventory?
-        this.itemList = new ArrayList<>();
+        this.itemList = new HashMap<>();
         this.inventorySize = 9999;
     }
 
@@ -37,9 +33,9 @@ public class Inventory {
      */
     public void addItem(Item item) {
         if (spaceUsed + item.getItemSize() < inventorySize){
-            itemList.add(item);
+            itemList.put(item.getName(), item);
             spaceUsed += item.getItemSize();
-            System.out.println(item + " was successfully added.");
+            //System.out.println(item.getName() + " was successfully added to inventory.");
         }
         else{
             System.out.println("Your inventory is too full to contain this! Please remove some items to make room for others.");
@@ -50,18 +46,23 @@ public class Inventory {
      *
      * @param item removed from the itemList
      */
-    public void removeItem(Item item) {
-        itemList.remove(item);
-        spaceUsed -= item.getItemSize();
-        System.out.println(item + " was successfully removed.");
+    public void removeItem(String name) {
+        spaceUsed -= itemList.get(name).getItemSize();
+        itemList.remove(name);
+        
+        //System.out.println(name + " was successfully removed from inventory.");
     }
 
     /**
      * method to print the itemList
      */
     public void printItemList() {
-        for (int i = 0; i < itemList.size(); i++) {
-            System.out.println(itemList);
+        if (itemList.isEmpty())
+            System.out.println("Your inventory is empty");
+        else {
+            for (int i = 0; i < itemList.size(); i++) {
+                System.out.println(itemList.keySet());
+            }
         }
     }
     
@@ -79,5 +80,9 @@ public class Inventory {
     
     public void setSpaceUsed(int newSpaceUsed){
         this.spaceUsed = newSpaceUsed;
+    }
+    
+    public HashMap<String, Item> getItemList() {
+        return this.itemList;
     }
 }
