@@ -2,7 +2,7 @@ package semesterprojekt1;
 
 public enum CommandWord
 {
-    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"), INTERACT("interact"), TAKE("take");
+    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"), INTERACT("interact"), TAKE("take"), OPEN("open");
     
     private String commandString;
     

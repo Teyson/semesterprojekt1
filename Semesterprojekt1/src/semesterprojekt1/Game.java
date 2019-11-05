@@ -12,6 +12,8 @@ public class Game
     NPC samba = new NPC("Samba", samtale1);
     NPC mogens = new NPC("Mogens", samtale2);
     MedicineItem kanyle = new MedicineItem("Kanyle", "testitem", 2, "cancer");
+    Inventory inventory = new Inventory(10);
+    
     
     
     public Game()
@@ -83,20 +85,29 @@ public class Game
             return false;
         }
 
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        }
-        else if (commandWord == CommandWord.INTERACT) {
-            interactNPC(command);
-        }
-        else if (commandWord == CommandWord.TAKE) {
-            takeItem(command);
+        if (null != commandWord) switch (commandWord) {
+            case HELP:
+                printHelp();
+                break;
+            case GO:
+                goRoom(command);
+                break;
+            case QUIT:
+                wantToQuit = quit(command);
+                break;
+            case INTERACT:
+                interactNPC(command);
+                break;
+            case TAKE:
+                takeItem(command);
+                break;
+            case OPEN:
+                if ("Inventory".equals(command.getSecondWord()))
+                    inventory.printItemList();
+                else
+                    System.out.println("Can't open " + command.getSecondWord());
+            default:
+                break;
         }
         return wantToQuit;
     }
@@ -146,12 +157,12 @@ public class Game
         try {
             String name = command.getSecondWord();
             Item tempItem = currentRoom.getItem(name);
-            System.out.println("You picked up: " + tempItem.getName());
+            inventory.addItem(tempItem);
+            System.out.println(tempItem.getName() + " was added to the inventory.");
         }
         catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
         }
-        
     }
 
     private boolean quit(Command command)
