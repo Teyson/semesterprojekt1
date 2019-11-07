@@ -128,7 +128,12 @@ public class Game
 
         if (null != commandWord) switch (commandWord) {
             case HELP:
+                if (command.getSecondWord()== null){
                 printHelp();
+                }
+                else {
+                    System.out.println("you can only type help by it self");
+                }
                 break;
             case GO:
                 goRoom(command);
@@ -150,7 +155,12 @@ public class Game
                 else
                     System.out.println("Can't open " + command.getSecondWord());
             case INFO:
-                System.out.println(currentRoom.getLongDescription());
+                if (command.getSecondWord()== null){
+                    System.out.println(currentRoom.getLongDescription());
+                }
+                else {
+                    System.out.println("you can only type info by it self");
+                }
             default:
                 break;
         }
