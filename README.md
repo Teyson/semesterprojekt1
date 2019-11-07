@@ -95,6 +95,15 @@
 
 >>>>>>> Stashed changes
 
+### 07-11-2019
+
+- blevet enige om at vi skriver rapport i word, hvorefter vi indsætter det i LaTex for bedst layout.
+- Christoffer har lavet mange ændringer på vores prototype. 
+- Vi har gennemgået ændringer, så alle forstår.
+- Vi skal være bedre til at opdatere globoard
+- Vi skal være bedre til at uddelegere hjemmeopgaver. 
+
+
 
  
 
