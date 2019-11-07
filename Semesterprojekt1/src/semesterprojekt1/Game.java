@@ -13,7 +13,7 @@ public class Game {
     private NPC Maria, MariaInfo, Patient;
     private UtilityItem Handbook;
     private MedicineItem medicine;
-    private boolean interactedMaria = false;
+    private boolean interactedMaria = false; //boolean for checking if you have interacted with Maria in spawn
 
     public Game() {
         createRooms();
@@ -175,10 +175,10 @@ public class Game {
     }
 
     private void goRoom(Command command) {
-        if(currentRoom.equals(spawn)){ //if you are in spawn this if statement checks if you have talked with Maria.
+        if (currentRoom.equals(spawn)) { //if you are in spawn this if statement checks if you have talked with Maria.
             String direction = command.getSecondWord();
             Room nextRoom = currentRoom.getExit(direction);
-            if(interactedMaria == true){
+            if (interactedMaria == true) {
                 if (!command.hasSecondWord()) {
                     System.out.println("Go where?");
                     return;
@@ -190,13 +190,11 @@ public class Game {
                     currentRoom = nextRoom;
                     System.out.println(currentRoom.getLongDescription());
                 }
-                
-            }
-             else {  //if the player dont have interacted with Maria, they cant continue. 
+
+            } else {  //if the player dont have interacted with Maria, they cant continue. 
                 System.out.println("You can't continue without talking to Maria");
             }
-        }
-        //else if-statement checks, if you are inside the infoRoom.
+        } //else if-statement checks, if you are inside the infoRoom.
         else if (currentRoom.equals(info)) {
             String direction = command.getSecondWord();
             Room nextRoom = currentRoom.getExit(direction);
@@ -238,14 +236,19 @@ public class Game {
 
     private void interactNPC(Command command) {
         try {
-            String name = command.getSecondWord();
-            if(name.equals(Maria.getName())){
-                this.interactedMaria = true;
-            }
-            
-            NPC tempNPC = currentRoom.getNPC(name);
+            if (command.getSecondWord() != null) {
 
-            tempNPC.interact(playerInventory);
+                String name = command.getSecondWord();
+                if (name.equals(Maria.getName())) {
+                    this.interactedMaria = true;
+                }
+
+                NPC tempNPC = currentRoom.getNPC(name);
+
+                tempNPC.interact(playerInventory);
+            } else {
+                System.out.println("Interact what?");
+            }
         } catch (NullPointerException e) {
             System.out.println("No NPC with that name here.");
         }
@@ -253,10 +256,14 @@ public class Game {
 
     private void takeItem(Command command) {
         try {
-            String name = command.getSecondWord();
-            Item tempItem = currentRoom.getItem(name);
-            playerInventory.addItem(tempItem.getName(), tempItem);
-            System.out.println(tempItem.getName() + " was added to the inventory.");
+            if (command.getSecondWord() != null) {
+                String name = command.getSecondWord();
+                Item tempItem = currentRoom.getItem(name);
+                playerInventory.addItem(tempItem.getName(), tempItem);
+                System.out.println(tempItem.getName() + " was added to the inventory.");
+            }else{
+                System.out.println("Take what?");
+            }
         } catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
         }
