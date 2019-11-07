@@ -13,6 +13,7 @@ public class Game {
     private NPC Maria, MariaInfo, Patient;
     private UtilityItem Handbook;
     private MedicineItem medicine;
+    private boolean interactedMaria = false;
 
     public Game() {
         createRooms();
@@ -174,8 +175,29 @@ public class Game {
     }
 
     private void goRoom(Command command) {
-        //first if-statement checks, if you are inside the infoRoom.
-        if (currentRoom.equals(info)) {
+        if(currentRoom.equals(spawn)){ //if you are in spawn this if statement checks if you have talked with Maria.
+            String direction = command.getSecondWord();
+            Room nextRoom = currentRoom.getExit(direction);
+            if(interactedMaria == true){
+                if (!command.hasSecondWord()) {
+                    System.out.println("Go where?");
+                    return;
+                }
+
+                if (nextRoom == null) {
+                    System.out.println("There is no door!");
+                } else {
+                    currentRoom = nextRoom;
+                    System.out.println(currentRoom.getLongDescription());
+                }
+                
+            }
+             else {  //if the player dont have interacted with Maria, they cant continue. 
+                System.out.println("You can't continue without talking to Maria");
+            }
+        }
+        //else if-statement checks, if you are inside the infoRoom.
+        else if (currentRoom.equals(info)) {
             String direction = command.getSecondWord();
             Room nextRoom = currentRoom.getExit(direction);
             //if the player has the handbook the Player can continue and go to the next room
@@ -217,6 +239,10 @@ public class Game {
     private void interactNPC(Command command) {
         try {
             String name = command.getSecondWord();
+            if(name.equals(Maria.getName())){
+                this.interactedMaria = true;
+            }
+            
             NPC tempNPC = currentRoom.getNPC(name);
 
             tempNPC.interact(playerInventory);
