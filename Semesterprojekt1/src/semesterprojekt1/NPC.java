@@ -105,10 +105,7 @@ public class NPC {
                 
                 input = sc.nextInt(); //Take user input to decide which option to go for
 
-                //Checks if input size is single digit
-                if (String.valueOf(input).length() == 1) {
-                    interactionPointer = interactionPointer.getChild(input); //Go to child which contained the option selected
-                }
+                interactionPointer = interactionPointer.getChild(input); //Go to child which contained the option selected
                 
                 //If the current note's option is to "Treat" meaning to treat the patient.
                 if ("Treat".equals(interactionPointer.getOption())) {
