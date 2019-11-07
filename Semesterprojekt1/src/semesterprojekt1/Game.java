@@ -25,12 +25,20 @@ public class Game
     }
 
     private void createRooms() {
+        // rooms
         spawn = new Room("in the 'WHO' training facilities in Genéva");
         info = new Room("in the information center");
         testRoom = new Room("in a test facility. Here you will try to cure a patient");
-
+       
+        
+        // exists
         spawn.setExit("west", info);
         info.setExit("west", testRoom);
+        info.setExit("east", spawn);
+        testRoom.setExit("east", testRoom);
+
+        
+        
         
         currentRoom = spawn;
     }
