@@ -160,7 +160,8 @@ public class NPC {
 
                     input = sc.nextInt(); //Take user input to decide which option to go for
 
-                    if (String.valueOf(input).length() == 1 && input + 1 == interactionPointer.getChildren().size()) {//Checks if input is to leave conversation 
+                    //Checks if input is to leave conversation
+                    if ("Stop interaction".equals(interactionPointer.getChild(input).getOption())) { 
                         System.out.println("You left the patient.");
                         interactionPointer.deleteChildren(); //Removes children (options) when leaving conversation
                         break; //Breaks loop
@@ -168,7 +169,8 @@ public class NPC {
                     else { //Treats with the chosen item.
                         interactionPointer = interactionPointer.getChild(input); //Set pointer to selected treatment  
 
-                        //Get item that was selected from the HashMap in the inventory.
+                        //We give hashMap inventory name of the item.
+                        //It gives us the object of the item.
                         Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
