@@ -149,6 +149,8 @@ public class Game
                     Handbook.interactItem();
                 else
                     System.out.println("Can't open " + command.getSecondWord());
+            case INFO:
+                System.out.println(currentRoom.getLongDescription());
             default:
                 break;
         }
