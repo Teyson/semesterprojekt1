@@ -1,7 +1,5 @@
 package semesterprojekt1;
 
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class Game
 {
@@ -12,8 +10,8 @@ public class Game
     private String playerName;
     
     private Room spawn, info, testRoom;
-    private Interaction MariaI, MariaI2, MariaInfoI, MariaInfoI2, MariaInfoI3, HandbookI, HandbookHIV, HandbookTUR, HandbookMAL, patientI, patientI2, patientI3;
-    private NPC Maria, MariaInfo, patient;
+    private Interaction MariaI, MariaI2, MariaInfoI, MariaInfoI2, MariaInfoI3, HandbookI, HandbookHIV, HandbookTUR, HandbookMAL, PatientI, PatientI2, PatientI3;
+    private NPC Maria, MariaInfo, Patient;
     private UtilityItem Handbook;
     private MedicineItem medicine;
     
@@ -33,7 +31,6 @@ public class Game
 
         spawn.setExit("west", info);
         info.setExit("west", testRoom);
-  
         
         currentRoom = spawn;
     }
@@ -62,12 +59,12 @@ public class Game
         HandbookI.addChild(HandbookMAL);
         
         //TestRoom
-        patientI = new Interaction("root", "Please help me! My body is very warm and my skin is red");
-        patientI2 = new Interaction("Look for more Symptoms", "You see that the patient's throat is red, she has a high fever and a red rash all over her body");
-        patientI3 = new Interaction("Treat", "Thank you for helping me");
-        patientI.addChild(patientI2);
-        patientI.addChild(patientI3);
-        patientI2.addChild(patientI3);
+        PatientI = new Interaction("root", "Please help me! My body is very warm and my skin is red");
+        PatientI2 = new Interaction("Look for more Symptoms", "You see that the patient's throat is red, she has a high fever and a red rash all over her body");
+        PatientI3 = new Interaction("Treat", "What would you like to treat the patient with?");
+        PatientI.addChild(PatientI2);
+        PatientI.addChild(PatientI3);
+        PatientI2.addChild(PatientI3);
                 
     }
     
@@ -81,13 +78,13 @@ public class Game
         info.addNPC(MariaInfo.getName(), MariaInfo);
         
         //TestRoom
-        patient = new NPC("patient", patientI);
-        testRoom.addNPC(patient.getName(), patient);
+        Patient = new NPC("Patient", "HIV", PatientI);
+        testRoom.addNPC(Patient.getName(), Patient);
     }
     
     private void createItem() {
         //Information center
-        Handbook = new UtilityItem("Handbook", "You can use this book to gain knowledge about diseases you might not know yet or have forgotten.", 0, 0);
+        Handbook = new UtilityItem("Handbook", "You can use this book to gain knowledge about diseases you might not know yet or have forgotten.", 0, 0, HandbookI);
         info.addItem(Handbook.getName(), Handbook);
         
         //TestRoom
@@ -149,7 +146,7 @@ public class Game
                 if ("Inventory".equals(command.getSecondWord()))
                     playerInventory.printItemList();
                 else if ("Handbook".equals(command.getSecondWord()))
-                    HandbookI.start();
+                    Handbook.interactItem();
                 else
                     System.out.println("Can't open " + command.getSecondWord());
             default:
@@ -190,7 +187,7 @@ public class Game
             String name = command.getSecondWord();
             NPC tempNPC = currentRoom.getNPC(name);
 
-            tempNPC.getInteraction().start();
+            tempNPC.interact(playerInventory);
         }
         catch (NullPointerException e) {
             System.out.println("No NPC with that name here.");
@@ -206,7 +203,6 @@ public class Game
         }
         catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
-            e.printStackTrace();
         }
     }
 

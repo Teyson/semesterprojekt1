@@ -1,7 +1,6 @@
 package semesterprojekt1;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Interaction {
 
@@ -9,8 +8,6 @@ public class Interaction {
     private String option;
     private String message;
     private ArrayList<Interaction> children;
-    private Scanner sc = new Scanner(System.in);
-    private int input;
 
     //Constructors
     public Interaction() {
@@ -23,19 +20,47 @@ public class Interaction {
     }
 
     //Methods
+    /**
+     * 
+     * @param child adds child to the current object.
+     */
     public void addChild(Interaction child) {
         this.children.add(child);
     }
 
-    public void addTreat() {
-        addChild(new Interaction("HIV", "pills"));
-        addChild(new Interaction("Tuberculosis", "test2"));
+    /**
+     * Removes all children of the node.
+     */
+    public void deleteChildren() {
+        this.children.clear();
     }
-
+    
+    /**
+     * 
+     * @return the option (which is what the player makes disicions based on).
+     */
     public String getOption() {
-        return option;
+        return this.option;
+    }
+    
+    /**
+     * 
+     * @return all children for this object of the class.
+     */
+    public ArrayList<Interaction> getChildren() {
+        return this.children;
     }
 
+    /**
+     * Prints the message of the current node.
+     */
+    public void printMessage() {
+        System.out.println(this.message);
+    }
+    
+    /**
+     * Prints the options of the children of the current node.
+     */
     public void printOptions() {
         if (children == null) {
             System.out.println("No children found");
@@ -46,23 +71,20 @@ public class Interaction {
         }
     }
 
+    /**
+     * 
+     * @return the message of the current node.
+     */
     public String getMessage() {
         return this.message;
     }
-
-    public void start() {
-        System.out.println(this.message);
-
-        this.printOptions();
-
-        try {
-            if (!this.children.isEmpty()) {
-                input = sc.next().charAt(0) - 48;
-                this.children.get(input).start();
-            }
-        }
-        catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input.");
-        }
+    
+    /**
+     * 
+     * @param index in an integer used to decide which item in the ArrayList of children you wish to get.
+     * @return the child on the position index in ArrayList children.
+     */
+    public Interaction getChild(int index) {
+        return this.children.get(index);
     }
 }

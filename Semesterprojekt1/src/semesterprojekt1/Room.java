@@ -43,12 +43,12 @@ public class Room
         String returnString = "You are " + description + ".\n" + getExitString();
         
         if (!npcs.isEmpty()) {
-            returnString += ".\n";
+            returnString += "\n";
             returnString += getNPCString();
         }
                 
         if (!inventory.getItemList().isEmpty()) {
-            returnString += ".\n";
+            returnString += "\n";
             returnString += getItemString();
         }
 
@@ -69,9 +69,8 @@ public class Room
         String returnString = "People: ";
 
         for (String key : npcs.keySet()) {
-            returnString += (key + ", ");
+            returnString += (key + " ");
         }
-        
         return returnString;
     }
     
@@ -79,13 +78,11 @@ public class Room
         String returnString = "Items: ";
           
         for (String key : inventory.getItemList().keySet()) {
-            returnString += (key + ", ");
+            returnString += (key + " ");
         }
-        
         return returnString;
     }
     
-
     public Room getExit(String direction) 
     {
         return exits.get(direction);
