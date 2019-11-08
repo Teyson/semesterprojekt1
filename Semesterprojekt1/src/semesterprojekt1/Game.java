@@ -136,7 +136,7 @@ public class Game {
                     }
                     break;
                 case GO:
-                    goRoom(command);
+                    goRoomNPCRequirements(command);
                     break;
                 case QUIT:
                     wantToQuit = quit(command);
@@ -174,62 +174,23 @@ public class Game {
         parser.showCommands();
     }
 
-    private void goRoom(Command command) {
+    private void goRoomNPCRequirements(Command command) {
         if (currentRoom.equals(spawn)) { //if you are in spawn this if statement checks if you have talked with Maria.
-            String direction = command.getSecondWord();
-            Room nextRoom = currentRoom.getExit(direction);
             if (interactedMaria == true) {
-                if (!command.hasSecondWord()) {
-                    System.out.println("Go where?");
-                    return;
-                }
-
-                if (nextRoom == null) {
-                    System.out.println("There is no door!");
-                } else {
-                    currentRoom = nextRoom;
-                    System.out.println(currentRoom.getLongDescription());
-                }
-
+                goRoom(command);
             } else {  //if the player dont have interacted with Maria, they cant continue. 
                 System.out.println("You can't continue without talking to Maria");
             }
         } //else if-statement checks, if you are inside the infoRoom.
         else if (currentRoom.equals(info)) {
-            String direction = command.getSecondWord();
-            Room nextRoom = currentRoom.getExit(direction);
             //if the player has the handbook the Player can continue and go to the next room
             if (playerInventory.getItemList().containsKey(Handbook.getName())) {
-                if (!command.hasSecondWord()) {
-                    System.out.println("Go where?");
-                    return;
-                }
-
-                if (nextRoom == null) {
-                    System.out.println("There is no door!");
-                } else {
-                    currentRoom = nextRoom;
-                    System.out.println(currentRoom.getLongDescription());
-                }
+                goRoom(command);
             } else {  //if the player dont have the Handbook in inventory, they cant continue. 
                 System.out.println("You can't continue without the Handbook");
             }
-
-        } else { // normal goRoom method, when the current room isnt infoRoom
-            if (!command.hasSecondWord()) {
-                System.out.println("Go where?");
-                return;
-            }
-            String direction = command.getSecondWord();
-
-            Room nextRoom = currentRoom.getExit(direction);
-
-            if (nextRoom == null) {
-                System.out.println("There is no door!");
-            } else {
-                currentRoom = nextRoom;
-                System.out.println(currentRoom.getLongDescription());
-            }
+        } else { // normal goRoom method, when the current room or spawn isnt infoRoom
+            goRoom(command);
         }
 
     }
@@ -261,7 +222,7 @@ public class Game {
                 Item tempItem = currentRoom.getItem(name);
                 playerInventory.addItem(tempItem.getName(), tempItem);
                 System.out.println(tempItem.getName() + " was added to the inventory.");
-            }else{
+            } else {
                 System.out.println("Take what?");
             }
         } catch (NullPointerException e) {
@@ -287,4 +248,20 @@ public class Game {
 
     }
 
+    public void goRoom(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("Go where?");
+            return;
+        }
+        String direction = command.getSecondWord();
+
+        Room nextRoom = currentRoom.getExit(direction);
+
+        if (nextRoom == null) {
+            System.out.println("There is no door!");
+        } else {
+            currentRoom = nextRoom;
+            System.out.println(currentRoom.getLongDescription());
+        }
+    }
 }
