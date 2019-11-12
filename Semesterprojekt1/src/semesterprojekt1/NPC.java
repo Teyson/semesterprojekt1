@@ -235,7 +235,7 @@ public class NPC {
                         Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
-                        System.out.println("That you for the " + tempItem.getName());
+                        System.out.println("Thank you for the " + tempItem.getName());
 
                         break; //Breaks loop
                     }
