@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class UtilityItem extends Item {
     private Interaction interaction;
     private int points;
-    private int input;
     
     /**
      * 
@@ -48,7 +47,7 @@ public class UtilityItem extends Item {
                 try {
                     interactionPointer.printMessage(); //Prints message of object
                     interactionPointer.printOptions(); //Prints options of children of objectnumber
-                    input = sc.nextInt(); //Take user input to decide which option to go for
+                    int input = sc.nextInt(); //Take user input to decide which option to go for
                     
                     //Checks if input size is single digit
                     if (String.valueOf(input).length() == 1) {
