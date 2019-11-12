@@ -13,6 +13,7 @@ public class Game {
     private NPC Maria, MariaInfo, Patient;
     private UtilityItem Handbook;
     private MedicineItem medicine;
+    private boolean interactedMaria = false; //boolean for checking if you have interacted with Maria in spawn
 
     public Game() {
         createRooms();
@@ -24,26 +25,30 @@ public class Game {
     }
 
     private void createRooms() {
+        // rooms
         spawn = new Room("in the 'WHO' training facilities in Genéva");
         info = new Room("in the information center");
         testRoom = new Room("in a test facility. Here you will try to cure a patient");
 
+        // exists
         spawn.setExit("west", info);
         info.setExit("west", testRoom);
+        info.setExit("east", spawn);
+        testRoom.setExit("east", testRoom);
 
         currentRoom = spawn;
     }
 
     private void createInteraction() {
         //Spawn
-        MariaI = new Interaction("root", "Hello my name is Maria, thank you so much for volunteering! I'll be your guide here.");
-        MariaI2 = new Interaction("What do I do now?", "You should go to the information center to the west, to learn more about your role in this operation.");
+        MariaI = new Interaction("root", "Hello my name is Maria, thank you so much for volunteering! I'll be your guide.");
+        MariaI2 = new Interaction("What do I do now?", "Go to the information center to the west to learn more about your role in this operation.");
         MariaI.addChild(MariaI2);
 
         //Information center
-        MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll have to deal with.");
-        MariaInfoI2 = new Interaction("Which diseases will I encounter?", "You will most likely encounter HIV, Tuberculosis and Malaria here in Mozambique.");
-        MariaInfoI3 = new Interaction("I think I'm ready can I go now?", "No! Not before you have the Doctor's Handbook, grab one from the shelf before you leave.");
+        MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll encounter.");
+        MariaInfoI2 = new Interaction("Which diseases will I encounter?", "You will encounter HIV, Tuberculosis and Malaria");
+        MariaInfoI3 = new Interaction("I think I'm ready. Can I go now?", "No! Not before you have the Doctor's Handbook, grab one from the shelf before you leave");
         MariaInfoI.addChild(MariaInfoI2);
         MariaInfoI.addChild(MariaInfoI3);
         MariaInfoI2.addChild(MariaInfoI3);
@@ -168,9 +173,16 @@ public class Game {
                     } else {
                         System.out.println("Can't open " + command.getSecondWord());
                     }
+                case INFO:
+                if (command.getSecondWord() == null) {
+                    System.out.println(currentRoom.getLongDescription());
+                } else {
+                    System.out.println("You can only type info by itself");
+                }
                 default:
                     break;
             }
+                
         }
         return wantToQuit;
     }
@@ -182,29 +194,80 @@ public class Game {
     }
 
     private void goRoom(Command command) {
-        if (!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
+        if (currentRoom.equals(spawn)) { //if you are in spawn this if statement checks if you have talked with Maria.
+            String direction = command.getSecondWord();
+            Room nextRoom = currentRoom.getExit(direction);
+            if (interactedMaria == true) {
+                if (!command.hasSecondWord()) {
+                    System.out.println("Go where?");
+                    return;
+                }
+
+                if (nextRoom == null) {
+                    System.out.println("There is no door!");
+                } else {
+                    currentRoom = nextRoom;
+                    System.out.println(currentRoom.getLongDescription());
+                }
+
+            } else {  //if the player dont have interacted with Maria, they cant continue. 
+                System.out.println("You can't continue without talking to Maria");
+            }
+        } //else if-statement checks, if you are inside the infoRoom.
+        else if (currentRoom.equals(info)) {
+            String direction = command.getSecondWord();
+            Room nextRoom = currentRoom.getExit(direction);
+            //if the player has the handbook the Player can continue and go to the next room
+            if (playerInventory.getItemList().containsKey(Handbook.getName())) {
+                if (!command.hasSecondWord()) {
+                    System.out.println("Go where?");
+                    return;
+                }
+
+                if (nextRoom == null) {
+                    System.out.println("There is no door!");
+                } else {
+                    currentRoom = nextRoom;
+                    System.out.println(currentRoom.getLongDescription());
+                }
+            } else {  //if the player dont have the Handbook in inventory, they cant continue. 
+                System.out.println("You can't continue without the Handbook");
+            }
+
+        } else { // normal goRoom method, when the current room isnt infoRoom
+            if (!command.hasSecondWord()) {
+                System.out.println("Go where?");
+                return;
+            }
+            String direction = command.getSecondWord();
+
+            Room nextRoom = currentRoom.getExit(direction);
+
+            if (nextRoom == null) {
+                System.out.println("There is no door!");
+            } else {
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
+            }
         }
 
-        String direction = command.getSecondWord();
-
-        Room nextRoom = currentRoom.getExit(direction);
-
-        if (nextRoom == null) {
-            System.out.println("There is no door!");
-        } else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
-        }
     }
 
     private void interactNPC(Command command) {
         try {
-            String name = command.getSecondWord();
-            NPC tempNPC = currentRoom.getNPC(name);
+            if (command.getSecondWord() != null) {
 
-            tempNPC.interact(playerInventory);
+                String name = command.getSecondWord();
+                if (name.equals(Maria.getName())) {
+                    this.interactedMaria = true;
+                }
+
+                NPC tempNPC = currentRoom.getNPC(name);
+
+                tempNPC.interact(playerInventory);
+            } else {
+                System.out.println("Interact what?");
+            }
         } catch (NullPointerException e) {
             System.out.println("No NPC with that name here.");
         }
@@ -212,10 +275,14 @@ public class Game {
 
     private void takeItem(Command command) {
         try {
-            String name = command.getSecondWord();
-            Item tempItem = currentRoom.getItem(name);
-            playerInventory.addItem(tempItem.getName(), tempItem);
-            System.out.println(tempItem.getName() + " was added to the inventory.");
+            if (command.getSecondWord() != null) {
+                String name = command.getSecondWord();
+                Item tempItem = currentRoom.getItem(name);
+                playerInventory.addItem(tempItem.getName(), tempItem);
+                System.out.println(tempItem.getName() + " was added to the inventory.");
+            }else{
+                System.out.println("Take what?");
+            }
         } catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
         }
