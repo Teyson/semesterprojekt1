@@ -1,12 +1,12 @@
 package semesterprojekt1;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 public class Inventory {
 
     private int inventorySize;
-    private int spaceUsed; 
+    private int spaceUsed;
     private HashMap<String, Item> itemList;
 
     /**
@@ -29,19 +29,19 @@ public class Inventory {
 
     /**
      *
+     * @param name
      * @param item added to the itemList
      */
-    public void addItem(Item item) {
-        if (spaceUsed + item.getItemSize() < inventorySize){
-            itemList.put(item.getName(), item);
+    public void addItem(String name, Item item) {
+        if (spaceUsed + item.getItemSize() < inventorySize) {
+            itemList.put(name, item);
             spaceUsed += item.getItemSize();
             //System.out.println(item.getName() + " was successfully added to inventory.");
-        }
-        else{
+        } else {
             System.out.println("Your inventory is too full to contain this! Please remove some items to make room for others.");
         }
     }
-    
+
     /**
      *
      * @param item removed from the itemList
@@ -49,7 +49,7 @@ public class Inventory {
     public void removeItem(String name) {
         spaceUsed -= itemList.get(name).getItemSize();
         itemList.remove(name);
-        
+
         //System.out.println(name + " was successfully removed from inventory.");
     }
 
@@ -57,31 +57,29 @@ public class Inventory {
      * method to print the itemList
      */
     public void printItemList() {
-        if (itemList.isEmpty())
+        if (itemList.isEmpty()) {
             System.out.println("Your inventory is empty");
-        else {
-            for (int i = 0; i < itemList.size(); i++) {
-                System.out.println(itemList.keySet());
-            }
+        } else {
+            System.out.println(itemList.keySet());
         }
     }
-    
-    public int getInventorySize(){
+
+    public int getInventorySize() {
         return inventorySize;
     }
-    
-    public void setInventorySize(int newInventorySize){
+
+    public void setInventorySize(int newInventorySize) {
         this.inventorySize = newInventorySize;
     }
-    
-    public int getSpaceUsed(){
+
+    public int getSpaceUsed() {
         return spaceUsed;
     }
-    
-    public void setSpaceUsed(int newSpaceUsed){
+
+    public void setSpaceUsed(int newSpaceUsed) {
         this.spaceUsed = newSpaceUsed;
     }
-    
+
     public HashMap<String, Item> getItemList() {
         return this.itemList;
     }

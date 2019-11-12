@@ -10,7 +10,6 @@ public class Room
     private String description;
     private HashMap<String, NPC> npcs;
     private HashMap<String, Room> exits;
-    //private HashMap<String, Item> items;
     private Inventory inventory;
             
     public Room(String description) 
@@ -18,7 +17,6 @@ public class Room
         this.description = description;
         this.exits = new HashMap<String, Room>();
         this.npcs = new HashMap<String, NPC>();
-        //this.items = new HashMap<String, Item>();
         this.inventory = new Inventory();
     }
 
@@ -32,7 +30,7 @@ public class Room
     }
     
     public void addItem(String name, Item item) {
-        inventory.addItem(item);
+        inventory.addItem(name, item);
     }
     
     public String getShortDescription()
@@ -45,12 +43,12 @@ public class Room
         String returnString = "You are " + description + ".\n" + getExitString();
         
         if (!npcs.isEmpty()) {
-            returnString += ".\n";
+            returnString += "\n";
             returnString += getNPCString();
         }
                 
         if (!inventory.getItemList().isEmpty()) {
-            returnString += ".\n";
+            returnString += "\n";
             returnString += getItemString();
         }
 
@@ -68,12 +66,11 @@ public class Room
     }
     
     private String getNPCString() {
-        String returnString = "NPCs: ";
+        String returnString = "People: ";
 
         for (String key : npcs.keySet()) {
-            returnString += (key + ", ");
+            returnString += (key + " ");
         }
-        
         return returnString;
     }
     
@@ -81,13 +78,11 @@ public class Room
         String returnString = "Items: ";
           
         for (String key : inventory.getItemList().keySet()) {
-            returnString += (key + ", ");
+            returnString += (key + " ");
         }
-        
         return returnString;
     }
     
-
     public Room getExit(String direction) 
     {
         return exits.get(direction);
