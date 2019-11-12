@@ -109,7 +109,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to Kill the Killers!");
-        System.out.println("Where your job is to stop the spread of some of the biggest epidemics.");
+        System.out.println("Where your job is to stop the spread of some of the biggest infectious diseases.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
