@@ -222,7 +222,6 @@ public class Game
         Game game = new Game();
         
         game.play();
-        System.out.println("hello world");
 
     }
 
