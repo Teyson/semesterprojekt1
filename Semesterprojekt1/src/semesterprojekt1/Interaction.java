@@ -1,58 +1,90 @@
 package semesterprojekt1;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Interaction {
+
     //Attributes
     private String option;
     private String message;
     private ArrayList<Interaction> children;
-    private Scanner sc = new Scanner(System.in);
-    private int input;
-    
+
     //Constructors
-    public Interaction(){
+    public Interaction() {
     }
-    
-    public Interaction(String option, String message){
+
+    public Interaction(String option, String message) {
         this.option = option;
         this.message = message;
         this.children = new ArrayList<>();
     }
-    
+
     //Methods
-    public void addChild(Interaction child){
+    /**
+     * 
+     * @param child adds child to the current object.
+     */
+    public void addChild(Interaction child) {
         this.children.add(child);
     }
-    
-    public String getOption(){
-        return option;
+
+    /**
+     * Removes all children of the node.
+     */
+    public void deleteChildren() {
+        this.children.clear();
     }
     
-    public void printOptions(){
+    /**
+     * 
+     * @return the option (which is what the player makes disicions based on).
+     */
+    public String getOption() {
+        return this.option;
+    }
+    
+    /**
+     * 
+     * @return all children for this object of the class.
+     */
+    public ArrayList<Interaction> getChildren() {
+        return this.children;
+    }
+
+    /**
+     * Prints the message of the current node.
+     */
+    public void printMessage() {
+        System.out.println(this.message);
+    }
+    
+    /**
+     * Prints the options of the children of the current node.
+     */
+    public void printOptions() {
         if (children == null) {
             System.out.println("No children found");
-        }
-        else{
+        } else {
             for (int i = 0; i < this.children.size(); i++) {
                 System.out.println(i + ") " + this.children.get(i).getOption());
             }
         }
     }
-    
-    public String getMessage(){
+
+    /**
+     * 
+     * @return the message of the current node.
+     */
+    public String getMessage() {
         return this.message;
     }
     
-    public void start(){
-        System.out.println(this.message);
-        
-        this.printOptions();
-        
-        if(!this.children.isEmpty()){
-            input = sc.next().charAt(0) - 48;
-            this.children.get(input).start();
-        }   
+    /**
+     * 
+     * @param index in an integer used to decide which item in the ArrayList of children you wish to get.
+     * @return the child on the position index in ArrayList children.
+     */
+    public Interaction getChild(int index) {
+        return this.children.get(index);
     }
 }

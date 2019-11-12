@@ -16,7 +16,10 @@ public class MedicineItem extends Item {
     public MedicineItem(String name, String description, int itemSize, String cures) {
         super(name, description, itemSize);
         this.cures = cures;
-}
+    }
     
+    public String getCures() {
+        return this.cures;
+    }
     
 }
