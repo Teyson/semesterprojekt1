@@ -1,20 +1,19 @@
 package semesterprojekt1;
 
+public class Game {
 
-public class Game
-{
     private Parser parser;
     private Room currentRoom;
     private Inventory playerInventory;
-    
+
     private String playerName;
-    
+
     private Room spawn, info, testRoom;
-    private Interaction MariaI, MariaI2, MariaInfoI, MariaInfoI2, MariaInfoI3, HandbookI, HandbookHIV, HandbookTUR, HandbookMAL, PatientI, PatientI2, PatientI3;
+    private Interaction MariaI, MariaI2, MariaInfoI, MariaInfoI2, MariaInfoI3, HandbookI, HandbookHIV, HandbookTUR, HandbookMAL, PatientI, PatientI2, PatientI3, PatientI4;
     private NPC Maria, MariaInfo, Patient;
     private UtilityItem Handbook;
     private MedicineItem medicine;
-    
+
     public Game() {
         createRooms();
         createInteraction();
@@ -31,16 +30,16 @@ public class Game
 
         spawn.setExit("west", info);
         info.setExit("west", testRoom);
-        
+
         currentRoom = spawn;
     }
-    
+
     private void createInteraction() {
         //Spawn
         MariaI = new Interaction("root", "Hello my name is Maria, thank you for volunteering, i'll be your guide.");
         MariaI2 = new Interaction("What do i do now?", "Go to the information center to the west to learn more about your role in the operation.");
         MariaI.addChild(MariaI2);
-        
+
         //Information center
         MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll have to deal with.");
         MariaInfoI2 = new Interaction("Which diseases will I encounter?", "You will encounter HIV, Tuberculosis and Malaria");
@@ -48,7 +47,7 @@ public class Game
         MariaInfoI.addChild(MariaInfoI2);
         MariaInfoI.addChild(MariaInfoI3);
         MariaInfoI2.addChild(MariaInfoI3);
-        
+
         //Handbook
         HandbookI = new Interaction("root", "Table of contents:");
         HandbookHIV = new Interaction("HIV", "People with HIV usually have these symptoms headache and fatigue.");
@@ -57,56 +56,55 @@ public class Game
         HandbookI.addChild(HandbookHIV);
         HandbookI.addChild(HandbookTUR);
         HandbookI.addChild(HandbookMAL);
-        
+
         //TestRoom
         PatientI = new Interaction("root", "Please help me! My body is very warm and my skin is red");
         PatientI2 = new Interaction("Look for more Symptoms", "You see that the patient's throat is red, she has a high fever and a red rash all over her body");
         PatientI3 = new Interaction("Treat", "What would you like to treat the patient with?");
+        PatientI4 = new Interaction("Give item", "Which item would you like to give the patient?");
         PatientI.addChild(PatientI2);
         PatientI.addChild(PatientI3);
         PatientI2.addChild(PatientI3);
-                
+        PatientI.addChild(PatientI4);
+
     }
-    
+
     private void createNPC() {
         //Spawn 
         Maria = new NPC("Maria", MariaI);
         spawn.addNPC(Maria.getName(), Maria);
-        
+
         //Information center
         MariaInfo = new NPC("Maria", MariaInfoI);
         info.addNPC(MariaInfo.getName(), MariaInfo);
-        
+
         //TestRoom
         Patient = new NPC("Patient", "HIV", PatientI);
         testRoom.addNPC(Patient.getName(), Patient);
     }
-    
+
     private void createItem() {
         //Information center
         Handbook = new UtilityItem("Handbook", "You can use this book to gain knowledge about diseases you might not know yet or have forgotten.", 0, 0, HandbookI);
         info.addItem(Handbook.getName(), Handbook);
-        
+
         //TestRoom
         medicine = new MedicineItem("Medicine", "This will treat the patient.", 1, "HIV");
         testRoom.addItem(medicine.getName(), medicine);
     }
-    
 
-    public void play()
-    {
+    public void play() {
         printWelcome();
 
         boolean finished = false;
-        while (! finished) {
+        while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to Kill the Killers!");
         System.out.println("Where your job is to stop the spread of some of the biggest epidemics.");
@@ -115,56 +113,76 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command)
-    {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
 
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
             return false;
         }
 
-        if (null != commandWord) switch (commandWord) {
-            case HELP:
-                printHelp();
-                break;
-            case GO:
-                goRoom(command);
-                break;
-            case QUIT:
-                wantToQuit = quit(command);
-                break;
-            case INTERACT:
-                interactNPC(command);
-                break;
-            case TAKE:
-                takeItem(command);
-                break;
-            case OPEN:
-                if ("Inventory".equals(command.getSecondWord()))
-                    playerInventory.printItemList();
-                else if ("Handbook".equals(command.getSecondWord()))
-                    Handbook.interactItem();
-                else
-                    System.out.println("Can't open " + command.getSecondWord());
-            default:
-                break;
+        if (null != commandWord) {
+            OUTER:
+            switch (commandWord) {
+                case HELP:
+                    if (command.hasSecondWord()) {
+                        switch (command.getSecondWord()) {
+                            case "go":
+                                System.out.println("'go' - Makes you move to a specific room.");
+                                break OUTER;
+                            case "interact":
+                                System.out.println("'interact' - Starts a conversation with a NPC.");
+                                break OUTER;
+                            case "take":
+                                System.out.println("'take' - Takes an item and stores it in you inventory.");
+                                break OUTER;
+                            case "open":
+                                System.out.println("'open' - Opens the Handbook & the Inventory.");
+                                break OUTER;
+                            default:
+                                System.out.println("I don't get that");
+                                break;
+                        }
+                    }
+                    printHelp();
+                    break;
+                case GO:
+                    goRoom(command);
+                    break;
+                case QUIT:
+                    wantToQuit = quit(command);
+                    break;
+                case INTERACT:
+                    interactNPC(command);
+                    break;
+                case TAKE:
+                    takeItem(command);
+                    break;
+                case OPEN:
+                    if ("Inventory".equals(command.getSecondWord())) {
+                        playerInventory.printItemList();
+                    } else if ("Handbook".equals(command.getSecondWord())) {
+                        Handbook.interactItem();
+                    } else {
+                        System.out.println("Can't open " + command.getSecondWord());
+                    }
+                default:
+                    break;
+            }
         }
         return wantToQuit;
     }
 
-    private void printHelp()
-    {
+    private void printHelp() {
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
     }
 
-    private void goRoom(Command command)
-    {
-        if(!command.hasSecondWord()) {
+    private void goRoom(Command command) {
+        if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
@@ -175,44 +193,39 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
-        }
-        else {
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
-    
+
     private void interactNPC(Command command) {
         try {
             String name = command.getSecondWord();
             NPC tempNPC = currentRoom.getNPC(name);
 
             tempNPC.interact(playerInventory);
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println("No NPC with that name here.");
         }
     }
-    
+
     private void takeItem(Command command) {
         try {
             String name = command.getSecondWord();
             Item tempItem = currentRoom.getItem(name);
             playerInventory.addItem(tempItem.getName(), tempItem);
             System.out.println(tempItem.getName() + " was added to the inventory.");
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println("No Item with that name here.");
         }
     }
 
-    private boolean quit(Command command)
-    {
-        if(command.hasSecondWord()) {
+    private boolean quit(Command command) {
+        if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -220,7 +233,7 @@ public class Game
     public static void main(String[] args) {
 
         Game game = new Game();
-        
+
         game.play();
         System.out.println("hello world");
 
