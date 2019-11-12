@@ -41,14 +41,14 @@ public class Game {
 
     private void createInteraction() {
         //Spawn
-        MariaI = new Interaction("root", "Hello my name is Maria, thank you for volunteering, i'll be your guide.");
-        MariaI2 = new Interaction("What do i do now?", "Go to the information center to the west to learn more about your role in the operation.");
+        MariaI = new Interaction("root", "Hello my name is Maria, thank you so much for volunteering! I'll be your guide.");
+        MariaI2 = new Interaction("What do I do now?", "Go to the information center to the west to learn more about your role in this operation.");
         MariaI.addChild(MariaI2);
 
         //Information center
-        MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll have to deal with.");
+        MariaInfoI = new Interaction("root", "You're on your way to Mozambique, it is therefore important you have some knowledge about the diseases you'll encounter.");
         MariaInfoI2 = new Interaction("Which diseases will I encounter?", "You will encounter HIV, Tuberculosis and Malaria");
-        MariaInfoI3 = new Interaction("I think I'm ready can I go now?", "No! Not before you have the Doctor's Handbook, grab one from the shelf before you leave");
+        MariaInfoI3 = new Interaction("I think I'm ready. Can I go now?", "No! Not before you have the Doctor's Handbook, grab one from the shelf before you leave");
         MariaInfoI.addChild(MariaInfoI2);
         MariaInfoI.addChild(MariaInfoI3);
         MariaInfoI2.addChild(MariaInfoI3);
@@ -110,7 +110,7 @@ public class Game {
     private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to Kill the Killers!");
-        System.out.println("Where your job is to stop the spread of some of the biggest epidemics.");
+        System.out.println("Where your job is to stop the spread of some of the biggest infectious diseases.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -132,7 +132,7 @@ public class Game {
                     if (command.getSecondWord() == null) {
                         printHelp();
                     } else {
-                        System.out.println("you can only type help by it self");
+                        System.out.println("You can only type help by itself");
                     }
                     break;
                 case GO:
@@ -159,7 +159,7 @@ public class Game {
                     if (command.getSecondWord() == null) {
                         System.out.println(currentRoom.getLongDescription());
                     } else {
-                        System.out.println("you can only type info by it self");
+                        System.out.println("You can only type info by itself");
                     }
                 default:
                     break;
@@ -283,7 +283,6 @@ public class Game {
         Game game = new Game();
 
         game.play();
-        System.out.println("hello world");
 
     }
 

@@ -147,7 +147,7 @@ public class NPC {
 
         //If you have no MedicineItems in your inventory.
         if (interactionPointer.getChildren().isEmpty()) {
-            System.out.println("You have no medicine in your inventory.");
+            System.out.println("You have no Medicine in your inventory.");
         } 
         //If you do have MedicineItems in your inventory
         else {

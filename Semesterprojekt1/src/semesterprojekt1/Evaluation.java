@@ -35,7 +35,7 @@ public class Evaluation {
      * Ends the game.
      */
     private void gameOver() {
-        System.out.println("lol u lost");
+        System.out.println("Game Over");
         //STOP THE GAME
     }
     
