@@ -129,11 +129,7 @@ public class Game {
         if (null != commandWord) {
             switch (commandWord) {
                 case HELP:
-                    if (command.getSecondWord() == null) {
-                        printHelp();
-                    } else {
-                        System.out.println("You can only type help by itself");
-                    }
+                    printHelp();
                     break;
                 case GO:
                     goRoomNPCRequirements(command);
@@ -238,15 +234,6 @@ public class Game {
             return true;
         }
     }
-
-    public static void main(String[] args) {
-
-        Game game = new Game();
-
-        game.play();
-
-    }
-
     public void goRoom(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
@@ -263,4 +250,14 @@ public class Game {
             System.out.println(currentRoom.getLongDescription());
         }
     }
+
+    public static void main(String[] args) {
+
+        Game game = new Game();
+
+        game.play();
+
+    }
+
+    
 }
