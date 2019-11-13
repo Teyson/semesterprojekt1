@@ -17,7 +17,7 @@
  * @version 2006.03.30
  */
 
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 public class Command
 {

@@ -1,4 +1,4 @@
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -125,9 +125,13 @@ public class NPC {
             treat(interactionPointer, playerInventory);
         } else if ("Give item".equals(interactionPointer.getOption())) {
             give(interactionPointer, playerInventory);
+        }//Checks if you look for more symptoms. this is to subtract time if you do
+        else if ("Look for more symptoms".equals(interactionPointer.getOption())) {
+            Time.timeCounter -= Time.SYMPTOMSTIMECOST;
         } else {
             System.out.println(interactionPointer.getMessage());
         }
+
     }
 
     /**
@@ -150,8 +154,7 @@ public class NPC {
         //If you have no MedicineItems in your inventory.
         if (interactionPointer.getChildren().isEmpty()) {
             System.out.println("You have no Medicine in your inventory.");
-        } 
-        //If you do have MedicineItems in your inventory
+        } //If you do have MedicineItems in your inventory
         else {
             //Add the posibility to not treat the patient.
             interactionPointer.addChild(new Interaction("Stop interaction", ""));
@@ -177,6 +180,8 @@ public class NPC {
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
                         this.treatAttempted = true; //NPC has now been attempted treated
 
+                        Time.timeCounter -= Time.TREATTIMECOST; //Treating a patient costs time, this is subtracted from the total time here
+
                         correctTreatment((MedicineItem) tempItem); //Checks if correct medication
 
                         break; //Breaks loop
@@ -188,16 +193,15 @@ public class NPC {
             }
         }
     }
-    
+
     /**
-     * 
+     *
      * @param interactionPointer is the current node in the interaction (the
      * node that says treat)
      * @param playerInventory is the inventory of the player needed to check
      * which items are available. This method dynamically adds options for
-     * treatment based on items in the inventory.
-     * -
-     * does basicly the same as treat, just with UtilityItems instead og MedicineItems.
+     * treatment based on items in the inventory. - does basicly the same as
+     * treat, just with UtilityItems instead og MedicineItems.
      */
     public void give(Interaction interactionPointer, Inventory playerInventory) {
         Scanner sc = new Scanner(System.in);
@@ -235,6 +239,9 @@ public class NPC {
                         Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
+
+                        Time.timeCounter -= Time.GIVETIMECOST; //Giving an NPC an item costs time, this line subtracts that time from the total time.
+                        
                         System.out.println("Thank you for the " + tempItem.getName());
 
                         break; //Breaks loop
