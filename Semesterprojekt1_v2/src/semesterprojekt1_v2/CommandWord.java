@@ -1,4 +1,4 @@
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 public enum CommandWord
 {
