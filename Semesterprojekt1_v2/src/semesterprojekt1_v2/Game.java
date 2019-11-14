@@ -1,4 +1,4 @@
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 public class Game {
 
@@ -109,6 +109,12 @@ public class Game {
         while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            if(Time.timeHasRunOut())
+            {
+                //OBS OBS OBS!!! Implement more logic here for the game ending.
+                System.out.println("You ran out of time. Game over!");
+                finished = true;
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -275,6 +281,7 @@ public class Game {
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            Time.timeCounter -= Time.CHANGEROOMTIMECOST;
         }
     }
 
