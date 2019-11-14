@@ -40,7 +40,7 @@ public class Room
 
     public String getLongDescription()
     {
-        String returnString = "You are " + description + ".\n" + getExitString();
+        String returnString = "You are " + description + ".\n" + getExitString() + "\nYour total points are: " + Evaluation.getTotalPoints();;
         
         if (!npcs.isEmpty()) {
             returnString += "\n";
@@ -50,6 +50,7 @@ public class Room
         if (!inventory.getItemList().isEmpty()) {
             returnString += "\n";
             returnString += getItemString();
+            
         }
 
         return returnString;

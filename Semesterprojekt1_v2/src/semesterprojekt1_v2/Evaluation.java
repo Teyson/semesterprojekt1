@@ -3,11 +3,12 @@ package semesterprojekt1_v2;
 public class Evaluation {
     //Attributes
     private boolean milestoneMet;
-    private final int milestone = 50;
+    private final int milestone = 1500;
     private static int totalPoints;
     
     //Constructors
-    Evaluation() {
+    public Evaluation() {
+        this.totalPoints = 0;
     }
     
     //Methods
@@ -16,7 +17,7 @@ public class Evaluation {
      * 
      * @param points - adds points to the total amount of points that the player has obtained.
      */
-    public void addPoints(int points) {
+    public static void addPoints(int points) {
         totalPoints += points;
     }
     
@@ -36,7 +37,8 @@ public class Evaluation {
      */
     private void gameOver() {
         System.out.println("Game Over");
-        //STOP THE GAME
+        System.out.println("Better luck next time...");
+        System.exit(-1);
     }
     
     /**

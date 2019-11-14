@@ -10,7 +10,7 @@ public class NPC {
     private String illnessName;
     private boolean alive;
     private boolean treatAttempted;
-    private static int points = 50;
+    private int points = 50;
     private Interaction interaction;
     private int input;
 
@@ -68,9 +68,20 @@ public class NPC {
         this.alive = alive;
     }
 
-    public int getPoints() {
-        return this.points;
+    public void setPoints(int points) {
+        this.points = points;
     }
+   
+
+    public int getPoints() {
+        if (this.treatAttempted == true && this.alive == true) {
+            return this.points;
+        } else {
+            return 0;
+        }
+        
+    }
+    
 
     public boolean isTreatAttempted() {
         return this.treatAttempted;
@@ -98,15 +109,16 @@ public class NPC {
     public void interact(Inventory playerInventory) {
         Scanner sc = new Scanner(System.in); //Make scanner
         Interaction interactionPointer = this.interaction; //Make interaction object to juggle through the conversation
-
+        
         //Handles normal conversation without edgecases or treatment / giving of items.
         while ((!interactionPointer.getChildren().isEmpty())) { //Loop breaks when node with no children is reached 
             try {
                 interactionPointer.printMessage(); //Prints message of object
                 interactionPointer.printOptions(); //Prints options of children of objectnumber
-
+                
+                
                 input = sc.nextInt(); //Take user input to decide which option to go for
-
+                
                 interactionPointer = interactionPointer.getChild(input); //Go to child which contained the option selected
 
                 //If the current note's option is to "Treat" meaning to treat the patient.
@@ -207,8 +219,8 @@ public class NPC {
         Scanner sc = new Scanner(System.in);
 
         for (String key : playerInventory.getItemList().keySet()) { //Iterate through players inventory.
-            if (playerInventory.getItemList().get(key) instanceof UtilityItem && !"Handbook".equals(key)) { //Find all MedicineItems.
-                interactionPointer.addChild(new Interaction(key, " ")); //Add them as options for treatment.
+            if (playerInventory.getItemList().get(key) instanceof UtilityItem && !"Handbook".equals(key)) { //Find all UtilityItems.
+                interactionPointer.addChild(new Interaction(key, " ")); //Add them as options to give the Item.
             }
         }
 
@@ -238,11 +250,16 @@ public class NPC {
                         //It gives us the object of the item.
                         Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
-                        playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
+                        
 
                         Time.timeCounter -= Time.GIVETIMECOST; //Giving an NPC an item costs time, this line subtracts that time from the total time.
-                        
+
                         System.out.println("Thank you for the " + tempItem.getName());
+                        
+                        correctItem((UtilityItem)tempItem);
+                        
+                        playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
+                        
 
                         break; //Breaks loop
                     }
@@ -264,9 +281,20 @@ public class NPC {
         if (medicineItem.getCures().equals(this.illnessName)) {
             this.illnessName = null;
             System.out.println("The patient has been cured!");
+            System.out.println("You got " + this.getPoints() + " points");
         } else {
             this.alive = false;
             System.out.println("The patient died!!!! :(");
+        }
+        Evaluation.addPoints(this.getPoints());
+    }
+    public void correctItem(UtilityItem utilityItem){
+        if(utilityItem.getHelps().equalsIgnoreCase(this.illnessName)){
+            System.out.println("You helped the further condition of this patient. Good job!");
+            Evaluation.addPoints(utilityItem.getPoints());
+            System.out.println("You got: " + utilityItem.getPoints() + " points");
+        } else {
+            System.out.println("You gave a wrong item to this patient...");
         }
     }
 }
