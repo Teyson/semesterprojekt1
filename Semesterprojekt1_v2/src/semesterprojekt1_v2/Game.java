@@ -98,7 +98,7 @@ public class Game {
         medicine = new MedicineItem("Medicine", "This will treat the test Patient.", 1, "HIV");
         testRoom.addItem(medicine.getName(), medicine);
         
-        condom = new UtilityItem("Condom", "This will protect you and your sexual partner from Sexually Transmitted Infections (STIs)", 1, 5);
+        condom = new UtilityItem("Condom", "This will protect you and your sexual partner from Sexually Transmitted Infections (STIs)", 1, 5, "HIV");
         testRoom.addItem(condom.getName(), condom);
     }
 

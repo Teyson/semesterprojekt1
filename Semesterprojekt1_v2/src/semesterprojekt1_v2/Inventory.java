@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Inventory {
+    
 
     private int inventorySize;
     private int spaceUsed;
@@ -63,7 +64,6 @@ public class Inventory {
             System.out.println(itemList.keySet());
         }
     }
-
     public int getInventorySize() {
         return inventorySize;
     }
