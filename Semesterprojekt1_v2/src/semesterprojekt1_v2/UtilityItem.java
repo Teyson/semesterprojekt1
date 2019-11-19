@@ -1,4 +1,4 @@
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UtilityItem extends Item {
     private Interaction interaction;
     private int points;
-    private int input;
+    private String helps;
     
     /**
      * 
@@ -25,6 +25,13 @@ public class UtilityItem extends Item {
         this.points = points;
         this.interaction = interaction;
     }
+   public UtilityItem(String name, String description, int itemSize, int points, String helps){
+       super(name, description, itemSize);
+       this.points = points;
+       this.helps = helps;
+   }
+   
+    
     
     public int getPoints() {
         return points;
@@ -33,6 +40,11 @@ public class UtilityItem extends Item {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public String getHelps() {
+        return helps;
+    }
+    
     
     /**
      * method that handles interaction with an item ex. the Handbook

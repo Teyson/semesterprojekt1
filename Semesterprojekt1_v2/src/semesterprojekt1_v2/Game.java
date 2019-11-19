@@ -1,4 +1,4 @@
-package semesterprojekt1;
+package semesterprojekt1_v2;
 
 public class Game {
 
@@ -71,7 +71,6 @@ public class Game {
         PatientI.addChild(PatientI2);
         PatientI.addChild(PatientI3);
         PatientI2.addChild(PatientI3);
-        PatientI2.addChild(PatientI4);
         PatientI.addChild(PatientI4);
 
     }
@@ -99,7 +98,7 @@ public class Game {
         medicine = new MedicineItem("Medicine", "This will treat the test Patient.", 1, "HIV");
         testRoom.addItem(medicine.getName(), medicine);
         
-        condom = new UtilityItem("Condom", "This will protect you and your sexual partner from Sexually Transmitted Infections (STIs)", 1, 5);
+        condom = new UtilityItem("Condom", "This will protect you and your sexual partner from Sexually Transmitted Infections (STIs)", 1, 5, "HIV");
         testRoom.addItem(condom.getName(), condom);
     }
 
@@ -110,6 +109,12 @@ public class Game {
         while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            if(Time.timeHasRunOut())
+            {
+                //OBS OBS OBS!!! Implement more logic here for the game ending.
+                System.out.println("You ran out of time. Game over!");
+                finished = true;
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -276,6 +281,7 @@ public class Game {
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            Time.timeCounter -= Time.CHANGEROOMTIMECOST;
         }
     }
 
