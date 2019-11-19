@@ -71,6 +71,7 @@ public class Game {
         PatientI.addChild(PatientI2);
         PatientI.addChild(PatientI3);
         PatientI2.addChild(PatientI3);
+        PatientI2.addChild(PatientI4);
         PatientI.addChild(PatientI4);
 
     }
