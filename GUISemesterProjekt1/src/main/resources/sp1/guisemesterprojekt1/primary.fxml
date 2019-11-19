@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.PrimaryController">
    <children>
       <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="238.0" layoutY="52.0" prefHeight="30.0" prefWidth="322.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="238.0">
         <columnConstraints>
@@ -38,10 +39,10 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="timeProgressBar" layoutX="210.0" layoutY="102.0" prefHeight="20.0" prefWidth="430.0" progress="0.0" />
+      <ProgressBar fx:id="timeProgressBar" layoutX="210.0" layoutY="102.0" prefHeight="20.0" prefWidth="430.0" progress="1.0" style="-fx-accent: lightgreen;" />
       <Label layoutX="156.0" layoutY="103.0" text="Time Left" />
-      <Button fx:id="trashBtn" layoutX="689.0" layoutY="54.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: red;" text="Trash" />
-      <Button fx:id="helpBtn" layoutX="694.0" layoutY="108.0" mnemonicParsing="false" scaleX="1.25" scaleY="1.25" style="-fx-background-color: lightgreen;" text="Help" />
+      <Button fx:id="trashBtn" layoutX="689.0" layoutY="54.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: red;" stylesheets="@../../../../../Downloads/trash.css" text="Trash" />
+      <Button fx:id="helpBtn" layoutX="694.0" layoutY="108.0" mnemonicParsing="false" onAction="#openHelpLabel" scaleX="1.25" scaleY="1.25" style="-fx-background-color: lightgreen;" text="Help" />
       <ImageView fx:id="roomImage" fitHeight="375.0" fitWidth="750.0" layoutX="25.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane gridLinesVisible="true" layoutX="25.0" layoutY="150.0" prefHeight="375.0" prefWidth="750.0">
         <columnConstraints>
@@ -66,6 +67,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <Circle fx:id="testNPC" fill="DODGERBLUE" onMouseClicked="#onMouseClickedAction" radius="32.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         </children>
       </GridPane>
       <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;">
          <children>
@@ -106,5 +110,6 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Label fx:id="helpPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="150.0" prefHeight="174.0" prefWidth="504.0" style="-fx-background-color: lightgreen;" text="something about help dab" />
    </children>
 </AnchorPane>
