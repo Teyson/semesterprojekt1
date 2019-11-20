@@ -39,7 +39,11 @@ public class Evaluation {
      * Ends the game.
      */
     private void gameOver() {
-        System.out.println("Game Over");
+        System.out.println(
+"  ______ _______ _______ _______       _____  _    _ _______  ______\n" +
+" |  ____ |_____| |  |  | |______      |     |  \\  /  |______ |_____/\n" +
+" |_____| |     | |  |  | |______      |_____|   \\/   |______ |    \\_\n" +
+"                                                                    ");
         System.out.println("Better luck next time...");
         System.exit(-1);
     }

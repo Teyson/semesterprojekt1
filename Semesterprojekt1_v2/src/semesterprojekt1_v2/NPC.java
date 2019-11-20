@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class NPC {
 
+    
+
     //Attributes
     private String name;
     private String illnessName;
@@ -288,6 +290,11 @@ public class NPC {
         }
         Evaluation.addPoints(this.getPoints());
     }
+    /**
+     * 
+     * @param utilityItem is the Item needed to check if the correct Item for the NPC with a given illness.
+     * this method decides wether it's a good item to give or not.
+     */
     public void correctItem(UtilityItem utilityItem){
         if(utilityItem.getHelps().equalsIgnoreCase(this.illnessName)){
             System.out.println("You helped the further condition of this patient. Good job!");
