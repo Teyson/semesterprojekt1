@@ -1,37 +1,40 @@
 package semesterprojekt1_v2;
 
 public class Evaluation {
+
     //Attributes
     private boolean milestoneMet;
     private final int milestone = 1500;
     private static int totalPoints;
-    
+
     //Constructors
     public Evaluation() {
         this.totalPoints = 0;
     }
-    
-    //Methods
 
+    //Methods
     /**
-     * 
-     * @param points - adds points to the total amount of points that the player has obtained.
+     *
+     * @param points - adds points to the total amount of points that the player
+     * has obtained.
      */
     public static void addPoints(int points) {
         totalPoints += points;
     }
-    
+
     /**
-     * 
-     * @return - true if milestone is met (player performed well enough to continue the game). Otherwise returns false. 
+     *
+     * @return - true if milestone is met (player performed well enough to
+     * continue the game). Otherwise returns false.
      */
     private boolean milestoneMet() {
-        if (totalPoints > milestone)
+        if (totalPoints > milestone) {
             return true;
+        }
         gameOver();
         return false;
     }
-    
+
     /**
      * Ends the game.
      */
@@ -40,7 +43,7 @@ public class Evaluation {
         System.out.println("Better luck next time...");
         System.exit(-1);
     }
-    
+
     /**
      * Prints the score the player has obtained.
      */
@@ -63,10 +66,6 @@ public class Evaluation {
     public static int getTotalPoints() {
         return totalPoints;
     }
-    
-    
-    
-    
 
     
 }
