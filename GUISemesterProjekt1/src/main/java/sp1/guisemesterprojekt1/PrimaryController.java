@@ -6,7 +6,9 @@
 package sp1.guisemesterprojekt1;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.ResourceBundle;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,31 +26,30 @@ import javafx.scene.shape.Circle;
  * @author marku
  */
 public class PrimaryController implements Initializable {
-    
+
     @FXML
     ProgressBar timeProgressBar;
-    
+
     @FXML
     GridPane inventoryGrid;
-    
+
     @FXML
     AnchorPane dialogPane;
-    
+
     @FXML
     Circle testNPC;
-    
+
     @FXML
     Label helpPopup;
-    
+
     @FXML
     Button helpBtn;
-    
-    
-    
+
     private double percentageTimeBar;
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -59,16 +60,20 @@ public class PrimaryController implements Initializable {
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
-        
-        
+
     }
-    
-    public void onMouseClickedAction(MouseEvent event){
+
+    public void onMouseClickedAction(MouseEvent event) {
         dialogPane.setVisible(!dialogPane.isVisible());
     }
-    
-    public void openHelpLabel(ActionEvent event){
+
+    public void openHelpLabel(ActionEvent event) {
         helpPopup.setVisible(!helpPopup.isVisible());
+
         
+            
+        }
+
     }
+
 }
