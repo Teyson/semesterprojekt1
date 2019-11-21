@@ -16,6 +16,7 @@ public interface DomainInterface {
     public ArrayList<String> getPlayerInventory(); //returns an ArrayList of Strings that gives the names of the items in the inventory. These should be shown graphically based on the name.
     public int getRemainingTime(); //Returns the time that is remaining before game over. Should be shown graphically in the time Progress bar
     public String getCurrentRoomName();    //Retursn the name of the current room
+    public void setRoom(String roomName);  //Gives the domain the name of the room that is switched to.
     public ArrayList<String> getNPCsInRoom(String roomName);   //Returns an ArrayList of strings representing the names of the npc's in the room
     public ArrayList<String> getItemsInRoom(String roomName);  //Returns an ArrayList of string representing the names of the items in the room
     public String getInteractionMessage(String npcName);   //Returns the message of the interaction on the NPC with the name npcName.
