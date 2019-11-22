@@ -26,4 +26,9 @@ public class Time {
             return false;
         }
     }
+    
+    public static int getTime() {
+        return timeCounter;
+    }
+    
 }

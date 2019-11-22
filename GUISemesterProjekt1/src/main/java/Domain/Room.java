@@ -66,6 +66,10 @@ public class Room
         return returnString;
     }
     
+    public HashMap<String, Room> getExits() {
+        return exits;
+    }
+    
     private String getNPCString() {
         String returnString = "People: ";
 
@@ -93,10 +97,18 @@ public class Room
         return npcs.get(name);
     }
     
+    public HashMap<String, NPC> getNPCS() {
+        return npcs;
+    }
+    
     public Item getItem(String name) {
         Item returnItem = inventory.getItemList().get(name);
         inventory.removeItem(name);
         return returnItem;
+    }
+    
+    public Inventory getItems() {
+        return inventory;
     }
 }
 

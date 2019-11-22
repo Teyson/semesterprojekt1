@@ -102,6 +102,11 @@ package Domain;
 //        testRoom.addItem(condom.getName(), condom);
 //    }
 //
+//    public Inventory getInventory() {
+//        return playerInventory;
+//    }
+//
+//
 //    public void play() {
 //        printWelcome();
 //
