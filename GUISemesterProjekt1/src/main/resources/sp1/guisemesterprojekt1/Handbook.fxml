@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.doctorhandbook.HandbookController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.HandbookController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -27,7 +27,7 @@
                         <Label fx:id="useText" layoutX="3.0" layoutY="31.0" text="Text" />
                         <ImageView fx:id="useImage" fitHeight="173.0" fitWidth="149.0" layoutX="442.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/Maria2.png" />
+                              <Image url="@../../../../../../../../../../../NetBeansProjects/DoctorHandbook/src/main/resources/img/Maria2.png" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>

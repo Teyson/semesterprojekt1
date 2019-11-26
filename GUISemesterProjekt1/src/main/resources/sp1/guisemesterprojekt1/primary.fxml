@@ -110,6 +110,6 @@
          </font>
       </Label>
       <Label fx:id="helpPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="150.0" prefHeight="174.0" prefWidth="504.0" style="-fx-background-color: lightgreen;" text="something about help dab" />
-      <Button layoutX="162.0" layoutY="54.0" mnemonicParsing="false" text="Book" />
+      <Button fx:id="openHandbook" layoutX="162.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleOpenBook" text="Book" />
    </children>
 </AnchorPane>
