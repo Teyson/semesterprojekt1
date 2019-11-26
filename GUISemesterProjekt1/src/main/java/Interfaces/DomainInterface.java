@@ -16,10 +16,10 @@ import java.util.HashMap;
 
 public interface DomainInterface {
     public int getTotalPoints();   //Returns the points that the player currently has. This should be shown in the points label
-    public Inventory getPlayerInventory(); //returns an inventory. These should be shown graphically based on the name.
+    //public Inventory getPlayerInventory(); //returns an inventory. These should be shown graphically based on the name.
     public int getRemainingTime(); //Returns the time that is remaining before game over. Should be shown graphically in the time Progress bar
-    public Room getCurrentRoom();    //Returns the the current room
-    public void setRoom(Room room);  //Changes the current room
+    //public Room getCurrentRoom();    //Returns the the current room
+    //public void setRoom(Room room);  //Changes the current room
     public HashMap<String, NPC> getNPCsInRoom(Room room);   //Returns the npc's in the room
     public Inventory getItemsInRoom(Room room);  //Returns the items in the room
     public Interaction getInteraction(NPC npc); // Get interaction node that is linked to NPC object.
