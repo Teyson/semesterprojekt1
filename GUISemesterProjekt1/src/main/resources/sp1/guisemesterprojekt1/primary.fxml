@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
@@ -7,12 +8,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.PrimaryController">
    <children>
+      <SubScene fx:id="subScene" fill="#0000006d" height="375.0" layoutX="25.0" layoutY="150.0" width="750.0">
+        <root>
+          <Region />
+        </root>
+      </SubScene>
       <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="238.0" layoutY="52.0" prefHeight="30.0" prefWidth="322.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="238.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -43,7 +50,6 @@
       <Label layoutX="156.0" layoutY="103.0" text="Time Left" />
       <Button fx:id="trashBtn" layoutX="689.0" layoutY="54.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: red;" stylesheets="@../../../../../Downloads/trash.css" text="Trash" />
       <Button fx:id="helpBtn" layoutX="694.0" layoutY="108.0" mnemonicParsing="false" onAction="#openHelpLabel" scaleX="1.25" scaleY="1.25" style="-fx-background-color: lightgreen;" text="Help" />
-      <ImageView fx:id="roomImage" fitHeight="375.0" fitWidth="750.0" layoutX="25.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane gridLinesVisible="true" layoutX="25.0" layoutY="150.0" prefHeight="375.0" prefWidth="750.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -111,5 +117,6 @@
          </font>
       </Label>
       <Label fx:id="helpPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="150.0" prefHeight="174.0" prefWidth="504.0" style="-fx-background-color: lightgreen;" text="something about help dab" />
+      <ImageView fx:id="roomImage" fitHeight="375.0" fitWidth="750.0" layoutX="25.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
