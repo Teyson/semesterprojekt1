@@ -13,9 +13,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.PrimaryController">
    <children>
-      <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="238.0" layoutY="52.0" prefHeight="30.0" prefWidth="322.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="238.0">
+      <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="291.0" layoutY="52.0" prefHeight="30.0" prefWidth="287.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="291.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -111,5 +110,6 @@
          </font>
       </Label>
       <Label fx:id="helpPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="150.0" prefHeight="174.0" prefWidth="504.0" style="-fx-background-color: lightgreen;" text="something about help dab" />
+      <Button layoutX="162.0" layoutY="54.0" mnemonicParsing="false" text="Book" />
    </children>
 </AnchorPane>
