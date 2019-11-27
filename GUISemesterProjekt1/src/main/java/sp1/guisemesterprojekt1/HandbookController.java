@@ -38,10 +38,13 @@ public class HandbookController implements Initializable{
     @FXML private ImageView useImage;//set to Maria2.png through Scenebuilder so required init. but not used in the code.
     @FXML private ImageView malariaImage1;
     @FXML private ImageView malariaImage2; //made for setting image of person larger
+    @FXML private ImageView treatMalaria;
     @FXML private ImageView tbImage1;
     @FXML private ImageView tbImage2;//made for setting image of person larger
+    @FXML private ImageView treatTB;
     @FXML private ImageView hivImage1;
     @FXML private ImageView hivImage2; //made for setting image of person larger
+    @FXML private ImageView treatHIV;
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -64,6 +67,10 @@ public class HandbookController implements Initializable{
                         "While it will mostly be the last 2 sections that you will be using, we recommend \n"+
                         "you read the first as well, as it is important to understand the things \n" +
                         "contained here, so you can use the knowledge in real life!");
+       
+                        String imagePath = "img/Maria2.png";
+                        Image image = new Image(imagePath);
+                        useImage.setImage(image);
         
                         useLabel.setPadding(new Insets(0,0,0,8));
                         useText.setPadding(new Insets(0,0,0,15));
@@ -100,6 +107,7 @@ public class HandbookController implements Initializable{
                         
                         this.malariaImage1.setImage(image1);
                         this.malariaImage2.setImage(null);
+                        this.treatMalaria.setImage(null);
    
                 break;
                 case 1: malariaLabel.setText("The Symptoms of Malaria");
@@ -130,28 +138,32 @@ public class HandbookController implements Initializable{
                         
                         this.malariaImage2.setImage(image2);
                         this.malariaImage1.setImage(null);
+                        this.treatMalaria.setImage(null);
                         
                 break;
                 case 2: malariaLabel.setText("The Treatment & Prevention of Malaria");
-                        malariaText.setText("There are many different treatments for Malaria, which attack different stages of the infection. Most of them\n"+
-                                            "are used to target the parasites at the stage in which they are targeting the red blood cells, but some also\n"+
-                                            "blood cells, but some also target their metabolism. The latter are the more harsh treatments, used for late-\n "+
-                                            "stage infections.\n"+
+                        malariaText.setText("There are many different treatments for Malaria, which attack different stages\n"+ 
+                                            "of the infection. Most of them are used to target the parasites at the stage in\n"+
+                                            "which they are targeting the red blood cells, but some target their metabolism.\n"+
+                                            "\n"+                                            
+                                            "There are many preventative measures that one can take to avoid getting \n"+
+                                            "infected by the parasites. Most citizens from medically advanced countries\n"+
+                                            "receive pills that they can take during their stay, to prevent catching the \n"+
+                                            "disease while in dangerous areas.\n"+
                                             "\n"+
-                                            "There are many preventative measures that one can take to avoid getting infected by the parasites. Most \n"+
-                                            "citizens from medically advanced countries receive pills that they can take to prevent catching the\n"+
-                                            "disease while in dangerous areas. The medicine called Ercoquin is recommended by the WHO for use when\n"+
-                                            "traveling to vulnerable areas, as it is both cheap and effective.\n"+
-                                            "\n"+
-                                            "Non-medically, the WHO has been working on distributing mosquito nets in Mozambique, which can be put\n"+
-                                            "over the bed of citizens in the affected areas. These nets are typically sprayed with insecticides, to\n"+
-                                            "further keep the mosquitos from stinging citizens, something that has been proven to decrease the risk of\n"+
-                                            "infection by up to 50% with African children. This insecticide typically lasts up to 3 years. \n");
+                                            "The WHO is working on distributing mosquito nets sprayed with insecticides, which citizens can put\n"+
+                                            "over their beds so they are protected during the night.\n"+
+                                            "A vast majority of citizens in Mozambique now own these nets, but they may still be very vulnerable\n"+
+                                            "if they leave the net after twilight, where the mosquitos are most active. \n");
                         
                         //(Re)Initialising the image graphic so it won't stay when changing page
                         // and to ensure that it also reloads upon changing back to the page.
+                        String malariaMed = "img/Malaria Medicine.png";
+                        Image malMed = new Image(malariaMed);
+                        
                         this.malariaImage1.setImage(null);
                         this.malariaImage2.setImage(null);
+                        this.treatMalaria.setImage(malMed);
                         
                 break;  
             }
@@ -187,6 +199,7 @@ public class HandbookController implements Initializable{
                         
                         this.tbImage1.setImage(image3);
                         this.tbImage2.setImage(null);
+                        this.treatTB.setImage(null);
                         
                         tbLabel.setPadding(new Insets(0,0,0,8));
                         tbText.setPadding(new Insets(0,0,0,15));
@@ -218,29 +231,36 @@ public class HandbookController implements Initializable{
                         
                         this.tbImage1.setImage(null);
                         this.tbImage2.setImage(image4);
+                        this.treatTB.setImage(null);
                         
                         tbLabel.setPadding(new Insets(0,0,0,8));
                         tbText.setPadding(new Insets(0,0,0,15));
                 break;
                 case 2: tbLabel.setText("The Treatment & Prevention of Tuberculosis");
-                        tbText.setText("There are many different types of medication that treats TB, and in cases where it is multi-drug\n" +
-                                       "resistant TB, multiple will likely be used at the same time. In particularly severe cases, treatment\n"+
-                                       "will typically persist throughout 20-30 months, and in many cases, the strain will become resistant\n"+
-                                       "throughout these prolonged periods of treatment. In such instances, additional drugs can be used.\n"+
+                        tbText.setText("There are many different types of medication that treats TB, and in cases where\n" +
+                                       "it is multi-drug resistant TB, multiple will likely be used at the same time. In \n"+
+                                       "particularly severe cases, treatment will typically persist throughout 20-30\n"+
+                                       "months, and in many cases, the strain will become resistant throughout these\n"+
+                                       "prolonged periods of treatment. In such instances, additional drugs can be used.\n"+
                                        "\n"+
-                                       "Because of the harsh nature of these drugs, there will almost always be moderate to severe side-\n"+
-                                       "effects, as all of these medications can be highly toxic to the liver.\n"+
+                                       "Because of the harsh nature of these drugs, there will almost always be moderate \n"+
+                                       "to severe side-effects, as all of these medications can be highly toxic to the liver.\n"+
+                                       
                                        "\n"+
-                                       "TB is typically a very preventable disease, as it is only transmitted through air containing the\n"+
-                                       "bacteria. One of the most effective means of prevention is using a mouthbind, covering both the mouth\n"+
-                                       "and the nose, and this is also strongly suggested to be used by clinicians treating these patients.\n"+
-                                       "As it is a disease that does not transmit through saliva, food/water, and skin contact, it is very easy\n"+
-                                       "to avoid contracting, once using a mouthbind.");
+                                       "TB is typically a very preventable disease, as it is only transmitted through air containing the bacteria.\n"+
+                                       "One of the most effective means of prevention is using a mouthbind, covering both the mouth and the nose,\n"+
+                                       "and this is also strongly suggested to be used by clinicians treating these patients. As it is a disease that\n"+
+                                       "does not transmit through saliva, food/water, and skin contact, it is very easy to avoid contracting it, \n"+
+                                       "once using a mouthbind.");
                         
                         //(Re)Initialising the image graphic so it won't stay when changing page
                         // and to ensure that it also reloads upon changing back to the page.
+                        String tbTreat = "img/TB Medicine.png";
+                        Image tbMed = new Image(tbTreat);
+                        
                         this.tbImage1.setImage(null);
                         this.tbImage2.setImage(null);
+                        this.treatTB.setImage(tbMed);
                         
                         
                 break;
@@ -256,10 +276,22 @@ public class HandbookController implements Initializable{
         hivPag.setPageFactory((pageIndex) -> {
             switch(pageIndex){
                 case 0: hivLabel.setText("The Epidemiology of HIV/AIDS");
-                        hivText.setText("Mozambique is the country that has the 8th highest HIV rate in \n"+
+                        hivText.setText("Globally, in 2018, there were an estimate of 37.9 million\n"+
+                                "people living with the infection. On a global scale, about 0.8% of\n"+
+                                "adults aged 15-49 have the infection, with the African WHO region\n"+
+                                "having the highest prevalence, with nearly 1 in 25 (3.9%) living with\n"+
+                                "the infection.\n"+
+                                "\n"+
+                                "Mozambique is the country that has the 8th highest HIV rate in \n"+
                                 "the world, with 12.6% of adults aged 15-49 having the infection in \n"+
-                                "2018. Of these, only 56% were on treatment for HIV. "+
-                                "");
+                                "2018. Of these, only 56% were on treatment for HIV. \n"+
+                                "\n"+
+                                "Women are disproportionally affected by HIV; of the 2,000,000 \n"+
+                                "adults with HIV in Mozambique, 1,200,000 were women. Women \n"+
+                                "are however also better at receiving treatment than males.\n"+
+                                "The high transmission rates can be attributed to how only about \n"+
+                                "31% of adults aged 15-24 can correctly identify ways of preventing\n"+
+                                "sexual transmission of HIV.");
                 
                         //(Re)Initialising the image graphic so it won't stay when changing page
                         // and to ensure that it also reloads upon changing back to the page.
@@ -268,11 +300,26 @@ public class HandbookController implements Initializable{
                         
                         this.hivImage1.setImage(null);
                         this.hivImage2.setImage(image5);
+                        this.treatHIV.setImage(null);
+                        
+                        hivLabel.setPadding(new Insets(0,0,0,8));
+                        hivText.setPadding(new Insets(0,0,0,15));
                 break;
                 case 1: hivLabel.setText("The Symptoms of HIV/AIDS");
-                        hivText.setText("The symptoms of HIV/AIDS are: " + "\n" +
-                                "- High fever" + "\n" +
-                                "- Sweating");
+                        hivText.setText("HIV is a disease where the symptoms are typically connected\n"+
+                                        "to other diseases contracted because of immunodeficiency.\n"+
+                                        "\n"+
+                                        "The following symptoms are common in patients with Stage 3 HIV:\n"+
+                                        "   - Nausea and vomiting\n"+
+                                        "   - Persistent diarrhea and rapid weight loss\n"+
+                                        "   - Cough and shortness of breath\n"+
+                                        "   - Recurring fevers and chills\n"+
+                                        "   - Rashes, sores and lesions in the mouth or nose\n"+
+                                        "\n"+
+                                        "HIV is typically diagnosed by taking a blood- or saliva test, searching \n"+
+                                        "for antibodies to the HIV virus. It can however take up to 12 weeks for \n"+
+                                        "the body to form these. While the HIV test is done, a test for other\n"+
+                                        "infections (complications) is typically made.");
                         
                         //(Re)Initialising the image graphic so it won't stay when changing page
                         // and to ensure that it also reloads upon changing back to the page.
@@ -281,13 +328,41 @@ public class HandbookController implements Initializable{
                         
                         this.hivImage1.setImage(null);
                         this.hivImage2.setImage(image6);
+                        this.treatHIV.setImage(null);
+                        
+                        hivLabel.setPadding(new Insets(0,0,0,8));
+                        hivText.setPadding(new Insets(0,0,0,15));
                 break;
                 case 2: hivLabel.setText("The Treatment & Prevention of HIV/AIDS");
+                        hivText.setText("HIV is unfortunately a disease that cannot be cured. However, there are many\n"+
+                                        "different drugs that can be used to control the virus (antiretroviral therapy).\n"+
+                                        "\n"+
+                                        "Treatment is typically offered to anyone with a positive diagnosis, but it is \n"+
+                                        "particularly important when:\n"+
+                                        "   - A patient has severe symptoms\n"+
+                                        "   - The patient is pregnant\n"+
+                                        "   - The patient is being treated for kidney diseases or Hepatitis\n"+
+                                        "Treatment is very difficult, as it requires the patient to take many pills daily,\n"+
+                                        "and these often have very severe side effects.\n"+
+                                        "\n"+
+                                        "HIV is also easily preventable, as it is an infection that gets transmitted either sexually or through blood.\n"+
+                                        "It is therefore very effective to use condoms when having sex with an infected partner, and refraining from\n"+
+                                        "unprotected oral, vaginal or anal sex is key. It does however not transmit through saliva, why kissing,\n"+
+                                        "coughing and sneezing is safe. Anyone who takes their medicine for HIV as prescribed, are also \n"+
+                                        "considered mostly safe, as it can reduce the virus' presence in blood to make it undetectable. However,\n"+
+                                        "there is still a low chance of contracting the disease.");
                         
                         //(Re)Initialising the image graphic so it won't stay when changing page
                         // and to ensure that it also reloads upon changing back to the page.
+                        String hivTreat = "img/HIV Medicine.png";
+                        Image hivMed = new Image(hivTreat);
+                        
                         this.hivImage1.setImage(null);
                         this.hivImage2.setImage(null);
+                        this.treatHIV.setImage(hivMed);
+                        
+                        hivLabel.setPadding(new Insets(0,0,0,8));
+                        hivText.setPadding(new Insets(0,0,0,15));
                 break;
                 
             }
