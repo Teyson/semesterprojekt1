@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -34,6 +35,8 @@ public class PrimaryController implements Initializable {
     
     //Setting the GridPane
     @FXML GridPane inventoryGrid;
+    @FXML GridPane gameGrid;
+    @FXML GridPane dialogOptionsGrid;
     
     //Setting the AnchorPane
     @FXML AnchorPane dialogPane;
@@ -43,10 +46,21 @@ public class PrimaryController implements Initializable {
     
     //Setting the labels and their texts
     @FXML Label helpPopup;
+    @FXML Label dialogLabel;
+    @FXML Label NPCNameLabel;
     
     //Setting the buttons
     @FXML Button helpBtn;
     @FXML Button openHandbook;
+    @FXML Button answer1;
+    @FXML Button answer2;
+    @FXML Button answer3;
+    @FXML Button answer4;
+    @FXML Button answer5;
+    
+    //Setting the ImageViews
+    @FXML ImageView backgroundImage;
+    @FXML ImageView NPCImage;
     
     
     
