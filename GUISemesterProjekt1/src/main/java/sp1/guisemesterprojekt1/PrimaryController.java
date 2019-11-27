@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,17 +41,20 @@ public class PrimaryController implements Initializable {
     
     //Setting the AnchorPane
     @FXML AnchorPane dialogPane;
+    @FXML AnchorPane helpPopup;
     
     //Setting the sprites in the gridpane
     @FXML Circle testNPC;
     
     //Setting the labels and their texts
-    @FXML Label helpPopup;
+    @FXML Label helpLabel;
     @FXML Label dialogLabel;
     @FXML Label NPCNameLabel;
     
+    
     //Setting the buttons
-    @FXML Button helpBtn;
+    @FXML Button treatBtn;
+    @FXML Button giveItemBtn;
     @FXML Button openHandbook;
     @FXML Button answer1;
     @FXML Button answer2;
@@ -58,9 +62,15 @@ public class PrimaryController implements Initializable {
     @FXML Button answer4;
     @FXML Button answer5;
     
+    
     //Setting the ImageViews
     @FXML ImageView backgroundImage;
     @FXML ImageView NPCImage;
+    @FXML ImageView field7_3;
+    @FXML ImageView helpBtn;
+    @FXML ImageView trashBtn;
+    @FXML ImageView closeDialog;
+    @FXML ImageView closeHelp;
     
     
     
@@ -74,22 +84,80 @@ public class PrimaryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
+        openHandbook.setVisible(false);
+        
+        //Setting the appearance of the Help and Trash button images
+        String trashButtonPath = "buttons/Trash.png";
+        Image trashButton = new Image(trashButtonPath);
+        trashBtn.setImage(trashButton);
+
+        String helpButtonPath = "buttons/Help.png";
+        Image helpButton = new Image(helpButtonPath);
+        helpBtn.setImage(helpButton);
+        
+        String closeButtonPath = "buttons/Close.png";
+        Image closeButton = new Image(closeButtonPath);
+        closeDialog.setImage(closeButton);
+        closeHelp.setImage(closeButton);
+        
+        //Setting the background image
+        String startZone = "backgrounds/WHO HQ.png";
+        Image whoHQ = new Image(startZone);
+        backgroundImage.setImage(whoHQ);
+        
+        //Initialising Maria's NPC world sprite
+        String mariaImage = "npc/Maria Mini.png";
+        Image mariaMini = new Image(mariaImage);
+        
+        field7_3.setImage(mariaMini);
+        
         
         
     }
     
-    public void onMouseClickedAction(MouseEvent event){
+    public void handleMariaClicked(MouseEvent event){
         dialogPane.setVisible(!dialogPane.isVisible());
+        answer1.setVisible(false);
+        answer3.setVisible(false);
+        answer5.setVisible(false);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+
+        //Initialising Maria's conversation image
+        String mariaConvo = "convosprite/Maria.png";
+        Image mariaTalk = new Image(mariaConvo);
+        NPCImage.setImage(mariaTalk);
+        
+        //Renaming the Dialog window for Maria
+        NPCNameLabel.setText("Maria Hoffmann");
+        
+        dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"+
+                           "My name is Maria and I will be your guide on your volunteering experience!\n"+
+                           "Is there anything you want to know?");
+        
+        answer2.setText("More");
+       
+        answer4.setText("Leave");
+        
+        
     }
     
-    public void openHelpLabel(ActionEvent event){
-        helpPopup.setVisible(!helpPopup.isVisible());
+    public void handleCloseDialog(MouseEvent event){
+        dialogPane.setVisible(false);
+    }
+    
+    public void handleOpenHelpPane(MouseEvent event){
+        helpPopup.setVisible(true);
+        closeDialog.setVisible(true);
         
+    }
+    
+    public void handleCloseHelp(MouseEvent event){
+        helpPopup.setVisible(false);
     }
     
     public void handleOpenBook(ActionEvent event){
