@@ -75,7 +75,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="field7_3" fitHeight="54.0" fitWidth="64.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <ImageView fx:id="field7_3" fitHeight="54.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
             <ImageView fx:id="field0_0" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="field0_1" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
             <ImageView fx:id="field0_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
