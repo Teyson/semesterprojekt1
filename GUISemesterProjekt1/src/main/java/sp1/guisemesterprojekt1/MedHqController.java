@@ -236,7 +236,11 @@ public class MedHqController implements Initializable {
         answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
-                App.setRoot("Village");
+                try {
+                    App.setRoot("village");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 
             }
         });
