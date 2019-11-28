@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author marku
  */
-public class PrimaryController implements Initializable {
+public class VilageController implements Initializable {
 
     //Setting the Time Indicator
     @FXML ProgressBar timeProgressBar;
@@ -182,16 +182,10 @@ public class PrimaryController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
-    String startZone = "backgrounds/WHO HQ.png";
-    Image whoHQ = new Image(startZone);
-    String nextRoom = "backgrounds/HQ Medicine Room.png";
-    Image medHQ = new Image(nextRoom);
+    String vilage = "backgrounds/vilage.jpg";
+    Image vilages = new Image(vilage);
+   
 
-    //NPCs followed by that NPCs conversation image
-    String mariaImage = "npc/Maria Mini.png";
-    Image mariaMini = new Image(mariaImage);
-    String mariaConvo = "convosprite/Maria.png";
-    Image mariaTalk = new Image(mariaConvo);
 
     private double percentageTimeBar;
 
@@ -220,90 +214,13 @@ public class PrimaryController implements Initializable {
         openHandbook.setImage(handbookButton);
 
         //Setting the background image
-        backgroundImage.setImage(whoHQ);
+        backgroundImage.setImage(vilages);
 
-        //Initialising Maria's NPC world sprite
-        field7_3.setImage(mariaMini);
-
-    }
-
-    public void handleMariaClicked(MouseEvent event) {
-        dialogPane.setVisible(!dialogPane.isVisible());
-        answer1.setVisible(false);
-        answer2.setVisible(false);
-        answer3.setVisible(false);
-        answer5.setVisible(false);
-        treatBtn.setVisible(false);
-        giveItemBtn.setVisible(false);
-
-        //Initialising Maria's conversation image
-        NPCImage.setImage(mariaTalk);
-
-        //Renaming the Dialog window for Maria
-        NPCNameLabel.setText("Maria Hoffmann");
-
-        dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
-                + "My name is Maria and I will be your guide on your volunteering experience!\n");
         
-        answer4.setVisible(true);
-        answer4.setText("More");
-        answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                dialogLabel.setText("Your job is to go to Mozambique and treat patients with some dangerous\n"
-                        + "diseases; these diseases are: Malaria, HIV/AIDS and Tuberculosis.\n"
-                        + "First however, you must learn to use this Handbook, and then you will\n"
-                        + "travel to our Mozambique warehouse, where you will pack medicine into\n"
-                        + "a truck, and depart for one of the villages we work with. Be careful though\n"
-                        + "you do not have unlimited space and time! Cure as many as you can before\n"
-                        + "your own vaccines are running out.");
-
-                if (openHandbook.isVisible() == false) {
-                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            NPCNameLabel.setText(null);
-                            NPCImage.setImage(null);
-                            dialogLabel.setText("You obtained the Doctor's Handbook!");
-
-                            openHandbook.setVisible(true);
-
-                            answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    NPCNameLabel.setText("Maria Hoffmann");
-                                    NPCImage.setImage(mariaTalk);
-                                    dialogLabel.setText("I think you are ready now!\n"
-                                            + "Go through the door to get to the warehouse in Mozambique!\n"
-                                            + "I will meet you there!");
-
-                                    answer4.setVisible(false);
-                                }
-
-                            });
-                        }
-                    });
-                }
-
-                if (openHandbook.isVisible() == true) {
-                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            NPCNameLabel.setText("Maria Hoffmann");
-                            NPCImage.setImage(mariaTalk);
-                            dialogLabel.setText("I think you are ready now!\n"
-                                    + "Go through the door to get to the warehouse in Mozambique!\n"
-                                    + "I will meet you there!");
-
-                            answer4.setVisible(false);
-                        }
-
-                    });
-                }
-            }
-        });
 
     }
+
+
 
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
@@ -338,9 +255,5 @@ public class PrimaryController implements Initializable {
         }
     }
     
-    public void handleExitClickedEvent(MouseEvent event) throws IOException {
-        
-       App.setRoot("medHQ");
-            
-    }
+
 }

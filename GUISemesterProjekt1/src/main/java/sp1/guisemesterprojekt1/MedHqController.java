@@ -255,9 +255,5 @@ public class MedHqController implements Initializable {
         }
     }
     
-    public void handleExitClickedEvent(MouseEvent event) throws IOException {
-        
-            App.setRoot("medHQ");
-        
-    }
+
 }
