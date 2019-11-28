@@ -172,8 +172,7 @@ public class PrimaryController implements Initializable {
         NPCNameLabel.setText("Maria Hoffmann");
 
         dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
-                + "My name is Maria and I will be your guide on your volunteering experience!\n"
-                + "Is there anything you want to know?");
+                + "My name is Maria and I will be your guide on your volunteering experience!\n");
         
         answer4.setVisible(true);
         answer4.setText("More");
