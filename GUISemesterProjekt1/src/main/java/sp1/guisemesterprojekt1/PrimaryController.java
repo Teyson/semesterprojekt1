@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sp1.guisemesterprojekt1;
 
 import java.net.URL;
@@ -43,8 +38,6 @@ public class PrimaryController implements Initializable {
     @FXML
     Button helpBtn;
     
-    
-    
     private double percentageTimeBar;
     
     /**
@@ -59,8 +52,6 @@ public class PrimaryController implements Initializable {
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
-        
-        
     }
     
     public void onMouseClickedAction(MouseEvent event){
@@ -68,7 +59,6 @@ public class PrimaryController implements Initializable {
     }
     
     public void openHelpLabel(ActionEvent event){
-        helpPopup.setVisible(!helpPopup.isVisible());
-        
+        helpPopup.setVisible(!helpPopup.isVisible());  
     }
 }

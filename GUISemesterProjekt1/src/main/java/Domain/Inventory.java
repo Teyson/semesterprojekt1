@@ -1,9 +1,10 @@
 package Domain;
 
-import java.util.ArrayList;
+import Interfaces.IItem;
 import java.util.HashMap;
+import Interfaces.IInventory;
 
-public class Inventory {
+public class Inventory implements IInventory{
     
 
     private int inventorySize;
@@ -33,10 +34,12 @@ public class Inventory {
      * @param name
      * @param item added to the itemList
      */
-    public void addItem(String name, Item item) {
-        if (spaceUsed + item.getItemSize() < inventorySize) {
-            itemList.put(name, item);
-            spaceUsed += item.getItemSize();
+    @Override
+    public void addItem(String name, IItem item) {
+        Item temp = (Item)item;
+        if (spaceUsed + temp.getItemSize() < inventorySize) {
+            itemList.put(name, temp);
+            spaceUsed += temp.getItemSize();
             //System.out.println(item.getName() + " was successfully added to inventory.");
         } else {
             System.out.println("Your inventory is too full to contain this! Please remove some items to make room for others.");
@@ -47,6 +50,7 @@ public class Inventory {
      *
      * @param item removed from the itemList
      */
+    @Override
     public void removeItem(String name) {
         spaceUsed -= itemList.get(name).getItemSize();
         itemList.remove(name);
@@ -80,7 +84,12 @@ public class Inventory {
         this.spaceUsed = newSpaceUsed;
     }
 
-    public HashMap<String, Item> getItemList() {
-        return this.itemList;
+    @Override
+    public HashMap<String, IItem> getItemList() {
+        HashMap<String, IItem> tempMap;
+        tempMap = new HashMap<String, IItem>(itemList); // Cast to IItem
+        return tempMap;
     }
+    
+    
 }

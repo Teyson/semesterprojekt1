@@ -1,12 +1,13 @@
 package Domain;
 
+import Interfaces.IInventory;
+import Interfaces.INPC;
+import Interfaces.IRoom;
 import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
 
 
-public class Room 
-{
+public class Room implements IRoom{
     private String description;
     private HashMap<String, NPC> npcs;
     private HashMap<String, Room> exits;
@@ -66,8 +67,15 @@ public class Room
         return returnString;
     }
     
-    public HashMap<String, Room> getExits() {
-        return exits;
+    //public HashMap<String, Room> getExits() {
+    //    return exits;
+    //}
+    
+    @Override
+    public HashMap<String, IRoom> getExits() {
+        HashMap<String, IRoom> tempMap;
+        tempMap = new HashMap<String, IRoom>(exits); // Cast to IRoom
+        return tempMap;
     }
     
     private String getNPCString() {
@@ -97,17 +105,22 @@ public class Room
         return npcs.get(name);
     }
     
-    public HashMap<String, NPC> getNPCS() {
-        return npcs;
+    @Override
+    public HashMap<String, INPC> getNPCS() {
+        HashMap<String, INPC> tempMap;
+        tempMap = new HashMap<String, INPC>(npcs); // Cast to INPC        
+        return tempMap;
     }
     
+    
     public Item getItem(String name) {
-        Item returnItem = inventory.getItemList().get(name);
+        Item returnItem = (Item) inventory.getItemList().get(name);
         inventory.removeItem(name);
         return returnItem;
     }
     
-    public Inventory getItems() {
+    @Override
+    public IInventory getItems() {
         return inventory;
     }
 }

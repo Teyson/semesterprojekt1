@@ -1,11 +1,12 @@
 package Domain;
 
+import Domain.Interaction;
+import Interfaces.IInteraction;
+import Interfaces.INPC;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class NPC {
-
-    
+public class NPC implements INPC{
 
     //Attributes
     private String name;
@@ -41,7 +42,8 @@ public class NPC {
         this.interaction = interaction;
     }
 
-    //Methods    
+    //Methods 
+    @Override
     public String getName() {
         return this.name;
     }
@@ -50,6 +52,7 @@ public class NPC {
         this.name = name;
     }
 
+    @Override
     public String getIllnessName() {
         if (this.illnessName == null) {
             return "none";
@@ -62,6 +65,7 @@ public class NPC {
         this.illnessName = illnessName;
     }
 
+    @Override
     public boolean isAlive() {
         return this.alive;
     }
@@ -74,17 +78,16 @@ public class NPC {
         this.points = points;
     }
    
-
+    @Override
     public int getPoints() {
         if (this.treatAttempted == true && this.alive == true) {
             return this.points;
         } else {
             return 0;
-        }
-        
+        }    
     }
     
-
+    @Override
     public boolean isTreatAttempted() {
         return this.treatAttempted;
     }
@@ -93,7 +96,8 @@ public class NPC {
         this.treatAttempted = treatAttempted;
     }
 
-    public Interaction getInteraction() {
+    @Override
+    public IInteraction getInteraction() {
         return this.interaction;
     }
 
@@ -121,7 +125,7 @@ public class NPC {
                 
                 input = sc.nextInt(); //Take user input to decide which option to go for
                 
-                interactionPointer = interactionPointer.getChild(input); //Go to child which contained the option selected
+                interactionPointer = (Interaction) interactionPointer.getChild(input); //Go to child which contained the option selected
 
                 //If the current note's option is to "Treat" meaning to treat the patient.
                 if ("Treat".equals(interactionPointer.getOption()) || "Give item".equals(interactionPointer.getOption())) {
@@ -185,11 +189,11 @@ public class NPC {
                         interactionPointer.deleteChildren(); //Removes children (options) when leaving conversation
                         break; //Breaks loop
                     } else { //Treats with the chosen item.
-                        interactionPointer = interactionPointer.getChild(input); //Set pointer to selected treatment  
+                        interactionPointer = (Interaction) interactionPointer.getChild(input); //Set pointer to selected treatment  
 
                         //We give hashMap inventory name of the item.
                         //It gives us the object of the item.
-                        Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
+                        Item tempItem = (Item) playerInventory.getItemList().get(interactionPointer.getOption());
 
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
                         this.treatAttempted = true; //NPC has now been attempted treated
@@ -246,11 +250,11 @@ public class NPC {
                         interactionPointer.deleteChildren(); //Removes children (options) when leaving conversation
                         break; //Breaks loop
                     } else { //Treats with the chosen item.
-                        interactionPointer = interactionPointer.getChild(input); //Set pointer to selected treatment  
+                        interactionPointer = (Interaction) interactionPointer.getChild(input); //Set pointer to selected treatment  
 
                         //We give hashMap inventory name of the item.
                         //It gives us the object of the item.
-                        Item tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
+                        Item tempItem = (Item) playerInventory.getItemList().get(interactionPointer.getOption());
 
                         
 

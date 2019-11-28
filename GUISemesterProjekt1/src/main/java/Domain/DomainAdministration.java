@@ -1,85 +1,62 @@
 package Domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
-public class DomainAdministration implements Interfaces.DomainInterface{
-
-    @Override
-    public int getTotalPoints() {
-        return Evaluation.getTotalPoints();
+public class DomainAdministration {
+    Inventory playerInventory;
+    Evaluation eval;
+    Time time;
+    MedicineItem hivMed;
+    UtilityItem condom;
+    Room spawn;
+    Interaction mariaI;
+    NPC Maria;
+    
+    
+    //Initializers
+    public void makeItems() {
+        hivMed = new MedicineItem("Hiv Medicine", "Appears to be fluent", 1, "HIV");
+        spawn.addItem(hivMed.getName(), hivMed);
+        condom = new UtilityItem("Condom", "This item can help the spreading of sexually transmitted diseases", 1, 5, "HIV");
+        spawn.addItem(condom.getName(), condom);
     }
-
-    /* playerInventory is currently stored in the class Game which is completely commented out.
-    @Override
-    public Inventory getPlayerInventory() {
-        return Game.getInventory();
+    
+    public void makeRooms() {
+        spawn = new Room("You're in the spawn.");
     }
-    */
-
-    @Override
-    public int getRemainingTime() {
-        return Time.getTime();
+    
+    public void makeInteractions() {
+        mariaI = new Interaction("root", "Hello, my name is Maria!");
     }
-
-    /* currentRoom is currenly stored in the class Game which is completely commented out.
-    @Override
-    public Room getCurrentRoom() {
-        return Game.getRoom();
+    
+    public void makeNPCS() {
+        Maria = new NPC("Maria", mariaI);
+        spawn.addNPC("Maria", Maria);
     }
-    */
-
-    /* goRoom is currently in the class Game which is completely commented out.
-    @Override
-    public void setRoom(Room room) {
-        Game.goRoom(room);
+    
+    //Getters
+    public Evaluation getEvaluation() {
+        return eval;
     }
-    */
-
-    @Override
-    public HashMap<String, NPC> getNPCsInRoom(Room room) {
-        return room.getNPCS();
+    
+    public Inventory getInventory() {
+        return playerInventory;
     }
-
-    @Override
-    public Inventory getItemsInRoom(Room room) {
-        return room.getItems();
+    
+    public Room getRoom() {
+        return spawn;
+    }   
+    
+    public int getTime() {
+        return time.getTime();
     }
-
-    @Override
-    public Interaction getInteraction(NPC npc) {
-        return npc.getInteraction();
-    }
-
-    @Override
-    public void interact(NPC npc, Inventory playerInventory) {
-        npc.interact(playerInventory);
-    }
-
-    @Override
-    public String getMessage(Interaction interaction) {
-        return interaction.getMessage();
-    }
-
-    @Override
-    public ArrayList<Interaction> getChildren(Interaction interaction) {
-        return interaction.getChildren();
-    }
-
-    @Override
-    public String getOption(Interaction interaction) {
-        return interaction.getOption();
-    }
-
-    @Override
-    public HashMap<String, Room> getExits(Room room) {
-        return room.getExits();
-    }
-
-    @Override
-    public void trash(Inventory playerInventory, Item item) {
-        playerInventory.removeItem(item.getName());
+    
+    //Setup
+    public void setup() {
+        makeRooms();
+        makeItems();
+        makeInteractions();
+        makeNPCS();
+        eval = new Evaluation();
+        playerInventory = new Inventory(10);
+        time = new Time();
     }
 }
-    
