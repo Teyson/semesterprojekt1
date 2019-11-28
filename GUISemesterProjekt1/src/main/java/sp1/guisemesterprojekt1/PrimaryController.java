@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,54 +32,101 @@ import javafx.stage.Stage;
  * @author marku
  */
 public class PrimaryController implements Initializable {
+
     //Setting the Time Indicator
-    @FXML ProgressBar timeProgressBar;
-    
+    @FXML
+    ProgressBar timeProgressBar;
+
     //Setting the GridPane
-    @FXML GridPane inventoryGrid;
-    @FXML GridPane gameGrid;
-    @FXML GridPane dialogOptionsGrid;
-    
+    @FXML
+    GridPane inventoryGrid;
+    @FXML
+    GridPane gameGrid;
+    @FXML
+    GridPane dialogOptionsGrid;
+
     //Setting the AnchorPane
-    @FXML AnchorPane dialogPane;
-    @FXML AnchorPane helpPopup;
-    
+    @FXML
+    AnchorPane dialogPane;
+    @FXML
+    AnchorPane helpPopup;
+
     //Setting the sprites in the gridpane
-    @FXML Circle testNPC;
-    
+    @FXML
+    Circle testNPC;
+
     //Setting the labels and their texts
-    @FXML Label helpLabel;
-    @FXML Label dialogLabel;
-    @FXML Label NPCNameLabel;
-    
-    
+    @FXML
+    Label helpLabel;
+    @FXML
+    Label dialogLabel;
+    @FXML
+    Label NPCNameLabel;
+
     //Setting the buttons
-    @FXML Button treatBtn;
-    @FXML Button giveItemBtn;
-    @FXML Button openHandbook;
-    @FXML Button answer1;
-    @FXML Button answer2;
-    @FXML Button answer3;
-    @FXML Button answer4;
-    @FXML Button answer5;
-    
-    
+    @FXML
+    Button treatBtn;
+    @FXML
+    Button giveItemBtn;
+
+    @FXML
+    Button answer1;
+    @FXML
+    Button answer2;
+    @FXML
+    Button answer3;
+    @FXML
+    Button answer4;
+    @FXML
+    Button answer5;
+
     //Setting the ImageViews
-    @FXML ImageView backgroundImage;
-    @FXML ImageView NPCImage;
-    @FXML ImageView field7_3;
-    @FXML ImageView helpBtn;
-    @FXML ImageView trashBtn;
-    @FXML ImageView closeDialog;
-    @FXML ImageView closeHelp;
-    
-    
-    
-    
+    @FXML
+    ImageView backgroundImage;
+    @FXML
+    ImageView NPCImage;
+    @FXML
+    ImageView field7_3;
+    @FXML
+    ImageView helpBtn;
+    @FXML
+    ImageView trashBtn;
+    @FXML
+    ImageView closeDialog;
+    @FXML
+    ImageView closeHelp;
+    @FXML
+    ImageView openHandbook;
+
+    //Initialising the image paths and setting them to an image
+    //Buttons
+    String trashButtonPath = "buttons/Trash.png";
+    Image trashButton = new Image(trashButtonPath);
+
+    String helpButtonPath = "buttons/Help.png";
+    Image helpButton = new Image(helpButtonPath);
+
+    String closeButtonPath = "buttons/Close.png";
+    Image closeButton = new Image(closeButtonPath);
+
+    String handbookPath = "buttons/Handbook.png";
+    Image handbookButton = new Image(handbookPath);
+
+    //Backgrounds
+    String startZone = "backgrounds/WHO HQ.png";
+    Image whoHQ = new Image(startZone);
+
+    //NPCs followed by that NPCs conversation image
+    String mariaImage = "npc/Maria Mini.png";
+    Image mariaMini = new Image(mariaImage);
+    String mariaConvo = "convosprite/Maria.png";
+    Image mariaTalk = new Image(mariaConvo);
+
     private double percentageTimeBar;
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -89,89 +137,133 @@ public class PrimaryController implements Initializable {
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(false);
-        
-        //Setting the appearance of the Help and Trash button images
-        String trashButtonPath = "buttons/Trash.png";
-        Image trashButton = new Image(trashButtonPath);
+
+        //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
 
-        String helpButtonPath = "buttons/Help.png";
-        Image helpButton = new Image(helpButtonPath);
         helpBtn.setImage(helpButton);
-        
-        String closeButtonPath = "buttons/Close.png";
-        Image closeButton = new Image(closeButtonPath);
+
         closeDialog.setImage(closeButton);
         closeHelp.setImage(closeButton);
-        
+
+        openHandbook.setImage(handbookButton);
+
         //Setting the background image
-        String startZone = "backgrounds/WHO HQ.png";
-        Image whoHQ = new Image(startZone);
         backgroundImage.setImage(whoHQ);
-        
+
         //Initialising Maria's NPC world sprite
-        String mariaImage = "npc/Maria Mini.png";
-        Image mariaMini = new Image(mariaImage);
-        
         field7_3.setImage(mariaMini);
-        
-        
-        
+
     }
-    
-    public void handleMariaClicked(MouseEvent event){
+
+    public void handleMariaClicked(MouseEvent event) {
         dialogPane.setVisible(!dialogPane.isVisible());
         answer1.setVisible(false);
+        answer2.setVisible(false);
         answer3.setVisible(false);
         answer5.setVisible(false);
         treatBtn.setVisible(false);
         giveItemBtn.setVisible(false);
 
         //Initialising Maria's conversation image
-        String mariaConvo = "convosprite/Maria.png";
-        Image mariaTalk = new Image(mariaConvo);
         NPCImage.setImage(mariaTalk);
-        
+
         //Renaming the Dialog window for Maria
         NPCNameLabel.setText("Maria Hoffmann");
+
+        dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
+                + "My name is Maria and I will be your guide on your volunteering experience!\n"
+                + "Is there anything you want to know?");
         
-        dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"+
-                           "My name is Maria and I will be your guide on your volunteering experience!\n"+
-                           "Is there anything you want to know?");
-        
-        answer2.setText("More");
-       
-        answer4.setText("Leave");
-        
-        
+        answer4.setVisible(true);
+        answer4.setText("More");
+        answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                dialogLabel.setText("Your job is to go to Mozambique and treat patients with some dangerous\n"
+                        + "diseases; these diseases are: Malaria, HIV/AIDS and Tuberculosis.\n"
+                        + "First however, you must learn to use this Handbook, and then you will\n"
+                        + "travel to our Mozambique warehouse, where you will pack medicine into\n"
+                        + "a truck, and depart for one of the villages we work with. Be careful though\n"
+                        + "you do not have unlimited space and time! Cure as many as you can before\n"
+                        + "your own vaccines are running out.");
+
+                if (openHandbook.isVisible() == false) {
+                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            NPCNameLabel.setText(null);
+                            NPCImage.setImage(null);
+                            dialogLabel.setText("You obtained the Doctor's Handbook!");
+
+                            openHandbook.setVisible(true);
+
+                            answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    NPCNameLabel.setText("Maria Hoffmann");
+                                    NPCImage.setImage(mariaTalk);
+                                    dialogLabel.setText("I think you are ready now!\n"
+                                            + "Go through the door to get to the warehouse in Mozambique!\n"
+                                            + "I will meet you there!");
+
+                                    answer4.setVisible(false);
+                                }
+
+                            });
+                        }
+                    });
+                }
+
+                if (openHandbook.isVisible() == true) {
+                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            NPCNameLabel.setText("Maria Hoffmann");
+                            NPCImage.setImage(mariaTalk);
+                            dialogLabel.setText("I think you are ready now!\n"
+                                    + "Go through the door to get to the warehouse in Mozambique!\n"
+                                    + "I will meet you there!");
+
+                            answer4.setVisible(false);
+                        }
+
+                    });
+                }
+            }
+        });
+
     }
-    
-    public void handleCloseDialog(MouseEvent event){
+
+    public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
-    
-    public void handleOpenHelpPane(MouseEvent event){
+
+    public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
-        closeDialog.setVisible(true);
-        
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"+
+                          "limit. You do this by talking to them, by clicking on them, and making your \n"+
+                          "choice of progression. Be aware that certain actions take time.\n"+
+                          "You earn points by treating patients correctly, and by giving them an item \n"+
+                          "that helps them prevent spreading their disease. When time is out, see how\n"+
+                          "many you have saved from their contracted disease!");
+
     }
-    
-    public void handleCloseHelp(MouseEvent event){
+
+    public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
-    
-    public void handleOpenBook(ActionEvent event){
+
+    public void handleOpenBook(MouseEvent event) {
         Parent root;
-        try{
+        try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Doctor's Handbook");
             stage.setScene(new Scene(root, 600, 400));
             stage.setResizable(false);
             stage.show();
-        }
-    
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

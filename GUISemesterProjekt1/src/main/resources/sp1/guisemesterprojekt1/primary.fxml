@@ -109,14 +109,14 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="openHandbook" layoutX="162.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleOpenBook" text="Book" />
-      <ImageView fx:id="trashBtn" fitHeight="30.0" fitWidth="30.0" layoutX="671.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="helpBtn" fitHeight="30.0" fitWidth="30.0" layoutX="732.0" layoutY="51.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="helpBtn" fitHeight="35.0" fitWidth="35.0" layoutX="714.0" layoutY="49.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
          <children>
             <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="helpLabel" layoutX="32.0" layoutY="15.0" prefHeight="140.0" prefWidth="433.0" text="THIS IS HOW YOU PLAY THE GAME" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="openHandbook" fitHeight="45.0" fitWidth="52.0" layoutX="158.0" layoutY="45.0" onMouseClicked="#handleOpenBook" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
