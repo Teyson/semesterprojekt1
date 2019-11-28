@@ -180,6 +180,12 @@ public class MedHqController implements Initializable {
 
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
+    
+    //NPCs
+    String mariaPath = "npc/Maria Mini.png";
+    Image mariaMini = new Image(mariaPath);
+    String mariaPathConvo = "convosprite/Maria.png";
+    Image mariaConvo = new Image(mariaPathConvo);
 
     //Backgrounds
     String nextRoom = "backgrounds/HQ Medicine Room.png";
@@ -215,12 +221,27 @@ public class MedHqController implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(medHQ);
-
         
+        //Initialising Maria's Sprite
+        field0_5.setImage(mariaMini);
 
     }
-
-
+    
+    public void handleMariaClicked(MouseEvent event){
+        dialogPane.setVisible(true);
+        NPCNameLabel.setText("Maria Hoffmann");
+        NPCImage.setImage(mariaConvo);
+        
+        answer2.setText("Ready");
+        answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                App.setRoot("Village");
+                
+            }
+        });
+        answer4.setText("Not yet");
+    }
 
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);

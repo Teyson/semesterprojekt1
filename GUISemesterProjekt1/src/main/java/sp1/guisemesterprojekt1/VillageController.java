@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author marku
  */
-public class VilageController implements Initializable {
+public class VillageController implements Initializable {
 
     //Setting the Time Indicator
     @FXML ProgressBar timeProgressBar;
@@ -182,8 +182,8 @@ public class VilageController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
-    String vilage = "backgrounds/vilage.jpg";
-    Image vilages = new Image(vilage);
+    String village = "backgrounds/village.jpg";
+    Image villages = new Image(village);
    
 
 
@@ -214,7 +214,7 @@ public class VilageController implements Initializable {
         openHandbook.setImage(handbookButton);
 
         //Setting the background image
-        backgroundImage.setImage(vilages);
+        backgroundImage.setImage(villages);
 
         
 
