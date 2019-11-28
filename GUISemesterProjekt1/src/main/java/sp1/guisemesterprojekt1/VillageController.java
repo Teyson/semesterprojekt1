@@ -182,14 +182,11 @@ public class VillageController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
-
     String village = "backgrounds/village.jpg";
     Image villages = new Image(village);
 
     String vilage = "backgrounds/Village.jpg";
     Image vilages = new Image(vilage);
-   
-
 
     private double percentageTimeBar;
 

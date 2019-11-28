@@ -228,9 +228,18 @@ public class MedHqController implements Initializable {
     }
     
     public void handleMariaClicked(MouseEvent event){
-        dialogPane.setVisible(true);
+        dialogPane.setVisible(!dialogPane.isVisible());
+        answer1.setVisible(false);
+        answer3.setVisible(false);
+        answer5.setVisible(false);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
         NPCNameLabel.setText("Maria Hoffmann");
         NPCImage.setImage(mariaConvo);
+        
+        dialogLabel.setText("Are you ready to leave for Mozambique?\n"+
+                            "(Did you finish packing the truck?)");
         
         answer2.setText("Ready");
         answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -238,7 +247,8 @@ public class MedHqController implements Initializable {
             public void handle(MouseEvent event){
                 try {
                     App.setRoot("village");
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex) {
                     ex.printStackTrace();
                 }
                 
