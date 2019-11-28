@@ -182,8 +182,13 @@ public class VillageController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
+<<<<<<< Updated upstream:GUISemesterProjekt1/src/main/java/sp1/guisemesterprojekt1/VillageController.java
     String village = "backgrounds/village.jpg";
     Image villages = new Image(village);
+=======
+    String vilage = "backgrounds/Village.jpg";
+    Image vilages = new Image(vilage);
+>>>>>>> Stashed changes:GUISemesterProjekt1/src/main/java/sp1/guisemesterprojekt1/VilageController.java
    
 
 
