@@ -339,8 +339,23 @@ public class PrimaryController implements Initializable {
     }
     
     public void handleExitClickedEvent(MouseEvent event) throws IOException {
-        
-       App.setRoot("medHQ");
-            
+       if(openHandbook.isVisible() == true){
+        App.setRoot("medHQ");
+       }
+       else{
+           dialogPane.setVisible(!dialogPane.isVisible());
+           answer1.setVisible(false);
+           answer2.setVisible(false);
+           answer3.setVisible(false);
+           answer4.setVisible(false);
+           answer5.setVisible(false);
+           treatBtn.setVisible(false);
+           giveItemBtn.setVisible(false);
+           
+           NPCImage.setImage(mariaTalk);
+           NPCNameLabel.setText("Maria Hoffmann");
+
+           dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
+       }
     }
 }

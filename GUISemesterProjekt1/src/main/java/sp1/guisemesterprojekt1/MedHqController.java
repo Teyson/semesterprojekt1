@@ -239,7 +239,7 @@ public class MedHqController implements Initializable {
         NPCImage.setImage(mariaConvo);
         
         dialogLabel.setText("Are you ready to leave for Mozambique?\n"+
-                            "(Did you finish packing the truck?)");
+                            "(Did you finish packing the truck? You cannot return once left.)");
         
         answer2.setText("Ready");
         answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
