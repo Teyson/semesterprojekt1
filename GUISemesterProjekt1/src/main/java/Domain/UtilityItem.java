@@ -1,4 +1,4 @@
-package sp1.domain;
+package Domain;
 
 import Interfaces.IUtilityItem;
 import java.util.InputMismatchException;

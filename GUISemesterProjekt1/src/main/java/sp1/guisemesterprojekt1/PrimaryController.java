@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author marku
  */
-public class PrimaryController implements Initializable, Domain {
+public class PrimaryController implements Initializable, Domain{
 
     //Setting the Time Indicator
     @FXML ProgressBar timeProgressBar;

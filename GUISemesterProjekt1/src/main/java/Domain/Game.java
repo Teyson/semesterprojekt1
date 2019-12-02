@@ -1,4 +1,4 @@
-package sp1.domain;
+package Domain;
 
 //public class Game {
 //
