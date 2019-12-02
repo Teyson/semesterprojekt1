@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sp1.domain;
 
 import Interfaces.IItem;
 
-/**
- *
- * @author aalbaek-nt
- */
 public abstract class Item implements IItem{
 
     private int itemSize;
@@ -28,7 +19,7 @@ public abstract class Item implements IItem{
        this.name = name;
        this.description = description;
        this.itemSize = itemSize;
-   }
+    }
 
     public int getItemSize() {
         return itemSize;
@@ -38,6 +29,7 @@ public abstract class Item implements IItem{
         this.itemSize = itemSize;
     }
 
+    @Override
     public String getName() {
         return name;
     }

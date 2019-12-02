@@ -31,8 +31,8 @@ public class Room implements IRoom{
         npcs.put(name, npc);
     }
     
-    public void addItem(String name, Item item) {
-        inventory.addItem(name, (IItem) item);
+    public void addItem(String name, IItem item) {
+        inventory.addItem(name, item);
     }
     
     public String getShortDescription()
@@ -114,8 +114,8 @@ public class Room implements IRoom{
     }
     
     
-    public Item getItem(String name) {
-        Item returnItem = (Item) inventory.getItemList().get(name);
+    public IItem getItem(String name) {
+        IItem returnItem = (IItem) inventory.getItemList().get(name);
         inventory.removeItem(name);
         return returnItem;
     }

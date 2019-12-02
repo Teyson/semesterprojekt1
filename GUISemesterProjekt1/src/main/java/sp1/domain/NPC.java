@@ -192,7 +192,7 @@ public class NPC implements INPC{
 
                         //We give hashMap inventory name of the item.
                         //It gives us the object of the item.
-                        Item tempItem = (Item) playerInventory.getItemList().get(interactionPointer.getOption());
+                        var tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
                         playerInventory.removeItem(tempItem.getName()); //Remove item from players inventory.
                         this.treatAttempted = true; //NPC has now been attempted treated
@@ -253,9 +253,7 @@ public class NPC implements INPC{
 
                         //We give hashMap inventory name of the item.
                         //It gives us the object of the item.
-                        Item tempItem = (Item) playerInventory.getItemList().get(interactionPointer.getOption());
-
-                        
+                        var tempItem = playerInventory.getItemList().get(interactionPointer.getOption());
 
                         Time.timeCounter -= Time.GIVETIMECOST; //Giving an NPC an item costs time, this line subtracts that time from the total time.
 

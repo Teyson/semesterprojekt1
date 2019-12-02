@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sp1.domain;
 
-/**
- *
- * @author aalbaek-nt
- */
-public class Time {
+import Interfaces.ITime;
+
+public class Time implements ITime{
 
     public static int timeCounter = 50;
 
@@ -19,6 +12,8 @@ public class Time {
     public static final int GIVETIMECOST = 1;
     public static final int SYMPTOMSTIMECOST = 1;
 
+    
+ 
     public static boolean timeHasRunOut() {
         if (timeCounter <= 0) {
             return true;
@@ -26,4 +21,10 @@ public class Time {
             return false;
         }
     }
+    
+    @Override
+    public int getTime() {
+        return timeCounter;
+    }
+    
 }
