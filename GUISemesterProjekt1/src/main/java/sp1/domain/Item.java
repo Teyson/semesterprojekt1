@@ -38,6 +38,7 @@ public abstract class Item implements IItem{
         this.itemSize = itemSize;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -55,3 +56,4 @@ public abstract class Item implements IItem{
     }
 
 }
+

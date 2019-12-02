@@ -1,5 +1,6 @@
-package Domain;
+package sp1.domain;
 
+import sp1.domain.Time;
 public class DomainAdministration {
     Inventory playerInventory;
     Evaluation eval;
