@@ -1,6 +1,7 @@
 package sp1.domain;
 
 import Interfaces.IInventory;
+import Interfaces.IItem;
 import Interfaces.INPC;
 import Interfaces.IRoom;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class Room implements IRoom{
     }
     
     public void addItem(String name, Item item) {
-        inventory.addItem(name, item);
+        inventory.addItem(name, (IItem) item);
     }
     
     public String getShortDescription()

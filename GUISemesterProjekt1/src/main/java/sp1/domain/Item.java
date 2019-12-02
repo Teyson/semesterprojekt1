@@ -5,11 +5,13 @@
  */
 package sp1.domain;
 
+import Interfaces.IItem;
+
 /**
  *
  * @author aalbaek-nt
  */
-public abstract class Item {
+public abstract class Item implements IItem{
 
     private int itemSize;
     private String name;

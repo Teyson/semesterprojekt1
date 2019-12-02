@@ -1,6 +1,5 @@
 package sp1.domain;
 
-import Domain.Interaction;
 import Interfaces.IUtilityItem;
 import java.util.InputMismatchException;
 import java.util.Scanner;

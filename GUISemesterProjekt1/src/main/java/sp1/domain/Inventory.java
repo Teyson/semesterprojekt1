@@ -90,6 +90,4 @@ public class Inventory implements IInventory{
         tempMap = new HashMap<String, IItem>(itemList); // Cast to IItem
         return tempMap;
     }
-    
-    
 }
