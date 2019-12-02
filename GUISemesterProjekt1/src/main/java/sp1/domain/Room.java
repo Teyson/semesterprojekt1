@@ -1,4 +1,4 @@
-package Domain;
+package sp1.domain;
 
 import java.util.Set;
 import java.util.HashMap;

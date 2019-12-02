@@ -1,4 +1,4 @@
-package Domain;
+package sp1.domain;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
