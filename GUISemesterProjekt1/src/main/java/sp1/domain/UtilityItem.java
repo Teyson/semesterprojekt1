@@ -1,4 +1,4 @@
-package Domain;
+package sp1.domain;
 
 import Domain.Interaction;
 import Interfaces.IUtilityItem;
