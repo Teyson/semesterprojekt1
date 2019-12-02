@@ -4,6 +4,7 @@ import Interfaces.IInteraction;
 import Interfaces.INPC;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import javafx.scene.image.Image;
 
 public class NPC implements INPC{
 
@@ -15,6 +16,7 @@ public class NPC implements INPC{
     private int points = 50;
     private Interaction interaction;
     private int input;
+    private Image npcImage;
 
     //Constructors
     /**

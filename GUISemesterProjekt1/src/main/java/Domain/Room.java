@@ -6,6 +6,7 @@ import Interfaces.INPC;
 import Interfaces.IRoom;
 import java.util.Set;
 import java.util.HashMap;
+import javafx.scene.image.Image;
 
 
 public class Room implements IRoom{
