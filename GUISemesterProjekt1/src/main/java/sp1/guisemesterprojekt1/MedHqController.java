@@ -50,6 +50,8 @@ public class MedHqController implements Initializable {
     AnchorPane dialogPane;
     @FXML
     AnchorPane helpPopup;
+    @FXML
+    AnchorPane truckInventoryPane;
 
     //Setting the sprites in the gridpane
     @FXML
@@ -62,6 +64,8 @@ public class MedHqController implements Initializable {
     Label dialogLabel;
     @FXML
     Label NPCNameLabel;
+    @FXML
+    Label truckInventoryView;
 
     //Setting the buttons
     @FXML
@@ -95,6 +99,7 @@ public class MedHqController implements Initializable {
     ImageView closeHelp;
     @FXML
     ImageView openHandbook;
+    
 
     //Setting the Grid ImageViews
     @FXML
@@ -322,7 +327,8 @@ public class MedHqController implements Initializable {
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
-        openHandbook.setVisible(false);
+        openHandbook.setVisible(true);
+        truckInventoryPane.setVisible(false);
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
@@ -349,6 +355,7 @@ public class MedHqController implements Initializable {
         answer5.setVisible(false);
         treatBtn.setVisible(false);
         giveItemBtn.setVisible(false);
+        
         
         NPCNameLabel.setText("Maria Hoffmann");
         NPCImage.setImage(mariaConvo);
@@ -411,4 +418,17 @@ public class MedHqController implements Initializable {
         }
     }
     
+    public void handleTruckClicked1(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        
+    }
+    public void handleTruckClicked2(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
+    public void handleTruckClicked3(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
+    public void handleTruckClicked4(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
 }

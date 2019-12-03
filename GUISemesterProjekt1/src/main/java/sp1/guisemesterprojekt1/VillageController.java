@@ -318,7 +318,7 @@ public class VillageController implements Initializable {
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
-        openHandbook.setVisible(false);
+        openHandbook.setVisible(true);
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);

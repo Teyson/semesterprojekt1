@@ -21,6 +21,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import Domain.DomainAdministration;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -355,4 +357,15 @@ public class PrimaryController implements Initializable{
            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
        }
     }
+    /*
+    public void handleRestartKey(KeyEvent event){
+        if (event.getCode() == KeyCode.SPACE) {
+            try {
+                App.setRoot("startMenu");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            }
+    }
+    */
 }

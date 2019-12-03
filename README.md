@@ -96,7 +96,8 @@
 >>>>>>> Stashed changes
 
 ### 03/12 - 2019
-- Vi sletter interaction klassen til GUI iterationen
+- Vi sletter interaction klassen til GUI iterationen.
+- Men der diskuteres stadig om dette er en god idé
 
  
 
