@@ -298,10 +298,7 @@ public class VillageController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
-    String village = "backgrounds/village.jpg";
-    Image villages = new Image(village);
-
-    String vilage = "backgrounds/Village.jpg";
+    String vilage = "backgrounds/VILLAGGE1.jpg";
     Image vilages = new Image(vilage);
 
     private double percentageTimeBar;
@@ -331,7 +328,7 @@ public class VillageController implements Initializable {
         openHandbook.setImage(handbookButton);
 
         //Setting the background image
-        backgroundImage.setImage(villages);
+        backgroundImage.setImage(vilages);
 
     }
 
