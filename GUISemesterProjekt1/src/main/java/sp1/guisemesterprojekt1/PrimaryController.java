@@ -2,6 +2,7 @@ package sp1.guisemesterprojekt1;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -355,4 +356,4 @@ public class PrimaryController implements Initializable{
            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
        }
     }
-}
+
