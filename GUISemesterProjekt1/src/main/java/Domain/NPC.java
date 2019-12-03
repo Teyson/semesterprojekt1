@@ -42,6 +42,19 @@ public class NPC implements INPC{
         this.treatAttempted = false;
         this.interaction = interaction;
     }
+    
+    public NPC(String name, String illnessName) {
+        this.name = name;
+        this.illnessName = illnessName;
+        this.alive = true;
+        this.treatAttempted = false;
+    }
+    
+    public NPC(String name) {
+        this.name = name;
+        this.alive = true;
+        this.treatAttempted = false;
+    }
 
     //Methods 
     @Override

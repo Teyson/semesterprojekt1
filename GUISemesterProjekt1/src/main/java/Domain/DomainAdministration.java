@@ -1,7 +1,5 @@
 package Domain;
 
-//package Domain;
-
 public class DomainAdministration {
     //Setting the important non-changing elements
     Inventory playerInventory;
@@ -76,20 +74,16 @@ public class DomainAdministration {
         tent = new Room("You're in the WHO storage tent that you set up.");
     }
     
-    public void makeInteractions() {
-        empty = new Interaction("root", "null");
-    }
-    
     public void makeNPCS() {
         //Creating the NPCs (Female)
-        Maria = new NPC("Maria", empty);
-        Henda = new NPC("Henda", empty);
-        Yuran = new NPC("Yuran", empty);
-        Kishor = new NPC("Kishor", empty);
-        Kiri = new NPC("Kiri", empty);
-        Ikbal = new NPC("Ikbal", empty);
-        Jojo = new NPC("Jojo", empty);
-        Gani = new NPC("Gani", empty);
+        Maria = new NPC("Maria");
+        Henda = new NPC("Henda");
+        Yuran = new NPC("Yuran");
+        Kishor = new NPC("Kishor");
+        Kiri = new NPC("Kiri");
+        Ikbal = new NPC("Ikbal");
+        Jojo = new NPC("Jojo");
+        Gani = new NPC("Gani");
         
         //Creating the NPCs (Male)
         Faizal = new NPC("Faizal", empty);
@@ -127,7 +121,6 @@ public class DomainAdministration {
     public void setup() {
         makeRooms();
         makeItems();
-        makeInteractions();
         makeNPCS();
         eval = new Evaluation();
         playerInventory = new Inventory(10);
