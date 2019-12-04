@@ -20,8 +20,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-import Domain.DomainAdministration;
-
 /**
  * FXML Controller class
  *
@@ -124,6 +122,7 @@ public class PrimaryController implements Initializable{
         helpPopup.setVisible(false);
         openHandbook.setVisible(false);
         
+        
         //Setting the room
 
         //Setting the appearance of the Help, Book, Close and Trash button images
@@ -140,7 +139,6 @@ public class PrimaryController implements Initializable{
         backgroundImage.setImage(whoHQ);
 
         //Initialising Maria's NPC world sprite
-        
         field7_3.setImage(mariaMini);
 
     }

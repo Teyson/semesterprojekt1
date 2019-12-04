@@ -8,16 +8,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import Domain.DomainAdministration;
+
 /**
  * JavaFX App
  */
 public class App extends Application {
-
+    private static DomainAdministration da;
     private static Scene scene;
 
     @Override
     public void init(){
-        
+        da = new DomainAdministration();
+        da.setup();
     }
     
     @Override
@@ -39,6 +42,10 @@ public class App extends Application {
 
     public static void load(String[] args) {
         launch();
+    }
+    
+    public static DomainAdministration getDomainAdministration(){
+        return da;
     }
 
 }
