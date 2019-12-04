@@ -126,6 +126,7 @@ public class NPC implements INPC{
      * conversation and will dynamically add functionality for special cases
      * like treatment.
      */
+    /*
     public void interact(Inventory playerInventory) {
         Scanner sc = new Scanner(System.in); //Make scanner
         Interaction interactionPointer = this.interaction; //Make interaction object to juggle through the conversation
@@ -163,9 +164,8 @@ public class NPC implements INPC{
         } else {
             System.out.println(interactionPointer.getMessage());
         }
-
     }
-
+    */
     /**
      *
      * @param interactionPointer is the current node in the interaction (the
@@ -174,6 +174,7 @@ public class NPC implements INPC{
      * which items are available. This method dynamically adds options for
      * treatment based on items in the inventory.
      */
+    /*
     public void treat(Interaction interactionPointer, Inventory playerInventory) {
         Scanner sc = new Scanner(System.in);
 
@@ -225,7 +226,8 @@ public class NPC implements INPC{
             }
         }
     }
-
+    */
+    
     /**
      *
      * @param interactionPointer is the current node in the interaction (the
@@ -235,6 +237,7 @@ public class NPC implements INPC{
      * treatment based on items in the inventory. - does basicly the same as
      * treat, just with UtilityItems instead og MedicineItems.
      */
+    /*
     public void give(Interaction interactionPointer, Inventory playerInventory) {
         Scanner sc = new Scanner(System.in);
 
@@ -288,13 +291,14 @@ public class NPC implements INPC{
             }
         }
     }
-
+    */
     /**
      *
      * @param medicineItem is the item needed to check if the correct treatment
      * for the NPC. this method will decide what happens based on the outcome of
      * the treatment.
      */
+    
     public void correctTreatment(MedicineItem medicineItem) {
         if (medicineItem.getCures().equals(this.illnessName)) {
             this.illnessName = null;

@@ -1,11 +1,11 @@
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -14,10 +14,12 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static DomainAdministration da;
 
     @Override
     public void init(){
-        
+        da = new DomainAdministration();
+        da.setup();
     }
     
     @Override
@@ -40,5 +42,8 @@ public class App extends Application {
     public static void load(String[] args) {
         launch();
     }
-
+        
+    public static DomainAdministration getDomainAdministration() {
+        return da;
+    }
 }

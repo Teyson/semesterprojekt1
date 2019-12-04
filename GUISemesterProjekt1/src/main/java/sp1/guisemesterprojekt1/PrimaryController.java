@@ -1,12 +1,18 @@
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
+import Interfaces.IInventory;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,11 +22,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
-import Domain.DomainAdministration;
 
 /**
  * FXML Controller class
@@ -42,7 +49,7 @@ public class PrimaryController implements Initializable{
     @FXML AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML Circle testNPC;
+    Circle testNPC;
 
     //Setting the labels and their texts
     @FXML Label helpLabel;
@@ -101,7 +108,7 @@ public class PrimaryController implements Initializable{
     @FXML ImageView field4_1;
     @FXML ImageView field4_2;
     @FXML ImageView field4_3;
-    @FXML ImageView field4_4;
+    ImageView field4_4;
     @FXML ImageView field4_5;
     @FXML ImageView field4_6;
     @FXML ImageView field5_0;
@@ -190,7 +197,40 @@ public class PrimaryController implements Initializable{
     String mariaConvo = "convosprite/Maria.png";
     Image mariaTalk = new Image(mariaConvo);
 
+    //Items
+    String kanyleClean = "img/Clean Kanyle.png";
+    Image imgKanyleClean = new Image(kanyleClean);
+    String kanyleDirty = "img/Dirty Kanyle.png";
+    Image imgKanyleDirty = new Image(kanyleDirty);
+    String condom = "img/Condom.png";
+    Image imgCondom = new Image(condom);
+    String hivMeds = "img/HIV Medicine.png";
+    Image imgHivMeds = new Image(hivMeds);
+    String malariaMeds = "img/Malaria Medicine.png";
+    Image imgMalariaMeds = new Image(malariaMeds);
+    String tbMeds = "img/TB Medicine.png";
+    Image imgTbMeds = new Image(tbMeds);
+    String pill = "img/pill.png";
+    Image imgPill = new Image(pill);
+    String mask = "img/mask.png";
+    Image imgMask = new Image(mask);
+    String spray = "img/Mosquito Spray.png";
+    Image imgSpray = new Image(spray);
+    HashMap<String, Image> itemImageMap;
+    HashMap<String, String> itemImageMapReverse;
+
+    DomainAdministration da;
+    IInventory playerInventory;
+    IInventory roomInventory;
+    ArrayList<ImageView> inventoryImageList;
+    
+    boolean trashingActive = false;
+    
     private double percentageTimeBar;
+    @FXML
+    private Label pointLabel;
+    @FXML
+    private ImageView imgViewTakeItem;
 
     /**
      * Initializes the controller class.
@@ -222,8 +262,73 @@ public class PrimaryController implements Initializable{
         //Initialising Maria's NPC world sprite
         field7_3.setImage(mariaMini);
 
+        //Get DomainAdministration object
+        da = App.getDomainAdministration();
+        
+        //Get roominventory
+        roomInventory = da.getRoom().getItems();
+        
+        //Get playerinventory
+        playerInventory = da.getInventory();
+        
+        //Fill items into map.
+        itemImageMap = new HashMap<>()
+        {{
+            put("Clean Syringe", imgKanyleClean);
+            put("Dirty Syringe", imgKanyleDirty);
+            put("Condom", imgCondom);
+            put("HIV Medication", imgHivMeds);
+            put("Malaria Medication", imgMalariaMeds);
+            put("Tuberculosis Medication", imgTbMeds);
+            put("Pill", imgPill);
+            put("Mask", imgMask);
+            put("Mosquito Spray", imgSpray);
+        }};
+        
+        itemImageMapReverse = new HashMap<>()
+        {{
+            put("Clean Kanyle.png", "Clean Syringe");
+            put("Dirty Kanyle.png" ,"Dirty Syringe");
+            put("Condom.png" ,"Condom");
+            put("HIV Medicine.png" ,"HIV Medication");
+            put("Malaria Medicine.png" ,"Malaria Medication");
+            put("TB Medicine.png" ,"Tuberculosis Medication");
+            put("pill.png" ,"Pill");
+            put("mask.png" ,"Mask");
+            put("Mosquito Spray.png" ,"Mosquito Spray");
+        }};
+        
+        //Make arraylist of inventory slots for easy iteration
+        inventoryImageList = new ArrayList<>() {
+            {
+            add(inv1);
+            add(inv2);
+            add(inv3);
+            add(inv4);
+            add(inv5);
+            add(inv6);
+            add(inv7);
+            add(inv8);
+            }
+        };
+        updateInventory();
     }
 
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
+        
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
+        }
+    }
+    
+    
+    @FXML
     public void handleMariaClicked(MouseEvent event) {
         dialogPane.setVisible(!dialogPane.isVisible());
         answer1.setVisible(false);
@@ -294,18 +399,18 @@ public class PrimaryController implements Initializable{
 
                             answer4.setVisible(false);
                         }
-
                     });
                 }
             }
         });
-
     }
 
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"+
@@ -317,10 +422,12 @@ public class PrimaryController implements Initializable{
 
     }
 
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -335,6 +442,7 @@ public class PrimaryController implements Initializable{
         }
     }
     
+    @FXML
     public void handleExitClickedEvent(MouseEvent event) throws IOException {
        if(openHandbook.isVisible() == true){
         App.setRoot("medHQ");
@@ -355,4 +463,98 @@ public class PrimaryController implements Initializable{
            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
        }
     }
+
+    @FXML
+    private void handleTakeItem(MouseEvent event) {
+        //Gets name of image we clicked on.    
+        String url = imgViewTakeItem.getImage().getUrl();
+        String fileName = new File(url).getName();
+        String itemName = itemImageMapReverse.get(fileName);
+        
+        //Returns true if item exists in room
+        
+        if (roomInventory.getKeys().contains(itemName)) {
+            playerInventory.addItem(itemName, roomInventory.getValues().get(roomInventory.getKeys().indexOf(itemName))); //Add item to playerinventory
+            roomInventory.removeItem(itemName); //Remove item from room inventory
+            imgViewTakeItem.setVisible(false); //Make ImageView invisible
+        }
+
+        updateInventory();
+    }
+
+    @FXML
+    private void handleTrash(MouseEvent event) {
+        //Change trashing state
+        trashingActive = !trashingActive;
+        
+        if (trashingActive)
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        else
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+    }
+
+    @FXML
+    private void handleInventorySlotClicked1(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(0));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked2(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(1));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked3(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(2));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked4(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(3));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked5(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(4));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked6(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(5));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked7(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(6));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked8(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(7));
+            updateInventory();
+        } 
+    }
+
 }
