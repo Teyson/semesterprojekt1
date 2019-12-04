@@ -76,6 +76,7 @@
         </rowConstraints>
          <children>
             <ImageView fx:id="field7_3" fitHeight="54.0" fitWidth="64.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <ImageView fx:id="field6_1" fitHeight="56.0" fitWidth="63.0" onMouseClicked="#handleExitClickedEvent" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;">
@@ -121,7 +122,7 @@
       </Label>
       <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="helpBtn" fitHeight="35.0" fitWidth="35.0" layoutX="714.0" layoutY="49.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
+      <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;" visible="false">
          <children>
             <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="helpLabel" layoutX="32.0" layoutY="15.0" prefHeight="140.0" prefWidth="433.0" text="THIS IS HOW YOU PLAY THE GAME" />

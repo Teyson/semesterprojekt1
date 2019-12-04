@@ -67,6 +67,7 @@ public class PrimaryController implements Initializable{
     @FXML ImageView openHandbook;
     
     //Setting the Grid ImageViews
+    @FXML ImageView field6_1;
     @FXML ImageView field7_3;
 
     
