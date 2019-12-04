@@ -1,5 +1,7 @@
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
+import Interfaces.ITime;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -115,7 +117,9 @@ public class PrimaryController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        percentageTimeBar = 1.0;
+        DomainAdministration da =  App.getDomainAdministration();
+        ITime time = da.getTime();
+        percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);

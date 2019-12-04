@@ -132,8 +132,8 @@ public class DomainAdministration {
         return spawn;
     }   
     
-    public int getTime() {
-        return time.getTime();
+    public Time getTime() {
+        return time;
     }
     
     //Setup
