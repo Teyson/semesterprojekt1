@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author marku
  */
-public class VillageController implements Initializable {
+public class TentController implements Initializable {
 
     //Setting the Time Indicator
     @FXML
@@ -294,8 +294,8 @@ public class VillageController implements Initializable {
     Image handbookButton = new Image(handbookPath);
 
     //Backgrounds
-    String vilage = "backgrounds/VILLAGGE1.jpg";
-    Image vilages = new Image(vilage);
+    String tent = "backgrounds/tent.png";
+    Image toShow = new Image(tent);
 
     private double percentageTimeBar;
 
@@ -324,7 +324,7 @@ public class VillageController implements Initializable {
         openHandbook.setImage(handbookButton);
 
         //Setting the background image
-        backgroundImage.setImage(vilages);
+        backgroundImage.setImage(toShow);
 
     }
 
@@ -361,21 +361,8 @@ public class VillageController implements Initializable {
         }
     }
 
-    public void handleEnterEventBottom(MouseEvent event) throws IOException {
-        App.setRoot("hut3");
+    public void handleExitEvent(MouseEvent event) throws IOException {
+        App.setRoot("village");
     }
     
-    public void handleEnterEventMid(MouseEvent event) throws IOException {
-        App.setRoot("hut2");
-    }
-
-    public void handleEnterEventTop(MouseEvent event) throws IOException {
-        App.setRoot("hut1");
-    }
-     public void HandleEnterEventTent(MouseEvent event) throws IOException {
-        App.setRoot("tent");
-    }
-
-    
-
 }
