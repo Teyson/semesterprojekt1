@@ -54,9 +54,7 @@ public class PrimaryController implements Initializable{
     @FXML Button answer1;
     @FXML Button answer2;
     @FXML Button answer3;
-    @FXML Button answer4;
-    @FXML Button answer5;
-
+    
     //Setting the ImageViews
     @FXML ImageView backgroundImage;
     @FXML ImageView NPCImage;
@@ -149,7 +147,6 @@ public class PrimaryController implements Initializable{
         answer1.setVisible(false);
         answer2.setVisible(false);
         answer3.setVisible(false);
-        answer5.setVisible(false);
         treatBtn.setVisible(false);
         giveItemBtn.setVisible(false);
 
@@ -162,9 +159,9 @@ public class PrimaryController implements Initializable{
         dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
                 + "My name is Maria and I will be your guide on your volunteering experience!\n");
         
-        answer4.setVisible(true);
-        answer4.setText("More");
-        answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        answer1.setVisible(true);
+        answer1.setText("More");
+        answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 dialogLabel.setText("Your job is to go to Mozambique and treat patients with some dangerous\n"
@@ -176,7 +173,7 @@ public class PrimaryController implements Initializable{
                         + "your own vaccines are running out.");
 
                 if (openHandbook.isVisible() == false) {
-                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
                             NPCNameLabel.setText(null);
@@ -185,7 +182,7 @@ public class PrimaryController implements Initializable{
 
                             openHandbook.setVisible(true);
 
-                            answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                 @Override
                                 public void handle(MouseEvent event) {
                                     NPCNameLabel.setText("Maria Hoffmann");
@@ -194,7 +191,7 @@ public class PrimaryController implements Initializable{
                                             + "Go through the door to get to the warehouse in Mozambique!\n"
                                             + "I will meet you there!");
 
-                                    answer4.setVisible(false);
+                                    answer1.setVisible(false);
                                 }
 
                             });
@@ -203,7 +200,7 @@ public class PrimaryController implements Initializable{
                 }
 
                 if (openHandbook.isVisible() == true) {
-                    answer4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
                             NPCNameLabel.setText("Maria Hoffmann");
@@ -212,7 +209,7 @@ public class PrimaryController implements Initializable{
                                     + "Go through the door to get to the warehouse in Mozambique!\n"
                                     + "I will meet you there!");
 
-                            answer4.setVisible(false);
+                            answer1.setVisible(false);
                         }
 
                     });
@@ -264,8 +261,6 @@ public class PrimaryController implements Initializable{
            answer1.setVisible(false);
            answer2.setVisible(false);
            answer3.setVisible(false);
-           answer4.setVisible(false);
-           answer5.setVisible(false);
            treatBtn.setVisible(false);
            giveItemBtn.setVisible(false);
            

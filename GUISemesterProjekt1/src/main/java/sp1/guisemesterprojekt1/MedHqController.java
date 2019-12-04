@@ -59,8 +59,6 @@ public class MedHqController implements Initializable {
     @FXML Button answer1;
     @FXML Button answer2;
     @FXML Button answer3;
-    @FXML Button answer4;
-    @FXML Button answer5;
 
     //Setting the ImageViews
     @FXML ImageView backgroundImage;
@@ -229,9 +227,7 @@ public class MedHqController implements Initializable {
     
     public void handleMariaClicked(MouseEvent event){
         dialogPane.setVisible(!dialogPane.isVisible());
-        answer1.setVisible(false);
-        answer3.setVisible(false);
-        answer5.setVisible(false);
+        answer2.setVisible(false);
         treatBtn.setVisible(false);
         giveItemBtn.setVisible(false);
         
@@ -241,8 +237,8 @@ public class MedHqController implements Initializable {
         dialogLabel.setText("Are you ready to leave for Mozambique?\n"+
                             "(Did you finish packing the truck? You cannot return once left.)");
         
-        answer2.setText("Ready");
-        answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+        answer1.setText("Ready");
+        answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
                 try {
@@ -254,8 +250,8 @@ public class MedHqController implements Initializable {
                 
             }
         });
-        answer4.setText("Not yet");
-        answer4.setOnMouseClicked(new EventHandler<MouseEvent>(){
+        answer3.setText("Not yet");
+        answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
                 dialogPane.setVisible(false);

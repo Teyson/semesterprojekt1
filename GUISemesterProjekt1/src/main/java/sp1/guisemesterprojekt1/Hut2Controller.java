@@ -74,10 +74,6 @@ public class Hut2Controller implements Initializable {
     Button answer2;
     @FXML
     Button answer3;
-    @FXML
-    Button answer4;
-    @FXML
-    Button answer5;
 
     //Setting the ImageViews
     @FXML
