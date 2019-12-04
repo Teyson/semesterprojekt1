@@ -207,7 +207,7 @@ public class MedHqController implements Initializable {
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
-        openHandbook.setVisible(false);
+        openHandbook.setVisible(true);
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
@@ -255,6 +255,12 @@ public class MedHqController implements Initializable {
             }
         });
         answer4.setText("Not yet");
+        answer4.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                dialogPane.setVisible(false);
+            }
+        });
     }
 
     public void handleCloseDialog(MouseEvent event) {
@@ -285,10 +291,9 @@ public class MedHqController implements Initializable {
             stage.setScene(new Scene(root, 600, 400));
             stage.setResizable(false);
             stage.show();
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-    
-
 }

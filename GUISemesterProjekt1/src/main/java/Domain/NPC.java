@@ -13,8 +13,8 @@ public class NPC implements INPC{
     private String illnessName;
     private boolean alive;
     private boolean treatAttempted;
-    private int points = 50;
     private Interaction interaction;
+    private int points = 50;
     private int input;
     private Image npcImage;
 
@@ -22,27 +22,8 @@ public class NPC implements INPC{
     /**
      *
      * @param name of the NPC.
-     * @param illnessName that the NPC holds.
-     * @param interaction - root of the interaction the NPC holds.
+     * @param illnessName of the NPC's disease
      */
-    public NPC(String name, String illnessName, Interaction interaction) {
-        this(name, interaction);
-        this.illnessName = illnessName;
-    }
-
-    /**
-     *
-     * @param name of the NPC.
-     * @param interaction - root of interaction the NPC holds.
-     */
-    public NPC(String name, Interaction interaction) {
-        this.name = name;
-        this.illnessName = null;
-        this.alive = true;
-        this.treatAttempted = false;
-        this.interaction = interaction;
-    }
-    
     public NPC(String name, String illnessName) {
         this.name = name;
         this.illnessName = illnessName;
@@ -155,12 +136,15 @@ public class NPC implements INPC{
         //If the current notes option was to "Treat" meaning to treat the patient.
         if ("Treat".equals(interactionPointer.getOption())) {
             treat(interactionPointer, playerInventory);
-        } else if ("Give item".equals(interactionPointer.getOption())) {
+        } 
+        else if ("Give item".equals(interactionPointer.getOption())) {
             give(interactionPointer, playerInventory);
-        }//Checks if you look for more symptoms. this is to subtract time if you do
+        }
+        //Checks if you look for more symptoms. this is to subtract time if you do
         else if ("Look for more symptoms".equals(interactionPointer.getOption())) {
             Time.timeCounter -= Time.SYMPTOMSTIMECOST;
-        } else {
+        } 
+        else {
             System.out.println(interactionPointer.getMessage());
         }
 

@@ -77,27 +77,46 @@ public class DomainAdministration {
     public void makeNPCS() {
         //Creating the NPCs (Female)
         Maria = new NPC("Maria");
-        Henda = new NPC("Henda");
-        Yuran = new NPC("Yuran");
-        Kishor = new NPC("Kishor");
-        Kiri = new NPC("Kiri");
-        Ikbal = new NPC("Ikbal");
-        Jojo = new NPC("Jojo");
-        Gani = new NPC("Gani");
+        Henda = new NPC("Henda", "HIV");
+        Yuran = new NPC("Yuran", "HIV");
+        Kishor = new NPC("Kishor", "HIV");
+        Kiri = new NPC("Kiri", "Tuberculosis");
+        Ikbal = new NPC("Ikbal", "Tuberculosis");
+        Jojo = new NPC("Jojo", "Malaria");
+        Gani = new NPC("Gani", "Malaria");
         
         //Creating the NPCs (Male)
-        Faizal = new NPC("Faizal", empty);
-        Leonildo = new NPC("Leonildo", empty);
-        Nelton = new NPC("Nelton", empty);
-        Momed = new NPC("Momed", empty);
-        Abubakar = new NPC("Abubakar", empty);
-        Brayton = new NPC("Brayton", empty);
-        Kelven = new NPC("Kelven", empty);
-        Riyadh = new NPC("Riyadh", empty);
+        Faizal = new NPC("Faizal", "HIV");
+        Leonildo = new NPC("Leonildo", "HIV");
+        Nelton = new NPC("Nelton", "Tuberculosis");
+        Momed = new NPC("Momed", "Tuberculosis");
+        Abubakar = new NPC("Abubakar", "Tuberculosis");
+        Brayton = new NPC("Brayton", "Malaria");
+        Kelven = new NPC("Kelven", "Malaria");
+        Riyadh = new NPC("Riyadh", "Malaria");
         
-        //Allocating them to a 
+        //Allocating the NPCs to a room
         spawn.addNPC("Maria Hoffmann", Maria);
         medHQ.addNPC("Maria Hoffmann", Maria);
+        
+        hut1.addNPC("Henda", Henda);
+        hut1.addNPC("Kishor", Kishor);
+        hut1.addNPC("Nelton", Nelton);
+        hut1.addNPC("Momed", Momed);
+        hut1.addNPC("Leonildo", Leonildo);
+        
+        hut2.addNPC("Yuran", Yuran);
+        hut2.addNPC("Kishor", Kishor);
+        hut2.addNPC("Riyadh", Riyadh);
+        hut2.addNPC("Gani", Gani);
+        
+        hut3.addNPC("Kiri", Kiri);
+        hut3.addNPC("Ikbal", Ikbal);
+        hut3.addNPC("Jojo", Jojo);
+        hut3.addNPC("Abubakar", Abubakar);
+        hut3.addNPC("Brayton", Brayton);
+        hut3.addNPC("Kelven", Kelven);
+        
     }
     
     //Getters
