@@ -86,6 +86,11 @@ public class NPC implements INPC{
     public boolean isTreatAttempted() {
         return this.treatAttempted;
     }
+    
+    @Override
+    public void kill(){
+        this.setAlive(false);
+    }
 
     public void setTreatAttempted(boolean treatAttempted) {
         this.treatAttempted = treatAttempted;

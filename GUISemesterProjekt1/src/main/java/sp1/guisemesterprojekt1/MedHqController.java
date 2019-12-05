@@ -504,6 +504,7 @@ public class MedHqController implements Initializable {
         }
     }
     
+    @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(0));
@@ -511,6 +512,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked2(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(1));
@@ -518,6 +520,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked3(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(2));
@@ -525,6 +528,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked4(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(3));
@@ -532,6 +536,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked5(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(4));
@@ -539,6 +544,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked6(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(5));
@@ -546,6 +552,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked7(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(6));
@@ -553,6 +560,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     private void handleInventorySlotClicked8(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
@@ -560,6 +568,7 @@ public class MedHqController implements Initializable {
         }
     }
     
+    @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
         trashingActive = !trashingActive;

@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -100,173 +101,16 @@ public class Hut2Controller implements Initializable {
 
     //Setting the Grid ImageViews
     @FXML
-    ImageView field0_0;
-    @FXML
-    ImageView field0_1;
-    @FXML
-    ImageView field0_2;
-    @FXML
-    ImageView field0_3;
-    @FXML
-    ImageView field0_4;
-    @FXML
-    ImageView field0_5;
-    @FXML
-    ImageView field0_6;
-    @FXML
-    ImageView field1_0;
-    @FXML
-    ImageView field1_1;
-    @FXML
     ImageView field1_2;
-    @FXML
-    ImageView field1_3;
-    @FXML
-    ImageView field1_4;
-    @FXML
-    ImageView field1_5;
-    @FXML
-    ImageView field1_6;
-    @FXML
-    ImageView field2_0;
-    @FXML
-    ImageView field2_1;
-    @FXML
-    ImageView field2_2;
-    @FXML
-    ImageView field2_3;
-    @FXML
-    ImageView field2_4;
-    @FXML
-    ImageView field2_5;
-    @FXML
-    ImageView field2_6;
-    @FXML
-    ImageView field3_0;
-    @FXML
-    ImageView field3_1;
-    @FXML
-    ImageView field3_2;
-    @FXML
-    ImageView field3_3;
-    @FXML
-    ImageView field3_4;
-    @FXML
-    ImageView field3_5;
-    @FXML
-    ImageView field3_6;
-    @FXML
-    ImageView field4_0;
-    @FXML
-    ImageView field4_1;
-    @FXML
-    ImageView field4_2;
-    @FXML
-    ImageView field4_3;
-    @FXML
-    ImageView field4_4;
-    @FXML
-    ImageView field4_5;
-    @FXML
-    ImageView field4_6;
-    @FXML
-    ImageView field5_0;
-    @FXML
-    ImageView field5_1;
-    @FXML
-    ImageView field5_2;
-    @FXML
-    ImageView field5_3;
-    @FXML
-    ImageView field5_4;
     @FXML
     ImageView field5_5;
     @FXML
-    ImageView field5_6;
-    @FXML
-    ImageView field6_0;
-    @FXML
     ImageView field6_1;
-    @FXML
-    ImageView field6_2;
-    @FXML
-    ImageView field6_3;
-    @FXML
-    ImageView field6_4;
-    @FXML
-    ImageView field6_5;
-    @FXML
-    ImageView field6_6;
-    @FXML
-    ImageView field7_0;
-    @FXML
-    ImageView field7_1;
-    @FXML
-    ImageView field7_2;
-    @FXML
-    ImageView field7_3;
-    @FXML
-    ImageView field7_4;
-    @FXML
-    ImageView field7_5;
-    @FXML
-    ImageView field7_6;
-    @FXML
-    ImageView field8_0;
-    @FXML
-    ImageView field8_1;
-    @FXML
-    ImageView field8_2;
     @FXML
     ImageView field8_3;
     @FXML
-    ImageView field8_4;
-    @FXML
-    ImageView field8_5;
-    @FXML
-    ImageView field8_6;
-    @FXML
-    ImageView field9_0;
-    @FXML
-    ImageView field9_1;
-    @FXML
-    ImageView field9_2;
-    @FXML
-    ImageView field9_3;
-    @FXML
-    ImageView field9_4;
-    @FXML
-    ImageView field9_5;
-    @FXML
-    ImageView field9_6;
-    @FXML
-    ImageView field10_0;
-    @FXML
-    ImageView field10_1;
-    @FXML
-    ImageView field10_2;
-    @FXML
-    ImageView field10_3;
-    @FXML
     ImageView field10_4;
-    @FXML
-    ImageView field10_5;
-    @FXML
-    ImageView field10_6;
-    @FXML
-    ImageView field11_0;
-    @FXML
-    ImageView field11_1;
-    @FXML
-    ImageView field11_2;
-    @FXML
-    ImageView field11_3;
-    @FXML
-    ImageView field11_4;
-    @FXML
-    ImageView field11_5;
-    @FXML
-    ImageView field11_6;
+
 
     //Setting the Inventory images
     @FXML
@@ -301,9 +145,28 @@ public class Hut2Controller implements Initializable {
     Image handbookButton = new Image(handbookPath);
     
     //NPCs
+    String yuranPath = "npc/Lady1 Mini.png";
+    Image yuranMini = new Image(yuranPath);
+    String yuranPathConvo = "npc/Lady 1 Mozambique.png";
+    Image yuranConvo = new Image(yuranPathConvo);
     INPC Yuran;
+    
+    String riyadhPath = "npc/Man1 Mini.png";
+    Image riyadhMini = new Image(riyadhPath);
+    String riyadhPathConvo = "npc/Man 1 Mozambique.png";
+    Image riyadhConvo = new Image(riyadhPathConvo);
     INPC Riyadh;
+    
+    String ganiPath = "npc/Lady2 Mini.png";
+    Image ganiMini = new Image(ganiPath);
+    String ganiPathConvo = "npc/Lady 2 Mozambique.png";
+    Image ganiConvo = new Image(ganiPathConvo);
     INPC Gani;
+    
+    String abubakarPath = "npc/Man3 Mini.png";
+    Image abubakarMini = new Image(abubakarPath);
+    String abubakarPathConvo = "npc/Man 3 Mozambique.png";
+    Image abubakarConvo = new Image(abubakarPathConvo);
     INPC Abubakar;
 
     //Backgrounds
@@ -316,23 +179,33 @@ public class Hut2Controller implements Initializable {
     //Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
+    
     String kanyleDirty = "img/Dirty Kanyle.png";
     Image imgKanyleDirty = new Image(kanyleDirty);
+    
     String condom = "img/Condom.png";
     Image imgCondom = new Image(condom);
+    
     String hivMeds = "img/HIV Medicine.png";
     Image imgHivMeds = new Image(hivMeds);
+    
     String malariaMeds = "img/Malaria Medicine.png";
     Image imgMalariaMeds = new Image(malariaMeds);
+    
     String tbMeds = "img/TB Medicine.png";
     Image imgTbMeds = new Image(tbMeds);
+    
     String pill = "img/pill.png";
     Image imgPill = new Image(pill);
+    
     String mask = "img/mask.png";
     Image imgMask = new Image(mask);
+    
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
+    
     HashMap<String, Image> itemImageMap;
+    
     HashMap<String, String> itemImageMapReverse;
 
     IInventory playerInventory;
@@ -355,7 +228,25 @@ public class Hut2Controller implements Initializable {
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
-
+        
+        //Setting the dialog buttons' text
+        answer1.setText("More Symptoms");
+        answer2.setText("Patient Healthy");
+        answer3.setText("Leave");
+        
+        //Setting the NPCs into the room
+        Yuran = da.getRoom().getNPC("Yuran");
+        field8_3.setImage(yuranMini);
+        
+        Riyadh = da.getRoom().getNPC("Riyadh");
+        field1_2.setImage(riyadhMini);
+        
+        Gani = da.getRoom().getNPC("Gani");
+        field10_4.setImage(ganiMini);
+        
+        Abubakar = da.getRoom().getNPC("Abubakar");
+        field5_5.setImage(abubakarMini);
+        
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
 
@@ -368,12 +259,6 @@ public class Hut2Controller implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
-        
-        //Setting the NPCs
-        Yuran = da.getRoom().getNPC("Yuran");
-        Riyadh = da.getRoom().getNPC("Riyadh");
-        Gani = da.getRoom().getNPC("Gani");
-        Abubakar = da.getRoom().getNPC("Abubakar");
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();
@@ -426,7 +311,83 @@ public class Hut2Controller implements Initializable {
     
     //HANDLERS FOR THE NPCs
     public void handleYuranClicked(MouseEvent event){
+        INPC talkNPC = da.getRoom().getNPC("Yuran");
         
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(yuranConvo);
+        NPCNameLabel.setText(Yuran.getName());
+        
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+        
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field8_3.setVisible(false);
+                        }
+                    });
+                }
+            });
+            
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+        }
     }
     
     public void handleRiyadhClicked(MouseEvent event){

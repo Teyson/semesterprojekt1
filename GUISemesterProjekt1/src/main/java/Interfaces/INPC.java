@@ -7,4 +7,5 @@ public interface INPC {
     public int getPoints();
     public boolean isTreatAttempted();
     public IInteraction getInteraction();
+    public void kill();
 }
