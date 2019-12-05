@@ -151,7 +151,7 @@ public class DomainAdministration {
         playerInventory = new Inventory(7);
         playerInventory.addItem(condom.getName(), condom);
         playerInventory.addItem("HIV Medication", hivMed);
-        truckInventory = new Inventory(30); //size can change
+        truckInventory = new Inventory(40); //size can change
     }
     
     //Getters

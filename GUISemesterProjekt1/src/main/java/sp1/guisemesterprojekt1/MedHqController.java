@@ -43,6 +43,8 @@ public class MedHqController implements Initializable {
     //Setting the Time Indicator
     @FXML
     ProgressBar timeProgressBar;
+    @FXML
+    ProgressBar truckLoadBar;
 
     //Setting the GridPane
     @FXML
@@ -446,6 +448,8 @@ public class MedHqController implements Initializable {
         ITime time = da.getTime();
         percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);
+        //init truckload bar to 0
+        truckLoadBar.setProgress(0.0);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
@@ -589,7 +593,17 @@ public class MedHqController implements Initializable {
         //Inserts items
         for (int j = 0; j < truckInventory.getKeys().size(); j++) {
             truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
+            truckInventoryImageList.get(j).setVisible(true);
+        }
+    }
+    public void updateTruckLoadBar(){
+        truckLoadBar.setProgress(truckInventory.calcPctUsed());
+        System.out.println(truckInventory.calcPctUsed());
+        if(truckInventory.calcPctUsed() >= 0.50 && truckInventory.calcPctUsed() < 1.0){
+            truckLoadBar.setStyle("-fx-accent: yellow;");
+        }
+        else if(truckInventory.calcPctUsed()==1.0){
+            truckLoadBar.setStyle("-fx-accent: red;");
         }
     }
 
@@ -747,18 +761,21 @@ public class MedHqController implements Initializable {
     public void handleMasksClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mask");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
-
+        updateTruckLoadBar();
+        updateTruckInventory();
     }
 
     public void handleCondomsClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Condom");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
     }
 
     public void handleMosquitoSprayClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mosquito Spray");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
     }
 
@@ -767,24 +784,29 @@ public class MedHqController implements Initializable {
         int tempIndex = roomInventory.getKeys().indexOf("Clean Syringe");
         System.out.println(tempIndex);
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
     }
 
     public void handleHIVClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("HIV Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
     }
 
     public void handleMalariaClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Malaria Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
+        
     }
 
     public void handleTBClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Tuberculosis Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
+        updateTruckLoadBar();
         updateTruckInventory();
 
         /* just for debugging
