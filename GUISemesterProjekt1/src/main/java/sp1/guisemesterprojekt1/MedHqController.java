@@ -72,17 +72,6 @@ public class MedHqController implements Initializable {
     Button treatBtn;
     @FXML
     Button giveItemBtn;
-    
-    @FXML
-    Button answer1;
-    @FXML
-    Button answer2;
-    @FXML
-    Button answer3;
-    @FXML
-    Button answer4;
-    @FXML
-    Button answer5;
 
     @FXML Button answer1;
     @FXML Button answer2;

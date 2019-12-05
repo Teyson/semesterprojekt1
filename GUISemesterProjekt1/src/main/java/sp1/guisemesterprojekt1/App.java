@@ -16,7 +16,6 @@ import Domain.DomainAdministration;
 public class App extends Application {
     private static DomainAdministration da;
     private static Scene scene;
-    private static DomainAdministration da;
 
     @Override
     public void init(){
