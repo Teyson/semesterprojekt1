@@ -383,7 +383,7 @@ public class Hut1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         da = App.getDomainAdministration();
-        ITime time = da.getTime();
+        ITime time = (ITime)da.getTime();
         timeProgressBar.setProgress(time.getPercentTime());
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);

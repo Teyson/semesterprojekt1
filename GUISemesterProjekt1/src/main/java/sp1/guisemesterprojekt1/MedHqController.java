@@ -369,8 +369,12 @@ public class MedHqController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         da = App.getDomainAdministration();
-        ITime time = da.getTime();
+        
+        //Time things
+        ITime time = (ITime)da.getTime();
         timeProgressBar.setProgress(time.getPercentTime());
+        
+        //Pane visibility
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
@@ -448,20 +452,10 @@ public class MedHqController implements Initializable {
 
     }
 
-    public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
-
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
-    }
-
+    //HANDLER FOR THE NPCs
     public void handleMariaClicked(MouseEvent event) {
+        INPC talkNPC = da.getRoom().getNPC("Maria Hoffmann");
+        
         dialogPane.setVisible(!dialogPane.isVisible());
         answer2.setVisible(false);
         treatBtn.setVisible(false);
@@ -494,7 +488,90 @@ public class MedHqController implements Initializable {
             }
         });
     }
+    
+    
+    //HANDLER FOR THE INVENTORY
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
 
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
+        }
+    }
+    
+    private void handleInventorySlotClicked1(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(0));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked2(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(1));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked3(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(2));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked4(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(3));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked5(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(4));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked6(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(5));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked7(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(6));
+            updateInventory();
+        }
+    }
+
+    private void handleInventorySlotClicked8(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(7));
+            updateInventory();
+        }
+    }
+    
+    private void handleTrash(MouseEvent event) {
+        //Change trashing state
+        trashingActive = !trashingActive;
+
+        if (trashingActive) {
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        } else {
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+        }
+    }
+
+    //HANDLER FOR THE DIALOGS
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
@@ -514,6 +591,7 @@ public class MedHqController implements Initializable {
         helpPopup.setVisible(false);
     }
 
+    //HANDLER FOR THE HANDBOOK
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -528,6 +606,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    //HANDLER FOR THE TRUCK
     public void handleTruckClicked(MouseEvent event) {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
@@ -536,82 +615,7 @@ public class MedHqController implements Initializable {
         truckInventoryPane.setVisible(false);
     }
 
-    @FXML
-    private void handleTrash(MouseEvent event) {
-        //Change trashing state
-        trashingActive = !trashingActive;
-
-        if (trashingActive) {
-            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        } else {
-            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked1(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(0));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked2(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(1));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked3(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(2));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked4(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(3));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked5(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(4));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked6(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(5));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked7(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(6));
-            updateInventory();
-        }
-    }
-
-    @FXML
-    private void handleInventorySlotClicked8(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(7));
-            updateInventory();
-        }
-    }
-
+    //HANDLERS FOR THE TABLES CLICKED
     public void handleMasksClicked(MouseEvent event) {
 
     }

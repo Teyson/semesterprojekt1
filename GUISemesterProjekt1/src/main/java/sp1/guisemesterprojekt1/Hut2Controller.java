@@ -350,7 +350,7 @@ public class Hut2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         da = App.getDomainAdministration();
-        ITime time = da.getTime();
+        ITime time = (ITime)da.getTime();
         timeProgressBar.setProgress(time.getPercentTime());
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
@@ -424,6 +424,24 @@ public class Hut2Controller implements Initializable {
         updateInventory();
     }
     
+    //HANDLERS FOR THE NPCs
+    public void handleYuranClicked(MouseEvent event){
+        
+    }
+    
+    public void handleRiyadhClicked(MouseEvent event){
+    
+    }
+    
+    public void handleGaniClicked(MouseEvent event){
+    
+    }
+    
+    public void handleAbubakarClicked(MouseEvent event){
+    
+    }
+    
+    //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -436,7 +454,8 @@ public class Hut2Controller implements Initializable {
             inventoryImageList.get(j).setVisible(true);
         }
     }
-
+    
+    //HANDLERS FOR THE POPUPS
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
@@ -456,6 +475,7 @@ public class Hut2Controller implements Initializable {
         helpPopup.setVisible(false);
     }
 
+    //HANDLER FOR THE HANDBOOK
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -469,7 +489,8 @@ public class Hut2Controller implements Initializable {
             ex.printStackTrace();
         }
     }
-
+    
+    //HANDLER FOR THE EXIT
     public void handleExitEvent(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
