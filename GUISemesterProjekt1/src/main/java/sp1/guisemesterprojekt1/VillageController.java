@@ -362,7 +362,6 @@ public class VillageController implements Initializable {
         //Setting the background image
         backgroundImage.setImage(vilages);
         
-        
         //Get roominventory
         roomInventory = da.getRoom().getItems();
 

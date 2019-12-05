@@ -7,6 +7,7 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import Interfaces.ITime;
 import Interfaces.IUtilityItem;
 import java.io.IOException;
@@ -307,34 +308,46 @@ public class MedHqController implements Initializable {
     String mariaPath = "npc/Maria Mini.png";
     Image mariaMini = new Image(mariaPath);
     String mariaPathConvo = "convosprite/Maria.png";
-    Image mariaConvo = new Image(mariaPathConvo);
+    Image mariaConvo = new Image(mariaPathConvo);   
+    INPC Maria;
 
     //Backgrounds
     String nextRoom = "backgrounds/HQ Medicine Room.png";
     Image medHQ = new Image(nextRoom);
+    
     
     private double percentageTimeBar;
 
     //Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
+    
     String kanyleDirty = "img/Dirty Kanyle.png";
     Image imgKanyleDirty = new Image(kanyleDirty);
+    
     String condom = "img/Condom.png";
     Image imgCondom = new Image(condom);
+    
     String hivMeds = "img/HIV Medicine.png";
     Image imgHivMeds = new Image(hivMeds);
+    
     String malariaMeds = "img/Malaria Medicine.png";
     Image imgMalariaMeds = new Image(malariaMeds);
+    
     String tbMeds = "img/TB Medicine.png";
     Image imgTbMeds = new Image(tbMeds);
+    
     String pill = "img/pill.png";
     Image imgPill = new Image(pill);
+    
     String mask = "img/mask.png";
     Image imgMask = new Image(mask);
+    
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
+    
     HashMap<String, Image> itemImageMap;
+    
     HashMap<String, String> itemImageMapReverse;
 
     DomainAdministration da;
@@ -361,6 +374,9 @@ public class MedHqController implements Initializable {
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
         truckInventoryPane.setVisible(false);
+        
+        //Setting the NPCs
+        Maria = da.getRoom().getNPC("Maria Hoffmann");
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
@@ -449,7 +465,7 @@ public class MedHqController implements Initializable {
         giveItemBtn.setVisible(false);
         
         
-        NPCNameLabel.setText("Maria Hoffmann");
+        NPCNameLabel.setText(Maria.getName());
         NPCImage.setImage(mariaConvo);
         
         dialogLabel.setText("Are you ready to leave for Mozambique?\n"

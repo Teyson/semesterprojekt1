@@ -7,6 +7,7 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -358,6 +359,13 @@ public class Hut3Controller implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
+        
+        //Setting the NPCs
+        INPC Kiri = da.getRoom().getNPC("Kiri");
+        INPC Ikbal = da.getRoom().getNPC("Ikbal");
+        INPC Jojo = da.getRoom().getNPC("Jojo");
+        INPC Brayton = da.getRoom().getNPC("Brayton");
+        INPC Kelven = da.getRoom().getNPC("Kelven");
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();

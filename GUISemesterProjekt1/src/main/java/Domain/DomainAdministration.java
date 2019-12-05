@@ -91,7 +91,8 @@ public class DomainAdministration {
     
     public void makeNPCS() {
         //Creating the NPCs (Female)
-        Maria = new NPC("Maria");
+        Maria = new NPC("Maria Hoffmann");
+        
         Henda = new NPC("Henda", "HIV");
         Yuran = new NPC("Yuran", "HIV");
         Kishor = new NPC("Kishor", "HIV");
@@ -112,6 +113,7 @@ public class DomainAdministration {
         
         //Allocating the NPCs to a room
         spawn.addNPC("Maria Hoffmann", Maria);
+        
         medHQ.addNPC("Maria Hoffmann", Maria);
         
         hut1.addNPC("Henda", Henda);
@@ -121,14 +123,13 @@ public class DomainAdministration {
         hut1.addNPC("Leonildo", Leonildo);
         
         hut2.addNPC("Yuran", Yuran);
-        hut2.addNPC("Kishor", Kishor);
         hut2.addNPC("Riyadh", Riyadh);
         hut2.addNPC("Gani", Gani);
+        hut2.addNPC("Abubakar", Abubakar);
         
         hut3.addNPC("Kiri", Kiri);
         hut3.addNPC("Ikbal", Ikbal);
         hut3.addNPC("Jojo", Jojo);
-        hut3.addNPC("Abubakar", Abubakar);
         hut3.addNPC("Brayton", Brayton);
         hut3.addNPC("Kelven", Kelven);
         

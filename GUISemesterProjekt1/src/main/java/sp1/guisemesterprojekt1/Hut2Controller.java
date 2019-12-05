@@ -7,6 +7,7 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -297,6 +298,12 @@ public class Hut2Controller implements Initializable {
 
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
+    
+    //NPCs
+    INPC Yuran;
+    INPC Riyadh;
+    INPC Gani;
+    INPC Abubakar;
 
     //Backgrounds
     String hut2 = "backgrounds/Hut 2.jpg";
@@ -360,6 +367,12 @@ public class Hut2Controller implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
+        
+        //Setting the NPCs
+        Yuran = da.getRoom().getNPC("Yuran");
+        Riyadh = da.getRoom().getNPC("Riyadh");
+        Gani = da.getRoom().getNPC("Gani");
+        Abubakar = da.getRoom().getNPC("Abubakar");
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();

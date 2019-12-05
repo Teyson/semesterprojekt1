@@ -7,6 +7,7 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -297,6 +298,37 @@ public class Hut1Controller implements Initializable {
 
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
+    
+    //NPCs
+    String hendaPath = "npc/Lady1 Mini.png";
+    Image hendaMini = new Image(hendaPath);
+    String hendaPathConvo = "npc/Lady 1 Mozambique.png";
+    Image hendaConvo = new Image(hendaPathConvo);
+    INPC Henda;
+    
+    String kishorPath = "npc/Lady2 Mini.png";
+    Image kishorMini = new Image(kishorPath);
+    String kishorPathConvo = "npc/Lady 2 Mozambique.png";
+    Image kishorConvo = new Image(kishorPathConvo);
+    INPC Kishor;
+    
+    String neltonPath = "npc/Man1 Mini.png";
+    Image neltonMini = new Image(neltonPath);
+    String neltonPathConvo = "npc/Man 1 Mozambique.png";
+    Image neltonConvo = new Image(neltonPathConvo);
+    INPC Nelton;
+    
+    String momedPath = "npc/Man2 Mini.png";
+    Image momedMini = new Image(momedPath);
+    String momedPathConvo = "npc/Man 2 Mozambique.png";
+    Image momedConvo = new Image(momedPathConvo);
+    INPC Momed;
+    
+    String leonildoPath = "npc/Man3 Mini.png";
+    Image leonildoMini = new Image(leonildoPath);
+    String leonildoPathConvo = "npc/Man 3 Mozambique.png";
+    Image leonildoConvo = new Image(leonildoPathConvo);
+    INPC Leonildo;
 
     //Backgrounds
     String hut1 = "backgrounds/Hut 1.jpg";
@@ -308,23 +340,33 @@ public class Hut1Controller implements Initializable {
     //Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
+    
     String kanyleDirty = "img/Dirty Kanyle.png";
     Image imgKanyleDirty = new Image(kanyleDirty);
+    
     String condom = "img/Condom.png";
     Image imgCondom = new Image(condom);
+    
     String hivMeds = "img/HIV Medicine.png";
     Image imgHivMeds = new Image(hivMeds);
+    
     String malariaMeds = "img/Malaria Medicine.png";
     Image imgMalariaMeds = new Image(malariaMeds);
+    
     String tbMeds = "img/TB Medicine.png";
     Image imgTbMeds = new Image(tbMeds);
+    
     String pill = "img/pill.png";
     Image imgPill = new Image(pill);
+    
     String mask = "img/mask.png";
     Image imgMask = new Image(mask);
+    
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
+    
     HashMap<String, Image> itemImageMap;
+    
     HashMap<String, String> itemImageMapReverse;
 
     IInventory playerInventory;
@@ -360,6 +402,13 @@ public class Hut1Controller implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
+        
+        //Setting the NPCs
+        Henda = da.getRoom().getNPC("Henda");
+        Kishor = da.getRoom().getNPC("Kishor");
+        Nelton = da.getRoom().getNPC("Nelton");
+        Momed = da.getRoom().getNPC("Momed");
+        Leonildo = da.getRoom().getNPC("Leonildo");
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();

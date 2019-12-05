@@ -3,6 +3,7 @@ package sp1.guisemesterprojekt1;
 import Domain.DomainAdministration;
 import Interfaces.ITime;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -117,27 +118,38 @@ public class Spawn implements Initializable{
     Image mariaMini = new Image(mariaImage);
     String mariaConvo = "convosprite/Maria.png";
     Image mariaTalk = new Image(mariaConvo);
+    INPC Maria;
 
     //Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
+    
     String kanyleDirty = "img/Dirty Kanyle.png";
     Image imgKanyleDirty = new Image(kanyleDirty);
+    
     String condom = "img/Condom.png";
     Image imgCondom = new Image(condom);
+    
     String hivMeds = "img/HIV Medicine.png";
     Image imgHivMeds = new Image(hivMeds);
+    
     String malariaMeds = "img/Malaria Medicine.png";
     Image imgMalariaMeds = new Image(malariaMeds);
+    
     String tbMeds = "img/TB Medicine.png";
     Image imgTbMeds = new Image(tbMeds);
+    
     String pill = "img/pill.png";
     Image imgPill = new Image(pill);
+    
     String mask = "img/mask.png";
     Image imgMask = new Image(mask);
+    
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
+    
     HashMap<String, Image> itemImageMap;
+    
     HashMap<String, String> itemImageMapReverse;
 
     DomainAdministration da;
@@ -169,9 +181,9 @@ public class Spawn implements Initializable{
         helpPopup.setVisible(false);
         openHandbook.setVisible(false);
         
+        //Setting the NPCs
+        Maria = da.getRoom().getNPC("Maria Hoffmann");
         
-        //Setting the room
-
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
 
@@ -254,8 +266,9 @@ public class Spawn implements Initializable{
     
     @FXML
     public void handleMariaClicked(MouseEvent event) {
+        INPC talkNPC = da.getRoom().getNPC("Maria Hoffmann");
+        
         dialogPane.setVisible(!dialogPane.isVisible());
-        answer1.setVisible(false);
         answer2.setVisible(false);
         answer3.setVisible(false);
         treatBtn.setVisible(false);
@@ -265,12 +278,11 @@ public class Spawn implements Initializable{
         NPCImage.setImage(mariaTalk);
 
         //Renaming the Dialog window for Maria
-        NPCNameLabel.setText("Maria Hoffmann");
+        NPCNameLabel.setText(Maria.getName());
 
         dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
                 + "My name is Maria and I will be your guide on your volunteering experience!\n");
         
-        answer1.setVisible(true);
         answer1.setText("More");
         answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -283,7 +295,6 @@ public class Spawn implements Initializable{
                         + "you do not have unlimited space and time! Cure as many as you can before\n"
                         + "your own vaccines are running out.");
 
-                if (openHandbook.isVisible() == false) {
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
@@ -296,7 +307,7 @@ public class Spawn implements Initializable{
                             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                 @Override
                                 public void handle(MouseEvent event) {
-                                    NPCNameLabel.setText("Maria Hoffmann");
+                                    NPCNameLabel.setText(Maria.getName());
                                     NPCImage.setImage(mariaTalk);
                                     dialogLabel.setText("I think you are ready now!\n"
                                             + "Go through the door to get to the warehouse in Mozambique!\n"
@@ -308,24 +319,9 @@ public class Spawn implements Initializable{
                             });
                         }
                     });
-                }
-
-                if (openHandbook.isVisible() == true) {
-                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            NPCNameLabel.setText("Maria Hoffmann");
-                            NPCImage.setImage(mariaTalk);
-                            dialogLabel.setText("I think you are ready now!\n"
-                                    + "Go through the door to get to the warehouse in Mozambique!\n"
-                                    + "I will meet you there!");
-
-                            answer1.setVisible(false);
-                        }
-                    });
-                }
             }
         });
+        field7_3.setDisable(!field7_3.isDisable());
     }
 
     @FXML
@@ -379,7 +375,7 @@ public class Spawn implements Initializable{
            giveItemBtn.setVisible(false);
            
            NPCImage.setImage(mariaTalk);
-           NPCNameLabel.setText("Maria Hoffmann");
+           NPCNameLabel.setText(Maria.getName());
 
            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
        }
