@@ -36,7 +36,6 @@ import javafx.stage.Stage;
  */
 public class Hut1Controller implements Initializable {
 
-    
     DomainAdministration da;
     //Setting the Time Indicator
     @FXML
@@ -303,7 +302,6 @@ public class Hut1Controller implements Initializable {
     String hut1 = "backgrounds/Hut 1.jpg";
     Image toShow = new Image(hut1);
 
-
     private double percentageTimeBar;
 
     //Items
@@ -331,9 +329,9 @@ public class Hut1Controller implements Initializable {
     IInventory playerInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
-    
+
     boolean trashingActive = false;
-    
+
     /**
      * Initializes the controller class.
      *
@@ -342,15 +340,9 @@ public class Hut1Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-/*<<<<<<< Updated upstream
         da = App.getDomainAdministration();
-        percentageTimeBar = 1.0;
-        timeProgressBar.setProgress(percentageTimeBar);
-=======*/
-        da =  App.getDomainAdministration();
         ITime time = da.getTime();
-        percentageTimeBar = time.getPercentTime();
-//>>>>>>> Stashed changes
+        timeProgressBar.setProgress(time.getPercentTime());
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
@@ -367,7 +359,7 @@ public class Hut1Controller implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
-        
+
         //Get roominventory
         roomInventory = da.getRoom().getItems();
 
@@ -375,54 +367,56 @@ public class Hut1Controller implements Initializable {
         playerInventory = da.getInventory();
 
         //Fill items into map.
-        itemImageMap = new HashMap<>()
-        {{
-            put("Clean Syringe", imgKanyleClean);
-            put("Dirty Syringe", imgKanyleDirty);
-            put("Condom", imgCondom);
-            put("HIV Medication", imgHivMeds);
-            put("Malaria Medication", imgMalariaMeds);
-            put("Tuberculosis Medication", imgTbMeds);
-            put("Pill", imgPill);
-            put("Mask", imgMask);
-            put("Mosquito Spray", imgSpray);
-        }};
+        itemImageMap = new HashMap<>() {
+            {
+                put("Clean Syringe", imgKanyleClean);
+                put("Dirty Syringe", imgKanyleDirty);
+                put("Condom", imgCondom);
+                put("HIV Medication", imgHivMeds);
+                put("Malaria Medication", imgMalariaMeds);
+                put("Tuberculosis Medication", imgTbMeds);
+                put("Pill", imgPill);
+                put("Mask", imgMask);
+                put("Mosquito Spray", imgSpray);
+            }
+        };
 
-        itemImageMapReverse = new HashMap<>()
-        {{
-            put("Clean Kanyle.png", "Clean Syringe");
-            put("Dirty Kanyle.png" ,"Dirty Syringe");
-            put("Condom.png" ,"Condom");
-            put("HIV Medicine.png" ,"HIV Medication");
-            put("Malaria Medicine.png" ,"Malaria Medication");
-            put("TB Medicine.png" ,"Tuberculosis Medication");
-            put("pill.png" ,"Pill");
-            put("mask.png" ,"Mask");
-            put("Mosquito Spray.png" ,"Mosquito Spray");
-        }};
+        itemImageMapReverse = new HashMap<>() {
+            {
+                put("Clean Kanyle.png", "Clean Syringe");
+                put("Dirty Kanyle.png", "Dirty Syringe");
+                put("Condom.png", "Condom");
+                put("HIV Medicine.png", "HIV Medication");
+                put("Malaria Medicine.png", "Malaria Medication");
+                put("TB Medicine.png", "Tuberculosis Medication");
+                put("pill.png", "Pill");
+                put("mask.png", "Mask");
+                put("Mosquito Spray.png", "Mosquito Spray");
+            }
+        };
 
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
-            add(inv1);
-            add(inv2);
-            add(inv3);
-            add(inv4);
-            add(inv5);
-            add(inv6);
-            add(inv7);
-            add(inv8);
+                add(inv1);
+                add(inv2);
+                add(inv3);
+                add(inv4);
+                add(inv5);
+                add(inv6);
+                add(inv7);
+                add(inv8);
             }
         };
         updateInventory();
     }
-    
+
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
             inventoryImageList.get(i).setVisible(false);
         }
-        
+
         //Inserts items
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
@@ -464,7 +458,7 @@ public class Hut1Controller implements Initializable {
     }
 
     public void handleExitEvent(MouseEvent event) throws IOException {
-         da.setRoom(da.getRoomMap().get("village"));
+        da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
 
@@ -472,20 +466,20 @@ public class Hut1Controller implements Initializable {
     private void handleTrash(MouseEvent event) {
         //Change trashing state
         trashingActive = !trashingActive;
-        
-        if (trashingActive)
-            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        else
-            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
-    }
 
+        if (trashingActive) {
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        } else {
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+        }
+    }
 
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(0));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -493,7 +487,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(1));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -501,7 +495,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(2));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -509,7 +503,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(3));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -517,7 +511,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(4));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -525,7 +519,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(5));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -533,7 +527,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(6));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -541,8 +535,7 @@ public class Hut1Controller implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
-        } 
+        }
     }
-    
-    
+
 }

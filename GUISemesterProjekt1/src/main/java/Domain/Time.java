@@ -5,7 +5,7 @@ import Interfaces.ITime;
 public class Time implements ITime {
 
     public static int startTime = 50;
-    public static int timeCounter = startTime;
+    public static int timeCounter = 50;
 
     //Constants
     public static final int CHANGEROOMTIMECOST = 1;
@@ -28,7 +28,7 @@ public class Time implements ITime {
 
     @Override
     public double getPercentTime() {
-        double currentTimePct = this.timeCounter / this.startTime;
+        double currentTimePct = (double)this.timeCounter / (double)this.startTime;
         return currentTimePct;
     }
 

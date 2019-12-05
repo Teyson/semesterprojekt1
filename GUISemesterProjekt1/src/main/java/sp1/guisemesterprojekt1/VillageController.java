@@ -345,7 +345,7 @@ public class VillageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         da =  App.getDomainAdministration();
         ITime time = da.getTime();
-        percentageTimeBar = time.getPercentTime();
+        timeProgressBar.setProgress(time.getPercentTime());
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
