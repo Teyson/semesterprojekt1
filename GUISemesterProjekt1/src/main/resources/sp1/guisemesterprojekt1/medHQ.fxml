@@ -197,7 +197,7 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <GridPane fx:id="truckInventory" gridLinesVisible="true" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
+            <GridPane fx:id="truckInventoryGrid" gridLinesVisible="true" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

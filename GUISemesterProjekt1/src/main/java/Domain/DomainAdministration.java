@@ -16,6 +16,8 @@ public class DomainAdministration {
     UtilityItem faceMask;
     MedicineItem malMed;
     UtilityItem mosquitoSpray;
+    UtilityItem cleanSyringe;
+    UtilityItem dirtySyringe;
     
     //Setting the rooms
     Room currentRoom;
@@ -55,19 +57,30 @@ public class DomainAdministration {
     //Initializers
     public void makeItems() {
         //Creating the HIV Items
-        hivMed = new MedicineItem("HIV Medicine", "Appears to be a pinkish liquid", 1, "HIV");
+        hivMed = new MedicineItem("HIV Medication", "Appears to be a pinkish liquid", 1, "HIV");
         condom = new UtilityItem("Condom", "Condoms prevent the spread of sexually transmitted diseases", 1, 5, "HIV");
         
         //Creating the Malaria Items
-        malMed = new MedicineItem("Malaria Medicine", "Appears to be a greenish liquid", 1, "Malaria");
+        malMed = new MedicineItem("Malaria Medication", "Appears to be a greenish liquid", 1, "Malaria");
         mosquitoSpray = new UtilityItem("Mosquito Spray", "Spray that keeps the mosquitos away during the night", 1, 5, "Malaria");
         
         //Creating the TB Items
-        tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
-        faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
+        tbMed = new MedicineItem("Tuberculosis Medication", "Appears to be a blueish liquid", 1, "Tuberculosis");
+        faceMask = new UtilityItem("Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
 
-        spawn.addItem(condom.getName(), condom);
-        
+        //Other utility
+        cleanSyringe = new UtilityItem("Clean Syringe", "This Syringe is clean", 1, 0);
+        dirtySyringe = new UtilityItem("Dirty Syringe", "This Syringe is used", 1, 0);
+                
+                
+        medHQ.addItem(hivMed.getName(), hivMed);
+        medHQ.addItem(condom.getName(), condom);
+        medHQ.addItem(malMed.getName(), malMed);
+        medHQ.addItem(tbMed.getName(), tbMed);
+        medHQ.addItem(faceMask.getName(), faceMask);
+        medHQ.addItem(mosquitoSpray.getName(), mosquitoSpray);
+        medHQ.addItem(cleanSyringe.getName(), cleanSyringe);
+        medHQ.addItem(dirtySyringe.getName(), dirtySyringe);
     }
     
     public void makeRooms() {

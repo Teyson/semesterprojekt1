@@ -6,7 +6,9 @@
 package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
+import Domain.Item;
 import Interfaces.IInventory;
+import Interfaces.IItem;
 import Interfaces.ITime;
 import Interfaces.IUtilityItem;
 import java.io.IOException;
@@ -49,7 +51,7 @@ public class MedHqController implements Initializable {
     GridPane gameGrid;
     @FXML
     GridPane dialogOptionsGrid;
-    @FXML GridPane truckInventory;
+    @FXML GridPane truckInventoryGrid;
 
     //Setting the AnchorPane
     @FXML
@@ -339,6 +341,7 @@ public class MedHqController implements Initializable {
 
     DomainAdministration da;
     IInventory playerInventory;
+    IInventory truckInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
     
@@ -384,6 +387,9 @@ public class MedHqController implements Initializable {
 
         //Get playerinventory
         playerInventory = da.getInventory();
+        
+        // get truckInventory
+        truckInventory = da.getTruckInventory();
 
         //Fill items into map.
         itemImageMap = new HashMap<>()
@@ -596,24 +602,40 @@ public class MedHqController implements Initializable {
     }
     
     public void handleMasksClicked(MouseEvent event){
+        int tempIndex = roomInventory.getKeys().indexOf("Mask");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
                 
     }
     public void handleCondomsClicked(MouseEvent event){
-        
+        int tempIndex = roomInventory.getKeys().indexOf("Condom");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
     }
     public void handleMosquitoSprayClicked(MouseEvent event){
-        
+        int tempIndex = roomInventory.getKeys().indexOf("Mosquito Spray");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
     }
     public void handleSyringesClicked(MouseEvent event){
-        
+        System.out.println(da.getRoom().getItems().getKeys().size());
+        int tempIndex = roomInventory.getKeys().indexOf("Clean Syringe");
+        System.out.println(tempIndex);
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
     }
     public void handleHIVClicked(MouseEvent event){
-        
+        int tempIndex = roomInventory.getKeys().indexOf("HIV Medication");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
     }
     public void handleMalariaClicked(MouseEvent event){
-        
+        int tempIndex = roomInventory.getKeys().indexOf("Malaria Medication");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
     }
     public void handleTBClicked(MouseEvent event){
+        int tempIndex = roomInventory.getKeys().indexOf("Tuberculosis Medication");
+        truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
         
+        for (String string: truckInventory.getKeys()) {
+            System.out.println(string);
+            
+        }
+
     }
 }

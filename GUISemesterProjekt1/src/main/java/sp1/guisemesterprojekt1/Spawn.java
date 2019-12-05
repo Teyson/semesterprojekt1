@@ -37,60 +37,91 @@ import javafx.scene.input.KeyEvent;
  *
  * @author marku
  */
-public class Spawn implements Initializable{
+public class Spawn implements Initializable {
 
     //Setting the Time Indicator
-    @FXML ProgressBar timeProgressBar;
+    @FXML
+    ProgressBar timeProgressBar;
 
     //Setting the GridPane<
-    @FXML GridPane inventoryGrid;
-    @FXML GridPane gameGrid;
-    @FXML GridPane dialogOptionsGrid;
+    @FXML
+    GridPane inventoryGrid;
+    @FXML
+    GridPane gameGrid;
+    @FXML
+    GridPane dialogOptionsGrid;
 
     //Setting the AnchorPane
-    @FXML AnchorPane dialogPane;
-    @FXML AnchorPane helpPopup;
+    @FXML
+    AnchorPane dialogPane;
+    @FXML
+    AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
     Circle testNPC;
 
     //Setting the labels and their texts
-    @FXML Label helpLabel;
-    @FXML Label dialogLabel;
-    @FXML Label NPCNameLabel;
+    @FXML
+    Label helpLabel;
+    @FXML
+    Label dialogLabel;
+    @FXML
+    Label NPCNameLabel;
 
     //Setting the buttons
-    @FXML Button treatBtn;
-    @FXML Button giveItemBtn;
+    @FXML
+    Button treatBtn;
+    @FXML
+    Button giveItemBtn;
 
-    @FXML Button answer1;
-    @FXML Button answer2;
-    @FXML Button answer3;
-    
+    @FXML
+    Button answer1;
+    @FXML
+    Button answer2;
+    @FXML
+    Button answer3;
+
     //Setting the ImageViews
-    @FXML ImageView backgroundImage;
-    @FXML ImageView NPCImage;
-    @FXML ImageView helpBtn;
-    @FXML ImageView trashBtn;
-    @FXML ImageView closeDialog;
-    @FXML ImageView closeHelp;
-    @FXML ImageView openHandbook;
-    
-    //Setting the Grid ImageViews
-    @FXML ImageView field4_3;
-    @FXML ImageView field6_1;
-    @FXML ImageView field7_3;
+    @FXML
+    ImageView backgroundImage;
+    @FXML
+    ImageView NPCImage;
+    @FXML
+    ImageView helpBtn;
+    @FXML
+    ImageView trashBtn;
+    @FXML
+    ImageView closeDialog;
+    @FXML
+    ImageView closeHelp;
+    @FXML
+    ImageView openHandbook;
 
-    
+    //Setting the Grid ImageViews
+    @FXML
+    ImageView field4_3;
+    @FXML
+    ImageView field6_1;
+    @FXML
+    ImageView field7_3;
+
     //Setting the Inventory images
-    @FXML ImageView inv1;
-    @FXML ImageView inv2;
-    @FXML ImageView inv3;
-    @FXML ImageView inv4;
-    @FXML ImageView inv5;
-    @FXML ImageView inv6;
-    @FXML ImageView inv7;
-    @FXML ImageView inv8;
+    @FXML
+    ImageView inv1;
+    @FXML
+    ImageView inv2;
+    @FXML
+    ImageView inv3;
+    @FXML
+    ImageView inv4;
+    @FXML
+    ImageView inv5;
+    @FXML
+    ImageView inv6;
+    @FXML
+    ImageView inv7;
+    @FXML
+    ImageView inv8;
 
     //Initialising the image paths and setting them to an image
     //Buttons
@@ -144,9 +175,9 @@ public class Spawn implements Initializable{
     IInventory playerInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
-    
+
     boolean trashingActive = false;
-    
+
     private double percentageTimeBar;
     @FXML
     private Label pointLabel;
@@ -168,10 +199,8 @@ public class Spawn implements Initializable{
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(false);
-        
-        
-        //Setting the room
 
+        //Setting the room
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
 
@@ -188,51 +217,52 @@ public class Spawn implements Initializable{
         //Initialising Maria's NPC world sprite
         field7_3.setImage(mariaMini);
 
-        
         //Get roominventory
         roomInventory = da.getRoom().getItems();
-        
+
         //Get playerinventory
         playerInventory = da.getInventory();
-        
+
         //Fill items into map.
-        itemImageMap = new HashMap<>()
-        {{
-            put("Clean Syringe", imgKanyleClean);
-            put("Dirty Syringe", imgKanyleDirty);
-            put("Condom", imgCondom);
-            put("HIV Medication", imgHivMeds);
-            put("Malaria Medication", imgMalariaMeds);
-            put("Tuberculosis Medication", imgTbMeds);
-            put("Pill", imgPill);
-            put("Mask", imgMask);
-            put("Mosquito Spray", imgSpray);
-        }};
-        
-        itemImageMapReverse = new HashMap<>()
-        {{
-            put("Clean Kanyle.png", "Clean Syringe");
-            put("Dirty Kanyle.png" ,"Dirty Syringe");
-            put("Condom.png" ,"Condom");
-            put("HIV Medicine.png" ,"HIV Medication");
-            put("Malaria Medicine.png" ,"Malaria Medication");
-            put("TB Medicine.png" ,"Tuberculosis Medication");
-            put("pill.png" ,"Pill");
-            put("mask.png" ,"Mask");
-            put("Mosquito Spray.png" ,"Mosquito Spray");
-        }};
-        
+        itemImageMap = new HashMap<>() {
+            {
+                put("Clean Syringe", imgKanyleClean);
+                put("Dirty Syringe", imgKanyleDirty);
+                put("Condom", imgCondom);
+                put("HIV Medication", imgHivMeds);
+                put("Malaria Medication", imgMalariaMeds);
+                put("Tuberculosis Medication", imgTbMeds);
+                put("Pill", imgPill);
+                put("Mask", imgMask);
+                put("Mosquito Spray", imgSpray);
+            }
+        };
+
+        itemImageMapReverse = new HashMap<>() {
+            {
+                put("Clean Kanyle.png", "Clean Syringe");
+                put("Dirty Kanyle.png", "Dirty Syringe");
+                put("Condom.png", "Condom");
+                put("HIV Medicine.png", "HIV Medication");
+                put("Malaria Medicine.png", "Malaria Medication");
+                put("TB Medicine.png", "Tuberculosis Medication");
+                put("pill.png", "Pill");
+                put("mask.png", "Mask");
+                put("Mosquito Spray.png", "Mosquito Spray");
+            }
+        };
+
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
-            add(inv1);
-            add(inv2);
-            add(inv3);
-            add(inv4);
-            add(inv5);
-            add(inv6);
-            add(inv7);
-            add(inv8);
+                add(inv1);
+                add(inv2);
+                add(inv3);
+                add(inv4);
+                add(inv5);
+                add(inv6);
+                add(inv7);
+                add(inv8);
             }
         };
         updateInventory();
@@ -243,15 +273,14 @@ public class Spawn implements Initializable{
         for (int i = 0; i < inventoryImageList.size(); i++) {
             inventoryImageList.get(i).setVisible(false);
         }
-        
+
         //Inserts items
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
         }
     }
-    
-    
+
     @FXML
     public void handleMariaClicked(MouseEvent event) {
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -269,7 +298,7 @@ public class Spawn implements Initializable{
 
         dialogLabel.setText("Hello! Welcome to the World Health Organisation's HQ!\n"
                 + "My name is Maria and I will be your guide on your volunteering experience!\n");
-        
+
         answer1.setVisible(true);
         answer1.setText("More");
         answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -336,12 +365,12 @@ public class Spawn implements Initializable{
     @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"+
-                          "limit. You do this by talking to them, by clicking on them, and making your \n"+
-                          "choice of progression. Be aware that certain actions take time.\n"+
-                          "You earn points by treating patients correctly, and by giving them an item \n"+
-                          "that helps them prevent spreading their disease. When time is out, see how\n"+
-                          "many you have saved from their contracted disease!");
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
 
     }
 
@@ -364,25 +393,25 @@ public class Spawn implements Initializable{
             ex.printStackTrace();
         }
     }
-    
+
     @FXML
     public void handleExitClickedEvent(MouseEvent event) throws IOException {
-       if(openHandbook.isVisible() == true){
-        App.setRoot("medHQ");
-       }
-       else{
-           dialogPane.setVisible(!dialogPane.isVisible());
-           answer1.setVisible(false);
-           answer2.setVisible(false);
-           answer3.setVisible(false);
-           treatBtn.setVisible(false);
-           giveItemBtn.setVisible(false);
-           
-           NPCImage.setImage(mariaTalk);
-           NPCNameLabel.setText("Maria Hoffmann");
+        if (openHandbook.isVisible() == true) {
+            da.setRoom(da.getRoomMap().get("medHQ"));
+            App.setRoot("medHQ");
+        } else {
+            dialogPane.setVisible(!dialogPane.isVisible());
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+            treatBtn.setVisible(false);
+            giveItemBtn.setVisible(false);
 
-           dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
-       }
+            NPCImage.setImage(mariaTalk);
+            NPCNameLabel.setText("Maria Hoffmann");
+
+            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
+        }
     }
 
     @FXML
@@ -391,9 +420,8 @@ public class Spawn implements Initializable{
         String url = imgViewTakeItem.getImage().getUrl();
         String fileName = new File(url).getName();
         String itemName = itemImageMapReverse.get(fileName);
-        
+
         //Returns true if item exists in room
-        
         if (roomInventory.getKeys().contains(itemName)) {
             playerInventory.addItem(itemName, roomInventory.getValues().get(roomInventory.getKeys().indexOf(itemName))); //Add item to playerinventory
             roomInventory.removeItem(itemName); //Remove item from room inventory
@@ -407,11 +435,12 @@ public class Spawn implements Initializable{
     private void handleTrash(MouseEvent event) {
         //Change trashing state
         trashingActive = !trashingActive;
-        
-        if (trashingActive)
+
+        if (trashingActive) {
             inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        else
+        } else {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+        }
     }
 
     @FXML
@@ -419,7 +448,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(0));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -427,7 +456,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(1));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -435,7 +464,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(2));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -443,7 +472,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(3));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -451,7 +480,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(4));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -459,7 +488,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(5));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -467,7 +496,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(6));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -475,7 +504,7 @@ public class Spawn implements Initializable{
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
-        } 
+        }
     }
 
 }
