@@ -7,6 +7,7 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.ITime;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -342,9 +343,15 @@ public class VillageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< Updated upstream
         da = App.getDomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
+=======
+        da =  App.getDomainAdministration();
+        ITime time = da.getTime();
+        percentageTimeBar = time.getPercentTime();
+>>>>>>> Stashed changes
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
