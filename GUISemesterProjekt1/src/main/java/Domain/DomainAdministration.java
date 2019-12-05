@@ -15,6 +15,7 @@ public class DomainAdministration {
     UtilityItem mosquitoSpray;
     
     //Setting the rooms
+    Room currentRoom;
     Room spawn;
     Room medHQ;
     Room village;
@@ -59,9 +60,8 @@ public class DomainAdministration {
         //Creating the TB Items
         tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
         faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
-        
-        //Initialising the items in the rooms, using the shown commented format
-        //[ROOM].addItem([ITEM].getName(), [ITEM]);
+
+        spawn.addItem(condom.getName(), condom);
     }
     
     public void makeRooms() {
@@ -132,17 +132,24 @@ public class DomainAdministration {
         return spawn;
     }   
     
+    public void setRoom(Room room) {
+        currentRoom = room;
+    }
+    
     public int getTime() {
         return time.getTime();
     }
     
     //Setup
     public void setup() {
+        currentRoom = spawn;
         makeRooms();
         makeItems();
         makeNPCS();
         eval = new Evaluation();
-        playerInventory = new Inventory(10);
+        playerInventory = new Inventory(7);
+        playerInventory.addItem(condom.getName(), condom);
+        playerInventory.addItem("HIV Medication", hivMed);
         time = new Time();
     }
 }

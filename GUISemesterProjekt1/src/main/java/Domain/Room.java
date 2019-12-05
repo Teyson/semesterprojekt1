@@ -50,7 +50,7 @@ public class Room implements IRoom{
             returnString += getNPCString();
         }
                 
-        if (!inventory.getItemList().isEmpty()) {
+        if (!inventory.getKeys().isEmpty()) {
             returnString += "\n";
             returnString += getItemString();
             
@@ -92,9 +92,15 @@ public class Room implements IRoom{
     private String getItemString() {
         String returnString = "Items: ";
           
-        for (String key : inventory.getItemList().keySet()) {
+        for (int i = 0; i < inventory.getKeys().size(); i++) {
+            returnString += (inventory.getKeys().get(i) + " ");
+        }
+        
+        /*for (String key : inventory.getItemList().keySet()) {
             returnString += (key + " ");
         }
+        */
+
         return returnString;
     }
     
@@ -114,12 +120,13 @@ public class Room implements IRoom{
         return tempMap;
     }
     
-    
+    /*
     public IItem getItem(String name) {
         IItem returnItem = (IItem) inventory.getItemList().get(name);
         inventory.removeItem(name);
         return returnItem;
     }
+    */
     
     @Override
     public IInventory getItems() {
