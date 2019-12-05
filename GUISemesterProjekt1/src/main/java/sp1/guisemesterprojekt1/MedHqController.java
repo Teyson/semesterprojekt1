@@ -5,6 +5,8 @@
  */
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
+import Interfaces.ITime;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -72,17 +74,6 @@ public class MedHqController implements Initializable {
     Button treatBtn;
     @FXML
     Button giveItemBtn;
-    
-    @FXML
-    Button answer1;
-    @FXML
-    Button answer2;
-    @FXML
-    Button answer3;
-    @FXML
-    Button answer4;
-    @FXML
-    Button answer5;
 
     @FXML Button answer1;
     @FXML Button answer2;
@@ -317,6 +308,8 @@ public class MedHqController implements Initializable {
     String nextRoom = "backgrounds/HQ Medicine Room.png";
     Image medHQ = new Image(nextRoom);
     
+    DomainAdministration da;
+
     private double percentageTimeBar;
 
     /**
@@ -327,7 +320,9 @@ public class MedHqController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        percentageTimeBar = 1.0;
+        da = App.getDomainAdministration();
+        ITime time = da.getTime();
+        percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);

@@ -132,13 +132,14 @@ public class DomainAdministration {
         return spawn;
     }   
     
+    public Time getTime() {
+        return time;
+    }
+    
     public void setRoom(Room room) {
         currentRoom = room;
     }
     
-    public int getTime() {
-        return time.getTime();
-    }
     
     //Setup
     public void setup() {
