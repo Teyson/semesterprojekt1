@@ -32,7 +32,14 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        if(da.getTime().getTime() != 0){
+            scene.setRoot(loadFXML(fxml));
+        }
+        if(da.getTime().getTime() == 0 && da.getWinCondition() == false){
+            scene.setRoot(loadFXML("gameOver"));
+            
+        }
+        
     }
 
     static Parent loadFXML(String fxml) throws IOException {
