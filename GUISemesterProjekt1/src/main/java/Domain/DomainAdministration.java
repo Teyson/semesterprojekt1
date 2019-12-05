@@ -61,7 +61,7 @@ public class DomainAdministration {
         tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
         faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
 
-        //spawn.addItem(condom.getName(), condom);
+        spawn.addItem(condom.getName(), condom);
     }
     
     public void makeRooms() {
@@ -129,8 +129,8 @@ public class DomainAdministration {
         makeNPCS();
         eval = new Evaluation();
         playerInventory = new Inventory(7);
-        //playerInventory.addItem(condom.getName(), condom);
-        //playerInventory.addItem("HIV Medication", hivMed);
+        playerInventory.addItem(condom.getName(), condom);
+        playerInventory.addItem("HIV Medication", hivMed);
         time = new Time();
     }
 }
