@@ -343,15 +343,9 @@ public class VillageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< Updated upstream
-        da = App.getDomainAdministration();
-        percentageTimeBar = 1.0;
-        timeProgressBar.setProgress(percentageTimeBar);
-=======
         da =  App.getDomainAdministration();
         ITime time = da.getTime();
         percentageTimeBar = time.getPercentTime();
->>>>>>> Stashed changes
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
