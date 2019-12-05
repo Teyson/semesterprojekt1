@@ -29,8 +29,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
-import Domain.DomainAdministration;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -163,7 +161,7 @@ public class Spawn implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DomainAdministration da =  App.getDomainAdministration();
+        da = App.getDomainAdministration();
         ITime time = da.getTime();
         percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);
@@ -190,8 +188,6 @@ public class Spawn implements Initializable{
         //Initialising Maria's NPC world sprite
         field7_3.setImage(mariaMini);
 
-        //Get DomainAdministration object
-        da = App.getDomainAdministration();
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();

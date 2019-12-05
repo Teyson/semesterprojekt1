@@ -5,8 +5,12 @@
  */
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
+import Interfaces.IInventory;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -298,6 +302,35 @@ public class VillageController implements Initializable {
     Image vilages = new Image(vilage);
 
     private double percentageTimeBar;
+    
+    //Items
+    String kanyleClean = "img/Clean Kanyle.png";
+    Image imgKanyleClean = new Image(kanyleClean);
+    String kanyleDirty = "img/Dirty Kanyle.png";
+    Image imgKanyleDirty = new Image(kanyleDirty);
+    String condom = "img/Condom.png";
+    Image imgCondom = new Image(condom);
+    String hivMeds = "img/HIV Medicine.png";
+    Image imgHivMeds = new Image(hivMeds);
+    String malariaMeds = "img/Malaria Medicine.png";
+    Image imgMalariaMeds = new Image(malariaMeds);
+    String tbMeds = "img/TB Medicine.png";
+    Image imgTbMeds = new Image(tbMeds);
+    String pill = "img/pill.png";
+    Image imgPill = new Image(pill);
+    String mask = "img/mask.png";
+    Image imgMask = new Image(mask);
+    String spray = "img/Mosquito Spray.png";
+    Image imgSpray = new Image(spray);
+    HashMap<String, Image> itemImageMap;
+    HashMap<String, String> itemImageMapReverse;
+
+    DomainAdministration da;
+    IInventory playerInventory;
+    IInventory roomInventory;
+    ArrayList<ImageView> inventoryImageList;
+    
+    boolean trashingActive = false;
 
     /**
      * Initializes the controller class.
@@ -307,6 +340,7 @@ public class VillageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        DomainAdministration da =  App.getDomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
@@ -325,7 +359,69 @@ public class VillageController implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(vilages);
+        
+        
+        //Get roominventory
+        roomInventory = da.getRoom().getItems();
 
+        //Get playerinventory
+        playerInventory = da.getInventory();
+
+        //Fill items into map.
+        itemImageMap = new HashMap<>()
+        {{
+            put("Clean Syringe", imgKanyleClean);
+            put("Dirty Syringe", imgKanyleDirty);
+            put("Condom", imgCondom);
+            put("HIV Medication", imgHivMeds);
+            put("Malaria Medication", imgMalariaMeds);
+            put("Tuberculosis Medication", imgTbMeds);
+            put("Pill", imgPill);
+            put("Mask", imgMask);
+            put("Mosquito Spray", imgSpray);
+        }};
+
+        itemImageMapReverse = new HashMap<>()
+        {{
+            put("Clean Kanyle.png", "Clean Syringe");
+            put("Dirty Kanyle.png" ,"Dirty Syringe");
+            put("Condom.png" ,"Condom");
+            put("HIV Medicine.png" ,"HIV Medication");
+            put("Malaria Medicine.png" ,"Malaria Medication");
+            put("TB Medicine.png" ,"Tuberculosis Medication");
+            put("pill.png" ,"Pill");
+            put("mask.png" ,"Mask");
+            put("Mosquito Spray.png" ,"Mosquito Spray");
+        }};
+
+        //Make arraylist of inventory slots for easy iteration
+        inventoryImageList = new ArrayList<>() {
+            {
+            add(inv1);
+            add(inv2);
+            add(inv3);
+            add(inv4);
+            add(inv5);
+            add(inv6);
+            add(inv7);
+            add(inv8);
+            }
+        };
+        updateInventory();
+
+    }
+    
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
+        
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
+        }
     }
 
     public void handleCloseDialog(MouseEvent event) {
@@ -376,6 +472,82 @@ public class VillageController implements Initializable {
         App.setRoot("tent");
     }
 
+
+    @FXML
+    private void handleTrash(MouseEvent event) {
+        //Change trashing state
+        trashingActive = !trashingActive;
+        
+        if (trashingActive)
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        else
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+    }
+
+
+    @FXML
+    private void handleInventorySlotClicked1(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(0));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked2(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(1));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked3(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(2));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked4(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(3));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked5(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(4));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked6(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(5));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked7(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(6));
+            updateInventory();
+        } 
+    }
+
+    @FXML
+    private void handleInventorySlotClicked8(MouseEvent event) {
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(7));
+            updateInventory();
+        } 
+    }
     
 
 }

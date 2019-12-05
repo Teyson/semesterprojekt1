@@ -27,14 +27,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="inv1" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="inv2" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="inv3" fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <ImageView fx:id="inv4" fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-            <ImageView fx:id="inv5" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-            <ImageView fx:id="inv6" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
-            <ImageView fx:id="inv7" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
-            <ImageView fx:id="inv8" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+            <ImageView fx:id="inv1" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#handleInventorySlotClicked1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="inv2" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="inv3" fitHeight="32.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <ImageView fx:id="inv4" fitHeight="31.0" fitWidth="37.0" onMouseClicked="#handleInventorySlotClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+            <ImageView fx:id="inv5" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+            <ImageView fx:id="inv6" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+            <ImageView fx:id="inv7" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked7" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+            <ImageView fx:id="inv8" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked8" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
          </children>
       </GridPane>
       <Label contentDisplay="CENTER" layoutX="156.0" layoutY="23.0" text="Inventory">
@@ -195,10 +195,10 @@
       </AnchorPane>
       <Label layoutX="58.0" layoutY="67.0" text="Points">
          <font>
-            <Font size="15.0" />
+            <Font size="15.0" /> 
          </font>
       </Label>
-      <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" onMouseClicked="#handleTrash" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="helpBtn" fitHeight="35.0" fitWidth="35.0" layoutX="714.0" layoutY="49.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
          <children>
