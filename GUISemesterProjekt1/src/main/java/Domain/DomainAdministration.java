@@ -164,6 +164,7 @@ public class DomainAdministration {
     
     public void setRoom(Room room) {
         currentRoom = room;
+        Time.timeCounter -= Time.CHANGEROOMTIMECOST;
     }
 
     public HashMap<String, Room> getRoomMap() {

@@ -175,8 +175,7 @@ public class Spawn implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         da = App.getDomainAdministration();
         ITime time = da.getTime();
-        percentageTimeBar = time.getPercentTime();
-        timeProgressBar.setProgress(percentageTimeBar);
+        timeProgressBar.setProgress(time.getPercentTime());
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(false);
@@ -365,6 +364,7 @@ public class Spawn implements Initializable{
     public void handleExitClickedEvent(MouseEvent event) throws IOException {
        if(openHandbook.isVisible() == true){
         App.setRoot("medHQ");
+        da.setRoom(da.getRoomMap().get("medHQ"));
        }
        else{
            dialogPane.setVisible(!dialogPane.isVisible());
