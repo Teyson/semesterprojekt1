@@ -5,7 +5,7 @@ import Interfaces.ITime;
 public class Time implements ITime {
 
     public static int startTime = 50;
-    public static int timeCounter = 50;
+    public static int timeCounter = startTime + 1;
 
     //Constants
     public static final int CHANGEROOMTIMECOST = 1;
