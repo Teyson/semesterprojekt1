@@ -44,6 +44,7 @@ public class MedHqController implements Initializable {
     GridPane gameGrid;
     @FXML
     GridPane dialogOptionsGrid;
+    @FXML GridPane truckInventory;
 
     //Setting the AnchorPane
     @FXML
@@ -73,17 +74,6 @@ public class MedHqController implements Initializable {
     @FXML
     Button giveItemBtn;
     
-    @FXML
-    Button answer1;
-    @FXML
-    Button answer2;
-    @FXML
-    Button answer3;
-    @FXML
-    Button answer4;
-    @FXML
-    Button answer5;
-
     @FXML Button answer1;
     @FXML Button answer2;
     @FXML Button answer3;
@@ -101,6 +91,7 @@ public class MedHqController implements Initializable {
     ImageView closeDialog;
     @FXML
     ImageView closeHelp;
+    @FXML ImageView closeTruckInventory;
     @FXML
     ImageView openHandbook;
     
@@ -341,6 +332,7 @@ public class MedHqController implements Initializable {
         
         closeDialog.setImage(closeButton);
         closeHelp.setImage(closeButton);
+        closeTruckInventory.setImage(closeButton);
         
         openHandbook.setImage(handbookButton);
 
@@ -420,17 +412,11 @@ public class MedHqController implements Initializable {
         }
     }
     
-    public void handleTruckClicked1(MouseEvent event){
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-        
-    }
-    public void handleTruckClicked2(MouseEvent event){
+    public void handleTruckClicked(MouseEvent event){
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
-    public void handleTruckClicked3(MouseEvent event){
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-    }
-    public void handleTruckClicked4(MouseEvent event){
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    
+    public void handleTruckInventoryClose(MouseEvent event){
+        truckInventoryPane.setVisible(false);
     }
 }

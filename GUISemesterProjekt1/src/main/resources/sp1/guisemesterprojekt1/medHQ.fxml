@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
@@ -78,14 +77,14 @@
          <children>
             <ImageView fx:id="field7_3" fitHeight="54.0" fitWidth="64.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
             <ImageView fx:id="field0_1" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="field0_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked1" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-            <ImageView fx:id="field0_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked3" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+            <ImageView fx:id="field0_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+            <ImageView fx:id="field0_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
             <ImageView fx:id="field0_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
             <ImageView fx:id="field0_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
             <ImageView fx:id="field0_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6" />
             <ImageView fx:id="field1_1" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ImageView fx:id="field1_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ImageView fx:id="field1_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ImageView fx:id="field1_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ImageView fx:id="field1_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ImageView fx:id="field1_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ImageView fx:id="field1_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <ImageView fx:id="field1_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -192,42 +191,30 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="truckInventoryPane" layoutX="100.0" layoutY="200.0" prefHeight="284.0" prefWidth="594.0">
+      <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink;">
          <children>
-            <Label fx:id="truckInventoryView" prefHeight="282.0" prefWidth="592.0" style="-fx-background-color: pink;">
-               <graphic>
-                  <GridPane gridLinesVisible="true">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints />
-                      <RowConstraints />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="50.0" />
-                     </padding>
-                  </GridPane>
-               </graphic>
-            </Label>
-            <Label alignment="CENTER" text="Truck Inventory" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="0.0">
+            <Label alignment="CENTER" layoutX="188.0" layoutY="6.0" text="Truck Inventory" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="22.0" />
                </font></Label>
+            <GridPane fx:id="truckInventory" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <ImageView fx:id="closeTruckInventory" fitHeight="30.0" fitWidth="30.0" layoutX="474.0" layoutY="-30.0" onMouseClicked="#handleTruckInventoryClose" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
