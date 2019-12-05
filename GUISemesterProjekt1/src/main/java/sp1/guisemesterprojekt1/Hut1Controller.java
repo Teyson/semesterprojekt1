@@ -311,7 +311,7 @@ public class Hut1Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        da = new DomainAdministration();
+        da = App.getDomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);

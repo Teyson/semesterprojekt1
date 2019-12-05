@@ -177,7 +177,7 @@ public class DomainAdministration {
         makeItems();
         makeNPCS();
         eval = new Evaluation();
-        
+        makeInventories();
         time = new Time();
         
     }

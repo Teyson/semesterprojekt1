@@ -194,7 +194,7 @@ public class PrimaryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DomainAdministration da = App.getDomainAdministration();
+        da = App.getDomainAdministration();
         ITime time = da.getTime();
         percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);

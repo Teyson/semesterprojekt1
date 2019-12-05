@@ -310,7 +310,7 @@ public class VillageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DomainAdministration da = new DomainAdministration();
+        da = App.getDomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
