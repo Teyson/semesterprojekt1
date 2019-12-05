@@ -95,9 +95,18 @@
 
 >>>>>>> Stashed changes
 
-### 03/12 - 2019
-- Vi sletter interaction klassen til GUI iterationen.
-- Men der diskuteres stadig om dette er en god idé
+### 05/12 - 19
+
+- vi snakker om at få merged de forskellige branches
+- vi har lavet fordelt arbejdsopgaver til lektie til på tirsdag. 
+- THies og Markus kigger på at færdiggøre funktionalitet for truck
+- Sara indsætter NPC'er og alt det indeholder f.eks. interactions.
+- Niclas laver Win/loss conditions. 
+- Anders og Kas kigger på funktionalitet for "give item" og "treat".
+
+
+
+
 
  
 
