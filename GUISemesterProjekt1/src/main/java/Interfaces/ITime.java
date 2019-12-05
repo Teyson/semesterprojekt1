@@ -7,5 +7,5 @@ package Interfaces;
 public interface ITime {
     public int getTime();
     public double getPercentTime();
-    
+   
 }
