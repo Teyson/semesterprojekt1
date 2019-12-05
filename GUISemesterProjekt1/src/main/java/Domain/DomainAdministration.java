@@ -1,8 +1,11 @@
 package Domain;
 
+import java.util.HashMap;
+
 public class DomainAdministration {
     //Setting the important non-changing elements
     Inventory playerInventory;
+    Inventory truckInventory;
     Evaluation eval;
     Time time;
     
@@ -47,6 +50,8 @@ public class DomainAdministration {
     NPC Jojo;
     NPC Gani;
     
+    private HashMap<String,Room> roomMap;
+    
     //Initializers
     public void makeItems() {
         //Creating the HIV Items
@@ -62,6 +67,7 @@ public class DomainAdministration {
         faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
 
         spawn.addItem(condom.getName(), condom);
+        
     }
     
     public void makeRooms() {
@@ -72,6 +78,15 @@ public class DomainAdministration {
         hut2 = new Room("You're in one of the village's few huts.");
         hut3 = new Room("You're in one of the village's few huts.");
         tent = new Room("You're in the WHO storage tent that you set up.");
+        roomMap = new HashMap<>();
+        roomMap.put("spawn", spawn);
+        roomMap.put("medHQ", medHQ);
+        roomMap.put("village", village);
+        roomMap.put("hut1", hut1);
+        roomMap.put("hut2", hut2);
+        roomMap.put("hut3", hut3);
+        roomMap.put("tent", tent);
+        
     }
     
     public void makeNPCS() {
@@ -119,6 +134,13 @@ public class DomainAdministration {
         
     }
     
+    public void makeInventories(){
+        playerInventory = new Inventory(7);
+        playerInventory.addItem(condom.getName(), condom);
+        playerInventory.addItem("HIV Medication", hivMed);
+        truckInventory = new Inventory(30); //size can change
+    }
+    
     //Getters
     public Evaluation getEvaluation() {
         return eval;
@@ -127,9 +149,12 @@ public class DomainAdministration {
     public Inventory getInventory() {
         return playerInventory;
     }
+    public Inventory getTruckInventory(){
+        return truckInventory;
+    }
     
     public Room getRoom() {
-        return spawn;
+        return currentRoom;
     }   
     
     public Time getTime() {
@@ -138,6 +163,10 @@ public class DomainAdministration {
     
     public void setRoom(Room room) {
         currentRoom = room;
+    }
+
+    public HashMap<String, Room> getRoomMap() {
+        return roomMap;
     }
     
     
@@ -148,9 +177,8 @@ public class DomainAdministration {
         makeItems();
         makeNPCS();
         eval = new Evaluation();
-        playerInventory = new Inventory(7);
-        playerInventory.addItem(condom.getName(), condom);
-        playerInventory.addItem("HIV Medication", hivMed);
+        
         time = new Time();
+        
     }
 }

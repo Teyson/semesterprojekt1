@@ -5,6 +5,7 @@
  */
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +33,8 @@ import javafx.stage.Stage;
  */
 public class VillageController implements Initializable {
 
+    DomainAdministration da;
+    
     //Setting the Time Indicator
     @FXML
     ProgressBar timeProgressBar;
@@ -307,6 +310,7 @@ public class VillageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        DomainAdministration da = new DomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
@@ -362,17 +366,21 @@ public class VillageController implements Initializable {
     }
 
     public void handleEnterEventBottom(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("hut3"));
         App.setRoot("hut3");
     }
     
     public void handleEnterEventMid(MouseEvent event) throws IOException {
+         da.setRoom(da.getRoomMap().get("hut2"));
         App.setRoot("hut2");
     }
 
     public void handleEnterEventTop(MouseEvent event) throws IOException {
+         da.setRoom(da.getRoomMap().get("hut1"));
         App.setRoot("hut1");
     }
      public void HandleEnterEventTent(MouseEvent event) throws IOException {
+          da.setRoom(da.getRoomMap().get("tent"));
         App.setRoot("tent");
     }
 

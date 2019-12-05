@@ -6,11 +6,13 @@
 package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
+import Domain.UtilityItem;
+import Interfaces.IItem;
 import Interfaces.ITime;
+import Interfaces.IUtilityItem;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -348,6 +350,9 @@ public class MedHqController implements Initializable {
         //Initialising Maria's Sprite
         field0_5.setImage(mariaMini);
         
+        
+        
+        
     }
     
     public void handleMariaClicked(MouseEvent event) {
@@ -368,6 +373,7 @@ public class MedHqController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 try {
+                    da.setRoom(da.getRoomMap().get("village"));
                     App.setRoot("village");
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -424,5 +430,27 @@ public class MedHqController implements Initializable {
     
     public void handleTruckInventoryClose(MouseEvent event){
         truckInventoryPane.setVisible(false);
+    }
+    
+    public void handleMasksClicked(MouseEvent event){
+                
+    }
+    public void handleCondomsClicked(MouseEvent event){
+        
+    }
+    public void handleMosquitoSprayClicked(MouseEvent event){
+        
+    }
+    public void handleSyringesClicked(MouseEvent event){
+        
+    }
+    public void handleHIVClicked(MouseEvent event){
+        
+    }
+    public void handleMalariaClicked(MouseEvent event){
+        
+    }
+    public void handleTBClicked(MouseEvent event){
+        
     }
 }

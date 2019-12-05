@@ -5,6 +5,7 @@
  */
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,18 +25,21 @@ public class StartMenuController implements Initializable {
     @FXML
     Button startGameBtn;
 
+    private static DomainAdministration da;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        da = new DomainAdministration();
         
         
     }
     
     public void startGameOnAction(ActionEvent event) throws IOException{
+        da.setRoom(da.getRoomMap().get("spawn"));
         App.setRoot("primary");
+        
     }
     
     

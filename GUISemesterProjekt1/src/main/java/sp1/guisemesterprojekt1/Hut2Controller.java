@@ -5,6 +5,7 @@
  */
 package sp1.guisemesterprojekt1;
 
+import Domain.DomainAdministration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,8 @@ import javafx.stage.Stage;
  * @author marku
  */
 public class Hut2Controller implements Initializable {
+    
+    DomainAdministration da;
 
     //Setting the Time Indicator
     @FXML
@@ -308,6 +311,7 @@ public class Hut2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        da = new DomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
@@ -363,6 +367,7 @@ public class Hut2Controller implements Initializable {
     }
 
     public void handleExitEvent(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
 
