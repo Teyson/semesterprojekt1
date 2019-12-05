@@ -98,48 +98,48 @@
             <ImageView fx:id="field3_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <ImageView fx:id="field3_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <ImageView fx:id="field3_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <ImageView fx:id="field4_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <ImageView fx:id="field4_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <ImageView fx:id="field4_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
             <ImageView fx:id="field4_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <ImageView fx:id="field4_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleSyringesClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <ImageView fx:id="field4_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
             <ImageView fx:id="field5_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
             <ImageView fx:id="field5_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
             <ImageView fx:id="field5_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <ImageView fx:id="field5_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <ImageView fx:id="field5_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleSyringesClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
             <ImageView fx:id="field5_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
             <ImageView fx:id="field6_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
             <ImageView fx:id="field6_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <ImageView fx:id="field6_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <ImageView fx:id="field6_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <ImageView fx:id="field6_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <ImageView fx:id="field6_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleCondomsClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
             <ImageView fx:id="field6_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
             <ImageView fx:id="field7_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <ImageView fx:id="field7_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <ImageView fx:id="field7_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <ImageView fx:id="field7_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <ImageView fx:id="field7_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleCondomsClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
             <ImageView fx:id="field7_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <ImageView fx:id="field8_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
             <ImageView fx:id="field8_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-            <ImageView fx:id="field8_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <ImageView fx:id="field8_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <ImageView fx:id="field8_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <ImageView fx:id="field8_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMosquitoSprayClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="5" />
             <ImageView fx:id="field8_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6" />
             <ImageView fx:id="field9_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2" />
             <ImageView fx:id="field9_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <ImageView fx:id="field9_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <ImageView fx:id="field9_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+            <ImageView fx:id="field9_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+            <ImageView fx:id="field9_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMosquitoSprayClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="5" />
             <ImageView fx:id="field9_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="6" />
             <ImageView fx:id="field10_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
             <ImageView fx:id="field10_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-            <ImageView fx:id="field10_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4" />
-            <ImageView fx:id="field10_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="5" />
+            <ImageView fx:id="field10_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTBClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+            <ImageView fx:id="field10_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMasksClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="5" />
             <ImageView fx:id="field10_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="6" />
             <ImageView fx:id="field11_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="2" />
             <ImageView fx:id="field11_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="3" />
-            <ImageView fx:id="field11_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="4" />
-            <ImageView fx:id="field11_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="5" />
+            <ImageView fx:id="field11_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTBClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="4" />
+            <ImageView fx:id="field11_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMasksClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="5" />
             <ImageView fx:id="field11_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;">
+      <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;" visible="false">
          <children>
             <ImageView fx:id="NPCImage" fitHeight="121.0" fitWidth="108.0" layoutX="36.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="NPCNameLabel" alignment="CENTER" layoutX="36.0" layoutY="18.0" text="NPC name" textAlignment="CENTER">
@@ -191,7 +191,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink;">
+      <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="188.0" layoutY="6.0" text="Truck Inventory" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="6.0">
                <font>

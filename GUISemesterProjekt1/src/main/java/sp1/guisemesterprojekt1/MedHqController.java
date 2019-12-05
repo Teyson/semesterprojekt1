@@ -8,6 +8,7 @@ package sp1.guisemesterprojekt1;
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
 import Interfaces.ITime;
+import Interfaces.IUtilityItem;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -459,6 +460,7 @@ public class MedHqController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 try {
+                    da.setRoom(da.getRoomMap().get("village"));
                     App.setRoot("village");
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -591,5 +593,27 @@ public class MedHqController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
         } 
+    }
+    
+    public void handleMasksClicked(MouseEvent event){
+                
+    }
+    public void handleCondomsClicked(MouseEvent event){
+        
+    }
+    public void handleMosquitoSprayClicked(MouseEvent event){
+        
+    }
+    public void handleSyringesClicked(MouseEvent event){
+        
+    }
+    public void handleHIVClicked(MouseEvent event){
+        
+    }
+    public void handleMalariaClicked(MouseEvent event){
+        
+    }
+    public void handleTBClicked(MouseEvent event){
+        
     }
 }

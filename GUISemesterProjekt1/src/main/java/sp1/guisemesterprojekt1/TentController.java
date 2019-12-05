@@ -34,7 +34,8 @@ import javafx.stage.Stage;
  * @author marku
  */
 public class TentController implements Initializable {
-
+    
+    DomainAdministration da;
     //Setting the Time Indicator
     @FXML
     ProgressBar timeProgressBar;
@@ -340,7 +341,7 @@ public class TentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DomainAdministration da =  App.getDomainAdministration();
+        da = App.getDomainAdministration();
         percentageTimeBar = 1.0;
         timeProgressBar.setProgress(percentageTimeBar);
         dialogPane.setVisible(false);
@@ -458,6 +459,7 @@ public class TentController implements Initializable {
     }
 
     public void handleExitEvent(MouseEvent event) throws IOException {
+         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
     
