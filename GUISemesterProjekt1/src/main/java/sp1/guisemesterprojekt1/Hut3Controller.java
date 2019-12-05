@@ -325,7 +325,6 @@ public class Hut3Controller implements Initializable {
     HashMap<String, Image> itemImageMap;
     HashMap<String, String> itemImageMapReverse;
 
-    DomainAdministration da;
     IInventory playerInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
