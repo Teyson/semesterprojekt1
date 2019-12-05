@@ -8,6 +8,7 @@ package sp1.guisemesterprojekt1;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,152 +34,279 @@ import javafx.stage.Stage;
 public class MedHqController implements Initializable {
 
     //Setting the Time Indicator
-    @FXML ProgressBar timeProgressBar;
+    @FXML
+    ProgressBar timeProgressBar;
 
     //Setting the GridPane
-    @FXML GridPane inventoryGrid;
-    @FXML GridPane gameGrid;
-    @FXML GridPane dialogOptionsGrid;
+    @FXML
+    GridPane inventoryGrid;
+    @FXML
+    GridPane gameGrid;
+    @FXML
+    GridPane dialogOptionsGrid;
 
     //Setting the AnchorPane
-    @FXML AnchorPane dialogPane;
-    @FXML AnchorPane helpPopup;
+    @FXML
+    AnchorPane dialogPane;
+    @FXML
+    AnchorPane helpPopup;
+    @FXML
+    AnchorPane truckInventoryPane;
 
     //Setting the sprites in the gridpane
-    @FXML Circle testNPC;
+    @FXML
+    Circle testNPC;
 
     //Setting the labels and their texts
-    @FXML Label helpLabel;
-    @FXML Label dialogLabel;
-    @FXML Label NPCNameLabel;
+    @FXML
+    Label helpLabel;
+    @FXML
+    Label dialogLabel;
+    @FXML
+    Label NPCNameLabel;
+    @FXML
+    Label truckInventoryView;
 
     //Setting the buttons
-    @FXML Button treatBtn;
-    @FXML Button giveItemBtn;
+    @FXML
+    Button treatBtn;
+    @FXML
+    Button giveItemBtn;
+    
+    @FXML
+    Button answer1;
+    @FXML
+    Button answer2;
+    @FXML
+    Button answer3;
+    @FXML
+    Button answer4;
+    @FXML
+    Button answer5;
 
     @FXML Button answer1;
     @FXML Button answer2;
     @FXML Button answer3;
 
     //Setting the ImageViews
-    @FXML ImageView backgroundImage;
-    @FXML ImageView NPCImage;
-    @FXML ImageView helpBtn;
-    @FXML ImageView trashBtn;
-    @FXML ImageView closeDialog;
-    @FXML ImageView closeHelp;
-    @FXML ImageView openHandbook;
+    @FXML
+    ImageView backgroundImage;
+    @FXML
+    ImageView NPCImage;
+    @FXML
+    ImageView helpBtn;
+    @FXML
+    ImageView trashBtn;
+    @FXML
+    ImageView closeDialog;
+    @FXML
+    ImageView closeHelp;
+    @FXML
+    ImageView openHandbook;
     
+
     //Setting the Grid ImageViews
-    @FXML ImageView field0_0;
-    @FXML ImageView field0_1;
-    @FXML ImageView field0_2;
-    @FXML ImageView field0_3;
-    @FXML ImageView field0_4;
-    @FXML ImageView field0_5;
-    @FXML ImageView field0_6;
-    @FXML ImageView field1_0;
-    @FXML ImageView field1_1;
-    @FXML ImageView field1_2;
-    @FXML ImageView field1_3;
-    @FXML ImageView field1_4;
-    @FXML ImageView field1_5;
-    @FXML ImageView field1_6;
-    @FXML ImageView field2_0;
-    @FXML ImageView field2_1;
-    @FXML ImageView field2_2;
-    @FXML ImageView field2_3;
-    @FXML ImageView field2_4;
-    @FXML ImageView field2_5;
-    @FXML ImageView field2_6;
-    @FXML ImageView field3_0;
-    @FXML ImageView field3_1;
-    @FXML ImageView field3_2;
-    @FXML ImageView field3_3;
-    @FXML ImageView field3_4;
-    @FXML ImageView field3_5;
-    @FXML ImageView field3_6;
-    @FXML ImageView field4_0;
-    @FXML ImageView field4_1;
-    @FXML ImageView field4_2;
-    @FXML ImageView field4_3;
-    @FXML ImageView field4_4;
-    @FXML ImageView field4_5;
-    @FXML ImageView field4_6;
-    @FXML ImageView field5_0;
-    @FXML ImageView field5_1;
-    @FXML ImageView field5_2;
-    @FXML ImageView field5_3;
-    @FXML ImageView field5_4;
-    @FXML ImageView field5_5;
-    @FXML ImageView field5_6;
-    @FXML ImageView field6_0;
-    @FXML ImageView field6_1;
-    @FXML ImageView field6_2;
-    @FXML ImageView field6_3;
-    @FXML ImageView field6_4;
-    @FXML ImageView field6_5;
-    @FXML ImageView field6_6;
-    @FXML ImageView field7_0;
-    @FXML ImageView field7_1;
-    @FXML ImageView field7_2;
-    @FXML ImageView field7_3;
-    @FXML ImageView field7_4;
-    @FXML ImageView field7_5;
-    @FXML ImageView field7_6;
-    @FXML ImageView field8_0;
-    @FXML ImageView field8_1;
-    @FXML ImageView field8_2;
-    @FXML ImageView field8_3;
-    @FXML ImageView field8_4;
-    @FXML ImageView field8_5;
-    @FXML ImageView field8_6;
-    @FXML ImageView field9_0;
-    @FXML ImageView field9_1;
-    @FXML ImageView field9_2;
-    @FXML ImageView field9_3;
-    @FXML ImageView field9_4;
-    @FXML ImageView field9_5;
-    @FXML ImageView field9_6;
-    @FXML ImageView field10_0;
-    @FXML ImageView field10_1;
-    @FXML ImageView field10_2;
-    @FXML ImageView field10_3;
-    @FXML ImageView field10_4;
-    @FXML ImageView field10_5;
-    @FXML ImageView field10_6;
-    @FXML ImageView field11_0;
-    @FXML ImageView field11_1;
-    @FXML ImageView field11_2;
-    @FXML ImageView field11_3;
-    @FXML ImageView field11_4;
-    @FXML ImageView field11_5;
-    @FXML ImageView field11_6;
-    
+    @FXML
+    ImageView field0_0;
+    @FXML
+    ImageView field0_1;
+    @FXML
+    ImageView field0_2;
+    @FXML
+    ImageView field0_3;
+    @FXML
+    ImageView field0_4;
+    @FXML
+    ImageView field0_5;
+    @FXML
+    ImageView field0_6;
+    @FXML
+    ImageView field1_0;
+    @FXML
+    ImageView field1_1;
+    @FXML
+    ImageView field1_2;
+    @FXML
+    ImageView field1_3;
+    @FXML
+    ImageView field1_4;
+    @FXML
+    ImageView field1_5;
+    @FXML
+    ImageView field1_6;
+    @FXML
+    ImageView field2_0;
+    @FXML
+    ImageView field2_1;
+    @FXML
+    ImageView field2_2;
+    @FXML
+    ImageView field2_3;
+    @FXML
+    ImageView field2_4;
+    @FXML
+    ImageView field2_5;
+    @FXML
+    ImageView field2_6;
+    @FXML
+    ImageView field3_0;
+    @FXML
+    ImageView field3_1;
+    @FXML
+    ImageView field3_2;
+    @FXML
+    ImageView field3_3;
+    @FXML
+    ImageView field3_4;
+    @FXML
+    ImageView field3_5;
+    @FXML
+    ImageView field3_6;
+    @FXML
+    ImageView field4_0;
+    @FXML
+    ImageView field4_1;
+    @FXML
+    ImageView field4_2;
+    @FXML
+    ImageView field4_3;
+    @FXML
+    ImageView field4_4;
+    @FXML
+    ImageView field4_5;
+    @FXML
+    ImageView field4_6;
+    @FXML
+    ImageView field5_0;
+    @FXML
+    ImageView field5_1;
+    @FXML
+    ImageView field5_2;
+    @FXML
+    ImageView field5_3;
+    @FXML
+    ImageView field5_4;
+    @FXML
+    ImageView field5_5;
+    @FXML
+    ImageView field5_6;
+    @FXML
+    ImageView field6_0;
+    @FXML
+    ImageView field6_1;
+    @FXML
+    ImageView field6_2;
+    @FXML
+    ImageView field6_3;
+    @FXML
+    ImageView field6_4;
+    @FXML
+    ImageView field6_5;
+    @FXML
+    ImageView field6_6;
+    @FXML
+    ImageView field7_0;
+    @FXML
+    ImageView field7_1;
+    @FXML
+    ImageView field7_2;
+    @FXML
+    ImageView field7_3;
+    @FXML
+    ImageView field7_4;
+    @FXML
+    ImageView field7_5;
+    @FXML
+    ImageView field7_6;
+    @FXML
+    ImageView field8_0;
+    @FXML
+    ImageView field8_1;
+    @FXML
+    ImageView field8_2;
+    @FXML
+    ImageView field8_3;
+    @FXML
+    ImageView field8_4;
+    @FXML
+    ImageView field8_5;
+    @FXML
+    ImageView field8_6;
+    @FXML
+    ImageView field9_0;
+    @FXML
+    ImageView field9_1;
+    @FXML
+    ImageView field9_2;
+    @FXML
+    ImageView field9_3;
+    @FXML
+    ImageView field9_4;
+    @FXML
+    ImageView field9_5;
+    @FXML
+    ImageView field9_6;
+    @FXML
+    ImageView field10_0;
+    @FXML
+    ImageView field10_1;
+    @FXML
+    ImageView field10_2;
+    @FXML
+    ImageView field10_3;
+    @FXML
+    ImageView field10_4;
+    @FXML
+    ImageView field10_5;
+    @FXML
+    ImageView field10_6;
+    @FXML
+    ImageView field11_0;
+    @FXML
+    ImageView field11_1;
+    @FXML
+    ImageView field11_2;
+    @FXML
+    ImageView field11_3;
+    @FXML
+    ImageView field11_4;
+    @FXML
+    ImageView field11_5;
+    @FXML
+    ImageView field11_6;
+
     //Setting the Inventory images
-    @FXML ImageView inv1;
-    @FXML ImageView inv2;
-    @FXML ImageView inv3;
-    @FXML ImageView inv4;
-    @FXML ImageView inv5;
-    @FXML ImageView inv6;
-    @FXML ImageView inv7;
-    @FXML ImageView inv8;
+    @FXML
+    ImageView inv1;
+    @FXML
+    ImageView inv2;
+    @FXML
+    ImageView inv3;
+    @FXML
+    ImageView inv4;
+    @FXML
+    ImageView inv5;
+    @FXML
+    ImageView inv6;
+    @FXML
+    ImageView inv7;
+    @FXML
+    ImageView inv8;
 
     //Initialising the image paths and setting them to an image
     //Buttons
     String trashButtonPath = "buttons/Trash.png";
     Image trashButton = new Image(trashButtonPath);
-
+    
     String helpButtonPath = "buttons/Help.png";
     Image helpButton = new Image(helpButtonPath);
-
+    
     String closeButtonPath = "buttons/Close.png";
     Image closeButton = new Image(closeButtonPath);
-
+    
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
-    
+
     //NPCs
     String mariaPath = "npc/Maria Mini.png";
     Image mariaMini = new Image(mariaPath);
@@ -188,9 +316,7 @@ public class MedHqController implements Initializable {
     //Backgrounds
     String nextRoom = "backgrounds/HQ Medicine Room.png";
     Image medHQ = new Image(nextRoom);
-
-
-
+    
     private double percentageTimeBar;
 
     /**
@@ -206,45 +332,46 @@ public class MedHqController implements Initializable {
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
+        truckInventoryPane.setVisible(false);
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
-
+        
         helpBtn.setImage(helpButton);
-
+        
         closeDialog.setImage(closeButton);
         closeHelp.setImage(closeButton);
-
+        
         openHandbook.setImage(handbookButton);
 
         //Setting the background image
         backgroundImage.setImage(medHQ);
-        
+
         //Initialising Maria's Sprite
         field0_5.setImage(mariaMini);
-
+        
     }
     
-    public void handleMariaClicked(MouseEvent event){
+    public void handleMariaClicked(MouseEvent event) {
         dialogPane.setVisible(!dialogPane.isVisible());
         answer2.setVisible(false);
         treatBtn.setVisible(false);
         giveItemBtn.setVisible(false);
         
+        
         NPCNameLabel.setText("Maria Hoffmann");
         NPCImage.setImage(mariaConvo);
         
-        dialogLabel.setText("Are you ready to leave for Mozambique?\n"+
-                            "(Did you finish packing the truck? You cannot return once left.)");
+        dialogLabel.setText("Are you ready to leave for Mozambique?\n"
+                + "(Did you finish packing the truck? You cannot return once left.)");
         
         answer1.setText("Ready");
         answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
-            public void handle(MouseEvent event){
+            public void handle(MouseEvent event) {
                 try {
                     App.setRoot("village");
-                } 
-                catch (IOException ex) {
+                } catch (IOException ex) {
                     ex.printStackTrace();
                 }
                 
@@ -258,26 +385,26 @@ public class MedHqController implements Initializable {
             }
         });
     }
-
+    
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
-
+    
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"+
-                          "limit. You do this by talking to them, by clicking on them, and making your \n"+
-                          "choice of progression. Be aware that certain actions take time.\n"+
-                          "You earn points by treating patients correctly, and by giving them an item \n"+
-                          "that helps them prevent spreading their disease. When time is out, see how\n"+
-                          "many you have saved from their contracted disease!");
-
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
+        
     }
-
+    
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
-
+    
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -291,5 +418,19 @@ public class MedHqController implements Initializable {
         catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public void handleTruckClicked1(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        
+    }
+    public void handleTruckClicked2(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
+    public void handleTruckClicked3(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
+    public void handleTruckClicked4(MouseEvent event){
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
 }
