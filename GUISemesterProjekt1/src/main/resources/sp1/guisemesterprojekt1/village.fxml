@@ -195,8 +195,7 @@
       </AnchorPane>
       <Label layoutX="58.0" layoutY="67.0" text="Points">
          <font>
-            <Font size="15.0" /> <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
-      
+            <Font size="15.0" /> 
          </font>
       </Label>
       <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" onMouseClicked="#handleTrash" pickOnBounds="true" preserveRatio="true" />
