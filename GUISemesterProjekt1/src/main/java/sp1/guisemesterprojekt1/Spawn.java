@@ -39,12 +39,12 @@ import javafx.scene.input.KeyEvent;
  *
  * @author marku
  */
-public class PrimaryController implements Initializable{
+public class Spawn implements Initializable{
 
     //Setting the Time Indicator
     @FXML ProgressBar timeProgressBar;
 
-    //Setting the GridPane
+    //Setting the GridPane<
     @FXML GridPane inventoryGrid;
     @FXML GridPane gameGrid;
     @FXML GridPane dialogOptionsGrid;

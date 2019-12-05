@@ -35,7 +35,7 @@ public class StartMenuController implements Initializable {
     }
     
     public void startGameOnAction(ActionEvent event) throws IOException{
-        App.setRoot("primary");
+        App.setRoot("spawn");
     }
     
     
