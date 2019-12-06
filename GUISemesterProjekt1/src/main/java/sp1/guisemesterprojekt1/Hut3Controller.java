@@ -578,18 +578,17 @@ public class Hut3Controller implements Initializable {
             }
     }
 
-    @FXML
-    private void handleInventorySlotClicked1(MouseEvent event) {
+    private void inventorySlotClicked(int i) {
         //Trashing
         if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(0));
+            playerInventory.removeItem(playerInventory.getKeys().get(i));
         } 
         
         //Treatment
         if (treatActive) {
-            if (playerInventory.getValues().get(0) instanceof IMedicineItem) { //If this slot contains medicine item
+            if (playerInventory.getValues().get(i) instanceof IMedicineItem) { //If this slot contains medicine item
                 //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(0);
+                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(i);
                 
                 //Tries to treat patient with this item.
                 da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
@@ -602,7 +601,7 @@ public class Hut3Controller implements Initializable {
                 }
                     
                 //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(0));
+                playerInventory.removeItem(playerInventory.getKeys().get(i));
                 treatActive = false;
             }
             else {
@@ -612,16 +611,16 @@ public class Hut3Controller implements Initializable {
         
         //Giving
         if (giveActive) {
-            if (playerInventory.getValues().get(0) instanceof IUtilityItem) { //If this slot contains utility item
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem) { //If this slot contains utility item
                 //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(0);
+                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(i);
                 
                 //Gives item to NPC.
                 da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
+                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(i) + "' to " + talkNPC.getName());
                 
                 //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(0));
+                playerInventory.removeItem(playerInventory.getKeys().get(i));
                 giveActive = false;
             }
             else {
@@ -629,384 +628,48 @@ public class Hut3Controller implements Initializable {
             }
         }        
         
-        updateInventory();
+        updateInventory(); 
     }
+    
 
     @FXML
+    private void handleInventorySlotClicked1(MouseEvent event) {
+        inventorySlotClicked(0);
+    }
+
+    
+    @FXML
     private void handleInventorySlotClicked2(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(1));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(1) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(1);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-                
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(1));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(1) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(1);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(1));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(1);
     }
 
     @FXML
     private void handleInventorySlotClicked3(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(2));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(2) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(2);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-                
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(2));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(2) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(2);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(2));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(2);
     }
 
     @FXML
     private void handleInventorySlotClicked4(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(3));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(3) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(3);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(3));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(3) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(3);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(3));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(3);
     }
 
     @FXML
     private void handleInventorySlotClicked5(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(4));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(4) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(4);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(4));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(4) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(4);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(4));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(4);
     }
-
+    
     @FXML
     private void handleInventorySlotClicked6(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(5));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(5) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(5);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(5));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(5) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(5);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(5));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(5);
     }
 
     @FXML
     private void handleInventorySlotClicked7(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(6));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(6) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(6);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(6));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(6) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(6);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(6));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(6);
     }
 
     @FXML
     private void handleInventorySlotClicked8(MouseEvent event) {
-        //Trashing
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(7));
-        } 
-        
-        //Treatment
-        if (treatActive) {
-            if (playerInventory.getValues().get(7) instanceof IMedicineItem) { //If this slot contains medicine item
-                //Makes temporary item from slot in inventory
-                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(7);
-                
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
-                    dialogLabel.setText("You have treated " + talkNPC.getName());
-                    NPCNameLabel.setText(null);
-                    treatBtn.setVisible(false);
-                }
-                
-                //Remove item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(7));
-                treatActive = false;
-            }
-            else {
-                treatActive = false; //stops you from "looking" for medicineitem.
-            }
-        }
-        
-        //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(7) instanceof IUtilityItem) { //If this slot contains utility item
-                //Makes temporary item from slot in inventory
-                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(7);
-                
-                //Gives item to NPC.
-                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
-                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(0) + "' to " + talkNPC.getName());
-                
-                //Delete item from inventory
-                playerInventory.removeItem(playerInventory.getKeys().get(7));
-                giveActive = false;
-            }
-            else {
-                giveActive = false; //stops you from "looking" for utilityitem.
-            }
-        }        
-        
-        updateInventory();
+        inventorySlotClicked(7);
     }
 }
