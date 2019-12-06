@@ -145,6 +145,8 @@ public class Hut2Controller implements Initializable {
     Image handbookButton = new Image(handbookPath);
     
     //NPCs
+    INPC talkNPC;
+    
     String yuranPath = "npc/Lady1 Mini.png";
     Image yuranMini = new Image(yuranPath);
     String yuranPathConvo = "npc/Lady 1 Mozambique.png";
@@ -311,7 +313,7 @@ public class Hut2Controller implements Initializable {
     
     //HANDLERS FOR THE NPCs
     public void handleYuranClicked(MouseEvent event){
-        INPC talkNPC = Yuran;
+        talkNPC = Yuran;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -394,7 +396,7 @@ public class Hut2Controller implements Initializable {
     }
     
     public void handleRiyadhClicked(MouseEvent event){
-        INPC talkNPC = Riyadh;
+        talkNPC = Riyadh;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
