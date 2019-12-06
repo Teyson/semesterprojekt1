@@ -32,6 +32,7 @@ public class UtilityItem extends Item implements IUtilityItem{
        this.helps = helps;
    }
    
+    @Override
     public int getPoints() {
         return points;
     }

@@ -62,7 +62,7 @@ public class DomainAdministration {
     //Initializers
     public void makeItems() {
         //Creating the HIV Items
-        hivMed = new MedicineItem("HIV Medicine", "Appears to be a pinkish liquid", 1, "HIV");
+        hivMed = new MedicineItem("HIV Medication", "Appears to be a pinkish liquid", 1, "HIV");
         condom = new UtilityItem("Condom", "Condoms prevent the spread of sexually transmitted diseases", 1, 5, "HIV");
 
         //Creating the Malaria Items
@@ -145,7 +145,7 @@ public class DomainAdministration {
     public void makeInventories() {
         playerInventory = new Inventory(7);
         playerInventory.addItem(condom.getName(), condom);
-        playerInventory.addItem("HIV Medication", hivMed);
+        playerInventory.addItem(hivMed.getName(), hivMed);
         truckInventory = new Inventory(30); //size can change
     }
 

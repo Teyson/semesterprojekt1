@@ -1,9 +1,9 @@
 package Domain;
 
 import Interfaces.IInteraction;
+import Interfaces.IMedicineItem;
 import Interfaces.INPC;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import Interfaces.IUtilityItem;
 import javafx.scene.image.Image;
 
 public class NPC implements INPC{
@@ -288,29 +288,29 @@ public class NPC implements INPC{
      * the treatment.
      */
     
-    public void correctTreatment(MedicineItem medicineItem) {
+    
+    @Override
+    public void correctTreatment(IMedicineItem medicineItem) {
+        this.treatAttempted = true;
         if (medicineItem.getCures().equals(this.illnessName)) {
             this.illnessName = null;
-            System.out.println("The patient has been cured!");
-            System.out.println("You got " + this.getPoints() + " points");
         } else {
             this.alive = false;
-            System.out.println("The patient died!!!! :(");
         }
         Evaluation.addPoints(this.getPoints());
     }
+    
     /**
      * 
      * @param utilityItem is the Item needed to check if the correct Item for the NPC with a given illness.
      * this method decides wether it's a good item to give or not.
      */
-    public void correctItem(UtilityItem utilityItem){
+
+    @Override
+    public void correctItem(IUtilityItem utilityItem) {
         if(utilityItem.getHelps().equalsIgnoreCase(this.illnessName)){
-            System.out.println("You helped the further condition of this patient. Good job!");
             Evaluation.addPoints(utilityItem.getPoints());
-            System.out.println("You got: " + utilityItem.getPoints() + " points");
-        } else {
-            System.out.println("You gave a wrong item to this patient...");
-        }
+        } 
     }
+
 }
