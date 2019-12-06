@@ -311,7 +311,7 @@ public class Hut2Controller implements Initializable {
     
     //HANDLERS FOR THE NPCs
     public void handleYuranClicked(MouseEvent event){
-        INPC talkNPC = da.getRoom().getNPC("Yuran");
+        INPC talkNPC = Yuran;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -387,10 +387,91 @@ public class Hut2Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
         }
     }
     
     public void handleRiyadhClicked(MouseEvent event){
+        INPC talkNPC = Riyadh;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(riyadhConvo);
+        NPCNameLabel.setText(Riyadh.getName());
+        
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Hello Doctor! I think I have infection, I heard that you get a\n"+
+                                "fever from that. I also have a lot of pain in my stomach");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. They also report\n"+
+                                        "nausea and vomiting, and several days of having diarrhea");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+        
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I am not healthy, ''Doctor''. What is wrong with you?\n");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field1_2.setVisible(false);
+                        }
+                    });
+                }
+            });
+            
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, help me...");
+                    
+                }
+            });
+        }
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you for helping me, may the Gods smile upon you.");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
     
     }
     
