@@ -4,6 +4,7 @@ import Interfaces.IInteraction;
 import Interfaces.IMedicineItem;
 import Interfaces.INPC;
 import Interfaces.IUtilityItem;
+import java.util.Random;
 import javafx.scene.image.Image;
 
 public class NPC implements INPC{
@@ -290,14 +291,25 @@ public class NPC implements INPC{
     
     
     @Override
-    public void correctTreatment(IMedicineItem medicineItem) {
+    public boolean correctTreatment(IMedicineItem medicineItem, boolean usedCleanSyringe) {
+        Random random = new Random();
         this.treatAttempted = true;
         if (medicineItem.getCures().equals(this.illnessName)) {
             this.illnessName = null;
+            //If dirty syrringe was used
+            if (!usedCleanSyringe) {
+                int randomNumber = random.nextInt(100); //Random number between 0-100.
+                //Kill the patient.
+                if (randomNumber < 50)
+                    this.alive = false;
+            }
+            
         } else {
             this.alive = false;
         }
+
         Evaluation.addPoints(this.getPoints());
+        return this.alive;
     }
     
     /**

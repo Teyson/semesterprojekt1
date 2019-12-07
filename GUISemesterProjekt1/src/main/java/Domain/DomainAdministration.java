@@ -1,5 +1,6 @@
 package Domain;
 
+import Interfaces.IUtilityItem;
 import java.util.HashMap;
 import sp1.guisemesterprojekt1.App;
 
@@ -18,6 +19,8 @@ public class DomainAdministration {
     UtilityItem faceMask;
     MedicineItem malMed;
     UtilityItem mosquitoSpray;
+    UtilityItem syringeC;
+    UtilityItem syringeD;
 
     //Setting the rooms
     Room currentRoom;
@@ -73,6 +76,10 @@ public class DomainAdministration {
         tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
         faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
 
+        //Create syringes
+        syringeC = new UtilityItem("Clean Syringe", "This syringe is clean.", 1, 0, "None");
+        syringeD = new UtilityItem("Dirty Syringe", "This syringe is not clean.", 1, 0, "None");
+        
         spawn.addItem(condom.getName(), condom);
 
     }
@@ -146,10 +153,14 @@ public class DomainAdministration {
         playerInventory = new Inventory(7);
         playerInventory.addItem(condom.getName(), condom);
         playerInventory.addItem(hivMed.getName(), hivMed);
+        playerInventory.addItem(syringeD.getName(), syringeD);
         truckInventory = new Inventory(30); //size can change
     }
 
     //Getters
+    public UtilityItem getDirtySyringe() {
+        return syringeD;
+    }
     
     public boolean getWinCondition(){
         return this.hasWon;

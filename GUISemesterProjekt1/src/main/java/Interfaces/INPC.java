@@ -9,6 +9,6 @@ public interface INPC {
     public boolean isTreatAttempted();
     public IInteraction getInteraction();
     public void kill();
-    public void correctTreatment(IMedicineItem medicineItem);
+    public boolean correctTreatment(IMedicineItem medicineItem, boolean usedCleanSyringe);
     public void correctItem(IUtilityItem utilityItem);
 }

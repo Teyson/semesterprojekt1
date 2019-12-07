@@ -589,18 +589,31 @@ public class Hut1Controller implements Initializable {
 
     @FXML
     private void handleTreat(MouseEvent event) {
-            treatActive = true;
-
-            //Disables give state
-            giveActive = false;
-            updateInventory(); //updates colors
-
+        treatActive = true;
+        
+        //Disables give state
+        giveActive = false;
+        updateInventory(); //updates colors
+        
+        //Check if no syringe.
+        if (!playerInventory.getKeys().contains("Clean Syringe") && !playerInventory.getKeys().contains("Dirty Syringe")) {
+            dialogLabel.setText("You need a syringe to treat the patient.");
+            treatActive = false;
+        } 
+        //If player has a syringe
+        else {
+            //Changes backgroundcolor of every medicineitem
             for (int i = 0; i < playerInventory.getValues().size(); i++) {
-                    if (playerInventory.getValues().get(i) instanceof IMedicineItem) {
-                            rectList.get(i).setVisible(true);
-                            rectList.get(i).setFill(Color.GREEN);
-                    }
+                if (playerInventory.getValues().get(i) instanceof IMedicineItem) {
+                    rectList.get(i).setVisible(true);
+                    rectList.get(i).setFill(Color.GREEN);
+                }
             }
+            
+            //If player only has a used syringe
+            if (!playerInventory.getKeys().contains("Clean Syringe") && playerInventory.getKeys().contains("Dirty Syringe"))
+                dialogLabel.setText("You only have a used syringe, using it is not hygienic.");
+        }
     }
 
     @FXML
@@ -631,12 +644,17 @@ public class Hut1Controller implements Initializable {
                 //Makes temporary item from slot in inventory
                 IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(i);
                 
-                //Tries to treat patient with this item.
-                da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem);
-
-                //If treatment was correct
-                if (talkNPC.isAlive()) {
+                //Treats and stores result.
+                boolean outcome = da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem, playerInventory.getKeys().contains("Clean Syringe"));
+                
+                //Changes dialogbox according to outcome.
+                if (outcome) {
                     dialogLabel.setText("You have treated " + talkNPC.getName());
+                    NPCNameLabel.setText(null);
+                    treatBtn.setVisible(false);
+                } 
+                else {
+                    dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
                     NPCNameLabel.setText(null);
                     treatBtn.setVisible(false);
                 }
@@ -644,6 +662,12 @@ public class Hut1Controller implements Initializable {
                 //Remove item from inventory
                 playerInventory.removeItem(playerInventory.getKeys().get(i));
                 treatActive = false;
+                
+                //Changes syringe item if clean syringe was used.
+                if (playerInventory.getKeys().contains("Clean Syringe")) {
+                    playerInventory.removeItem("Clean Syringe");
+                    playerInventory.addItem("Dirty Syringe", da.getDirtySyringe());
+                }
             }
             else {
                 treatActive = false; //stops you from "looking" for medicineitem.
