@@ -41,6 +41,9 @@ public class TentController implements Initializable {
     @FXML
     ProgressBar timeProgressBar;
 
+    @FXML 
+    Label pointLabel;
+    
     //Setting the GridPane
     @FXML
     GridPane inventoryGrid;
@@ -407,8 +410,13 @@ public class TentController implements Initializable {
             add(inv8);
             }
         };
+        updatePoints();
         updateInventory();
 
+    }
+    
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
     //INVENTORY HANDLER

@@ -26,7 +26,7 @@ public class StartMenuController implements Initializable {
 
     @FXML
     Button startGameBtn;
-
+    
     @FXML
     ImageView backgroundImage;
 

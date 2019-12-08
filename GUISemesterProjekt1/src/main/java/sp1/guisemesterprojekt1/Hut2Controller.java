@@ -350,6 +350,7 @@ public class Hut2Controller implements Initializable {
             }
         };
 
+        updatePoints();
         updateInventory();
     }
     
@@ -447,6 +448,10 @@ public class Hut2Controller implements Initializable {
     @FXML
     public void handleAbubakarClicked(MouseEvent event){
     
+    }
+    
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
     //HANDLERS FOR THE INVENTORY
@@ -576,7 +581,7 @@ public class Hut2Controller implements Initializable {
         updateInventory();
         
         for (int i = 0; i < playerInventory.getValues().size(); i++) {
-            if (playerInventory.getValues().get(i) instanceof IUtilityItem) {
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") {
                 rectList.get(i).setVisible(true);
                 rectList.get(i).setFill(Color.CORNFLOWERBLUE);
             }
@@ -627,8 +632,8 @@ public class Hut2Controller implements Initializable {
         }
         
         //Giving
-        if (giveActive) {
-            if (playerInventory.getValues().get(i) instanceof IUtilityItem) { //If this slot contains utility item
+        if (giveActive) { //If this slot contains utility item
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") { 
                 //Makes temporary item from slot in inventory
                 IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(i);
                 
@@ -644,7 +649,7 @@ public class Hut2Controller implements Initializable {
                 giveActive = false; //stops you from "looking" for utilityitem.
             }
         }        
-        
+        updatePoints();
         updateInventory(); 
     }
     
