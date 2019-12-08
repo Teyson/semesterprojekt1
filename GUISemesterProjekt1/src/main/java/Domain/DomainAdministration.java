@@ -57,10 +57,8 @@ public class DomainAdministration {
 
     //win/loss
     boolean hasWon;
-    
 
     private HashMap<String, Room> roomMap;
-    
 
     //Initializers
     public void makeItems() {
@@ -79,7 +77,7 @@ public class DomainAdministration {
         //Create syringes
         syringeC = new UtilityItem("Clean Syringe", "This syringe is clean.", 1, 0, "None");
         syringeD = new UtilityItem("Dirty Syringe", "This syringe is not clean.", 1, 0, "None");
-        
+
         spawn.addItem(condom.getName(), condom);
 
     }
@@ -161,10 +159,11 @@ public class DomainAdministration {
     public UtilityItem getDirtySyringe() {
         return syringeD;
     }
-    
-    public boolean getWinCondition(){
+
+    public boolean getWinCondition() {
         return this.hasWon;
     }
+
     public Evaluation getEvaluation() {
         return eval;
     }
@@ -187,14 +186,13 @@ public class DomainAdministration {
 
     public void setRoom(Room room) {
         currentRoom = room;
-        if (Time.timeCounter <= 0) {
-            this.hasWon = true;
-        } else if (Time.timeCounter == 0) {
-            this.hasWon = false;
-        } else {
-            Time.timeCounter -= Time.CHANGEROOMTIMECOST;
-        }
 
+        if (eval.getPoints() >= 5) {
+            this.hasWon = true;
+        } else {
+            this.hasWon = false;
+        }
+        Time.timeCounter -= Time.CHANGEROOMTIMECOST;
     }
 
     public HashMap<String, Room> getRoomMap() {
