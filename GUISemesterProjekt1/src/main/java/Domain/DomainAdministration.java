@@ -139,6 +139,7 @@ public class DomainAdministration {
         hut3.addNPC("Jojo", Jojo);
         hut3.addNPC("Brayton", Brayton);
         hut3.addNPC("Kelven", Kelven);
+        hut3.addNPC("Faizal", Faizal);
 
     }
 

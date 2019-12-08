@@ -32,6 +32,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import Interfaces.INPC;
+
 /**
  * FXML Controller class
  *
@@ -314,6 +316,8 @@ public class MedHqController implements Initializable {
     String mariaPathConvo = "convosprite/Maria.png";
     Image mariaConvo = new Image(mariaPathConvo);   
     INPC Maria;
+    
+    INPC talkNPC;
 
     //Backgrounds
     String nextRoom = "backgrounds/HQ Medicine Room.png";
@@ -454,7 +458,7 @@ public class MedHqController implements Initializable {
 
     //HANDLER FOR THE NPCs
     public void handleMariaClicked(MouseEvent event) {
-        INPC talkNPC = da.getRoom().getNPC("Maria Hoffmann");
+        talkNPC = Maria;
         
         dialogPane.setVisible(!dialogPane.isVisible());
         answer2.setVisible(false);
@@ -464,22 +468,44 @@ public class MedHqController implements Initializable {
         NPCNameLabel.setText(Maria.getName());
         NPCImage.setImage(mariaConvo);
 
-        dialogLabel.setText("Are you ready to leave for Mozambique?\n"
-                + "(Did you finish packing the truck? You cannot return once left.)");
+        dialogLabel.setText("On this mission you will need:\n"+
+                            " - 5x HIV Medicine\n"+
+                            " - 5x Tuberculosis Medicine\n"+
+                            " - 5x Malaria Medicine\n"+
+                            " - 15 Clean Syringes\n"+
+                            "And the left of the slots open in the truck are up for you to decide\n"+
+                            "what to do with. Do you have it all?\n");
+        
 
-        answer1.setText("Ready");
+        answer1.setText("Got it all!");
         answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                try {
-                    App.setRoot("village");
-                    da.setRoom(da.getRoomMap().get("village"));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
+                dialogLabel.setText("Are you absolutely sure you have it all?\n"+
+                                    "(You cannot return once you have left)");
+                answer1.setText("Ready!");
+                answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                    @Override
+                    public void handle(MouseEvent event){
+                        try {
+                            App.setRoot("village");
+                            da.setRoom(da.getRoomMap().get("village"));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+                
+                answer3.setText("I'll be back...");
+                answer3.setOnMouseClicked(new EventHandler <MouseEvent>(){
+                    @Override
+                    public void handle(MouseEvent event){
+                        dialogPane.setVisible(false);
+                    }
+                });
             }
         });
+        
         answer3.setText("Not yet");
         answer3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -487,8 +513,7 @@ public class MedHqController implements Initializable {
                 dialogPane.setVisible(false);
             }
         });
-    }
-    
+    }    
     
     //HANDLER FOR THE INVENTORY
     public void updateInventory() {
