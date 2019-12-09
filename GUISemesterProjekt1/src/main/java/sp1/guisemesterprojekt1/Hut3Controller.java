@@ -101,9 +101,7 @@ public class Hut3Controller implements Initializable {
     ImageView field1_5;
     @FXML
     ImageView field2_2;
-    @FXML
     ImageView field4_4;
-    @FXML
     ImageView field5_1;
     @FXML
     ImageView field6_1;
@@ -249,6 +247,10 @@ public class Hut3Controller implements Initializable {
     private Rectangle rect7;
     @FXML
     private Rectangle rect8;
+    @FXML
+    private ImageView field4_5;
+    @FXML
+    private ImageView field6_11;
     
     
     /**
@@ -363,6 +365,7 @@ public class Hut3Controller implements Initializable {
     }
     
     //HANDLERS FOR THE NPCs
+    @FXML
     public void handleKiriClicked(MouseEvent event){
     talkNPC = Kiri;
         
@@ -450,6 +453,7 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    @FXML
     public void handleIkbalClicked(MouseEvent event){
     talkNPC = Ikbal;
         
@@ -537,6 +541,7 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    @FXML
     public void handleJojoClicked(MouseEvent event){
         talkNPC = Jojo;
         
@@ -624,6 +629,7 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    @FXML
     public void handleBraytonClicked(MouseEvent event){
         talkNPC = Brayton;
         
@@ -711,6 +717,7 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    @FXML
     public void handleKelvenClicked(MouseEvent event){
         talkNPC = Kelven;
         
@@ -798,6 +805,7 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    @FXML
     public void handleFaizalClicked(MouseEvent event){
         talkNPC = Faizal;
         
@@ -1080,11 +1088,13 @@ public class Hut3Controller implements Initializable {
     }
     
     //HANDLER FOR THE CLOSE-BUTTON
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
     //HANDLERS FOR THE HELP-PANE
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
@@ -1096,11 +1106,13 @@ public class Hut3Controller implements Initializable {
 
     }
     
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
     //HANDLER FOR THE HANDBOOK
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -1116,6 +1128,7 @@ public class Hut3Controller implements Initializable {
     }
     
     //HANDLER FOR THE EXIT
+    @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
