@@ -1,5 +1,6 @@
 package Domain;
 
+import Interfaces.IUtilityItem;
 import java.util.HashMap;
 import sp1.guisemesterprojekt1.App;
 
@@ -18,6 +19,8 @@ public class DomainAdministration {
     UtilityItem faceMask;
     MedicineItem malMed;
     UtilityItem mosquitoSpray;
+    UtilityItem syringeC;
+    UtilityItem syringeD;
 
     //Setting the rooms
     Room currentRoom;
@@ -54,15 +57,13 @@ public class DomainAdministration {
 
     //win/loss
     boolean hasWon;
-    
 
     private HashMap<String, Room> roomMap;
-    
 
     //Initializers
     public void makeItems() {
         //Creating the HIV Items
-        hivMed = new MedicineItem("HIV Medicine", "Appears to be a pinkish liquid", 1, "HIV");
+        hivMed = new MedicineItem("HIV Medication", "Appears to be a pinkish liquid", 1, "HIV");
         condom = new UtilityItem("Condom", "Condoms prevent the spread of sexually transmitted diseases", 1, 5, "HIV");
 
         //Creating the Malaria Items
@@ -72,6 +73,10 @@ public class DomainAdministration {
         //Creating the TB Items
         tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
         faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
+
+        //Create syringes
+        syringeC = new UtilityItem("Clean Syringe", "This syringe is clean.", 1, 0, "None");
+        syringeD = new UtilityItem("Dirty Syringe", "This syringe is not clean.", 1, 0, "None");
 
         spawn.addItem(condom.getName(), condom);
 
@@ -146,15 +151,20 @@ public class DomainAdministration {
     public void makeInventories() {
         playerInventory = new Inventory(7);
         playerInventory.addItem(condom.getName(), condom);
-        playerInventory.addItem("HIV Medication", hivMed);
+        playerInventory.addItem(hivMed.getName(), hivMed);
+        playerInventory.addItem(syringeD.getName(), syringeD);
         truckInventory = new Inventory(30); //size can change
     }
 
     //Getters
-    
-    public boolean getWinCondition(){
+    public UtilityItem getDirtySyringe() {
+        return syringeD;
+    }
+
+    public boolean getWinCondition() {
         return this.hasWon;
     }
+
     public Evaluation getEvaluation() {
         return eval;
     }
@@ -177,14 +187,13 @@ public class DomainAdministration {
 
     public void setRoom(Room room) {
         currentRoom = room;
-        if (Time.timeCounter <= 0) {
-            this.hasWon = true;
-        } else if (Time.timeCounter == 0) {
-            this.hasWon = false;
-        } else {
-            Time.timeCounter -= Time.CHANGEROOMTIMECOST;
-        }
 
+        if (eval.getPoints() >= 5) {
+            this.hasWon = true;
+        } else {
+            this.hasWon = false;
+        }
+        Time.timeCounter -= Time.CHANGEROOMTIMECOST;
     }
 
     public HashMap<String, Room> getRoomMap() {

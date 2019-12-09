@@ -22,30 +22,6 @@ public class Evaluation implements Interfaces.IEvaluation {
     }
     
     /**
-     * 
-     * @return - true if milestone is met (player performed well enough to continue the game). Otherwise returns false. 
-     */
-    private boolean milestoneMet() {
-        if (totalPoints > milestone)
-            return true;
-        gameOver();
-        return false;
-    }
-    
-    /**
-     * Ends the game.
-     */
-    private void gameOver() {
-        System.out.println(
-"  ______ _______ _______ _______       _____  _    _ _______  ______\n" +
-" |  ____ |_____| |  |  | |______      |     |  \\  /  |______ |_____/\n" +
-" |_____| |     | |  |  | |______      |_____|   \\/   |______ |    \\_\n" +
-"                                                                    ");
-        System.out.println("Better luck next time...");
-        System.exit(-1);
-    }
-    
-    /**
      * Prints the score the player has obtained.
      */
     public void printScore() {

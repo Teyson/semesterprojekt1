@@ -14,15 +14,16 @@ import Domain.DomainAdministration;
  * JavaFX App
  */
 public class App extends Application {
+
     private static DomainAdministration da;
     private static Scene scene;
 
     @Override
-    public void init(){
+    public void init() {
         da = new DomainAdministration();
         da.setup();
     }
-    
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("startMenu"), 800, 600);
@@ -32,14 +33,18 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
-        if(da.getTime().getTime() != 0){
+        System.out.println(da.getWinCondition());
+        if (da.getTime().getTime() != 0) {
             scene.setRoot(loadFXML(fxml));
         }
-        if(da.getTime().getTime() == 0 && da.getWinCondition() == false){
+        if (da.getTime().getTime() == 0 && da.getWinCondition() == false) {
             scene.setRoot(loadFXML("gameOver"));
-            
+
         }
-        
+        if (da.getTime().getTime() == 0 && da.getWinCondition() == true) {
+            scene.setRoot(loadFXML("win"));
+
+        }
     }
 
     static Parent loadFXML(String fxml) throws IOException {
@@ -50,7 +55,7 @@ public class App extends Application {
     public static void load(String[] args) {
         launch();
     }
-        
+
     public static DomainAdministration getDomainAdministration() {
         return da;
     }

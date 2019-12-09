@@ -278,9 +278,15 @@ public class Spawn implements Initializable {
                 add(inv8);
             }
         };
+        updatePoints();
         updateInventory();
     }
-
+    
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
+    }
+    
+    
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {

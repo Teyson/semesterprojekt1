@@ -7,8 +7,10 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.IMedicineItem;
 import Interfaces.ITime;
 import Interfaces.INPC;
+import Interfaces.IUtilityItem;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,7 +30,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Hut3Controller implements Initializable {
@@ -53,7 +57,6 @@ public class Hut3Controller implements Initializable {
     AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -143,6 +146,8 @@ public class Hut3Controller implements Initializable {
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
 
+    INPC talkNPC;
+    
     //Backgrounds
     String hut3 = "backgrounds/hut 3.jpg";
     Image toShow = new Image(hut3);
@@ -222,8 +227,31 @@ public class Hut3Controller implements Initializable {
     IInventory playerInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
+    ArrayList<Rectangle> rectList;
     
     boolean trashingActive = false;
+    boolean treatActive = false;
+    boolean giveActive = false;
+    
+    @FXML
+    private Label pointLabel;
+    @FXML
+    private Rectangle rect1;
+    @FXML
+    private Rectangle rect2;
+    @FXML
+    private Rectangle rect3;
+    @FXML
+    private Rectangle rect4;
+    @FXML
+    private Rectangle rect5;
+    @FXML
+    private Rectangle rect6;
+    @FXML
+    private Rectangle rect7;
+    @FXML
+    private Rectangle rect8;
+    
     
     /**
      * Initializes the controller class.
@@ -267,6 +295,7 @@ public class Hut3Controller implements Initializable {
         Jojo = da.getRoom().getNPC("Jojo");
         Brayton = da.getRoom().getNPC("Brayton");
         Kelven = da.getRoom().getNPC("Kelven");
+        
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();
@@ -314,8 +343,25 @@ public class Hut3Controller implements Initializable {
             add(inv8);
             }
         };
+        
+        rectList = new ArrayList<>() {
+            {
+            add(rect1);
+            add(rect2);
+            add(rect3);
+            add(rect4);
+            add(rect5);
+            add(rect6);
+            add(rect7);
+            add(rect8);
+            }
+        };
+        updatePoints();
         updateInventory();
+    }
 
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
     //HANDLERS FOR THE NPCs
@@ -844,92 +890,234 @@ public class Hut3Controller implements Initializable {
     
     //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
-        
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
+	//Clears inventory
+	for (int i = 0; i < inventoryImageList.size(); i++) {
+		inventoryImageList.get(i).setVisible(false);
+	}
+	
+	//Inserts items
+	for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+		inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+		inventoryImageList.get(j).setVisible(true);
+	}
+	
+	if (!treatActive) {
+		for (int i = 0; i < rectList.size(); i++) {
+			rectList.get(i).setVisible(false);
+		}
+	}
+	
+	if (!giveActive) {
+		for (int i = 0; i < rectList.size(); i++) {
+			rectList.get(i).setVisible(false);
+		}
+	}        
     }
-        
-    @FXML
-    private void handleTrash(MouseEvent event) {
-        //Change trashing state
-        trashingActive = !trashingActive;
-        
-        if (trashingActive)
-            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        else
-            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+    
+    
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
     }
 
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
+
+    }
+
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void handleExitEvent(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("village"));
+        App.setRoot("village");
+    }
+    
+    @FXML
+    private void handleTrash(MouseEvent event) {
+            //Change trashing state
+            trashingActive = !trashingActive;
+
+            //Updates state of treatment and give item
+            treatActive = false;
+            giveActive = false;
+            updateInventory(); //updates colors
+
+            if (trashingActive)
+                    inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+            else
+                    inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+    }
+
+    @FXML
+    private void handleTreat(MouseEvent event) {
+        treatActive = true;
+        
+        //Disables give state
+        giveActive = false;
+        updateInventory(); //updates colors
+        
+        //Check if no syringe.
+        if (!playerInventory.getKeys().contains("Clean Syringe") && !playerInventory.getKeys().contains("Dirty Syringe")) {
+            dialogLabel.setText("You need a syringe to treat the patient.");
+            treatActive = false;
+        } 
+        //If player has a syringe
+        else {
+            //Changes backgroundcolor of every medicineitem
+            for (int i = 0; i < playerInventory.getValues().size(); i++) {
+                if (playerInventory.getValues().get(i) instanceof IMedicineItem) {
+                    rectList.get(i).setVisible(true);
+                    rectList.get(i).setFill(Color.GREEN);
+                }
+            }
+            
+            //If player only has a used syringe
+            if (!playerInventory.getKeys().contains("Clean Syringe") && playerInventory.getKeys().contains("Dirty Syringe"))
+                dialogLabel.setText("You only have a used syringe, using it is not hygienic.");
+        }
+    }
+
+    @FXML
+    private void handleGive(MouseEvent event) {
+        giveActive = true;
+        
+        //Disables treat state
+        treatActive = false;
+        updateInventory();
+        
+        for (int i = 0; i < playerInventory.getValues().size(); i++) {
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") {
+                rectList.get(i).setVisible(true);
+                rectList.get(i).setFill(Color.CORNFLOWERBLUE);
+            }
+        }
+    }
+
+    private void inventorySlotClicked(int i) {
+        //Trashing
+        if (trashingActive) {
+            playerInventory.removeItem(playerInventory.getKeys().get(i));
+        } 
+        
+        //Treatment
+        if (treatActive) {
+            if (playerInventory.getValues().get(i) instanceof IMedicineItem) { //If this slot contains medicine item
+                //Makes temporary item from slot in inventory
+                IMedicineItem tempItem = (IMedicineItem) playerInventory.getValues().get(i);
+                
+                //Treats and stores result.
+                boolean outcome = da.getRoom().getNPC(talkNPC.getName()).correctTreatment(tempItem, playerInventory.getKeys().contains("Clean Syringe"));
+                
+                //Changes dialogbox according to outcome.
+                if (outcome) {
+                    dialogLabel.setText("You have treated " + talkNPC.getName());
+                    NPCNameLabel.setText(null);
+                    treatBtn.setVisible(false);
+                } 
+                else {
+                    dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
+                    NPCNameLabel.setText(null);
+                    treatBtn.setVisible(false);
+                }
+                    
+                //Remove item from inventory
+                playerInventory.removeItem(playerInventory.getKeys().get(i));
+                treatActive = false;
+                
+                //Changes syringe item if clean syringe was used.
+                if (playerInventory.getKeys().contains("Clean Syringe")) {
+                    playerInventory.removeItem("Clean Syringe");
+                    playerInventory.addItem("Dirty Syringe", da.getDirtySyringe());
+                }
+            }
+            else {
+                treatActive = false; //stops you from "looking" for medicineitem.
+            }
+        }
+        
+        //Giving
+        if (giveActive) { //If this slot contains utility item
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") { 
+                //Makes temporary item from slot in inventory
+                IUtilityItem tempItem = (IUtilityItem) playerInventory.getValues().get(i);
+                
+                //Gives item to NPC.
+                da.getRoom().getNPC(talkNPC.getName()).correctItem(tempItem);
+                dialogLabel.setText("You gave '" + playerInventory.getKeys().get(i) + "' to " + talkNPC.getName());
+                
+                //Delete item from inventory
+                playerInventory.removeItem(playerInventory.getKeys().get(i));
+                giveActive = false;
+            }
+            else {
+                giveActive = false; //stops you from "looking" for utilityitem.
+            }
+        }        
+        updatePoints();
+        updateInventory(); 
+    }
+    
 
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(0));
-            updateInventory();
-        } 
+        inventorySlotClicked(0);
     }
 
+    
     @FXML
     private void handleInventorySlotClicked2(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(1));
-            updateInventory();
-        } 
+        inventorySlotClicked(1);
     }
 
     @FXML
     private void handleInventorySlotClicked3(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(2));
-            updateInventory();
-        } 
+        inventorySlotClicked(2);
     }
 
     @FXML
     private void handleInventorySlotClicked4(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(3));
-            updateInventory();
-        } 
+        inventorySlotClicked(3);
     }
 
     @FXML
     private void handleInventorySlotClicked5(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(4));
-            updateInventory();
-        } 
+        inventorySlotClicked(4);
     }
-
+    
     @FXML
     private void handleInventorySlotClicked6(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(5));
-            updateInventory();
-        } 
+        inventorySlotClicked(5);
     }
 
     @FXML
     private void handleInventorySlotClicked7(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(6));
-            updateInventory();
-        } 
+        inventorySlotClicked(6);
     }
 
     @FXML
     private void handleInventorySlotClicked8(MouseEvent event) {
-        if (trashingActive) {
-            playerInventory.removeItem(playerInventory.getKeys().get(7));
-            updateInventory();
-        } 
+        inventorySlotClicked(7);
     }
     
     //HANDLER FOR THE CLOSE-BUTTON

@@ -1,5 +1,6 @@
 package Interfaces;
 
+
 public interface INPC {
     public String getName();
     public String getIllnessName();
@@ -8,4 +9,6 @@ public interface INPC {
     public boolean isTreatAttempted();
     public IInteraction getInteraction();
     public void kill();
+    public boolean correctTreatment(IMedicineItem medicineItem, boolean usedCleanSyringe);
+    public void correctItem(IUtilityItem utilityItem);
 }

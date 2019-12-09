@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.Hut3Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.Hut3Controller">
    <children>
       <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="291.0" layoutY="52.0" prefHeight="30.0" prefWidth="287.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="291.0">
         <columnConstraints>
@@ -27,9 +28,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Rectangle fx:id="rect1" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" />
+            <Rectangle fx:id="rect2" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="1" />
+            <Rectangle fx:id="rect3" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="2" />
+            <Rectangle fx:id="rect4" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="3" />
+            <Rectangle fx:id="rect5" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="4" />
+            <Rectangle fx:id="rect6" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="5" />
+            <Rectangle fx:id="rect7" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="6" />
+            <Rectangle fx:id="rect8" arcHeight="5.0" arcWidth="5.0" fill="#0af519" height="31.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="36.0" GridPane.columnIndex="7" />
             <ImageView fx:id="inv1" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#handleInventorySlotClicked1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="inv2" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="inv3" fitHeight="32.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <ImageView fx:id="inv2" fitHeight="32.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="inv3" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
             <ImageView fx:id="inv4" fitHeight="31.0" fitWidth="37.0" onMouseClicked="#handleInventorySlotClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
             <ImageView fx:id="inv5" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
             <ImageView fx:id="inv6" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
@@ -107,8 +116,8 @@
                   <Button fx:id="answer3" mnemonicParsing="false" prefWidth="120.0" text="Button" GridPane.columnIndex="2" />
                </children>
             </GridPane>
-            <Button fx:id="treatBtn" layoutX="536.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Treat" />
-            <Button fx:id="giveItemBtn" layoutX="612.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Give Item" />
+            <Button fx:id="treatBtn" layoutX="536.0" layoutY="-30.0" mnemonicParsing="false" onMouseClicked="#handleTreat" prefHeight="30.0" prefWidth="70.0" text="Treat" />
+            <Button fx:id="giveItemBtn" layoutX="612.0" layoutY="-30.0" mnemonicParsing="false" onMouseClicked="#handleGive" prefHeight="30.0" prefWidth="70.0" text="Give Item" />
             <Label fx:id="dialogLabel" alignment="CENTER" contentDisplay="TOP" layoutX="165.0" layoutY="18.0" prefHeight="158.0" prefWidth="543.0" text="saæsndfnadsfonnnnnnnnnnnnnnnnnnnnnnnnnnddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" wrapText="true">
                <font>
                   <Font size="15.0" />

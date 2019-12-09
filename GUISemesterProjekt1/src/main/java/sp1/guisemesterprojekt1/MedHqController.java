@@ -45,6 +45,9 @@ public class MedHqController implements Initializable {
     @FXML
     ProgressBar timeProgressBar;
 
+    @FXML
+    private Label pointLabel;
+    
     //Setting the GridPane
     @FXML
     GridPane inventoryGrid;
@@ -325,10 +328,16 @@ public class MedHqController implements Initializable {
                 add(inv8);
             }
         };
+        
+        updatePoints();
         updateInventory();
-
     }
-
+    
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
+    }
+    
+    
     //HANDLER FOR THE NPCs
     public void handleMariaClicked(MouseEvent event) {
         talkNPC = Maria;
