@@ -71,7 +71,6 @@ public class MedHqController implements Initializable {
     AnchorPane truckInventoryPane;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -81,7 +80,6 @@ public class MedHqController implements Initializable {
     Label dialogLabel;
     @FXML
     Label NPCNameLabel;
-    @FXML
     Label truckInventoryView;
 
     //Setting the buttons
@@ -129,7 +127,6 @@ public class MedHqController implements Initializable {
     ImageView field1_3;
     @FXML
     ImageView field2_2;
-    @FXML
     ImageView field4_5;
     @FXML
     ImageView field5_5;
@@ -327,6 +324,8 @@ public class MedHqController implements Initializable {
     ArrayList<ImageView> truckInventoryImageList;
 
     boolean trashingActive = false;
+    @FXML
+    private ImageView field4_2;
 
     /**
      * Initializes the controller class.
@@ -497,6 +496,7 @@ public class MedHqController implements Initializable {
     
     
     //HANDLER FOR THE NPCs
+    @FXML
     public void handleMariaClicked(MouseEvent event) {
         talkNPC = Maria;
         
@@ -570,10 +570,12 @@ public class MedHqController implements Initializable {
     }
     
 
+    @FXML
     public void handleTruckClicked(MouseEvent event) {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
 
+    @FXML
     public void handleTruckInventoryClose(MouseEvent event) {
         truckInventoryPane.setVisible(false);
     }
@@ -654,6 +656,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     public void handleMasksClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mask");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -662,10 +665,12 @@ public class MedHqController implements Initializable {
     }
 
     //HANDLER FOR THE DIALOGS
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
+    @FXML
     public void handleCondomsClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Condom");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -673,6 +678,7 @@ public class MedHqController implements Initializable {
         updateTruckInventory();
     }
 
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
@@ -683,6 +689,7 @@ public class MedHqController implements Initializable {
                 + "many you have saved from their contracted disease!");
     }
 
+    @FXML
     public void handleMosquitoSprayClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mosquito Spray");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -690,10 +697,12 @@ public class MedHqController implements Initializable {
         updateTruckInventory();
     }
 
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
+    @FXML
     public void handleSyringesClicked(MouseEvent event) {
         System.out.println(da.getRoom().getItems().getKeys().size());
         int tempIndex = roomInventory.getKeys().indexOf("Clean Syringe");
@@ -704,6 +713,7 @@ public class MedHqController implements Initializable {
     }
 
     //HANDLER FOR THE HANDBOOK
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -718,6 +728,7 @@ public class MedHqController implements Initializable {
         }
     }
 
+    @FXML
     public void handleHIVClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("HIV Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -725,6 +736,7 @@ public class MedHqController implements Initializable {
         updateTruckInventory();
     }
 
+    @FXML
     public void handleMalariaClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Malaria Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -733,6 +745,7 @@ public class MedHqController implements Initializable {
         
     }
 
+    @FXML
     public void handleTBClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Tuberculosis Medication");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
@@ -745,5 +758,209 @@ public class MedHqController implements Initializable {
 
         }
         */
+    }
+    
+    public void removeTruckInventoryOnClicked(int i){
+        truckInventory.removeItem(truckInventory.getKeys().get(i));
+        updateTruckInventory();
+    }
+    @FXML
+    private void handleTruckInventorySlotClicked1(MouseEvent event) {
+        removeTruckInventoryOnClicked(0);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked2(MouseEvent event) {
+        removeTruckInventoryOnClicked(1);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked3(MouseEvent event) {
+        removeTruckInventoryOnClicked(2);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked4(MouseEvent event) {
+        removeTruckInventoryOnClicked(3);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked5(MouseEvent event) {
+        removeTruckInventoryOnClicked(4);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked6(MouseEvent event) {
+        removeTruckInventoryOnClicked(5);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked7(MouseEvent event) {
+        removeTruckInventoryOnClicked(6);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked8(MouseEvent event) {
+        removeTruckInventoryOnClicked(7);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked9(MouseEvent event) {
+        removeTruckInventoryOnClicked(8);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked10(MouseEvent event) {
+        removeTruckInventoryOnClicked(9);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked11(MouseEvent event) {
+        removeTruckInventoryOnClicked(10);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked12(MouseEvent event) {
+        removeTruckInventoryOnClicked(11);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked13(MouseEvent event) {
+        removeTruckInventoryOnClicked(12);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked14(MouseEvent event) {
+        removeTruckInventoryOnClicked(13);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked15(MouseEvent event) {
+        removeTruckInventoryOnClicked(14);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked16(MouseEvent event) {
+        removeTruckInventoryOnClicked(15);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked17(MouseEvent event) {
+        removeTruckInventoryOnClicked(16);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked18(MouseEvent event) {
+        removeTruckInventoryOnClicked(17);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked19(MouseEvent event) {
+        removeTruckInventoryOnClicked(18);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked20(MouseEvent event) {
+        removeTruckInventoryOnClicked(19);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked21(MouseEvent event) {
+        removeTruckInventoryOnClicked(20);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked22(MouseEvent event) {
+        removeTruckInventoryOnClicked(21);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked23(MouseEvent event) {
+        removeTruckInventoryOnClicked(22);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked24(MouseEvent event) {
+        removeTruckInventoryOnClicked(23);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked25(MouseEvent event) {
+        removeTruckInventoryOnClicked(24);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked26(MouseEvent event) {
+        removeTruckInventoryOnClicked(25);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked27(MouseEvent event) {
+        removeTruckInventoryOnClicked(26);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked28(MouseEvent event) {
+        removeTruckInventoryOnClicked(27);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked29(MouseEvent event) {
+        removeTruckInventoryOnClicked(28);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked30(MouseEvent event) {
+        removeTruckInventoryOnClicked(29);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked31(MouseEvent event) {
+        removeTruckInventoryOnClicked(30);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked32(MouseEvent event) {
+        removeTruckInventoryOnClicked(31);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked33(MouseEvent event) {
+        removeTruckInventoryOnClicked(32);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked34(MouseEvent event) {
+        removeTruckInventoryOnClicked(33);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked35(MouseEvent event) {
+        removeTruckInventoryOnClicked(34);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked36(MouseEvent event) {
+        removeTruckInventoryOnClicked(35);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked37(MouseEvent event) {
+        removeTruckInventoryOnClicked(36);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked38(MouseEvent event) {
+        removeTruckInventoryOnClicked(37);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked39(MouseEvent event) {
+        removeTruckInventoryOnClicked(38);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked40(MouseEvent event) {
+        removeTruckInventoryOnClicked(39);
     }
 }
