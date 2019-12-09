@@ -55,7 +55,6 @@ public class Hut3Controller implements Initializable {
     AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -330,6 +329,8 @@ public class Hut3Controller implements Initializable {
     ArrayList<ImageView> inventoryImageList;
     
     boolean trashingActive = false;
+    @FXML
+    private Label pointLabel;
     
     /**
      * Initializes the controller class.
@@ -423,10 +424,12 @@ public class Hut3Controller implements Initializable {
     }
     
     
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
@@ -438,10 +441,12 @@ public class Hut3Controller implements Initializable {
 
     }
 
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -456,6 +461,7 @@ public class Hut3Controller implements Initializable {
         }
     }
 
+    @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
