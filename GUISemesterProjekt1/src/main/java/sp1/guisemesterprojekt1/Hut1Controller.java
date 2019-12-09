@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -329,6 +330,8 @@ public class Hut1Controller implements Initializable {
     String leonildoPathConvo = "npc/Man 3 Mozambique.png";
     Image leonildoConvo = new Image(leonildoPathConvo);
     INPC Leonildo;
+    
+    INPC talkNPC;
 
     //Backgrounds
     String hut1 = "backgrounds/Hut 1.jpg";
@@ -398,6 +401,13 @@ public class Hut1Controller implements Initializable {
         closeHelp.setImage(closeButton);
 
         openHandbook.setImage(handbookButton);
+        
+        //Setting the NPC Mini Images
+        field2_3.setImage(hendaMini);
+        field5_5.setImage(neltonMini);
+        field6_5.setImage(kishorMini);
+        field9_2.setImage(momedMini);
+        field10_6.setImage(leonildoMini);
 
         //Setting the background image
         backgroundImage.setImage(toShow);
@@ -459,7 +469,444 @@ public class Hut1Controller implements Initializable {
         };
         updateInventory();
     }
-
+    
+    //HANDLERS FOR THE NPCs
+    public void handleHendaClicked(MouseEvent event){
+        talkNPC = Henda;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(hendaConvo);
+        NPCNameLabel.setText(Henda.getName());
+        
+        //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    NPCNameLabel.setText(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+            
+            //If the player decides to tell the PT that they're fine, the PT will die
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field2_3.setVisible(false);
+                        }
+                    });
+                }
+            });
+            //this just prompts the player to know that he must come back
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+         //Used when the player returns to the PT after having treated successfully
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
+    }
+    
+    public void handleKishorClicked(MouseEvent event){
+        talkNPC = Kishor;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(kishorConvo);
+        NPCNameLabel.setText(Kishor.getName());
+        
+        //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    NPCNameLabel.setText(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+            
+            //If the player decides to tell the PT that they're fine, the PT will die
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field6_5.setVisible(false);
+                        }
+                    });
+                }
+            });
+            //this just prompts the player to know that he must come back
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+         //Used when the player returns to the PT after having treated successfully
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
+    }
+    
+    public void handleNeltonClicked(MouseEvent event){
+        talkNPC = Nelton;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(neltonConvo);
+        NPCNameLabel.setText(Nelton.getName());
+        
+        //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    NPCNameLabel.setText(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+            
+            //If the player decides to tell the PT that they're fine, the PT will die
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field5_5.setVisible(false);
+                        }
+                    });
+                }
+            });
+            //this just prompts the player to know that he must come back
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+         //Used when the player returns to the PT after having treated successfully
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
+    }
+    
+    public void handleMomedClicked(MouseEvent event){
+        talkNPC = Momed;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(momedConvo);
+        NPCNameLabel.setText(Momed.getName());
+        
+        //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    NPCNameLabel.setText(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+            
+            //If the player decides to tell the PT that they're fine, the PT will die
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field9_2.setVisible(false);
+                        }
+                    });
+                }
+            });
+            //this just prompts the player to know that he must come back
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+         //Used when the player returns to the PT after having treated successfully
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
+    }
+    
+    public void handleLeonildoClicked(MouseEvent event){
+        talkNPC = Leonildo;
+        
+        answer1.setVisible(true);
+        answer2.setVisible(true);
+        answer3.setVisible(true);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+        
+        dialogPane.setVisible(!dialogPane.isVisible());
+        NPCImage.setImage(leonildoConvo);
+        NPCNameLabel.setText(Leonildo.getName());
+        
+        //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
+        if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
+            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
+                               "and I think I have a fever. Can you please help me?");
+        
+            answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event){
+                    NPCImage.setImage(null);
+                    NPCNameLabel.setText(null);
+                    dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
+                                        "they have a high fever, and are sweating profusely. Additionally\n"+
+                                        "they report that they feel very winded when walking for long,\n"+
+                                        "and the rash covers their entire back and genital area.");
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    treatBtn.setVisible(true);
+                }
+            });
+            
+            //If the player decides to tell the PT that they're fine, the PT will die
+            answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    dialogLabel.setText("I most certainly am not!\n"+
+                                        "Will I now die because you are wrong?");
+                
+                    answer1.setText("More");
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                
+                    answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                        @Override
+                        public void handle(MouseEvent event){
+                            answer1.setVisible(false);
+                            NPCNameLabel.setText(null);
+                            
+                            talkNPC.kill();
+                            
+                            NPCImage.setImage(null);
+                            System.out.println(talkNPC.getName() + " killed");
+                            dialogLabel.setText(talkNPC.getName() + " has died.");
+                        
+                            field10_6.setVisible(false);
+                        }
+                    });
+                }
+            });
+            //this just prompts the player to know that he must come back
+            answer3.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event){
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
+                    dialogLabel.setText("Please, come back soon and help me!");
+                    
+                }
+            });
+        }
+         //Used when the player returns to the PT after having treated successfully
+        else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
+            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            
+            giveItemBtn.setVisible(true);
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+        }
+    }
+    
+    //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -472,45 +919,8 @@ public class Hut1Controller implements Initializable {
             inventoryImageList.get(j).setVisible(true);
         }
     }
-
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
-    }
-
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void handleExitEvent(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("village"));
-        App.setRoot("village");
-    }
-
+    
+    
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -585,6 +995,48 @@ public class Hut1Controller implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
         }
+    }
+
+    //HANDLER FOR THE CLOSE-BUTTONS
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
+    }
+
+    //HANDLERS FOR THE HELP PANES
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
+
+    }
+
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+
+    //HANDLER FOR THE HANDBOOK
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //HANDLER FOR THE EXIT
+    public void handleExitEvent(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("village"));
+        App.setRoot("village");
     }
 
 }

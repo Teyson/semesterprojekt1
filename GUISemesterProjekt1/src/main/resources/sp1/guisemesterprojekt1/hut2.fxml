@@ -50,7 +50,7 @@
       <ProgressBar fx:id="timeProgressBar" layoutX="210.0" layoutY="102.0" prefHeight="20.0" prefWidth="430.0" progress="1.0" style="-fx-accent: lightgreen;" />
       <Label layoutX="156.0" layoutY="103.0" text="Time Left" />
       <ImageView fx:id="backgroundImage" fitHeight="375.0" fitWidth="750.0" layoutX="25.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
-      <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="25.0" layoutY="150.0" prefHeight="375.0" prefWidth="750.0">
+      <GridPane fx:id="gameGrid" layoutX="25.0" layoutY="150.0" prefHeight="375.0" prefWidth="750.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -80,6 +80,7 @@
             <ImageView fx:id="field6_1" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleExitEvent" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
             <ImageView fx:id="field8_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleYuranClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3" />
             <ImageView fx:id="field10_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleGaniClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+            <ImageView fx:id="field6_11" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleExitEvent" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;" visible="false">
@@ -121,7 +122,7 @@
       </Label>
       <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" onMouseClicked="#handleTrash" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="helpBtn" fitHeight="35.0" fitWidth="35.0" layoutX="714.0" layoutY="49.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
+      <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;" visible="false">
          <children>
             <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="helpLabel" layoutX="32.0" layoutY="15.0" prefHeight="140.0" prefWidth="433.0" text="THIS IS HOW YOU PLAY THE GAME" />

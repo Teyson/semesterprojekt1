@@ -105,6 +105,8 @@ public class Hut2Controller implements Initializable {
     @FXML
     ImageView field5_5;
     @FXML
+    ImageView field5_1;
+    @FXML
     ImageView field6_1;
     @FXML
     ImageView field8_3;
