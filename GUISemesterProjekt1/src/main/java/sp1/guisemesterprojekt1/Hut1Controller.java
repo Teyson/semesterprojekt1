@@ -85,7 +85,7 @@ public class Hut1Controller implements Initializable {
     @FXML
     Button answer3;
 
-    //Setting the ImageViews
+    //Setting the Button ImageViews
     @FXML
     ImageView backgroundImage;
     @FXML
@@ -335,6 +335,7 @@ public class Hut1Controller implements Initializable {
     INPC Leonildo;
     
     INPC talkNPC;
+    ImageView currentField;
     
     //Backgrounds
     String hut1 = "backgrounds/Hut 1.jpg";
@@ -428,6 +429,11 @@ public class Hut1Controller implements Initializable {
 
         openHandbook.setImage(handbookButton);
         
+        //Setting the dialog buttons' text
+        answer1.setText("More Symptoms");
+        answer2.setText("Patient Healthy");
+        answer3.setText("Leave");
+        
         //Setting the NPC Mini Images
         field2_3.setImage(hendaMini);
         field5_5.setImage(neltonMini);
@@ -519,6 +525,7 @@ public class Hut1Controller implements Initializable {
     //HANDLERS FOR THE NPCs
     public void handleHendaClicked(MouseEvent event){
         talkNPC = Henda;
+        currentField = field2_3;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -606,6 +613,7 @@ public class Hut1Controller implements Initializable {
     
     public void handleKishorClicked(MouseEvent event){
         talkNPC = Kishor;
+        currentField = field6_5;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -693,6 +701,7 @@ public class Hut1Controller implements Initializable {
     
     public void handleNeltonClicked(MouseEvent event){
         talkNPC = Nelton;
+        currentField = field5_5;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -780,6 +789,7 @@ public class Hut1Controller implements Initializable {
     
     public void handleMomedClicked(MouseEvent event){
         talkNPC = Momed;
+        currentField = field9_2;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -867,6 +877,7 @@ public class Hut1Controller implements Initializable {
     
     public void handleLeonildoClicked(MouseEvent event){
         talkNPC = Leonildo;
+        currentField = field10_6;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -1062,6 +1073,7 @@ public class Hut1Controller implements Initializable {
                 } 
                 else {
                     dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
+                    currentField.setVisible(false);
                     NPCNameLabel.setText(null);
                     treatBtn.setVisible(false);
                 }

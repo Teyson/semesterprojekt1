@@ -153,6 +153,7 @@ public class Hut2Controller implements Initializable {
     
     //NPCs
     INPC talkNPC;
+    ImageView currentField;
     
     String yuranPath = "npc/Lady1 Mini.png";
     Image yuranMini = new Image(yuranPath);
@@ -360,6 +361,7 @@ public class Hut2Controller implements Initializable {
     @FXML
     public void handleYuranClicked(MouseEvent event){
         talkNPC = Yuran;
+        currentField = field8_3;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -448,6 +450,7 @@ public class Hut2Controller implements Initializable {
     @FXML
     public void handleRiyadhClicked(MouseEvent event){
         talkNPC = Riyadh;
+        currentField = field1_2;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -535,6 +538,7 @@ public class Hut2Controller implements Initializable {
     
     public void handleGaniClicked(MouseEvent event){
         talkNPC = Gani;
+        currentField = field10_4;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -623,6 +627,7 @@ public class Hut2Controller implements Initializable {
     @FXML
     public void handleAbubakarClicked(MouseEvent event){
         talkNPC = Abubakar;
+        currentField = field5_5;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -870,6 +875,7 @@ public class Hut2Controller implements Initializable {
                 else {
                     dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
                     NPCNameLabel.setText(null);
+                    currentField.setVisible(false);
                     treatBtn.setVisible(false);
                 }
                     

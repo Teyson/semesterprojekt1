@@ -143,14 +143,15 @@ public class Hut3Controller implements Initializable {
 
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
-
-    INPC talkNPC;
     
     //Backgrounds
     String hut3 = "backgrounds/hut 3.jpg";
     Image toShow = new Image(hut3);
     
     //NPCs
+    INPC talkNPC;
+    ImageView currentField;
+    
     String kiriPath = "npc/Lady1 Mini.png";
     Image kiriMini = new Image(kiriPath);
     String kiriPathConvo = "npc/Lady 1 Mozambique.png";
@@ -278,6 +279,11 @@ public class Hut3Controller implements Initializable {
 
         openHandbook.setImage(handbookButton);
         
+        //Setting the dialog buttons' text
+        answer1.setText("More Symptoms");
+        answer2.setText("Patient Healthy");
+        answer3.setText("Leave");
+        
         //Setting the NPC Mini Images
         field1_5.setImage(faizalMini);
         field2_2.setImage(kelvenMini);
@@ -367,7 +373,8 @@ public class Hut3Controller implements Initializable {
     //HANDLERS FOR THE NPCs
     @FXML
     public void handleKiriClicked(MouseEvent event){
-    talkNPC = Kiri;
+        talkNPC = Kiri;
+        currentField = field8_3;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -455,7 +462,8 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleIkbalClicked(MouseEvent event){
-    talkNPC = Ikbal;
+        talkNPC = Ikbal;
+        currentField = field9_4;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -544,6 +552,7 @@ public class Hut3Controller implements Initializable {
     @FXML
     public void handleJojoClicked(MouseEvent event){
         talkNPC = Jojo;
+        currentField = field4_4;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -632,6 +641,7 @@ public class Hut3Controller implements Initializable {
     @FXML
     public void handleBraytonClicked(MouseEvent event){
         talkNPC = Brayton;
+        currentField = field10_2;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -720,6 +730,7 @@ public class Hut3Controller implements Initializable {
     @FXML
     public void handleKelvenClicked(MouseEvent event){
         talkNPC = Kelven;
+        currentField = field2_2;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -808,6 +819,7 @@ public class Hut3Controller implements Initializable {
     @FXML
     public void handleFaizalClicked(MouseEvent event){
         talkNPC = Faizal;
+        currentField = field1_5;
         
         answer1.setVisible(true);
         answer2.setVisible(true);
@@ -1006,6 +1018,7 @@ public class Hut3Controller implements Initializable {
                     dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
                     NPCNameLabel.setText(null);
                     treatBtn.setVisible(false);
+                    currentField.setVisible(false);
                 }
                     
                 //Remove item from inventory

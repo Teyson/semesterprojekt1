@@ -30,11 +30,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author marku
- */
 public class VillageController implements Initializable {
 
     DomainAdministration da;
