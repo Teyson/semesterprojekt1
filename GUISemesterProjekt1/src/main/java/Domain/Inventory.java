@@ -44,7 +44,7 @@ public class Inventory implements IInventory{
     @Override
     public void addItem(String name, IItem item) {
         Item temp = (Item)item;
-        if (spaceUsed + temp.getItemSize() < inventorySize) {
+        if (spaceUsed + temp.getItemSize() <= inventorySize) {
             //itemList.put(name, temp);
             key.add(name);
             value.add(temp);
@@ -114,6 +114,11 @@ public class Inventory implements IInventory{
         ArrayList<IItem> temp;
         temp = new ArrayList<IItem>(this.value); // Cast to IItem 
         return temp;
+    }
+
+    @Override
+    public double calcPctUsed() {
+        return (double)spaceUsed/(double)inventorySize;
     }
     
 }

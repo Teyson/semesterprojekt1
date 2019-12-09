@@ -67,19 +67,28 @@ public class DomainAdministration {
         condom = new UtilityItem("Condom", "Condoms prevent the spread of sexually transmitted diseases", 1, 5, "HIV");
 
         //Creating the Malaria Items
-        malMed = new MedicineItem("Malaria Medicine", "Appears to be a greenish liquid", 1, "Malaria");
+        malMed = new MedicineItem("Malaria Medication", "Appears to be a greenish liquid", 1, "Malaria");
         mosquitoSpray = new UtilityItem("Mosquito Spray", "Spray that keeps the mosquitos away during the night", 1, 5, "Malaria");
 
         //Creating the TB Items
-        tbMed = new MedicineItem("Tuberculosis Medicine", "Appears to be a blueish liquid", 1, "Tuberculosis");
-        faceMask = new UtilityItem("Face Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
+        tbMed = new MedicineItem("Tuberculosis Medication", "Appears to be a blueish liquid", 1, "Tuberculosis");
+        faceMask = new UtilityItem("Mask", "Mask to cover mouth and nose, keeping TB Patients from spreading the infection", 1, 5, "Tuberculosis");
 
         //Create syringes
         syringeC = new UtilityItem("Clean Syringe", "This syringe is clean.", 1, 0, "None");
         syringeD = new UtilityItem("Dirty Syringe", "This syringe is not clean.", 1, 0, "None");
 
         spawn.addItem(condom.getName(), condom);
-
+                
+                
+        medHQ.addItem(hivMed.getName(), hivMed);
+        medHQ.addItem(condom.getName(), condom);
+        medHQ.addItem(malMed.getName(), malMed);
+        medHQ.addItem(tbMed.getName(), tbMed);
+        medHQ.addItem(faceMask.getName(), faceMask);
+        medHQ.addItem(mosquitoSpray.getName(), mosquitoSpray);
+        medHQ.addItem(cleanSyringe.getName(), syringeC);
+        medHQ.addItem(dirtySyringe.getName(), syringeD);
     }
 
     public void makeRooms() {
@@ -153,7 +162,7 @@ public class DomainAdministration {
         playerInventory.addItem(condom.getName(), condom);
         playerInventory.addItem(hivMed.getName(), hivMed);
         playerInventory.addItem(syringeD.getName(), syringeD);
-        truckInventory = new Inventory(30); //size can change
+        truckInventory = new Inventory(40); //size can change
     }
 
     //Getters

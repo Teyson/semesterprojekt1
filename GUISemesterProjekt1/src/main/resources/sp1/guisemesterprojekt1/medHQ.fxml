@@ -143,21 +143,23 @@
          </children>
       </AnchorPane>
       <ImageView fx:id="openHandbook" fitHeight="45.0" fitWidth="52.0" layoutX="158.0" layoutY="45.0" onMouseClicked="#handleOpenBook" pickOnBounds="true" preserveRatio="true" />
-      <ProgressBar fx:id="truckLoadBar" layoutX="41.0" layoutY="225.0" prefHeight="25.0" prefWidth="90.0" progress="0.0" />
-      <Label layoutX="57.0" layoutY="200.0" text="Truck load">
+      <ProgressBar fx:id="truckLoadBar" layoutX="30.0" layoutY="225.0" prefHeight="25.0" prefWidth="90.0" progress="0.0" style="-fx-accent: lightblue;" />
+      <Label layoutX="45.0" layoutY="200.0" text="Truck load">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink;" visible="false">
+      <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink;">
          <children>
             <Label alignment="CENTER" layoutX="188.0" layoutY="6.0" text="Truck Inventory" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <GridPane fx:id="truckInventory" gridLinesVisible="true" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
+            <GridPane fx:id="truckInventoryGrid" gridLinesVisible="true" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -171,6 +173,48 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <children>
+                  <ImageView fx:id="tck0" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="tck1" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                  <ImageView fx:id="tck2" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                  <ImageView fx:id="tck3" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                  <ImageView fx:id="tck4" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                  <ImageView fx:id="tck5" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                  <ImageView fx:id="tck6" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+                  <ImageView fx:id="tck7" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+                  <ImageView fx:id="tck8" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck9" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck10" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck11" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck12" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck13" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck14" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck15" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck16" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck17" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck18" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck19" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck20" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck21" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck22" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck23" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck24" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck25" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck26" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck27" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck28" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck29" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck30" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck31" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck32" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck33" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck34" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck35" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck36" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck37" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck38" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck39" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+               </children>
             </GridPane>
             <ImageView fx:id="closeTruckInventory" fitHeight="30.0" fitWidth="30.0" layoutX="474.0" layoutY="-30.0" onMouseClicked="#handleTruckInventoryClose" pickOnBounds="true" preserveRatio="true" />
          </children>

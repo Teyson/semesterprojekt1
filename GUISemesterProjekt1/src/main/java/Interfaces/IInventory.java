@@ -8,4 +8,5 @@ public interface IInventory {
     //public HashMap<String, IItem> getItemList();
     public ArrayList<String> getKeys();
     public ArrayList<IItem> getValues();
+    public double calcPctUsed();
 }
