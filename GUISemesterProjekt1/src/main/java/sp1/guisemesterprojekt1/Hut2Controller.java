@@ -177,8 +177,6 @@ public class Hut2Controller implements Initializable {
     String abubakarPathConvo = "npc/Man 3 Mozambique.png";
     Image abubakarConvo = new Image(abubakarPathConvo);
     INPC Abubakar;
-
-    INPC talkNPC;
     
     //Backgrounds
     String hut2 = "backgrounds/Hut 2.jpg";

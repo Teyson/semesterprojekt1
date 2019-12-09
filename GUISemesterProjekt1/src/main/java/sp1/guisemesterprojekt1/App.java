@@ -33,7 +33,6 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
-        System.out.println(da.getWinCondition());
         if (da.getTime().getTime() != 0) {
             scene.setRoot(loadFXML(fxml));
         }

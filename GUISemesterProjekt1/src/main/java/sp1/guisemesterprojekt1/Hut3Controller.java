@@ -188,9 +188,7 @@ public class Hut3Controller implements Initializable {
     String faizalPathConvo = "npc/Man 3 Mozambique.png";
     Image faizalConvo = new Image(faizalPathConvo);
     INPC Faizal;
-    
-    INPC talkNPC;
-    
+
     private double percentageTimeBar;
 
     //Items
@@ -912,45 +910,6 @@ public class Hut3Controller implements Initializable {
 			rectList.get(i).setVisible(false);
 		}
 	}        
-    }
-    
-    
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
-    }
-
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void handleExitEvent(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("village"));
-        App.setRoot("village");
     }
     
     @FXML
