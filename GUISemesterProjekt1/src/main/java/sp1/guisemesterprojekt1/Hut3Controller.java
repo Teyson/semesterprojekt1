@@ -281,7 +281,7 @@ public class Hut3Controller implements Initializable {
         //Setting the NPC Mini Images
         field1_5.setImage(faizalMini);
         field2_2.setImage(kelvenMini);
-        field4_4.setImage(jojoMini);
+        field4_5.setImage(jojoMini);
         field8_3.setImage(kiriMini);
         field9_4.setImage(ikbalMini);
         field10_2.setImage(braytonMini);
