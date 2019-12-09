@@ -87,8 +87,8 @@ public class DomainAdministration {
         medHQ.addItem(tbMed.getName(), tbMed);
         medHQ.addItem(faceMask.getName(), faceMask);
         medHQ.addItem(mosquitoSpray.getName(), mosquitoSpray);
-        medHQ.addItem(cleanSyringe.getName(), syringeC);
-        medHQ.addItem(dirtySyringe.getName(), syringeD);
+        medHQ.addItem(syringeC.getName(), syringeC);
+        medHQ.addItem(syringeD.getName(), syringeD);
     }
 
     public void makeRooms() {

@@ -652,6 +652,7 @@ public class MedHqController implements Initializable {
         } else {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
+    }
 
     public void handleMasksClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mask");
@@ -663,6 +664,7 @@ public class MedHqController implements Initializable {
     //HANDLER FOR THE DIALOGS
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
+    }
 
     public void handleCondomsClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Condom");
@@ -679,7 +681,7 @@ public class MedHqController implements Initializable {
                 + "You earn points by treating patients correctly, and by giving them an item \n"
                 + "that helps them prevent spreading their disease. When time is out, see how\n"
                 + "many you have saved from their contracted disease!");
-
+    }
 
     public void handleMosquitoSprayClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mosquito Spray");
@@ -690,6 +692,7 @@ public class MedHqController implements Initializable {
 
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
+    }
 
     public void handleSyringesClicked(MouseEvent event) {
         System.out.println(da.getRoom().getItems().getKeys().size());
@@ -713,6 +716,7 @@ public class MedHqController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
 
     public void handleHIVClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("HIV Medication");
@@ -741,8 +745,5 @@ public class MedHqController implements Initializable {
 
         }
         */
-
-    public void handleTruckInventoryClose(MouseEvent event) {
-        truckInventoryPane.setVisible(false);
     }
 }

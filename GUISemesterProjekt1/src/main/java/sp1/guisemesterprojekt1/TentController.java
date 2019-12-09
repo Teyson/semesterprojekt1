@@ -59,7 +59,6 @@ public class TentController implements Initializable {
     AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -334,6 +333,92 @@ public class TentController implements Initializable {
     ArrayList<ImageView> inventoryImageList;
     
     boolean trashingActive = false;
+    @FXML
+    private AnchorPane truckInventoryPane;
+    @FXML
+    private GridPane truckInventoryGrid;
+    @FXML
+    private ImageView tck0;
+    @FXML
+    private ImageView tck1;
+    @FXML
+    private ImageView tck2;
+    @FXML
+    private ImageView tck3;
+    @FXML
+    private ImageView tck4;
+    @FXML
+    private ImageView tck5;
+    @FXML
+    private ImageView tck6;
+    @FXML
+    private ImageView tck7;
+    @FXML
+    private ImageView tck8;
+    @FXML
+    private ImageView tck9;
+    @FXML
+    private ImageView tck10;
+    @FXML
+    private ImageView tck11;
+    @FXML
+    private ImageView tck12;
+    @FXML
+    private ImageView tck13;
+    @FXML
+    private ImageView tck14;
+    @FXML
+    private ImageView tck15;
+    @FXML
+    private ImageView tck16;
+    @FXML
+    private ImageView tck17;
+    @FXML
+    private ImageView tck18;
+    @FXML
+    private ImageView tck19;
+    @FXML
+    private ImageView tck20;
+    @FXML
+    private ImageView tck21;
+    @FXML
+    private ImageView tck22;
+    @FXML
+    private ImageView tck23;
+    @FXML
+    private ImageView tck24;
+    @FXML
+    private ImageView tck25;
+    @FXML
+    private ImageView tck26;
+    @FXML
+    private ImageView tck27;
+    @FXML
+    private ImageView tck28;
+    @FXML
+    private ImageView tck29;
+    @FXML
+    private ImageView tck30;
+    @FXML
+    private ImageView tck31;
+    @FXML
+    private ImageView tck32;
+    @FXML
+    private ImageView tck33;
+    @FXML
+    private ImageView tck34;
+    @FXML
+    private ImageView tck35;
+    @FXML
+    private ImageView tck36;
+    @FXML
+    private ImageView tck37;
+    @FXML
+    private ImageView tck38;
+    @FXML
+    private ImageView tck39;
+    @FXML
+    private ImageView closeTruckInventory;
 
 
     /**
@@ -512,10 +597,12 @@ public class TentController implements Initializable {
     }
     
     //HANDLERS FOR DIALOGS
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
@@ -527,11 +614,13 @@ public class TentController implements Initializable {
 
     }
 
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
     //HANDLE HANDBOOK
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -547,9 +636,14 @@ public class TentController implements Initializable {
     }
 
     //HANDLE EXITS
+    @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
          da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
+    }
+
+    @FXML
+    private void handleTruckInventoryClose(MouseEvent event) {
     }
     
 }
