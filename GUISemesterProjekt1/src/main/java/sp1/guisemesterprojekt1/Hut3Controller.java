@@ -296,12 +296,34 @@ public class Hut3Controller implements Initializable {
         
         //Setting the NPCs
         Kiri = da.getRoom().getNPC("Kiri");
-        Ikbal = da.getRoom().getNPC("Ikbal");
-        Jojo = da.getRoom().getNPC("Jojo");
-        Brayton = da.getRoom().getNPC("Brayton");
-        Kelven = da.getRoom().getNPC("Kelven");
-        Faizal = da.getRoom().getNPC("Faizal");
+        if(Kiri.isAlive()==false){
+            field8_3.setVisible(false);
+        }
         
+        Ikbal = da.getRoom().getNPC("Ikbal");
+        if(Ikbal.isAlive()==false){
+            field9_4.setVisible(false);
+        }
+        
+        Jojo = da.getRoom().getNPC("Jojo");
+        if(Jojo.isAlive()==false){
+            field4_5.setVisible(false);
+        }
+        
+        Brayton = da.getRoom().getNPC("Brayton");
+        if(Brayton.isAlive()==false){
+            field10_2.setVisible(false);
+        }
+        
+        Kelven = da.getRoom().getNPC("Kelven");
+        if(Kelven.isAlive()==false){
+            field2_2.setVisible(false);
+        }
+        
+        Faizal = da.getRoom().getNPC("Faizal");
+        if(Faizal.isAlive()==false){
+            field1_5.setVisible(false);
+        }
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();
@@ -366,7 +388,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -405,6 +427,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -418,8 +442,10 @@ public class Hut3Controller implements Initializable {
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
                             dialogLabel.setText(talkNPC.getName() + " has died.");
-                        
+                            
                             field8_3.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -456,7 +482,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -480,8 +506,6 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
-                    
-                    treatBtn.setVisible(true);
                 }
             });
             
@@ -495,6 +519,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -510,6 +536,8 @@ public class Hut3Controller implements Initializable {
                             dialogLabel.setText(talkNPC.getName() + " has died.");
                         
                             field9_4.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -546,7 +574,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -570,8 +598,6 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
-                    
-                    treatBtn.setVisible(true);
                 }
             });
             
@@ -585,6 +611,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -599,7 +627,9 @@ public class Hut3Controller implements Initializable {
                             System.out.println(talkNPC.getName() + " killed");
                             dialogLabel.setText(talkNPC.getName() + " has died.");
                         
-                            field4_4.setVisible(false);
+                            field4_5.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -613,7 +643,6 @@ public class Hut3Controller implements Initializable {
                     answer3.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
-                    
                 }
             });
         }
@@ -636,7 +665,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -660,8 +689,6 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
-                    
-                    treatBtn.setVisible(true);
                 }
             });
             
@@ -675,6 +702,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -690,6 +719,8 @@ public class Hut3Controller implements Initializable {
                             dialogLabel.setText(talkNPC.getName() + " has died.");
                         
                             field10_2.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -726,7 +757,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -750,8 +781,6 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
-                    
-                    treatBtn.setVisible(true);
                 }
             });
             
@@ -765,6 +794,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -780,6 +811,8 @@ public class Hut3Controller implements Initializable {
                             dialogLabel.setText(talkNPC.getName() + " has died.");
                         
                             field2_2.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -816,7 +849,7 @@ public class Hut3Controller implements Initializable {
         answer1.setVisible(true);
         answer2.setVisible(true);
         answer3.setVisible(true);
-        treatBtn.setVisible(false);
+        treatBtn.setVisible(true);
         giveItemBtn.setVisible(false);
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -855,6 +888,8 @@ public class Hut3Controller implements Initializable {
                     answer1.setText("More");
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
+                    closeDialog.setVisible(false);
                 
                     answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                         @Override
@@ -870,6 +905,8 @@ public class Hut3Controller implements Initializable {
                             dialogLabel.setText(talkNPC.getName() + " has died.");
                         
                             field1_5.setVisible(false);
+                            
+                            closeDialog.setVisible(true);
                         }
                     });
                 }
@@ -1012,6 +1049,7 @@ public class Hut3Controller implements Initializable {
                     NPCNameLabel.setText(null);
                     treatBtn.setVisible(false);
                     currentField.setVisible(false);
+                    talkNPC.setAlive(false);
                 }
                     
                 //Remove item from inventory
