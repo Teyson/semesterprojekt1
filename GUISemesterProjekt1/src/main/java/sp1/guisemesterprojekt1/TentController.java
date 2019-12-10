@@ -598,13 +598,25 @@ public class TentController implements Initializable {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
     }
-
+    private void moveItemFromPlayerToTruck(int i){
+        if(truckInventoryPane.isVisible() && truckInventory.getSpaceUsed() < truckInventory.getInventorySize()){
+            String itemName = playerInventory.getKeys().get(i);
+            truckInventory.addItem(itemName, playerInventory.getValues().get(i));
+            playerInventory.removeItem(itemName);
+            updateInventory();
+            updateTruckInventory();
+            
+        }
+    }
+    
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(0));
             updateInventory();
+            
         }
+        moveItemFromPlayerToTruck(0);
     }
 
     @FXML
@@ -613,6 +625,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(1));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(1);
     }
 
     @FXML
@@ -621,6 +634,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(2));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(2);
     }
 
     @FXML
@@ -629,6 +643,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(3));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(3);
     }
 
     @FXML
@@ -637,6 +652,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(4));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(4);
     }
 
     @FXML
@@ -645,6 +661,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(5));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(5);
     }
 
     @FXML
@@ -653,6 +670,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(6));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(6);
     }
 
     @FXML
@@ -661,6 +679,7 @@ public class TentController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
         }
+        moveItemFromPlayerToTruck(7);
     }
 
     //HANDLERS FOR DIALOGS
