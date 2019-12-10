@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -25,14 +26,21 @@ import javafx.scene.image.ImageView;
 public class StartMenuController implements Initializable {
 
     @FXML
-    Button startGameBtn;
+    ImageView startGameBtn;
     
     @FXML
     ImageView backgroundImage;
+    
+    @FXML
+    ImageView danceView;
 
     //Backgrounds
     String start = "backgrounds/starmenu.jpg";
     Image toShow = new Image(start);
+    String button = "backgrounds/STARTGAME.png";
+    Image toShow2 = new Image(button);
+    String dancer = "backgrounds/dance.gif";
+    Image toShow3 = new Image(dancer);
 
     private static DomainAdministration da;
 
@@ -43,10 +51,13 @@ public class StartMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         da = App.getDomainAdministration();
         backgroundImage.setImage(toShow);
+        startGameBtn.setImage(toShow2);
+        danceView.setImage(toShow3);
+        
 
     }
 
-    public void startGameOnAction(ActionEvent event) throws IOException {
+    public void startGameOnAction(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("spawn"));
         App.setRoot("spawn");
     }
