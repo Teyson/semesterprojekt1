@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+
 import Domain.DomainAdministration;
 
 /**
@@ -30,6 +31,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -53,6 +55,7 @@ public class App extends Application {
 
     public static void load(String[] args) {
         launch();
+        
     }
 
     public static DomainAdministration getDomainAdministration() {

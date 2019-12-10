@@ -432,6 +432,7 @@ public class Hut2Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -442,6 +443,7 @@ public class Hut2Controller implements Initializable {
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -522,6 +524,7 @@ public class Hut2Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, help me...");
                     
@@ -533,6 +536,7 @@ public class Hut2Controller implements Initializable {
             dialogLabel.setText("Thank you for helping me, may the Gods smile upon you.");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -613,6 +617,7 @@ public class Hut2Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, help me... I have kids...");
                     
@@ -624,6 +629,7 @@ public class Hut2Controller implements Initializable {
             dialogLabel.setText("Thank you for helping me, I will name my next daughter after you.");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -704,6 +710,7 @@ public class Hut2Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please... Come back... *coughs*");
                     
@@ -715,6 +722,7 @@ public class Hut2Controller implements Initializable {
             dialogLabel.setText("Thank you for helping me, hopefully I can return to work soon.");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -880,14 +888,27 @@ public class Hut2Controller implements Initializable {
                 if (outcome) {
                     dialogLabel.setText("You have treated " + talkNPC.getName());
                     NPCNameLabel.setText(null);
+                    NPCImage.setImage(null);
+                    
                     treatBtn.setVisible(false);
+                    
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
                 } 
                 else {
                     dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
                     NPCNameLabel.setText(null);
+                    NPCImage.setImage(null);
+                    
                     currentField.setVisible(false);
                     treatBtn.setVisible(false);
                     talkNPC.setAlive(false);
+                    
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
                     System.out.println(talkNPC.getName()+" killed");
                 }
                     
