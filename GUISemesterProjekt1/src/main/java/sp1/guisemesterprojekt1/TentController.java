@@ -448,6 +448,7 @@ public class TentController implements Initializable {
 
         closeDialog.setImage(closeButton);
         closeHelp.setImage(closeButton);
+        closeTruckInventory.setImage(closeButton);
 
         openHandbook.setImage(handbookButton);
 
@@ -710,6 +711,8 @@ public class TentController implements Initializable {
 
     @FXML
     private void handleTruckInventoryClose(MouseEvent event) {
+        truckInventoryPane.setVisible(false);
+        truckInventoryGrid.setVisible(false);
     }
 
     public void removeTruckInventoryOnClicked(int i) {
