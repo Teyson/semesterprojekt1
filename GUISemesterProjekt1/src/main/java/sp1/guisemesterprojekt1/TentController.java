@@ -934,14 +934,14 @@ public class TentController implements Initializable {
     private void handleTruckClicked1(MouseEvent event) {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
         truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-        System.out.println("aåosdf");
+        
     }
 
     @FXML
     private void handleTruckClicked2(MouseEvent event) {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
         truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-        System.out.println("aåosdf");
+        
     }
 
     @FXML
