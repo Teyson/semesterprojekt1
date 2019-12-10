@@ -210,7 +210,7 @@
                 <ImageView fx:id="field11_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="6" />
             </children>
         </GridPane>
-        <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;">
+        <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
             <children>
                 <ImageView fx:id="NPCImage" fitHeight="121.0" fitWidth="108.0" layoutX="36.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
                 <Label fx:id="NPCNameLabel" alignment="CENTER" layoutX="36.0" layoutY="18.0" text="NPC name" textAlignment="CENTER">
@@ -283,7 +283,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
+        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen; -fx-border-color: black;">
             <children>
                 <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true">
                     <cursor>
