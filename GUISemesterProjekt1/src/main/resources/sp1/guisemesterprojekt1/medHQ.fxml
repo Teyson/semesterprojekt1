@@ -144,7 +144,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fx:id="field6_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                <ImageView fx:id="field6_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -154,7 +154,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fx:id="field7_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                <ImageView fx:id="field7_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -164,7 +164,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fx:id="field8_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4">
+                <ImageView fx:id="field8_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -174,7 +174,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fx:id="field9_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleMalariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4">
+                <ImageView fx:id="field9_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleHIVClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
