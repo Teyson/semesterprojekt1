@@ -37,7 +37,7 @@ public class StartMenuController implements Initializable {
     //Backgrounds
     String start = "backgrounds/starmenu.jpg";
     Image toShow = new Image(start);
-    String button = "backgrounds/STARTGAME.png";
+    String button = "buttons/STARTGAME.png";
     Image toShow2 = new Image(button);
     String dancer = "backgrounds/dance.gif";
     Image toShow3 = new Image(dancer);
