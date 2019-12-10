@@ -509,10 +509,10 @@ public class MedHqController implements Initializable {
         NPCImage.setImage(mariaConvo);
 
         dialogLabel.setText("On this mission you will need:\n"+
-                            " - 5x HIV Medicine\n"+
-                            " - 5x Tuberculosis Medicine\n"+
-                            " - 5x Malaria Medicine\n"+
-                            " - 15 Clean Syringes\n"+
+                            " - 5x HIV Medicine (Pink medicine)\n"+
+                            " - 5x Tuberculosis Medicine (Yellow medicine)\n"+
+                            " - 5x Malaria Medicine (Green medicine) \n"+
+                            " - 15 Clean Syringes \n"+
                             "And the left of the slots open in the truck are up for you to decide\n"+
                             "what to do with. Do you have it all?\n");
         

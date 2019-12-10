@@ -392,8 +392,8 @@ public class Hut1Controller implements Initializable {
         
         //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
         if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
-            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
-                               "and I think I have a fever. Can you please help me?");
+            dialogLabel.setText("You are doctor? You are here to help me?\n"+
+                                "Please look at my rash, it is very big and itchy.");
         
             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -414,8 +414,7 @@ public class Hut1Controller implements Initializable {
             answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event){
-                    dialogLabel.setText("I most certainly am not!\n"+
-                                        "Will I now die because you are wrong?");
+                    dialogLabel.setText("Are you crazy?!");
                 
                     answer1.setText("More");
                     answer2.setVisible(false);
@@ -452,14 +451,14 @@ public class Hut1Controller implements Initializable {
                     answer3.setVisible(false);
                     treatBtn.setVisible(false);
                     
-                    dialogLabel.setText("Please, come back soon and help me!");
+                    dialogLabel.setText("Please... Help me...");
                     
                 }
             });
         }
          //Used when the player returns to the PT after having treated successfully
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
-            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            dialogLabel.setText("Thank you, thank you, thank you!");
             
             giveItemBtn.setVisible(true);
             treatBtn.setVisible(false);
@@ -485,8 +484,7 @@ public class Hut1Controller implements Initializable {
         
         //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
         if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
-            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
-                               "and I think I have a fever. Can you please help me?");
+            dialogLabel.setText("Doctor! You must help! I am very sick, I am so warm...");
         
             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -507,8 +505,7 @@ public class Hut1Controller implements Initializable {
             answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event){
-                    dialogLabel.setText("I most certainly am not!\n"+
-                                        "Will I now die because you are wrong?");
+                    dialogLabel.setText("You must be a fake doctor. You want to kill me?!");
                 
                     answer1.setText("More");
                     answer2.setVisible(false);
@@ -545,14 +542,14 @@ public class Hut1Controller implements Initializable {
                     answer3.setVisible(false);
                     treatBtn.setVisible(false);
                     
-                    dialogLabel.setText("Please, come back soon and help me!");
+                    dialogLabel.setText("Please... I AM sick...");
                     
                 }
             });
         }
          //Used when the player returns to the PT after having treated successfully
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
-            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            dialogLabel.setText("I am very very grateful for your work, thank you");
             
             giveItemBtn.setVisible(true);
             answer1.setVisible(false);
@@ -578,8 +575,7 @@ public class Hut1Controller implements Initializable {
         
         //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
         if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
-            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
-                               "and I think I have a fever. Can you please help me?");
+            dialogLabel.setText("*cough*");
         
             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -587,9 +583,9 @@ public class Hut1Controller implements Initializable {
                     NPCImage.setImage(null);
                     NPCNameLabel.setText(null);
                     dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
-                                        "they have a high fever, and are sweating profusely. Additionally\n"+
-                                        "they report that they feel very winded when walking for long,\n"+
-                                        "and the rash covers their entire back and genital area.");
+                                        "they have a high fever, and they are very skinny. Listening to their\n"+
+                                        "breathing through the stethoscope, you hear rattling sounds. They \n"+
+                                        "are very clearly struggling to breathe.");
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
@@ -600,8 +596,7 @@ public class Hut1Controller implements Initializable {
             answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event){
-                    dialogLabel.setText("I most certainly am not!\n"+
-                                        "Will I now die because you are wrong?");
+                    dialogLabel.setText("*cough* you are the devil...");
                 
                     answer1.setText("More");
                     answer2.setVisible(false);
@@ -638,14 +633,14 @@ public class Hut1Controller implements Initializable {
                     answer3.setVisible(false);
                     treatBtn.setVisible(false);
                     
-                    dialogLabel.setText("Please, come back soon and help me!");
+                    dialogLabel.setText("Please *cough* my body is dying...");
                     
                 }
             });
         }
          //Used when the player returns to the PT after having treated successfully
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
-            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            dialogLabel.setText("The air feels so good in my lungs now, thank you!");
             
             giveItemBtn.setVisible(true);
             treatBtn.setVisible(false);
@@ -671,8 +666,8 @@ public class Hut1Controller implements Initializable {
         
         //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
         if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
-            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
-                               "and I think I have a fever. Can you please help me?");
+            dialogLabel.setText("Doctor, my wife says I keep her awake all night\n"+
+                                "with my coughing. Can you help?");
         
             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -680,9 +675,9 @@ public class Hut1Controller implements Initializable {
                     NPCImage.setImage(null);
                     NPCNameLabel.setText(null);
                     dialogLabel.setText("You further examine " + talkNPC.getName() + " and discover that\n"+
-                                        "they have a high fever, and are sweating profusely. Additionally\n"+
-                                        "they report that they feel very winded when walking for long,\n"+
-                                        "and the rash covers their entire back and genital area.");
+                                        "they have a high fever, and they are very skinny. Listening to their\n"+
+                                        "breathing through the stethoscope, you hear rattling sounds. They \n"+
+                                        "are very clearly struggling to breathe.");
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
@@ -693,8 +688,7 @@ public class Hut1Controller implements Initializable {
             answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event){
-                    dialogLabel.setText("I most certainly am not!\n"+
-                                        "Will I now die because you are wrong?");
+                    dialogLabel.setText("My wife will come after you, ''Doctor'");
                 
                     answer1.setText("More");
                     answer2.setVisible(false);
@@ -731,14 +725,15 @@ public class Hut1Controller implements Initializable {
                     answer3.setVisible(false);
                     treatBtn.setVisible(false);
                     
-                    dialogLabel.setText("Please, come back soon and help me!");
+                    dialogLabel.setText("I beg you, my wife is so angry because she can't sleep."+
+                                        "Help me, please...");
                     
                 }
             });
         }
          //Used when the player returns to the PT after having treated successfully
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
-            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            dialogLabel.setText("Thank you so much for helping me, now my wife will be happy.");
             
             giveItemBtn.setVisible(true);
             treatBtn.setVisible(false);
@@ -764,8 +759,8 @@ public class Hut1Controller implements Initializable {
         
         //The branch to be executed if the PT is currently not attempted treated AKA first encounter.
         if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == false){
-            dialogLabel.setText("Good to see you doctor! I feel very sick, I have a rash on my body\n"+
-                               "and I think I have a fever. Can you please help me?");
+            dialogLabel.setText("Good doctor, you must help. My stomach is very painful,\n"+
+                                "and my... toilet visits are very unpleasant...");
         
             answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -786,8 +781,7 @@ public class Hut1Controller implements Initializable {
             answer2.setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event){
-                    dialogLabel.setText("I most certainly am not!\n"+
-                                        "Will I now die because you are wrong?");
+                    dialogLabel.setText("How can you not care about others? Are you that selfish?");
                 
                     answer1.setText("More");
                     answer2.setVisible(false);
@@ -824,14 +818,14 @@ public class Hut1Controller implements Initializable {
                     answer3.setVisible(false);
                     treatBtn.setVisible(false);
                     
-                    dialogLabel.setText("Please, come back soon and help me!");
+                    dialogLabel.setText("Are you coming back with more medicine?");
                     
                 }
             });
         }
          //Used when the player returns to the PT after having treated successfully
         else if(talkNPC.isAlive() == true && talkNPC.isTreatAttempted() == true){
-            dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
+            dialogLabel.setText("Thank you so much, now I can feel better soon.");
             
             giveItemBtn.setVisible(true);
             treatBtn.setVisible(false);
