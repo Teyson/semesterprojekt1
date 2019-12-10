@@ -300,6 +300,7 @@ public class Hut3Controller implements Initializable {
         Jojo = da.getRoom().getNPC("Jojo");
         Brayton = da.getRoom().getNPC("Brayton");
         Kelven = da.getRoom().getNPC("Kelven");
+        Faizal = da.getRoom().getNPC("Faizal");
         
         
         //Get roominventory
@@ -412,6 +413,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
@@ -501,6 +503,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
@@ -590,6 +593,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
@@ -679,6 +683,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
@@ -768,6 +773,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
@@ -857,6 +863,7 @@ public class Hut3Controller implements Initializable {
                             NPCNameLabel.setText(null);
                             
                             talkNPC.kill();
+                            talkNPC.setAlive(false);
                             
                             NPCImage.setImage(null);
                             System.out.println(talkNPC.getName() + " killed");
