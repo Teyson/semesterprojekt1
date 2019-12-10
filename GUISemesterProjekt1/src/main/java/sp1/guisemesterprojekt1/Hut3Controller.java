@@ -219,7 +219,6 @@ public class Hut3Controller implements Initializable {
     Image imgSpray = new Image(spray);
     
     HashMap<String, Image> itemImageMap;
-    HashMap<String, String> itemImageMapReverse;
 
     IInventory playerInventory;
     IInventory roomInventory;
@@ -321,19 +320,6 @@ public class Hut3Controller implements Initializable {
             put("Pill", imgPill);
             put("Mask", imgMask);
             put("Mosquito Spray", imgSpray);
-        }};
-
-        itemImageMapReverse = new HashMap<>()
-        {{
-            put("Clean Kanyle.png", "Clean Syringe");
-            put("Dirty Kanyle.png" ,"Dirty Syringe");
-            put("Condom.png" ,"Condom");
-            put("HIV Medicine.png" ,"HIV Medication");
-            put("Malaria Medicine.png" ,"Malaria Medication");
-            put("TB Medicine.png" ,"Tuberculosis Medication");
-            put("pill.png" ,"Pill");
-            put("mask.png" ,"Mask");
-            put("Mosquito Spray.png" ,"Mosquito Spray");
         }};
 
         //Make arraylist of inventory slots for easy iteration

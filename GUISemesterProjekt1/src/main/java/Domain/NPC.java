@@ -66,6 +66,7 @@ public class NPC implements INPC{
         return this.alive;
     }
 
+    @Override
     public void setAlive(boolean alive) {
         this.alive = alive;
     }

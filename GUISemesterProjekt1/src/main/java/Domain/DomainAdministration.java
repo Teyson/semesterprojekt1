@@ -197,7 +197,7 @@ public class DomainAdministration {
     public void setRoom(Room room) {
         currentRoom = room;
 
-        if (eval.getPoints() >= 5) {
+        if (eval.getPoints() >= 380) {
             this.hasWon = true;
         } else {
             this.hasWon = false;
