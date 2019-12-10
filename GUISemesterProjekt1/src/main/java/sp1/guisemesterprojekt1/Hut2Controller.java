@@ -358,6 +358,10 @@ public class Hut2Controller implements Initializable {
     //HANDLERS FOR THE NPCs
     @FXML
     public void handleYuranClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Yuran;
         currentField = field8_3;
         
@@ -452,6 +456,10 @@ public class Hut2Controller implements Initializable {
     
     @FXML
     public void handleRiyadhClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+
         talkNPC = Riyadh;
         currentField = field1_2;
         
@@ -544,7 +552,12 @@ public class Hut2Controller implements Initializable {
     
     }
     
+    @FXML
     public void handleGaniClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+
         talkNPC = Gani;
         currentField = field10_4;
         
@@ -639,6 +652,10 @@ public class Hut2Controller implements Initializable {
     
     @FXML
     public void handleAbubakarClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+
         talkNPC = Abubakar;
         currentField = field5_5;
         
@@ -730,6 +747,7 @@ public class Hut2Controller implements Initializable {
     
     }
     
+    
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
@@ -763,6 +781,10 @@ public class Hut2Controller implements Initializable {
     //HANDLERS FOR THE POPUPS
     @FXML
     public void handleCloseDialog(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         dialogPane.setVisible(false);
     }
 
@@ -779,7 +801,7 @@ public class Hut2Controller implements Initializable {
     }
 
     @FXML
-    public void handleCloseHelp(MouseEvent event) {
+    public void handleCloseHelp(MouseEvent event) {       
         helpPopup.setVisible(false);
     }
 
@@ -802,12 +824,20 @@ public class Hut2Controller implements Initializable {
     //HANDLER FOR THE EXIT
     @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
     
     @FXML
     private void handleTrash(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();        
+        
         //Change trashing state
         trashingActive = !trashingActive;
         

@@ -377,6 +377,10 @@ public class Hut1Controller implements Initializable {
     
     //HANDLERS FOR THE NPCs
     public void handleHendaClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Henda;
         currentField = field2_3;
         
@@ -469,6 +473,10 @@ public class Hut1Controller implements Initializable {
     }
     
     public void handleKishorClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Kishor;
         currentField = field6_5;
         
@@ -560,6 +568,10 @@ public class Hut1Controller implements Initializable {
     }
     
     public void handleNeltonClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Nelton;
         currentField = field5_5;
         
@@ -651,6 +663,10 @@ public class Hut1Controller implements Initializable {
     }
     
     public void handleMomedClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Momed;
         currentField = field9_2;
         
@@ -744,6 +760,10 @@ public class Hut1Controller implements Initializable {
     }
     
     public void handleLeonildoClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Leonildo;
         currentField = field10_6;
         
@@ -1044,6 +1064,10 @@ public class Hut1Controller implements Initializable {
 
     //HANDLER FOR THE CLOSE-BUTTONS
     public void handleCloseDialog(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         dialogPane.setVisible(false);
     }
 
@@ -1080,6 +1104,10 @@ public class Hut1Controller implements Initializable {
 
     //HANDLER FOR THE EXIT
     public void handleExitEvent(MouseEvent event) throws IOException {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
