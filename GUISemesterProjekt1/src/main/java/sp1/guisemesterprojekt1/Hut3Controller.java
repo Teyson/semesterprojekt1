@@ -384,6 +384,10 @@ public class Hut3Controller implements Initializable {
     //HANDLERS FOR THE NPCs
     @FXML
     public void handleKiriClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Kiri;
         currentField = field8_3;
         
@@ -478,6 +482,10 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleIkbalClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Ikbal;
         currentField = field9_4;
         
@@ -570,6 +578,10 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleJojoClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Jojo;
         currentField = field4_4;
         
@@ -661,6 +673,10 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleBraytonClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Brayton;
         currentField = field10_2;
         
@@ -753,6 +769,10 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleKelvenClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Kelven;
         currentField = field2_2;
         
@@ -846,6 +866,10 @@ public class Hut3Controller implements Initializable {
     
     @FXML
     public void handleFaizalClicked(MouseEvent event){
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         talkNPC = Faizal;
         currentField = field1_5;
         
@@ -1151,6 +1175,10 @@ public class Hut3Controller implements Initializable {
     //HANDLER FOR THE CLOSE-BUTTON
     @FXML
     public void handleCloseDialog(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         dialogPane.setVisible(false);
     }
 
@@ -1191,6 +1219,10 @@ public class Hut3Controller implements Initializable {
     //HANDLER FOR THE EXIT
     @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
         da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }

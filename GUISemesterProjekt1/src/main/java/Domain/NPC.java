@@ -296,7 +296,6 @@ public class NPC implements INPC{
         Random random = new Random();
         this.treatAttempted = true;
         if (medicineItem.getCures().equals(this.illnessName)) {
-            //this.illnessName = null;
             //If dirty syrringe was used
             if (!usedCleanSyringe) {
                 int randomNumber = random.nextInt(100); //Random number between 0-100.
