@@ -81,6 +81,8 @@ public class MedHqController implements Initializable {
     @FXML
     Label NPCNameLabel;
     Label truckInventoryView;
+    @FXML
+    Label truckFullLabel;
 
     //Setting the buttons
     @FXML
@@ -345,6 +347,7 @@ public class MedHqController implements Initializable {
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
         truckInventoryPane.setVisible(false);
+        truckFullLabel.setVisible(false);
         
         //Setting the NPCs
         Maria = da.getRoom().getNPC("Maria Hoffmann");
@@ -490,6 +493,7 @@ public class MedHqController implements Initializable {
         }
         else if(truckInventory.calcPctUsed()==1.0){
             truckLoadBar.setStyle("-fx-accent: red;");
+            truckFullLabel.setVisible(true);
         }
     }
 
