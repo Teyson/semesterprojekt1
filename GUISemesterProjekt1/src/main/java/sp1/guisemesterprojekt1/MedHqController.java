@@ -763,6 +763,8 @@ public class MedHqController implements Initializable {
     public void removeTruckInventoryOnClicked(int i){
         truckInventory.removeItem(truckInventory.getKeys().get(i));
         updateTruckInventory();
+        updateTruckLoadBar();
+        
     }
     @FXML
     private void handleTruckInventorySlotClicked1(MouseEvent event) {
