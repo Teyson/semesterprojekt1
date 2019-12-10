@@ -56,7 +56,6 @@ public class VillageController implements Initializable {
     AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -331,7 +330,13 @@ public class VillageController implements Initializable {
     ArrayList<ImageView> inventoryImageList;
 
     boolean trashingActive = false;
-
+    
+    //EasterEgg
+    @FXML
+    private ImageView easterEggView;
+    String easterEggPath = "img/BatmanEasterEgg.gif";
+    Image easterEggImage = new Image(easterEggPath);
+    
     /**
      * Initializes the controller class.
      *
@@ -359,6 +364,10 @@ public class VillageController implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(vilages);
+        
+        //Setting the easterEgg image
+        easterEggView.setImage(easterEggImage);
+        easterEggView.setVisible(false);
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();
@@ -430,10 +439,12 @@ public class VillageController implements Initializable {
         }
     }
 
+    @FXML
     public void handleCloseDialog(MouseEvent event) {
         dialogPane.setVisible(false);
     }
 
+    @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
@@ -445,10 +456,12 @@ public class VillageController implements Initializable {
 
     }
 
+    @FXML
     public void handleCloseHelp(MouseEvent event) {
         helpPopup.setVisible(false);
     }
 
+    @FXML
     public void handleOpenBook(MouseEvent event) {
         Parent root;
         try {
@@ -463,21 +476,25 @@ public class VillageController implements Initializable {
         }
     }
 
+    @FXML
     public void handleEnterEventBottom(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("hut3"));
         App.setRoot("hut3");
     }
 
+    @FXML
     public void handleEnterEventMid(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("hut2"));
         App.setRoot("hut2");
     }
 
+    @FXML
     public void handleEnterEventTop(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("hut1"));
         App.setRoot("hut1");
     }
 
+    @FXML
     public void HandleEnterEventTent(MouseEvent event) throws IOException {
         da.setRoom(da.getRoomMap().get("tent"));
         App.setRoot("tent");
@@ -557,6 +574,16 @@ public class VillageController implements Initializable {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
         }
+    }
+
+    @FXML
+    private void handleWellClicked(MouseEvent event) {
+        easterEggView.setVisible(!easterEggView.isVisible());
+    }
+
+    @FXML
+    private void handleClickEasterEgg(MouseEvent event) {
+        easterEggView.setVisible(!easterEggView.isVisible());
     }
 
 }
