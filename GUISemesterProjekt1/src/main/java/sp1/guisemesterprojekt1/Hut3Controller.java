@@ -1050,6 +1050,7 @@ public class Hut3Controller implements Initializable {
                     treatBtn.setVisible(false);
                     currentField.setVisible(false);
                     talkNPC.setAlive(false);
+                    System.out.println(talkNPC.getName()+ " killed");
                 }
                     
                 //Remove item from inventory

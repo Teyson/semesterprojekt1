@@ -888,6 +888,7 @@ public class Hut2Controller implements Initializable {
                     currentField.setVisible(false);
                     treatBtn.setVisible(false);
                     talkNPC.setAlive(false);
+                    System.out.println(talkNPC.getName()+" killed");
                 }
                     
                 //Remove item from inventory

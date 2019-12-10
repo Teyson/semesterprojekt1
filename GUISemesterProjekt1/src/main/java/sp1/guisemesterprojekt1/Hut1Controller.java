@@ -945,6 +945,7 @@ public class Hut1Controller implements Initializable {
                     NPCNameLabel.setText(null);
                     treatBtn.setVisible(false);
                     talkNPC.setAlive(false);
+                    System.out.println(talkNPC.getName()+" killed");
                 }
                     
                 //Remove item from inventory
