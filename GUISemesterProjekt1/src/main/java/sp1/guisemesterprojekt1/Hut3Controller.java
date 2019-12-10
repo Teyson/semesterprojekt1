@@ -101,7 +101,9 @@ public class Hut3Controller implements Initializable {
     ImageView field1_5;
     @FXML
     ImageView field2_2;
+    @FXML
     ImageView field4_4;
+    @FXML
     ImageView field5_1;
     @FXML
     ImageView field6_1;
