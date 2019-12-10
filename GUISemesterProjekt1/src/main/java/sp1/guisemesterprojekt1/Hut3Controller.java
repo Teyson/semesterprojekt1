@@ -459,6 +459,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -470,6 +471,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -551,6 +553,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -562,6 +565,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -643,6 +647,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                 }
@@ -653,6 +658,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -734,6 +740,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -745,6 +752,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -826,6 +834,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -837,6 +846,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -920,6 +930,7 @@ public class Hut3Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
+                    treatBtn.setVisible(false);
                     
                     dialogLabel.setText("Please, come back soon and help me!");
                     
@@ -931,6 +942,7 @@ public class Hut3Controller implements Initializable {
             dialogLabel.setText("Thank you so much for helping me, I am very grateful!");
             
             giveItemBtn.setVisible(true);
+            treatBtn.setVisible(false);
             answer1.setVisible(false);
             answer2.setVisible(false);
             answer3.setVisible(false);
@@ -1044,14 +1056,26 @@ public class Hut3Controller implements Initializable {
                 if (outcome) {
                     dialogLabel.setText("You have treated " + talkNPC.getName());
                     NPCNameLabel.setText(null);
+                    NPCImage.setImage(null);
                     treatBtn.setVisible(false);
+                    
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
                 } 
                 else {
                     dialogLabel.setText(talkNPC.getName() + " has died due to poor care.");
                     NPCNameLabel.setText(null);
+                    NPCImage.setImage(null);
+                    
                     treatBtn.setVisible(false);
                     currentField.setVisible(false);
                     talkNPC.setAlive(false);
+                    
+                    answer1.setVisible(false);
+                    answer2.setVisible(false);
+                    answer3.setVisible(false);
+                    
                     System.out.println(talkNPC.getName()+ " killed");
                 }
                     
