@@ -487,9 +487,11 @@ public class MedHqController implements Initializable {
     }
     public void updateTruckLoadBar(){
         truckLoadBar.setProgress(truckInventory.calcPctUsed());
-        System.out.println(truckInventory.calcPctUsed());
+        
+        truckFullLabel.setVisible(false);
         if(truckInventory.calcPctUsed() >= 0.50 && truckInventory.calcPctUsed() < 1.0){
             truckLoadBar.setStyle("-fx-accent: yellow;");
+            truckFullLabel.setVisible(false);
         }
         else if(truckInventory.calcPctUsed()==1.0){
             truckLoadBar.setStyle("-fx-accent: red;");
@@ -708,9 +710,9 @@ public class MedHqController implements Initializable {
 
     @FXML
     public void handleSyringesClicked(MouseEvent event) {
-        System.out.println(da.getRoom().getItems().getKeys().size());
+        
         int tempIndex = roomInventory.getKeys().indexOf("Clean Syringe");
-        System.out.println(tempIndex);
+       
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
         updateTruckLoadBar();
         updateTruckInventory();
@@ -755,13 +757,6 @@ public class MedHqController implements Initializable {
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
         updateTruckLoadBar();
         updateTruckInventory();
-
-        /* just for debugging
-        for (String string : truckInventory.getKeys()) {
-            System.out.println(string);
-
-        }
-        */
     }
     
     public void removeTruckInventoryOnClicked(int i){
