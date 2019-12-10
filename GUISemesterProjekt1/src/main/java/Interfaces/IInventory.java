@@ -9,4 +9,6 @@ public interface IInventory {
     public ArrayList<String> getKeys();
     public ArrayList<IItem> getValues();
     public double calcPctUsed();
+    public int getSpaceUsed();
+    public int getInventorySize();
 }

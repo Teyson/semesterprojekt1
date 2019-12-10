@@ -79,6 +79,7 @@ public class Inventory implements IInventory{
             System.out.println(key.toString());
         }
     }
+    @Override
     public int getInventorySize() {
         return inventorySize;
     }
@@ -86,7 +87,7 @@ public class Inventory implements IInventory{
     public void setInventorySize(int newInventorySize) {
         this.inventorySize = newInventorySize;
     }
-
+    @Override
     public int getSpaceUsed() {
         return spaceUsed;
     }
@@ -94,6 +95,7 @@ public class Inventory implements IInventory{
     public void setSpaceUsed(int newSpaceUsed) {
         this.spaceUsed = newSpaceUsed;
     }
+    
 
     /*
     @Override

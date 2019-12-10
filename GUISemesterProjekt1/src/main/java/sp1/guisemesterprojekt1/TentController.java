@@ -35,15 +35,15 @@ import javafx.stage.Stage;
  * @author marku
  */
 public class TentController implements Initializable {
-    
+
     DomainAdministration da;
     //Setting the Time Indicator
     @FXML
     ProgressBar timeProgressBar;
 
-    @FXML 
+    @FXML
     Label pointLabel;
-    
+
     //Setting the GridPane
     @FXML
     GridPane inventoryGrid;
@@ -305,7 +305,7 @@ public class TentController implements Initializable {
     Image toShow = new Image(tent);
 
     private double percentageTimeBar;
-    
+
     //Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
@@ -327,16 +327,20 @@ public class TentController implements Initializable {
     Image imgSpray = new Image(spray);
     HashMap<String, Image> itemImageMap;
     HashMap<String, String> itemImageMapReverse;
-    
+
     IInventory playerInventory;
     IInventory roomInventory;
+    IInventory truckInventory;
     ArrayList<ImageView> inventoryImageList;
-    
+    ArrayList<ImageView> truckInventoryImageList;
+
     boolean trashingActive = false;
     @FXML
     private AnchorPane truckInventoryPane;
+
     @FXML
     private GridPane truckInventoryGrid;
+
     @FXML
     private ImageView tck0;
     @FXML
@@ -420,7 +424,6 @@ public class TentController implements Initializable {
     @FXML
     private ImageView closeTruckInventory;
 
-
     /**
      * Initializes the controller class.
      *
@@ -435,6 +438,8 @@ public class TentController implements Initializable {
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
+        truckInventoryPane.setVisible(false);
+        truckInventoryGrid.setVisible(false);
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
@@ -448,96 +453,157 @@ public class TentController implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(toShow);
-        
+
         //Get roominventory
         roomInventory = da.getRoom().getItems();
 
         //Get playerinventory
         playerInventory = da.getInventory();
 
-        //Fill items into map.
-        itemImageMap = new HashMap<>()
-        {{
-            put("Clean Syringe", imgKanyleClean);
-            put("Dirty Syringe", imgKanyleDirty);
-            put("Condom", imgCondom);
-            put("HIV Medication", imgHivMeds);
-            put("Malaria Medication", imgMalariaMeds);
-            put("Tuberculosis Medication", imgTbMeds);
-            put("Pill", imgPill);
-            put("Mask", imgMask);
-            put("Mosquito Spray", imgSpray);
-        }};
+        // get truckInventory
+        truckInventory = da.getTruckInventory();
 
-        itemImageMapReverse = new HashMap<>()
-        {{
-            put("Clean Kanyle.png", "Clean Syringe");
-            put("Dirty Kanyle.png" ,"Dirty Syringe");
-            put("Condom.png" ,"Condom");
-            put("HIV Medicine.png" ,"HIV Medication");
-            put("Malaria Medicine.png" ,"Malaria Medication");
-            put("TB Medicine.png" ,"Tuberculosis Medication");
-            put("pill.png" ,"Pill");
-            put("mask.png" ,"Mask");
-            put("Mosquito Spray.png" ,"Mosquito Spray");
-        }};
+        //Fill items into map.
+        itemImageMap = new HashMap<>() {
+            {
+                put("Clean Syringe", imgKanyleClean);
+                put("Dirty Syringe", imgKanyleDirty);
+                put("Condom", imgCondom);
+                put("HIV Medication", imgHivMeds);
+                put("Malaria Medication", imgMalariaMeds);
+                put("Tuberculosis Medication", imgTbMeds);
+                put("Pill", imgPill);
+                put("Mask", imgMask);
+                put("Mosquito Spray", imgSpray);
+            }
+        };
+
+        itemImageMapReverse = new HashMap<>() {
+            {
+                put("Clean Kanyle.png", "Clean Syringe");
+                put("Dirty Kanyle.png", "Dirty Syringe");
+                put("Condom.png", "Condom");
+                put("HIV Medicine.png", "HIV Medication");
+                put("Malaria Medicine.png", "Malaria Medication");
+                put("TB Medicine.png", "Tuberculosis Medication");
+                put("pill.png", "Pill");
+                put("mask.png", "Mask");
+                put("Mosquito Spray.png", "Mosquito Spray");
+            }
+        };
 
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
-            add(inv1);
-            add(inv2);
-            add(inv3);
-            add(inv4);
-            add(inv5);
-            add(inv6);
-            add(inv7);
-            add(inv8);
+                add(inv1);
+                add(inv2);
+                add(inv3);
+                add(inv4);
+                add(inv5);
+                add(inv6);
+                add(inv7);
+                add(inv8);
+            }
+        };
+        truckInventoryImageList = new ArrayList<>() {
+            {
+                add(tck0);
+                add(tck1);
+                add(tck2);
+                add(tck3);
+                add(tck4);
+                add(tck5);
+                add(tck6);
+                add(tck7);
+                add(tck8);
+                add(tck9);
+                add(tck10);
+                add(tck11);
+                add(tck12);
+                add(tck13);
+                add(tck14);
+                add(tck15);
+                add(tck16);
+                add(tck17);
+                add(tck18);
+                add(tck19);
+                add(tck20);
+                add(tck21);
+                add(tck22);
+                add(tck23);
+                add(tck24);
+                add(tck25);
+                add(tck26);
+                add(tck27);
+                add(tck28);
+                add(tck29);
+                add(tck30);
+                add(tck31);
+                add(tck32);
+                add(tck33);
+                add(tck34);
+                add(tck35);
+                add(tck36);
+                add(tck37);
+                add(tck38);
+                add(tck39);
             }
         };
         updatePoints();
         updateInventory();
+        updateTruckInventory();
 
     }
-    
+
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
-    
+
     //INVENTORY HANDLER
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
             inventoryImageList.get(i).setVisible(false);
         }
-        
+
         //Inserts items
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
         }
     }
-    
-        
-    
+
+    public void updateTruckInventory() {
+        //Clears inventory
+        for (int i = 0; i < truckInventoryImageList.size(); i++) {
+            truckInventoryImageList.get(i).setVisible(false);
+        }
+
+        //Inserts items
+        for (int j = 0; j < truckInventory.getKeys().size(); j++) {
+            truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
+            truckInventoryImageList.get(j).setVisible(true);
+        }
+    }
+
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
         trashingActive = !trashingActive;
-        
-        if (trashingActive)
-            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        else
-            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
-    }
 
+        if (trashingActive) {
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        } else {
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+        }
+    }
 
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(0));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -545,7 +611,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(1));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -553,7 +619,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(2));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -561,7 +627,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(3));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -569,7 +635,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(4));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -577,7 +643,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(5));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -585,7 +651,7 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(6));
             updateInventory();
-        } 
+        }
     }
 
     @FXML
@@ -593,9 +659,9 @@ public class TentController implements Initializable {
         if (trashingActive) {
             playerInventory.removeItem(playerInventory.getKeys().get(7));
             updateInventory();
-        } 
+        }
     }
-    
+
     //HANDLERS FOR DIALOGS
     @FXML
     public void handleCloseDialog(MouseEvent event) {
@@ -638,12 +704,256 @@ public class TentController implements Initializable {
     //HANDLE EXITS
     @FXML
     public void handleExitEvent(MouseEvent event) throws IOException {
-         da.setRoom(da.getRoomMap().get("village"));
+        da.setRoom(da.getRoomMap().get("village"));
         App.setRoot("village");
     }
 
     @FXML
     private void handleTruckInventoryClose(MouseEvent event) {
     }
-    
+
+    public void removeTruckInventoryOnClicked(int i) {
+        truckInventory.removeItem(truckInventory.getKeys().get(i));
+        updateTruckInventory();
+    }
+
+    public void pickUpItemToPlayerInventory(int i) {
+        String itemName = truckInventory.getKeys().get(i);
+        System.out.println(itemName);
+        //Add condition if playerInventory is full
+        if (playerInventory.getSpaceUsed() < playerInventory.getInventorySize()) {
+            playerInventory.addItem(itemName, truckInventory.getValues().get(truckInventory.getKeys().indexOf(itemName)));
+            truckInventory.removeItem(truckInventory.getKeys().get(i));
+            updateTruckInventory();
+            updateInventory();
+        }
+
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked1(MouseEvent event) {
+        pickUpItemToPlayerInventory(0);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked2(MouseEvent event) {
+        pickUpItemToPlayerInventory(1);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked3(MouseEvent event) {
+        pickUpItemToPlayerInventory(2);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked4(MouseEvent event) {
+        pickUpItemToPlayerInventory(3);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked5(MouseEvent event) {
+        pickUpItemToPlayerInventory(4);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked6(MouseEvent event) {
+        pickUpItemToPlayerInventory(5);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked7(MouseEvent event) {
+        pickUpItemToPlayerInventory(6);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked8(MouseEvent event) {
+        pickUpItemToPlayerInventory(7);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked9(MouseEvent event) {
+        pickUpItemToPlayerInventory(8);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked10(MouseEvent event) {
+        pickUpItemToPlayerInventory(9);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked11(MouseEvent event) {
+        pickUpItemToPlayerInventory(10);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked12(MouseEvent event) {
+        pickUpItemToPlayerInventory(11);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked13(MouseEvent event) {
+        pickUpItemToPlayerInventory(12);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked14(MouseEvent event) {
+        pickUpItemToPlayerInventory(13);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked15(MouseEvent event) {
+        pickUpItemToPlayerInventory(14);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked16(MouseEvent event) {
+        pickUpItemToPlayerInventory(15);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked17(MouseEvent event) {
+        pickUpItemToPlayerInventory(16);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked18(MouseEvent event) {
+        pickUpItemToPlayerInventory(17);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked19(MouseEvent event) {
+        pickUpItemToPlayerInventory(18);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked20(MouseEvent event) {
+        pickUpItemToPlayerInventory(19);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked21(MouseEvent event) {
+        pickUpItemToPlayerInventory(20);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked22(MouseEvent event) {
+        pickUpItemToPlayerInventory(21);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked23(MouseEvent event) {
+        pickUpItemToPlayerInventory(22);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked24(MouseEvent event) {
+        pickUpItemToPlayerInventory(23);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked25(MouseEvent event) {
+        pickUpItemToPlayerInventory(24);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked26(MouseEvent event) {
+        pickUpItemToPlayerInventory(25);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked27(MouseEvent event) {
+        pickUpItemToPlayerInventory(26);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked28(MouseEvent event) {
+        pickUpItemToPlayerInventory(27);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked29(MouseEvent event) {
+        pickUpItemToPlayerInventory(28);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked30(MouseEvent event) {
+        pickUpItemToPlayerInventory(29);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked31(MouseEvent event) {
+        pickUpItemToPlayerInventory(30);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked32(MouseEvent event) {
+        pickUpItemToPlayerInventory(31);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked33(MouseEvent event) {
+        pickUpItemToPlayerInventory(32);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked34(MouseEvent event) {
+        pickUpItemToPlayerInventory(33);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked35(MouseEvent event) {
+        pickUpItemToPlayerInventory(34);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked36(MouseEvent event) {
+        pickUpItemToPlayerInventory(35);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked37(MouseEvent event) {
+        pickUpItemToPlayerInventory(36);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked38(MouseEvent event) {
+        pickUpItemToPlayerInventory(37);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked39(MouseEvent event) {
+        pickUpItemToPlayerInventory(38);
+    }
+
+    @FXML
+    private void handleTruckInventorySlotClicked40(MouseEvent event) {
+        pickUpItemToPlayerInventory(39);
+    }
+
+    @FXML
+    private void handleTruckClicked1(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
+        
+    }
+
+    @FXML
+    private void handleTruckClicked2(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
+        
+    }
+
+    @FXML
+    private void handleTruckClicked3(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
+    }
+
+    @FXML
+    private void handleTruckClicked4(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
+    }
+
 }

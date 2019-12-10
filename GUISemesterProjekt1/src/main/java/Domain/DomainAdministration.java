@@ -158,7 +158,7 @@ public class DomainAdministration {
     }
 
     public void makeInventories() {
-        playerInventory = new Inventory(7);
+        playerInventory = new Inventory(8);
         playerInventory.addItem(condom.getName(), condom);
         playerInventory.addItem(hivMed.getName(), hivMed);
         playerInventory.addItem(syringeD.getName(), syringeD);

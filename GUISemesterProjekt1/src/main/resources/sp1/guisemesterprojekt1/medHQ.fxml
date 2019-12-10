@@ -174,46 +174,46 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="tck0" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="tck1" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                  <ImageView fx:id="tck2" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-                  <ImageView fx:id="tck3" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-                  <ImageView fx:id="tck4" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-                  <ImageView fx:id="tck5" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
-                  <ImageView fx:id="tck6" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
-                  <ImageView fx:id="tck7" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
-                  <ImageView fx:id="tck8" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck9" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck10" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck11" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck12" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck13" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck14" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck15" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                  <ImageView fx:id="tck16" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck17" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck18" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck19" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck20" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck21" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck22" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck23" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                  <ImageView fx:id="tck24" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck25" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck26" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck27" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck28" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck29" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck30" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck31" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                  <ImageView fx:id="tck32" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck33" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck34" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck35" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck36" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck37" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck38" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                  <ImageView fx:id="tck39" fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck0" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked1" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="tck1" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                  <ImageView fx:id="tck2" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                  <ImageView fx:id="tck3" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                  <ImageView fx:id="tck4" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                  <ImageView fx:id="tck5" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                  <ImageView fx:id="tck6" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked7" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+                  <ImageView fx:id="tck7" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked8" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+                  <ImageView fx:id="tck8" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked9" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck9" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked10" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck10" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked11" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck11" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked12" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck12" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked13" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck13" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked14" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck14" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked15" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck15" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked16" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <ImageView fx:id="tck16" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked17" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck17" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked18" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck18" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked19" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck19" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked20" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck20" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked21" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck21" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked22" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck22" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked23" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck23" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked24" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                  <ImageView fx:id="tck24" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked25" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck25" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked26" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck26" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked27" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck27" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked28" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck28" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked29" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck29" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked30" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck30" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked31" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck31" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked32" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                  <ImageView fx:id="tck32" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked33" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck33" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked34" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck34" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked35" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck35" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked36" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck36" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked37" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck37" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked38" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck38" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked39" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <ImageView fx:id="tck39" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked40" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             <ImageView fx:id="closeTruckInventory" fitHeight="30.0" fitWidth="30.0" layoutX="474.0" layoutY="-30.0" onMouseClicked="#handleTruckInventoryClose" pickOnBounds="true" preserveRatio="true" />
