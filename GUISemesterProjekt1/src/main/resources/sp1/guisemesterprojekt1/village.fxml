@@ -149,7 +149,7 @@
                 <ImageView fx:id="field4_1" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                 <ImageView fx:id="field4_2" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                 <ImageView fx:id="field4_3" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                <ImageView fx:id="field4_4" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                <ImageView fx:id="field4_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleWellClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
                 <ImageView fx:id="field4_5" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                 <ImageView fx:id="field4_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
                 <ImageView fx:id="field5_0" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
@@ -210,7 +210,7 @@
                 <ImageView fx:id="field11_6" fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="6" />
             </children>
         </GridPane>
-        <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue;">
+        <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
             <children>
                 <ImageView fx:id="NPCImage" fitHeight="121.0" fitWidth="108.0" layoutX="36.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
                 <Label fx:id="NPCNameLabel" alignment="CENTER" layoutX="36.0" layoutY="18.0" text="NPC name" textAlignment="CENTER">
@@ -283,7 +283,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen;">
+        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen; -fx-border-color: black;">
             <children>
                 <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true">
                     <cursor>
@@ -294,6 +294,11 @@
             </children>
         </AnchorPane>
         <ImageView fx:id="openHandbook" fitHeight="45.0" fitWidth="52.0" layoutX="158.0" layoutY="45.0" onMouseClicked="#handleOpenBook" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fx:id="easterEggView" fitHeight="505.0" fitWidth="673.0" layoutX="62.0" layoutY="48.0" onMouseClicked="#handleClickEasterEgg" pickOnBounds="true" preserveRatio="true">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

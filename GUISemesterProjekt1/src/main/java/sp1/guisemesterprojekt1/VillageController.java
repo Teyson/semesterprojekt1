@@ -56,7 +56,6 @@ public class VillageController implements Initializable {
     AnchorPane helpPopup;
 
     //Setting the sprites in the gridpane
-    @FXML
     Circle testNPC;
 
     //Setting the labels and their texts
@@ -331,7 +330,13 @@ public class VillageController implements Initializable {
     ArrayList<ImageView> inventoryImageList;
 
     boolean trashingActive = false;
-
+    
+    //EasterEgg
+    @FXML
+    private ImageView easterEggView;
+    String easterEggPath = "img/BatmanEasterEgg.gif";
+    Image easterEggImage = new Image(easterEggPath);
+    
     /**
      * Initializes the controller class.
      *
@@ -359,6 +364,10 @@ public class VillageController implements Initializable {
 
         //Setting the background image
         backgroundImage.setImage(vilages);
+        
+        //Setting the easterEgg image
+        easterEggView.setImage(easterEggImage);
+        easterEggView.setVisible(false);
         
         //Get roominventory
         roomInventory = da.getRoom().getItems();
@@ -575,4 +584,14 @@ public class VillageController implements Initializable {
         da.setRoom(da.getRoomMap().get("hut3"));
         App.setRoot("hut3");
     }
+    @FXML
+    private void handleWellClicked(MouseEvent event) {
+        easterEggView.setVisible(!easterEggView.isVisible());
+    }
+
+    @FXML
+    private void handleClickEasterEgg(MouseEvent event) {
+        easterEggView.setVisible(!easterEggView.isVisible());
+    }
+
 }
