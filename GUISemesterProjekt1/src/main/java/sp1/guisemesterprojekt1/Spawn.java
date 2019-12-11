@@ -332,7 +332,7 @@ public class Spawn implements Initializable {
                                         + "Click on the door to get to the warehouse in Mozambique!\n"
                                         + "I will meet you there!\n"+
                                         "(Remember: if you need help at any point, you can click the green\n"+
-                                        "'Help' button in the top right if you need help at any point.)");
+                                        "'Help' button in the top right if you need help.)");
 
                                 answer1.setVisible(false);
                                 field7_3.setDisable(!field7_3.isDisable());
