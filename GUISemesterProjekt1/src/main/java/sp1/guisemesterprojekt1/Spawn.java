@@ -251,20 +251,6 @@ public class Spawn implements Initializable {
             }
         };
 
-        itemImageMapReverse = new HashMap<>() {
-            {
-                put("Clean Kanyle.png", "Clean Syringe");
-                put("Dirty Kanyle.png", "Dirty Syringe");
-                put("Condom.png", "Condom");
-                put("HIV Medicine.png", "HIV Medication");
-                put("Malaria Medicine.png", "Malaria Medication");
-                put("TB Medicine.png", "Tuberculosis Medication");
-                put("pill.png", "Pill");
-                put("mask.png", "Mask");
-                put("Mosquito Spray.png", "Mosquito Spray");
-            }
-        };
-
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
@@ -373,23 +359,6 @@ public class Spawn implements Initializable {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
         }
-    }
-    
-    @FXML
-    private void handleTakeItem(MouseEvent event) {
-        //Gets name of image we clicked on.    
-        String url = imgViewTakeItem.getImage().getUrl();
-        String fileName = new File(url).getName();
-        String itemName = itemImageMapReverse.get(fileName);
-
-        //Returns true if item exists in room
-        if (roomInventory.getKeys().contains(itemName)) {
-            playerInventory.addItem(itemName, roomInventory.getValues().get(roomInventory.getKeys().indexOf(itemName))); //Add item to playerinventory
-            roomInventory.removeItem(itemName); //Remove item from room inventory
-            imgViewTakeItem.setVisible(false); //Make ImageView invisible
-        }
-
-        updateInventory();
     }
 
     @FXML
