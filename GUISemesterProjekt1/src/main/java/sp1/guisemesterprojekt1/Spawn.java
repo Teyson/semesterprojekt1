@@ -282,24 +282,18 @@ public class Spawn implements Initializable {
         updateInventory();
     }
     
-    public void updatePoints() {
-        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
-    }
+    /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. NPCs
+    2. Points
+    3. Inventory
+    4. Close buttons
+    5. Help Popup
+    6. Handbook
+    7. Exits
+    */
     
-    
-    public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
-
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
-    }
-
+    //HANDLER FOR MARIA
     @FXML
     public void handleMariaClicked(MouseEvent event) {
         INPC talkNPC = da.getRoom().getNPC("Maria Hoffmann");
@@ -361,64 +355,26 @@ public class Spawn implements Initializable {
         });
 
     }
-
-    @FXML
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
+    
+    //HANDLER FOR THE POINTS
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
+    
+    //HANDLER FOR THE INVENTORY
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
 
-    @FXML
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    @FXML
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
-    @FXML
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
         }
     }
-
-    @FXML
-    public void handleExitClickedEvent(MouseEvent event) throws IOException {
-        if (openHandbook.isVisible() == true) {
-            da.setRoom(da.getRoomMap().get("medHQ"));
-            App.setRoot("medHQ");
-        } else {
-            dialogPane.setVisible(!dialogPane.isVisible());
-            answer1.setVisible(false);
-            answer2.setVisible(false);
-            answer3.setVisible(false);
-            treatBtn.setVisible(false);
-            giveItemBtn.setVisible(false);
-
-            NPCImage.setImage(mariaTalk);
-            NPCNameLabel.setText(Maria.getName());
-
-            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
-        }
-    }
-
+    
     @FXML
     private void handleTakeItem(MouseEvent event) {
         //Gets name of image we clicked on.    
@@ -512,4 +468,64 @@ public class Spawn implements Initializable {
         }
     }
 
+    //HANDLERS FOR CLOSE-BUTTONS
+    @FXML
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
+    }
+    
+    @FXML
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+
+    //HANDLER FOR THE HELP-POPUP
+    @FXML
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
+
+    }
+
+    //HANDLER FOR THE HANDBOOK
+    @FXML
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //HANDLER FOR THE EXITS
+    @FXML
+    public void handleExitClickedEvent(MouseEvent event) throws IOException {
+        if (openHandbook.isVisible() == true) {
+            da.setRoom(da.getRoomMap().get("medHQ"));
+            App.setRoot("medHQ");
+        } else {
+            dialogPane.setVisible(!dialogPane.isVisible());
+            answer1.setVisible(false);
+            answer2.setVisible(false);
+            answer3.setVisible(false);
+            treatBtn.setVisible(false);
+            giveItemBtn.setVisible(false);
+
+            NPCImage.setImage(mariaTalk);
+            NPCNameLabel.setText(Maria.getName());
+
+            dialogLabel.setText("Hey! Come over here and talk to me before leaving!");
+        }
+    }
 }

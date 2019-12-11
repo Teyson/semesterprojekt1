@@ -469,37 +469,19 @@ public class MedHqController implements Initializable {
         updateTruckInventory();
 
     }
-    
-    public void updatePoints() {
-        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
-    }
-    public void updateTruckInventory() {
-        //Clears inventory
-        for (int i = 0; i < truckInventoryImageList.size(); i++) {
-            truckInventoryImageList.get(i).setVisible(false);
-        }
 
-        //Inserts items
-        for (int j = 0; j < truckInventory.getKeys().size(); j++) {
-            truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
-            truckInventoryImageList.get(j).setVisible(true);
-        }
-    }
-    public void updateTruckLoadBar(){
-        truckLoadBar.setProgress(truckInventory.calcPctUsed());
-        
-        truckFullLabel.setVisible(false);
-        if(truckInventory.calcPctUsed() >= 0.50 && truckInventory.calcPctUsed() < 1.0){
-            truckLoadBar.setStyle("-fx-accent: yellow;");
-            truckFullLabel.setVisible(false);
-        }
-        else if(truckInventory.calcPctUsed()==1.0){
-            truckLoadBar.setStyle("-fx-accent: red;");
-            truckFullLabel.setVisible(true);
-        }
-    }
-
-    
+    /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. NPCs
+    2. Points
+    3. Truck
+    4. Inventory
+    5. Items
+    6. Close buttons
+    7. Help Popup
+    8. Truck Inventory Slots
+    9. Handbook
+    */
     
     //HANDLER FOR THE NPCs
     @FXML
@@ -561,7 +543,52 @@ public class MedHqController implements Initializable {
         });
     }    
     
-    //HANDLER FOR THE INVENTORY
+    //HANDLER FOR THE POINTS
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
+    }
+    
+    //HANDLERS FOR THE TRUCK
+    public void updateTruckInventory() {
+        //Clears inventory
+        for (int i = 0; i < truckInventoryImageList.size(); i++) {
+            truckInventoryImageList.get(i).setVisible(false);
+        }
+
+        //Inserts items
+        for (int j = 0; j < truckInventory.getKeys().size(); j++) {
+            truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
+            truckInventoryImageList.get(j).setVisible(true);
+        }
+    }
+    
+    public void updateTruckLoadBar(){
+        truckLoadBar.setProgress(truckInventory.calcPctUsed());
+        
+        truckFullLabel.setVisible(false);
+        if(truckInventory.calcPctUsed() >= 0.50 && truckInventory.calcPctUsed() < 1.0){
+            truckLoadBar.setStyle("-fx-accent: yellow;");
+            truckFullLabel.setVisible(false);
+        }
+        else if(truckInventory.calcPctUsed()==1.0){
+            truckLoadBar.setStyle("-fx-accent: red;");
+            truckFullLabel.setVisible(true);
+        }
+    }
+    
+    @FXML
+    public void handleTruckClicked(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+    }
+    
+    @FXML //REMOVES ITEMS FROM THE TRUCK
+    public void removeTruckInventoryOnClicked(int i){
+        truckInventory.removeItem(truckInventory.getKeys().get(i));
+        updateTruckInventory();
+        updateTruckLoadBar();
+    }
+    
+    //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -574,18 +601,8 @@ public class MedHqController implements Initializable {
             inventoryImageList.get(j).setVisible(true);
         }
     }
+
     
-
-    @FXML
-    public void handleTruckClicked(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-    }
-
-    @FXML
-    public void handleTruckInventoryClose(MouseEvent event) {
-        truckInventoryPane.setVisible(false);
-    }
-
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
@@ -662,6 +679,8 @@ public class MedHqController implements Initializable {
         }
     }
 
+    //HANDLERS FOR GENERATING ITEMS INTO THE TRUCK INVENTORY
+    //UTILITY ITEMS
     @FXML
     public void handleMasksClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mask");
@@ -669,13 +688,7 @@ public class MedHqController implements Initializable {
         updateTruckLoadBar();
         updateTruckInventory();
     }
-
-    //HANDLER FOR THE DIALOGS
-    @FXML
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
-    }
-
+    
     @FXML
     public void handleCondomsClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Condom");
@@ -685,29 +698,13 @@ public class MedHqController implements Initializable {
     }
 
     @FXML
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-    }
-
-    @FXML
     public void handleMosquitoSprayClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("Mosquito Spray");
         truckInventory.addItem(roomInventory.getKeys().get(tempIndex), roomInventory.getValues().get(tempIndex));
         updateTruckLoadBar();
         updateTruckInventory();
     }
-
-    @FXML
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
+    
     @FXML
     public void handleSyringesClicked(MouseEvent event) {
         
@@ -717,23 +714,8 @@ public class MedHqController implements Initializable {
         updateTruckLoadBar();
         updateTruckInventory();
     }
-
-    //HANDLER FOR THE HANDBOOK
-    @FXML
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
+    
+    //MEDICINE ITEMS
     @FXML
     public void handleHIVClicked(MouseEvent event) {
         int tempIndex = roomInventory.getKeys().indexOf("HIV Medication");
@@ -759,12 +741,34 @@ public class MedHqController implements Initializable {
         updateTruckInventory();
     }
     
-    public void removeTruckInventoryOnClicked(int i){
-        truckInventory.removeItem(truckInventory.getKeys().get(i));
-        updateTruckInventory();
-        updateTruckLoadBar();
-        
+    //HANDLER FOR THE CLOSE-BUTTONS
+    @FXML
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
     }
+    
+    @FXML
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+    
+    @FXML
+    public void handleTruckInventoryClose(MouseEvent event) {
+        truckInventoryPane.setVisible(false);
+    }
+
+    //HANDLER FOR THE HELP POPUP
+    @FXML
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("You add items to your truck's inventory by clicking the tables.\n"+
+                          "Check in with Maria when your truck is full and you feel like you have\n"+
+                          "fulfilled Maria's checklist of items you will need.\n"+
+                          "The items that you bring will be found in the truck in the village\n"+
+                          "tent.");
+    }
+    
+    //HANDLERS FOR THE TRUCK INVENTORY SLOTS
     @FXML
     private void handleTruckInventorySlotClicked1(MouseEvent event) {
         removeTruckInventoryOnClicked(0);
@@ -963,5 +967,21 @@ public class MedHqController implements Initializable {
     @FXML
     private void handleTruckInventorySlotClicked40(MouseEvent event) {
         removeTruckInventoryOnClicked(39);
+    }
+    
+    //HANDLER FOR THE HANDBOOK
+    @FXML
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

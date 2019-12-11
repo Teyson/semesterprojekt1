@@ -355,6 +355,19 @@ public class Hut2Controller implements Initializable {
         updateInventory();
     }
     
+     /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. NPCs
+    2. Points
+    3. Treat
+    4. Give
+    5. Inventory
+    6. Close buttons
+    7. Help Popup
+    8. Handbook
+    9. Exits
+    */
+    
     //HANDLERS FOR THE NPCs
     @FXML
     public void handleYuranClicked(MouseEvent event){
@@ -392,7 +405,6 @@ public class Hut2Controller implements Initializable {
                     answer1.setVisible(false);
                     answer2.setVisible(false);
                     answer3.setVisible(false);
-                    giveItemBtn.setVisible(true);
                 }
             });
             
@@ -747,112 +759,12 @@ public class Hut2Controller implements Initializable {
     
     }
     
-    
+    //HANDLER FOR POINT SYSTEM
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLERS FOR THE INVENTORY
-    public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
-        
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
-        
-        if (!treatActive) {
-            for (int i = 0; i < rectList.size(); i++) {
-                rectList.get(i).setVisible(false);
-            }
-        }
-        
-        if (!giveActive) {
-            for (int i = 0; i < rectList.size(); i++) {
-                rectList.get(i).setVisible(false);
-            }
-        }        
-    }
-    
-    //HANDLERS FOR THE POPUPS
-    @FXML
-    public void handleCloseDialog(MouseEvent event) {
-        treatActive = false;
-        giveActive = false;
-        updateInventory();
-        
-        dialogPane.setVisible(false);
-    }
-
-    @FXML
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    @FXML
-    public void handleCloseHelp(MouseEvent event) {       
-        helpPopup.setVisible(false);
-    }
-
-    //HANDLER FOR THE HANDBOOK
-    @FXML
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    //HANDLER FOR THE EXIT
-    @FXML
-    public void handleExitEvent(MouseEvent event) throws IOException {
-        treatActive = false;
-        giveActive = false;
-        updateInventory();
-        
-        da.setRoom(da.getRoomMap().get("village"));
-        App.setRoot("village");
-    }
-    
-    @FXML
-    private void handleTrash(MouseEvent event) {
-        treatActive = false;
-        giveActive = false;
-        updateInventory();        
-        
-        //Change trashing state
-        trashingActive = !trashingActive;
-        
-        //Updates state of treatment and give item
-        treatActive = false;
-        giveActive = false;
-        updateInventory(); //updates colors
-        
-        if (trashingActive)
-            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
-        else
-            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
-    }
-
-    
+    //HANDLER FOR THE TREAT INTERACTION
     @FXML
     private void handleTreat(MouseEvent event) {
         treatActive = true;
@@ -882,6 +794,7 @@ public class Hut2Controller implements Initializable {
         }
     }
 
+    //HANDLER FOR THE GIVE INTERACTION
     @FXML
     private void handleGive(MouseEvent event) {
         giveActive = true;
@@ -898,6 +811,51 @@ public class Hut2Controller implements Initializable {
         }
     }
     
+    //HANDLERS FOR THE INVENTORY
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
+        
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
+        }
+        
+        if (!treatActive) {
+            for (int i = 0; i < rectList.size(); i++) {
+                rectList.get(i).setVisible(false);
+            }
+        }
+        
+        if (!giveActive) {
+            for (int i = 0; i < rectList.size(); i++) {
+                rectList.get(i).setVisible(false);
+            }
+        }        
+    }
+    
+        @FXML
+    private void handleTrash(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();        
+        
+        //Change trashing state
+        trashingActive = !trashingActive;
+        
+        //Updates state of treatment and give item
+        treatActive = false;
+        giveActive = false;
+        updateInventory(); //updates colors
+        
+        if (trashingActive)
+            inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
+        else
+            inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
+    }
     
     private void inventorySlotClicked(int i) {
         //Trashing
@@ -1019,5 +977,60 @@ public class Hut2Controller implements Initializable {
     @FXML
     private void handleInventorySlotClicked8(MouseEvent event) {
         inventorySlotClicked(7);
+    }
+    
+    //HANDLERS FOR THE CLOSE-BUTTONS
+    @FXML
+    public void handleCloseDialog(MouseEvent event) {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
+        dialogPane.setVisible(false);
+    }
+
+    @FXML
+    public void handleCloseHelp(MouseEvent event) {       
+        helpPopup.setVisible(false);
+    }
+    
+    //HANDLER FOR THE HELP PANE
+    @FXML
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by clicking on them, and making your choice of progression. \n"
+                + "Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their specific disease. When time is out, see how\n"
+                + "many points you have earned by saving people from their contracted disease!");
+
+    }
+
+    //HANDLER FOR THE HANDBOOK
+    @FXML
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    //HANDLER FOR THE EXIT
+    @FXML
+    public void handleExitEvent(MouseEvent event) throws IOException {
+        treatActive = false;
+        giveActive = false;
+        updateInventory();
+        
+        da.setRoom(da.getRoomMap().get("village"));
+        App.setRoot("village");
     }
 }

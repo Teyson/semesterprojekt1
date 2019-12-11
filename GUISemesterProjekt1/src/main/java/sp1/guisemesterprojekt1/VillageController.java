@@ -413,10 +413,22 @@ public class VillageController implements Initializable {
 
     }
 
+    /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. Points
+    2. Inventory
+    3. Close buttons
+    4. Help Popup
+    5. Handbook
+    6. Exits
+    */
+    
+    //HANDLER FOR THE POINTS
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
+    //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -429,60 +441,7 @@ public class VillageController implements Initializable {
             inventoryImageList.get(j).setVisible(true);
         }
     }
-
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
-    }
-
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void handleEnterEventBottom(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("hut3"));
-        App.setRoot("hut3");
-    }
-
-    public void handleEnterEventMid(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("hut2"));
-        App.setRoot("hut2");
-    }
-
-    public void handleEnterEventTop(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("hut1"));
-        App.setRoot("hut1");
-    }
-
-    public void HandleEnterEventTent(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("tent"));
-        App.setRoot("tent");
-    }
-
+    
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -494,7 +453,7 @@ public class VillageController implements Initializable {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
     }
-
+    
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
@@ -559,4 +518,61 @@ public class VillageController implements Initializable {
         }
     }
 
+    //HANDLERS FOR THE CLOSE-BUTTONS
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
+    }
+    
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+
+
+    //HANDLER FOR THE HELP PANE
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
+                + "limit. You do this by talking to them, by clicking on them, and making your \n"
+                + "choice of progression. Be aware that certain actions take time.\n"
+                + "You earn points by treating patients correctly, and by giving them an item \n"
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
+
+    }
+    
+    //HANDLER FOR THE HANDBOOK
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //HANDLERS FOR THE EXITS
+    public void HandleEnterEventTent(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("tent"));
+        App.setRoot("tent");
+    }
+    
+    public void handleEnterEventTop(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("hut1"));
+        App.setRoot("hut1");
+    }
+    
+    public void handleEnterEventMid(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("hut2"));
+        App.setRoot("hut2");
+    }
+    
+    public void handleEnterEventBottom(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("hut3"));
+        App.setRoot("hut3");
+    }
 }

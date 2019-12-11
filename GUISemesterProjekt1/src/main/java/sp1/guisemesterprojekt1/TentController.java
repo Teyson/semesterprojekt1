@@ -100,161 +100,7 @@ public class TentController implements Initializable {
 
     //Setting the Grid ImageViews
     @FXML
-    ImageView field0_0;
-    @FXML
-    ImageView field0_1;
-    @FXML
-    ImageView field0_2;
-    @FXML
-    ImageView field0_3;
-    @FXML
-    ImageView field0_4;
-    @FXML
-    ImageView field0_5;
-    @FXML
-    ImageView field0_6;
-    @FXML
-    ImageView field1_0;
-    @FXML
-    ImageView field1_1;
-    @FXML
-    ImageView field1_2;
-    @FXML
-    ImageView field1_3;
-    @FXML
-    ImageView field1_4;
-    @FXML
-    ImageView field1_5;
-    @FXML
-    ImageView field1_6;
-    @FXML
-    ImageView field2_0;
-    @FXML
-    ImageView field2_1;
-    @FXML
-    ImageView field2_2;
-    @FXML
-    ImageView field2_3;
-    @FXML
-    ImageView field2_4;
-    @FXML
-    ImageView field2_5;
-    @FXML
-    ImageView field2_6;
-    @FXML
-    ImageView field3_0;
-    @FXML
-    ImageView field3_1;
-    @FXML
-    ImageView field3_2;
-    @FXML
-    ImageView field3_3;
-    @FXML
-    ImageView field3_4;
-    @FXML
-    ImageView field3_5;
-    @FXML
-    ImageView field3_6;
-    @FXML
-    ImageView field4_0;
-    @FXML
-    ImageView field4_1;
-    @FXML
-    ImageView field4_2;
-    @FXML
-    ImageView field4_3;
-    @FXML
-    ImageView field4_4;
-    @FXML
-    ImageView field4_5;
-    @FXML
-    ImageView field4_6;
-    @FXML
-    ImageView field5_0;
-    @FXML
     ImageView field5_1;
-    @FXML
-    ImageView field5_2;
-    @FXML
-    ImageView field5_3;
-    @FXML
-    ImageView field5_4;
-    @FXML
-    ImageView field5_5;
-    @FXML
-    ImageView field5_6;
-    @FXML
-    ImageView field6_0;
-    @FXML
-    ImageView field6_1;
-    @FXML
-    ImageView field6_2;
-    @FXML
-    ImageView field6_3;
-    @FXML
-    ImageView field6_4;
-    @FXML
-    ImageView field6_5;
-    @FXML
-    ImageView field6_6;
-    @FXML
-    ImageView field7_0;
-    @FXML
-    ImageView field7_1;
-    @FXML
-    ImageView field7_2;
-    @FXML
-    ImageView field7_3;
-    @FXML
-    ImageView field7_4;
-    @FXML
-    ImageView field7_5;
-    @FXML
-    ImageView field7_6;
-    @FXML
-    ImageView field8_0;
-    @FXML
-    ImageView field8_1;
-    @FXML
-    ImageView field8_2;
-    @FXML
-    ImageView field8_3;
-    @FXML
-    ImageView field8_4;
-    @FXML
-    ImageView field8_5;
-    @FXML
-    ImageView field8_6;
-    @FXML
-    ImageView field9_0;
-    @FXML
-    ImageView field9_1;
-    @FXML
-    ImageView field9_2;
-    @FXML
-    ImageView field9_3;
-    @FXML
-    ImageView field9_4;
-    @FXML
-    ImageView field9_5;
-    @FXML
-    ImageView field9_6;
-    @FXML
-    ImageView field10_0;
-    @FXML
-    ImageView field10_1;
-    @FXML
-    ImageView field10_2;
-    @FXML
-    ImageView field10_3;
-    @FXML
-    ImageView field10_4;
-    @FXML
-    ImageView field10_5;
-    @FXML
-    ImageView field10_6;
-    @FXML
-    ImageView field11_0;
     @FXML
     ImageView field11_1;
     @FXML
@@ -265,8 +111,7 @@ public class TentController implements Initializable {
     ImageView field11_4;
     @FXML
     ImageView field11_5;
-    @FXML
-    ImageView field11_6;
+
 
     //Setting the Inventory images
     @FXML
@@ -556,11 +401,24 @@ public class TentController implements Initializable {
 
     }
 
+    /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. Points
+    2. Inventory
+    3. Truck
+    4. Close buttons
+    5. Help Popup
+    6. Truck Inventory Slots
+    7. Handbook
+    8. Exits
+    */
+    
+    //HANDLER FOR THE POINTS
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
 
-    //INVENTORY HANDLER
+    //HANDLER FOR THE INVENTORY
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -573,20 +431,7 @@ public class TentController implements Initializable {
             inventoryImageList.get(j).setVisible(true);
         }
     }
-
-    public void updateTruckInventory() {
-        //Clears inventory
-        for (int i = 0; i < truckInventoryImageList.size(); i++) {
-            truckInventoryImageList.get(i).setVisible(false);
-        }
-
-        //Inserts items
-        for (int j = 0; j < truckInventory.getKeys().size(); j++) {
-            truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
-            truckInventoryImageList.get(j).setVisible(true);
-        }
-    }
-
+    
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -598,6 +443,8 @@ public class TentController implements Initializable {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
     }
+    
+    @FXML
     private void moveItemFromPlayerToTruck(int i){
         if(truckInventoryPane.isVisible() && truckInventory.getSpaceUsed() < truckInventory.getInventorySize()){
             String itemName = playerInventory.getKeys().get(i);
@@ -682,63 +529,32 @@ public class TentController implements Initializable {
         moveItemFromPlayerToTruck(7);
     }
 
-    //HANDLERS FOR DIALOGS
-    @FXML
-    public void handleCloseDialog(MouseEvent event) {
-        dialogPane.setVisible(false);
-    }
+    //HANDLERS FOR THE TRUCK
+    public void updateTruckInventory() {
+        //Clears inventory
+        for (int i = 0; i < truckInventoryImageList.size(); i++) {
+            truckInventoryImageList.get(i).setVisible(false);
+        }
 
-    @FXML
-    public void handleOpenHelpPane(MouseEvent event) {
-        helpPopup.setVisible(true);
-        helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
-                + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
-
-    }
-
-    @FXML
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
-    }
-
-    //HANDLE HANDBOOK
-    @FXML
-    public void handleOpenBook(MouseEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Doctor's Handbook");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        //Inserts items
+        for (int j = 0; j < truckInventory.getKeys().size(); j++) {
+            truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
+            truckInventoryImageList.get(j).setVisible(true);
         }
     }
-
-    //HANDLE EXITS
+    
     @FXML
-    public void handleExitEvent(MouseEvent event) throws IOException {
-        da.setRoom(da.getRoomMap().get("village"));
-        App.setRoot("village");
+    private void handleTruckClicked(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
+        
     }
-
-    @FXML
-    private void handleTruckInventoryClose(MouseEvent event) {
-        truckInventoryPane.setVisible(false);
-        truckInventoryGrid.setVisible(false);
-    }
-
+    
     public void removeTruckInventoryOnClicked(int i) {
         truckInventory.removeItem(truckInventory.getKeys().get(i));
         updateTruckInventory();
     }
-
+    
     public void pickUpItemToPlayerInventory(int i) {
         String itemName = truckInventory.getKeys().get(i);
         System.out.println(itemName);
@@ -752,6 +568,35 @@ public class TentController implements Initializable {
 
     }
 
+    //HANDLERS FOR THE CLOSE-BUTTONS
+    @FXML
+    public void handleCloseDialog(MouseEvent event) {
+        dialogPane.setVisible(false);
+    }
+    
+    @FXML
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
+    
+    @FXML
+    private void handleTruckInventoryClose(MouseEvent event) {
+        truckInventoryPane.setVisible(false);
+        truckInventoryGrid.setVisible(false);
+    }
+
+    //HANDLER FOR THE HELP PANE
+    @FXML
+    public void handleOpenHelpPane(MouseEvent event) {
+        helpPopup.setVisible(true);
+        helpLabel.setText("Grab the things from the truck that you packed in the HQ.\n"+
+                          "You do this by clicking the truck, and then the items that you want\n"+
+                          "to bring with you now. You can also deposit things from your inventory\n"+
+                          "into the truck.");
+
+    }
+    
+    //HANDLERS FOR THE TRUCK INVENTORY SLOTS
     @FXML
     private void handleTruckInventorySlotClicked1(MouseEvent event) {
         pickUpItemToPlayerInventory(0);
@@ -952,30 +797,26 @@ public class TentController implements Initializable {
         pickUpItemToPlayerInventory(39);
     }
 
+    //HANDLER FOR THE HANDBOOK
     @FXML
-    private void handleTruckClicked1(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-        
+    public void handleOpenBook(MouseEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("sp1/guisemesterprojekt1/Handbook.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Doctor's Handbook");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
+    //HANDLER FOR THE EXIT
     @FXML
-    private void handleTruckClicked2(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-        
+    public void handleExitEvent(MouseEvent event) throws IOException {
+        da.setRoom(da.getRoomMap().get("village"));
+        App.setRoot("village");
     }
-
-    @FXML
-    private void handleTruckClicked3(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-    }
-
-    @FXML
-    private void handleTruckClicked4(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-        truckInventoryGrid.setVisible(!truckInventoryGrid.isVisible());
-    }
-
 }

@@ -12,14 +12,12 @@
             <children>
                 <ImageView fx:id="backgroundImage" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
                 <ImageView fx:id="startGameBtn" fitHeight="75.0" fitWidth="220.0" onMouseClicked="#startGameOnAction" pickOnBounds="true" preserveRatio="true">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
+                    
                 </ImageView>
                 <ImageView fx:id="danceView" fitHeight="158.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                     <StackPane.margin>
                         <Insets top="350.0" />
-                    </StackPane.margin>
+                    </StackPane.margin> 
                 </ImageView>
             </children>
         </StackPane>

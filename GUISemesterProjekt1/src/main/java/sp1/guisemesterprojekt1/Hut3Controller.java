@@ -377,9 +377,18 @@ public class Hut3Controller implements Initializable {
         updateInventory();
     }
 
-    public void updatePoints() {
-        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
-    }
+     /*
+    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    1. NPCs
+    2. Points
+    3. Treat
+    4. Give
+    5. Inventory
+    6. Close buttons
+    7. Help Popup
+    8. Handbook
+    9. Exits
+    */
     
     //HANDLERS FOR THE NPCs
     @FXML
@@ -963,6 +972,57 @@ public class Hut3Controller implements Initializable {
         }
     }
     
+    //HANDLER FOR THE POINTS
+    public void updatePoints() {
+        pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
+    }
+    
+    //HANDLER FOR THE TREAT INTERACTION
+    @FXML
+    private void handleTreat(MouseEvent event) {
+        treatActive = true;
+        
+        //Disables give state
+        giveActive = false;
+        updateInventory(); //updates colors
+        
+        //Check if no syringe.
+        if (!playerInventory.getKeys().contains("Clean Syringe") && !playerInventory.getKeys().contains("Dirty Syringe")) {
+            dialogLabel.setText("You need a syringe to treat the patient.");
+            treatActive = false;
+        } 
+        //If player has a syringe
+        else {
+            //Changes backgroundcolor of every medicineitem
+            for (int i = 0; i < playerInventory.getValues().size(); i++) {
+                if (playerInventory.getValues().get(i) instanceof IMedicineItem) {
+                    rectList.get(i).setVisible(true);
+                    rectList.get(i).setFill(Color.GREEN);
+                }
+            }
+            
+            //If player only has a used syringe
+            if (!playerInventory.getKeys().contains("Clean Syringe") && playerInventory.getKeys().contains("Dirty Syringe"))
+                dialogLabel.setText("You only have a used syringe, using it is not hygienic.");
+        }
+    }
+
+    //HANDLER FOR THE GIVE INTERACTION
+    @FXML
+    private void handleGive(MouseEvent event) {
+        giveActive = true;
+        
+        //Disables treat state
+        treatActive = false;
+        updateInventory();
+        
+        for (int i = 0; i < playerInventory.getValues().size(); i++) {
+            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") {
+                rectList.get(i).setVisible(true);
+                rectList.get(i).setFill(Color.CORNFLOWERBLUE);
+            }
+        }
+    }
     
     //HANDLERS FOR THE INVENTORY
     public void updateInventory() {
@@ -1004,51 +1064,6 @@ public class Hut3Controller implements Initializable {
                     inventoryGrid.setStyle("-fx-background-color:#ff8f87"); //Red
             else
                     inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
-    }
-
-    @FXML
-    private void handleTreat(MouseEvent event) {
-        treatActive = true;
-        
-        //Disables give state
-        giveActive = false;
-        updateInventory(); //updates colors
-        
-        //Check if no syringe.
-        if (!playerInventory.getKeys().contains("Clean Syringe") && !playerInventory.getKeys().contains("Dirty Syringe")) {
-            dialogLabel.setText("You need a syringe to treat the patient.");
-            treatActive = false;
-        } 
-        //If player has a syringe
-        else {
-            //Changes backgroundcolor of every medicineitem
-            for (int i = 0; i < playerInventory.getValues().size(); i++) {
-                if (playerInventory.getValues().get(i) instanceof IMedicineItem) {
-                    rectList.get(i).setVisible(true);
-                    rectList.get(i).setFill(Color.GREEN);
-                }
-            }
-            
-            //If player only has a used syringe
-            if (!playerInventory.getKeys().contains("Clean Syringe") && playerInventory.getKeys().contains("Dirty Syringe"))
-                dialogLabel.setText("You only have a used syringe, using it is not hygienic.");
-        }
-    }
-
-    @FXML
-    private void handleGive(MouseEvent event) {
-        giveActive = true;
-        
-        //Disables treat state
-        treatActive = false;
-        updateInventory();
-        
-        for (int i = 0; i < playerInventory.getValues().size(); i++) {
-            if (playerInventory.getValues().get(i) instanceof IUtilityItem && playerInventory.getKeys().get(i) != "Clean Syringe" && playerInventory.getKeys().get(i) != "Dirty Syringe") {
-                rectList.get(i).setVisible(true);
-                rectList.get(i).setFill(Color.CORNFLOWERBLUE);
-            }
-        }
     }
 
     private void inventorySlotClicked(int i) {
@@ -1172,7 +1187,7 @@ public class Hut3Controller implements Initializable {
         inventorySlotClicked(7);
     }
     
-    //HANDLER FOR THE CLOSE-BUTTON
+    //HANDLER FOR THE CLOSE-BUTTONS
     @FXML
     public void handleCloseDialog(MouseEvent event) {
         treatActive = false;
@@ -1181,23 +1196,23 @@ public class Hut3Controller implements Initializable {
         
         dialogPane.setVisible(false);
     }
+    
+    @FXML
+    public void handleCloseHelp(MouseEvent event) {
+        helpPopup.setVisible(false);
+    }
 
     //HANDLERS FOR THE HELP-PANE
     @FXML
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
+                + "limit. You do this by clicking on them, and making your choice of progression. \n"
+                + "Be aware that certain actions take time.\n"
                 + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their disease. When time is out, see how\n"
-                + "many you have saved from their contracted disease!");
+                + "that helps them prevent spreading their specific disease. When time is out, see how\n"
+                + "many points you have earned by saving people from their contracted disease!");
 
-    }
-    
-    @FXML
-    public void handleCloseHelp(MouseEvent event) {
-        helpPopup.setVisible(false);
     }
 
     //HANDLER FOR THE HANDBOOK
