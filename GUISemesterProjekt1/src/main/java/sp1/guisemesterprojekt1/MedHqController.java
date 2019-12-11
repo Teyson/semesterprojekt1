@@ -43,16 +43,13 @@ import Interfaces.INPC;
  */
 public class MedHqController implements Initializable {
 
-    //Setting the Time Indicator
+    //Setting the Time Indicator adn truckLoad indicator
     @FXML
     ProgressBar timeProgressBar;
     @FXML
     ProgressBar truckLoadBar;
-
-    @FXML
-    private Label pointLabel;
     
-    //Setting the GridPane
+    //Setting the GridPanes for playerInventory, gameGrid, dialogoptions and truckInventory
     @FXML
     GridPane inventoryGrid;
     @FXML
@@ -62,7 +59,7 @@ public class MedHqController implements Initializable {
     @FXML
     GridPane truckInventoryGrid;
 
-    //Setting the AnchorPane
+    //Setting the AnchorPanes to contain the scene and the different popups
     @FXML
     AnchorPane dialogPane;
     @FXML
@@ -70,8 +67,11 @@ public class MedHqController implements Initializable {
     @FXML
     AnchorPane truckInventoryPane;
 
+    /*
+    CHANGE THIS
     //Setting the sprites in the gridpane
     Circle testNPC;
+    */
 
     //Setting the labels and their texts
     @FXML
@@ -83,13 +83,16 @@ public class MedHqController implements Initializable {
     Label truckInventoryView;
     @FXML
     Label truckFullLabel;
+     // view of points
+    @FXML
+    private Label pointLabel;
 
     //Setting the buttons
     @FXML
     Button treatBtn;
     @FXML
     Button giveItemBtn;
-
+    //Setting buttons for answers i dialogs
     @FXML
     Button answer1;
     @FXML
@@ -116,7 +119,6 @@ public class MedHqController implements Initializable {
     ImageView openHandbook;
 
     //Setting the Grid ImageViews
-
     @FXML
     ImageView field0_2;
     @FXML
@@ -129,6 +131,8 @@ public class MedHqController implements Initializable {
     ImageView field1_3;
     @FXML
     ImageView field2_2;
+    @FXML
+    private ImageView field4_2;
     ImageView field4_5;
     @FXML
     ImageView field5_5;
@@ -175,6 +179,7 @@ public class MedHqController implements Initializable {
     @FXML
     ImageView inv8;
 
+    //Setting imageViews for truckInventory to contain images of Items
     @FXML
     ImageView tck0;
     @FXML
@@ -257,7 +262,6 @@ public class MedHqController implements Initializable {
     ImageView tck39;
 
     //Initialising the image paths and setting them to an image
-    //Buttons
     String trashButtonPath = "buttons/Trash.png";
     Image trashButton = new Image(trashButtonPath);
 
@@ -270,22 +274,25 @@ public class MedHqController implements Initializable {
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
 
-    //NPCs
+    //Setting images for NPCs
     String mariaPath = "npc/Maria Mini.png";
     Image mariaMini = new Image(mariaPath);
+    
     String mariaPathConvo = "convosprite/Maria.png";
     Image mariaConvo = new Image(mariaPathConvo);   
-    INPC Maria;
     
+    //Declaring NPCs from domainLayer
+    INPC Maria;
     INPC talkNPC;
 
-    //Backgrounds
+    //Setting Background image.
     String nextRoom = "backgrounds/HQ Medicine Room.png";
     Image medHQ = new Image(nextRoom);
 
+    //Declaration of percentage of time.
     private double percentageTimeBar;
 
-    //Items
+    //Setting images for all Items
     String kanyleClean = "img/Clean Kanyle.png";
     Image imgKanyleClean = new Image(kanyleClean);
     
@@ -313,22 +320,29 @@ public class MedHqController implements Initializable {
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
     
+    //Declaration of HashMap for images of Items.
     HashMap<String, Image> itemImageMap;
-    
     HashMap<String, String> itemImageMapReverse;
 
+    //Declaration of the main functionality from the DomainLayer
     DomainAdministration da;
+    
+    //Declaration of inventories from the DomainLayer
     IInventory playerInventory;
     IInventory truckInventory;
     IInventory roomInventory;
+    
+    //Declaration of list for images in playerInventory 
     ArrayList<ImageView> inventoryImageList;
-    // init truckInventoryImageList
+    
+    // Declaration for list of images in truckInventory
     ArrayList<ImageView> truckInventoryImageList;
-
+    
+    //Delcaration and Initialization of the boolean know if the trashButton is activated.
     boolean trashingActive = false;
-    @FXML
-    private ImageView field4_2;
-
+    
+    //Declaration of the Time from the domainlayer.
+    ITime time;
     /**
      * Initializes the controller class.
      *
@@ -337,31 +351,33 @@ public class MedHqController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        da = App.getDomainAdministration();
-        ITime time = da.getTime();
+        //Initializing the primary functionality from the domainLayer Via an interface acessor method.
+        da = App.getDomainAdministration(); 
+        //Initializing the current time left in the game.
+        time = da.getTime();
+        //Initializing the current time left into the timeProgressbar
         percentageTimeBar = time.getPercentTime();
         timeProgressBar.setProgress(percentageTimeBar);
-        //init truckload bar to 0
+        //initializing truckloadbar to 0
         truckLoadBar.setProgress(0.0);
+        //Setting all popupPanes' visibility to false on the scene start
         dialogPane.setVisible(false);
         helpPopup.setVisible(false);
         openHandbook.setVisible(true);
         truckInventoryPane.setVisible(false);
+        // setting the visibility this label to false.
         truckFullLabel.setVisible(false);
         
-        //Setting the NPCs
+        //Setting the NPC(s)
         Maria = da.getRoom().getNPC("Maria Hoffmann");
 
-        //Setting the appearance of the Help, Book, Close and Trash button images
+        //Setting the images of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
-
         helpBtn.setImage(helpButton);
-
+        openHandbook.setImage(handbookButton);
         closeDialog.setImage(closeButton);
         closeHelp.setImage(closeButton);
         closeTruckInventory.setImage(closeButton);
-
-        openHandbook.setImage(handbookButton);
 
         //Setting the background image
         backgroundImage.setImage(medHQ);
@@ -371,14 +387,12 @@ public class MedHqController implements Initializable {
 
         //Get roominventory
         roomInventory = da.getRoom().getItems();
-
         //Get playerinventory
         playerInventory = da.getInventory();
-
         // get truckInventory
         truckInventory = da.getTruckInventory();
 
-        //Fill items into map.
+        //Setting the images of the items into the map.
         itemImageMap = new HashMap<>() {
             {
                 put("Clean Syringe", imgKanyleClean);
@@ -407,7 +421,7 @@ public class MedHqController implements Initializable {
             }
         };
 
-        //Make arraylist of inventory slots for easy iteration
+        //Make arraylist of playerInventory slots for easy iteration through the images
         inventoryImageList = new ArrayList<>() {
             {
                 add(inv1);
@@ -420,8 +434,7 @@ public class MedHqController implements Initializable {
                 add(inv8);
             }
         };
-        updatePoints();
-        updateInventory();
+        //Setting the images of the truckInventory into a list for easy Iteration
         truckInventoryImageList = new ArrayList<>() {
             {
                 add(tck0);
@@ -466,19 +479,22 @@ public class MedHqController implements Initializable {
                 add(tck39); 
             }
         };
+        //Updating the current state of playerInventory, points and truckInventory
         updateTruckInventory();
+        updatePoints();
+        updateInventory();
 
     }
 
     /*
-    THE ORDER OF THE HANDLERS IS AS FOLLOWS:
+    THE ORDER OF THE HANDLERS AND OTHER METHODS ARE AS FOLLOWS:
     1. NPCs
-    2. Points
-    3. Truck
-    4. Inventory
-    5. Items
-    6. Close buttons
-    7. Help Popup
+    2. Updates
+    3. Generating Items
+    4. Close buttons
+    5. Help Popup
+    6. Open truckInventory
+    7. Removal of items in truck
     8. Truck Inventory Slots
     9. Handbook
     */
@@ -506,12 +522,14 @@ public class MedHqController implements Initializable {
         
 
         answer1.setText("Got it all!");
+        //Handler for the event when the answer1 button is pressed
         answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 dialogLabel.setText("Are you absolutely sure you have it all?\n"+
                                     "(You cannot return once you have left)");
                 answer1.setText("Ready!");
+                //Handler for when answer1 button is pressed.
                 answer1.setOnMouseClicked(new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event){
@@ -525,6 +543,7 @@ public class MedHqController implements Initializable {
                 });
                 
                 answer3.setText("I'll be back...");
+                //Handler for when answer3 button is pressed.
                 answer3.setOnMouseClicked(new EventHandler <MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event){
@@ -535,6 +554,7 @@ public class MedHqController implements Initializable {
         });
         
         answer3.setText("Not yet");
+        //Handler for when answer3 button is pressed.
         answer3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -543,12 +563,28 @@ public class MedHqController implements Initializable {
         });
     }    
     
-    //HANDLER FOR THE POINTS
+    //METHOD FOR UPDATING THE POINTS, WHICH UPDATES THE LABEL THE THE PRESENT POINTS UPTAINED
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLERS FOR THE TRUCK
+    //METHOD FOR UPDATING THE CURRENT ITEMS INSIDE THE PLAYERINVENTORY, 
+    //WHICH UPDATES THE IMAGES AND ITEMS IN THE PRESENTATION AND DOMAINLAYER.
+    public void updateInventory() {
+        //Clears inventory
+        for (int i = 0; i < inventoryImageList.size(); i++) {
+            inventoryImageList.get(i).setVisible(false);
+        }
+
+        //Inserts items
+        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+            inventoryImageList.get(j).setVisible(true);
+        }
+    }
+    
+    //METHOD FOR UPDATING THE CURRENT ITEMS INSIDE THE TRUCKINVENTORY, 
+    //WHICH UPDATES THE IMAGES AND ITEMS IN THE PRESENTATION AND DOMAINLAYER.
     public void updateTruckInventory() {
         //Clears inventory
         for (int i = 0; i < truckInventoryImageList.size(); i++) {
@@ -562,47 +598,25 @@ public class MedHqController implements Initializable {
         }
     }
     
+    //METHOD FOR UPDATING THE CURRENT LOAD OF THE TRUCK INTO THE PROGRESSBAR, 
     public void updateTruckLoadBar(){
+        //Setting the progress to the bar
         truckLoadBar.setProgress(truckInventory.calcPctUsed());
-        
+        //this is added again so if the some items is removed from the truckinventory, the label disapeers again
         truckFullLabel.setVisible(false);
+        
+        //changing the color of progressbar
         if(truckInventory.calcPctUsed() >= 0.50 && truckInventory.calcPctUsed() < 1.0){
             truckLoadBar.setStyle("-fx-accent: yellow;");
             truckFullLabel.setVisible(false);
-        }
+        } //changing the color of the progress when the truck is full.
         else if(truckInventory.calcPctUsed()==1.0){
             truckLoadBar.setStyle("-fx-accent: red;");
             truckFullLabel.setVisible(true);
         }
     }
     
-    @FXML
-    public void handleTruckClicked(MouseEvent event) {
-        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
-    }
-    
-    @FXML //REMOVES ITEMS FROM THE TRUCK
-    public void removeTruckInventoryOnClicked(int i){
-        truckInventory.removeItem(truckInventory.getKeys().get(i));
-        updateTruckInventory();
-        updateTruckLoadBar();
-    }
-    
-    //HANDLERS FOR THE INVENTORY
-    public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
-
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
-    }
-
-    
+    //HANDLER INVENTORY SLOTS CLICKED, AND IN THIS SCENES ONLY REMOVES ITEMS FROM THE PLAYERINVENTORY WHEN TRASHNG IS ACTIVE.
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
@@ -610,7 +624,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked2(MouseEvent event) {
         if (trashingActive) {
@@ -618,7 +631,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked3(MouseEvent event) {
         if (trashingActive) {
@@ -626,7 +638,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked4(MouseEvent event) {
         if (trashingActive) {
@@ -634,7 +645,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked5(MouseEvent event) {
         if (trashingActive) {
@@ -642,7 +652,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked6(MouseEvent event) {
         if (trashingActive) {
@@ -650,7 +659,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked7(MouseEvent event) {
         if (trashingActive) {
@@ -658,7 +666,6 @@ public class MedHqController implements Initializable {
             updateInventory();
         }
     }
-
     @FXML
     private void handleInventorySlotClicked8(MouseEvent event) {
         if (trashingActive) {
@@ -667,6 +674,7 @@ public class MedHqController implements Initializable {
         }
     }
     
+    //WHEN THE TRASHBUTTON IS CLICKED TRASHING IS ACTIVED AND THE COLOR OF THE SLOTS IS CHANGES.
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -677,6 +685,12 @@ public class MedHqController implements Initializable {
         } else {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
+    }
+    
+    //HANDLE WHEN THE TRUCK IS CLICKED.
+    @FXML
+    public void handleTruckClicked(MouseEvent event) {
+        truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
 
     //HANDLERS FOR GENERATING ITEMS INTO THE TRUCK INVENTORY
@@ -766,6 +780,13 @@ public class MedHqController implements Initializable {
                           "fulfilled Maria's checklist of items you will need.\n"+
                           "The items that you bring will be found in the truck in the village\n"+
                           "tent.");
+    }
+    
+    //REMOVES ITEMS FROM THE TRUCK, AND OTHER HANDLERS DETERMINDES WHICH ONE BY THE INT i.
+    public void removeTruckInventoryOnClicked(int i){
+        truckInventory.removeItem(truckInventory.getKeys().get(i));
+        updateTruckInventory();
+        updateTruckLoadBar();
     }
     
     //HANDLERS FOR THE TRUCK INVENTORY SLOTS
