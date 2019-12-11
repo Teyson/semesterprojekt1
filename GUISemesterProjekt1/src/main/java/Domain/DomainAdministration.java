@@ -192,7 +192,11 @@ public class DomainAdministration {
     public Time getTime() {
         return time;
     }
-
+    /**
+     * 
+     * @param room - the room to set as current room
+     * Method also checks current points of the players session and sets the attribute "hasWon" uppon that.
+     */
     public void setRoom(Room room) {
         currentRoom = room;
 
