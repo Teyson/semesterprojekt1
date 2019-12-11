@@ -136,7 +136,9 @@ public class DomainAdministration {
         spawn.addNPC("Maria Hoffmann", Maria);
 
         medHQ.addNPC("Maria Hoffmann", Maria);
-
+        
+        tent.addNPC("Maria Hoffmann", Maria);
+        
         hut1.addNPC("Henda", Henda);
         hut1.addNPC("Kishor", Kishor);
         hut1.addNPC("Nelton", Nelton);

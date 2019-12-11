@@ -7,12 +7,14 @@ package sp1.guisemesterprojekt1;
 
 import Domain.DomainAdministration;
 import Interfaces.IInventory;
+import Interfaces.INPC;
 import Interfaces.ITime;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,10 +99,16 @@ public class TentController implements Initializable {
     ImageView closeHelp;
     @FXML
     ImageView openHandbook;
+    @FXML
+    ImageView dirtySyringeView;
+    @FXML
+    ImageView cleanSyringeView;
 
     //Setting the Grid ImageViews
     @FXML
     ImageView field5_1;
+    @FXML
+    ImageView field8_2;
     @FXML
     ImageView field11_1;
     @FXML
@@ -144,6 +152,13 @@ public class TentController implements Initializable {
 
     String handbookPath = "buttons/Handbook.png";
     Image handbookButton = new Image(handbookPath);
+    
+    //NPCs followed by that NPCs conversation image
+    String mariaImage = "npc/Maria Mini.png";
+    Image mariaMini = new Image(mariaImage);
+    String mariaConvo = "convosprite/Maria.png";
+    Image mariaTalk = new Image(mariaConvo);
+    INPC Maria;
 
     //Backgrounds
     String tent = "backgrounds/tent.png";
@@ -296,6 +311,12 @@ public class TentController implements Initializable {
         closeTruckInventory.setImage(closeButton);
 
         openHandbook.setImage(handbookButton);
+        
+        //Setting the NPC Image
+        field8_2.setImage(mariaMini);
+        
+        //Setting the NPCs
+        Maria = da.getRoom().getNPC("Maria Hoffmann");
 
         //Setting the background image
         backgroundImage.setImage(toShow);
@@ -403,15 +424,52 @@ public class TentController implements Initializable {
 
     /*
     THE ORDER OF THE HANDLERS IS AS FOLLOWS:
-    1. Points
-    2. Inventory
-    3. Truck
-    4. Close buttons
-    5. Help Popup
-    6. Truck Inventory Slots
-    7. Handbook
-    8. Exits
+    1. NPCs
+    2. Points
+    3. Inventory
+    4. Truck
+    5. Close buttons
+    6. Help Popup
+    7. Truck Inventory Slots
+    8. Handbook
+    9. Exits
     */
+    
+    //HANDLER FOR MARIA
+    public void handleMariaClicked(MouseEvent event){
+        INPC talkNPC = Maria;
+
+        dialogPane.setVisible(!dialogPane.isVisible());
+        answer2.setVisible(false);
+        answer3.setVisible(false);
+        treatBtn.setVisible(false);
+        giveItemBtn.setVisible(false);
+
+        //Initialising Maria's conversation image
+        NPCImage.setImage(mariaTalk);
+
+        //Renaming the Dialog window for Maria
+        NPCNameLabel.setText(Maria.getName());
+
+        dialogLabel.setText("Did you remember to grab all the clean syringes you need?\n"+
+                            "If you use a used syringe on a new patient, they might get\n"+
+                            "even more sick, or even die! Remember good hygiene when treating\n"+
+                            "your patients.");
+        
+        answer1.setText("More");
+        answer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                answer1.setVisible(false);
+                
+                dialogLabel.setText("They look like this:\n"+
+                                    "Left is clean, right is dirty.");
+                cleanSyringeView.setImage(imgKanyleClean);
+                dirtySyringeView.setImage(imgKanyleDirty); 
+            }
+        
+        });
+    }
     
     //HANDLER FOR THE POINTS
     public void updatePoints() {

@@ -282,7 +282,7 @@ public class Spawn implements Initializable {
     //HANDLER FOR MARIA
     @FXML
     public void handleMariaClicked(MouseEvent event) {
-        INPC talkNPC = da.getRoom().getNPC("Maria Hoffmann");
+        INPC talkNPC = Maria;
 
         dialogPane.setVisible(!dialogPane.isVisible());
         answer2.setVisible(false);
@@ -317,7 +317,9 @@ public class Spawn implements Initializable {
                     public void handle(MouseEvent event) {
                         NPCNameLabel.setText(null);
                         NPCImage.setImage(null);
-                        dialogLabel.setText("You obtained the Doctor's Handbook!");
+                        dialogLabel.setText("You obtained the Doctor's Handbook!\n"+
+                                            "Use the Handbook to better understand the diseases you are treating,\n"+
+                                            "how they are spread, prevented and diagnosed.");
 
                         openHandbook.setVisible(true);
 
@@ -327,8 +329,10 @@ public class Spawn implements Initializable {
                                 NPCNameLabel.setText(Maria.getName());
                                 NPCImage.setImage(mariaTalk);
                                 dialogLabel.setText("I think you are ready now!\n"
-                                        + "Go through the door to get to the warehouse in Mozambique!\n"
-                                        + "I will meet you there!");
+                                        + "Click on the door to get to the warehouse in Mozambique!\n"
+                                        + "I will meet you there!\n"+
+                                        "(Remember: if you need help at any point, you can click the green\n"+
+                                        "'Help' button in the top right if you need help at any point.)");
 
                                 answer1.setVisible(false);
                                 field7_3.setDisable(!field7_3.isDisable());
@@ -453,8 +457,8 @@ public class Spawn implements Initializable {
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by talking to them, by clicking on them, and making your \n"
-                + "choice of progression. Be aware that certain actions take time.\n"
+                + "limit. You do this by clicking on them, and talking to them. There are several dialog\n"
+                + "options, and some have more fatal consequences than others. Some actions cost time.\n"
                 + "You earn points by treating patients correctly, and by giving them an item \n"
                 + "that helps them prevent spreading their disease. When time is out, see how\n"
                 + "many you have saved from their contracted disease!");

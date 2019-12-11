@@ -1207,11 +1207,11 @@ public class Hut3Controller implements Initializable {
     public void handleOpenHelpPane(MouseEvent event) {
         helpPopup.setVisible(true);
         helpLabel.setText("Your task is to cure as many citizens of Mozambique as you can, within the time\n"
-                + "limit. You do this by clicking on them, and making your choice of progression. \n"
-                + "Be aware that certain actions take time.\n"
+                + "limit. You do this by clicking on them, and talking to them. There are several dialog\n"
+                + "options, and some have more fatal consequences than others. Some actions cost time.\n"
                 + "You earn points by treating patients correctly, and by giving them an item \n"
-                + "that helps them prevent spreading their specific disease. When time is out, see how\n"
-                + "many points you have earned by saving people from their contracted disease!");
+                + "that helps them prevent spreading their disease. When time is out, see how\n"
+                + "many you have saved from their contracted disease!");
 
     }
 

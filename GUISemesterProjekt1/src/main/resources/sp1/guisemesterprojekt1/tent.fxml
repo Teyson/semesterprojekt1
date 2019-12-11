@@ -133,6 +133,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
+            <ImageView fx:id="field8_2" fitHeight="55.0" fitWidth="63.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
             </children>
         </GridPane>
         <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
@@ -191,6 +192,8 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
+            <ImageView fx:id="cleanSyringeView" fitHeight="93.0" fitWidth="108.0" layoutX="232.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dirtySyringeView" fitHeight="93.0" fitWidth="108.0" layoutX="536.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <Label layoutX="58.0" layoutY="67.0" text="Points">
@@ -208,7 +211,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen; -fx-border-color: black;">
+        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" visible="false">
             <children>
                 <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true">
                     <cursor>
@@ -223,7 +226,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink; -fx-border-color: black;">
+        <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink; -fx-border-color: black;" visible="false">
             <children>
                 <Label alignment="CENTER" layoutX="188.0" layoutY="6.0" text="Truck Inventory" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="6.0">
                     <font>
