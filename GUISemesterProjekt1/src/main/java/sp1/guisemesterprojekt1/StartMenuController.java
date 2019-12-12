@@ -30,17 +30,13 @@ public class StartMenuController implements Initializable {
     
     @FXML
     ImageView backgroundImage;
-    
-    @FXML
-    ImageView danceView;
 
     //Backgrounds
     String start = "backgrounds/starmenu.jpg";
     Image toShow = new Image(start);
     String button = "buttons/STARTGAME.png";
     Image toShow2 = new Image(button);
-    String dancer = "backgrounds/dance.gif";
-    Image toShow3 = new Image(dancer);
+    
 
     private static DomainAdministration da;
 
@@ -52,9 +48,6 @@ public class StartMenuController implements Initializable {
         da = App.getDomainAdministration();
         backgroundImage.setImage(toShow);
         startGameBtn.setImage(toShow2);
-        danceView.setImage(toShow3);
-        
-
     }
 
     public void startGameOnAction(MouseEvent event) throws IOException {
