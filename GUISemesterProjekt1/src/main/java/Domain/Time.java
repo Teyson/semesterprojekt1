@@ -19,6 +19,9 @@ public class Time implements ITime {
     }
 
     @Override
+    /**
+     * Used for the timebar. Calculates the percentage of time that has passed.
+     */
     public double getPercentTime() {
         double currentTimePct = (double)this.timeCounter / (double)this.startTime;
         return currentTimePct;
