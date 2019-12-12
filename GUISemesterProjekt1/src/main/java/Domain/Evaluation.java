@@ -2,8 +2,6 @@ package Domain;
 
 public class Evaluation implements Interfaces.IEvaluation {
     //Attributes
-    private boolean milestoneMet;
-    private final int milestone = 1500;
     private static int totalPoints;
     
     //Constructors
@@ -26,14 +24,6 @@ public class Evaluation implements Interfaces.IEvaluation {
      */
     public void printScore() {
         System.out.println(totalPoints);
-    }
-
-    public boolean isMilestoneMet() {
-        return milestoneMet;
-    }
-
-    public void setMilestoneMet(boolean milestoneMet) {
-        this.milestoneMet = milestoneMet;
     }
 
     public static void setTotalPoints(int totalPoints) {

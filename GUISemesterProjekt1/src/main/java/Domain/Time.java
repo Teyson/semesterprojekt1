@@ -13,14 +13,6 @@ public class Time implements ITime {
     public static final int GIVETIMECOST = 1;
     public static final int SYMPTOMSTIMECOST = 1;
 
-    public static boolean timeHasRunOut() {
-        if (timeCounter <= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public int getTime() {
         return timeCounter;
