@@ -644,6 +644,7 @@ public class MedHqController implements Initializable {
     //HANDLER FOR THE NPCs
     @FXML
     public void handleMariaClicked(MouseEvent event) {
+        truckInventoryPane.setVisible(false);
         talkNPC = Maria;
         
         dialogPane.setVisible(!dialogPane.isVisible());
@@ -841,6 +842,7 @@ public class MedHqController implements Initializable {
     @FXML
     public void handleTruckClicked(MouseEvent event) {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
+        dialogPane.setVisible(false);
     }
 
     //HANDLERS FOR GENERATING ITEMS INTO THE TRUCK INVENTORY
