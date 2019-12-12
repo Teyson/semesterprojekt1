@@ -198,6 +198,11 @@ public class DomainAdministration {
     public Time getTime() {
         return time;
     }
+
+    public HashMap<String, Room> getRoomMap() {
+        return roomMap;
+    }
+    
     /**
      * 
      * @param room - the room to set as current room
