@@ -325,6 +325,55 @@ public class MedHqController implements Initializable {
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
     ArrayList<ImageView> truckInventoryImageList;
+    ArrayList<Tooltip> truckTts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
+    Tooltip tt0 = new Tooltip(null);
+    Tooltip tt1 = new Tooltip(null);
+    Tooltip tt2 = new Tooltip(null);
+    Tooltip tt3 = new Tooltip(null);
+    Tooltip tt4 = new Tooltip(null);
+    Tooltip tt5 = new Tooltip(null);
+    Tooltip tt6 = new Tooltip(null);
+    Tooltip tt7 = new Tooltip(null);
+    Tooltip tt8 = new Tooltip(null);
+    Tooltip tt9 = new Tooltip(null);
+    Tooltip tt10 = new Tooltip(null);
+    Tooltip tt11 = new Tooltip(null);
+    Tooltip tt12 = new Tooltip(null);
+    Tooltip tt13 = new Tooltip(null);
+    Tooltip tt14 = new Tooltip(null);
+    Tooltip tt15 = new Tooltip(null);
+    Tooltip tt16 = new Tooltip(null);
+    Tooltip tt17 = new Tooltip(null);
+    Tooltip tt18 = new Tooltip(null);
+    Tooltip tt19 = new Tooltip(null);
+    Tooltip tt20 = new Tooltip(null);
+    Tooltip tt21 = new Tooltip(null);
+    Tooltip tt22 = new Tooltip(null);
+    Tooltip tt23 = new Tooltip(null);
+    Tooltip tt24 = new Tooltip(null);
+    Tooltip tt25 = new Tooltip(null);
+    Tooltip tt26 = new Tooltip(null);
+    Tooltip tt27 = new Tooltip(null);
+    Tooltip tt28 = new Tooltip(null);
+    Tooltip tt29 = new Tooltip(null);
+    Tooltip tt30 = new Tooltip(null);
+    Tooltip tt31 = new Tooltip(null);
+    Tooltip tt32 = new Tooltip(null);
+    Tooltip tt33 = new Tooltip(null);
+    Tooltip tt34 = new Tooltip(null);
+    Tooltip tt35 = new Tooltip(null);
+    Tooltip tt36 = new Tooltip(null);
+    Tooltip tt37 = new Tooltip(null);
+    Tooltip tt38 = new Tooltip(null);
+    Tooltip tt39 = new Tooltip(null);
     
     Tooltip maskTT = new Tooltip("Masks for people with Tuberculosis");
     Tooltip sprayTT = new Tooltip("Sprays for people with Malaria");
@@ -334,6 +383,8 @@ public class MedHqController implements Initializable {
     Tooltip hMedTT = new Tooltip("HIV Mediaction");
     Tooltip cSyringeTT = new Tooltip("Syringes");
 
+    
+    
     boolean trashingActive = false;
     @FXML
     private ImageView field4_2;
@@ -504,7 +555,59 @@ public class MedHqController implements Initializable {
         Tooltip.install(field4_2, cSyringeTT);
         Tooltip.install(field5_5, cSyringeTT);
         cSyringeTT.setShowDelay(Duration.ZERO);   
+
+        //Fill tooltip for truckinventory list.
+        truckTts = new ArrayList<>() {
+            {
+                add(tt0);
+                add(tt1);
+                add(tt2);
+                add(tt3);
+                add(tt4);
+                add(tt5);
+                add(tt6);
+                add(tt7);
+                add(tt8);
+                add(tt9);
+                add(tt10);
+                add(tt11);
+                add(tt12);
+                add(tt13);
+                add(tt14);
+                add(tt15);
+                add(tt16);
+                add(tt17);
+                add(tt18);
+                add(tt19);
+                add(tt20);
+                add(tt21);
+                add(tt22);
+                add(tt23);
+                add(tt24);
+                add(tt25);
+                add(tt26);
+                add(tt27);
+                add(tt28);
+                add(tt29);
+                add(tt30);
+                add(tt31);
+                add(tt32);
+                add(tt33);
+                add(tt34);
+                add(tt35);
+                add(tt36);
+                add(tt37);
+                add(tt38);
+                add(tt39);
+            }
+        };
         
+        //Installs each tooltip on the correct inventory slot and makes then show with no delay.
+        for (int i = 0; i < truckTts.size(); i++) {
+            Tooltip.install(truckInventoryImageList.get(i), truckTts.get(i));
+            truckTts.get(i).setShowDelay(Duration.ZERO);
+        }
+
         updateTruckInventory();
     }
 
@@ -599,6 +702,7 @@ public class MedHqController implements Initializable {
         for (int j = 0; j < truckInventory.getKeys().size(); j++) {
             truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
             truckInventoryImageList.get(j).setVisible(true);
+            truckTts.get(j).setText(truckInventory.getValues().get(j).getName()); //Updates tooltip
         }
     }
     
