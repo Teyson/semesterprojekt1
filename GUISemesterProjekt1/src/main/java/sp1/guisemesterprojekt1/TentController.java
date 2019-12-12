@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -186,13 +188,21 @@ public class TentController implements Initializable {
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
     HashMap<String, Image> itemImageMap;
-    HashMap<String, String> itemImageMapReverse;
 
     IInventory playerInventory;
     IInventory roomInventory;
     IInventory truckInventory;
     ArrayList<ImageView> inventoryImageList;
     ArrayList<ImageView> truckInventoryImageList;
+    ArrayList<Tooltip> tts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
 
     boolean trashingActive = false;
     @FXML
@@ -283,7 +293,7 @@ public class TentController implements Initializable {
     private ImageView tck39;
     @FXML
     private ImageView closeTruckInventory;
-
+    
     /**
      * Initializes the controller class.
      *
@@ -345,20 +355,6 @@ public class TentController implements Initializable {
             }
         };
 
-        itemImageMapReverse = new HashMap<>() {
-            {
-                put("Clean Kanyle.png", "Clean Syringe");
-                put("Dirty Kanyle.png", "Dirty Syringe");
-                put("Condom.png", "Condom");
-                put("HIV Medicine.png", "HIV Medication");
-                put("Malaria Medicine.png", "Malaria Medication");
-                put("TB Medicine.png", "Tuberculosis Medication");
-                put("pill.png", "Pill");
-                put("mask.png", "Mask");
-                put("Mosquito Spray.png", "Mosquito Spray");
-            }
-        };
-
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
@@ -416,10 +412,30 @@ public class TentController implements Initializable {
                 add(tck39);
             }
         };
+        
+        //Fill tooltip list with tooltips for each slot in inventory.
+        tts = new ArrayList<>() {
+            {
+                add(t0);
+                add(t1);
+                add(t2);
+                add(t3);
+                add(t4);
+                add(t5);
+                add(t6);
+                add(t7);
+            }
+        };
+        
+        //Installs each tooltip on the correctinventory slot and makes then show with no delay.
+        for (int i = 0; i < tts.size(); i++) {
+            Tooltip.install(inventoryImageList.get(i), tts.get(i));
+            tts.get(i).setShowDelay(Duration.ZERO);
+        }
+
         updatePoints();
         updateInventory();
         updateTruckInventory();
-
     }
 
     /*
@@ -491,6 +507,9 @@ public class TentController implements Initializable {
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
+            
+            //Sets correct tooltip
+            tts.get(j).setText(playerInventory.getValues().get(j).getName());
         }
     }
     
@@ -518,7 +537,6 @@ public class TentController implements Initializable {
             playerInventory.removeItem(itemName);
             updateInventory();
             updateTruckInventory();
-            
         }
     }
 

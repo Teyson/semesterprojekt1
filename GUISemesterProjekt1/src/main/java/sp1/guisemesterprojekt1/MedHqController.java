@@ -35,7 +35,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import Interfaces.INPC;
-
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Tooltip;
+import javafx.util.Duration;
 /**
  * FXML Controller class
  *
@@ -322,8 +324,15 @@ public class MedHqController implements Initializable {
     IInventory truckInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
-    // init truckInventoryImageList
     ArrayList<ImageView> truckInventoryImageList;
+    
+    Tooltip maskTT = new Tooltip("Masks for people with Tuberculosis");
+    Tooltip sprayTT = new Tooltip("Sprays for people with Malaria");
+    Tooltip condomTT = new Tooltip("Condoms for people with HIV");
+    Tooltip mMedTT = new Tooltip("Malaria Medication");
+    Tooltip tMedTT = new Tooltip("Tuberculosis Medication");
+    Tooltip hMedTT = new Tooltip("HIV Mediaction");
+    Tooltip cSyringeTT = new Tooltip("Syringes");
 
     boolean trashingActive = false;
     @FXML
@@ -354,7 +363,7 @@ public class MedHqController implements Initializable {
 
         //Setting the appearance of the Help, Book, Close and Trash button images
         trashBtn.setImage(trashButton);
-
+        
         helpBtn.setImage(helpButton);
 
         closeDialog.setImage(closeButton);
@@ -466,8 +475,37 @@ public class MedHqController implements Initializable {
                 add(tck39); 
             }
         };
+        
+        //Install on nodes and remove delay from all tooltips.
+        Tooltip.install(field10_5, maskTT);
+        Tooltip.install(field11_5, maskTT);
+        maskTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field6_5, condomTT);
+        Tooltip.install(field7_5, condomTT);
+        condomTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field8_5, sprayTT);
+        Tooltip.install(field9_5, sprayTT);
+        sprayTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field6_4, mMedTT);
+        Tooltip.install(field7_4, mMedTT);
+        mMedTT.setShowDelay(Duration.ZERO);        
+        
+        Tooltip.install(field10_4, tMedTT);
+        Tooltip.install(field11_4, tMedTT);
+        tMedTT.setShowDelay(Duration.ZERO);     
+        
+        Tooltip.install(field8_4, hMedTT);
+        Tooltip.install(field9_4, hMedTT);
+        hMedTT.setShowDelay(Duration.ZERO);   
+        
+        Tooltip.install(field4_2, cSyringeTT);
+        Tooltip.install(field5_5, cSyringeTT);
+        cSyringeTT.setShowDelay(Duration.ZERO);   
+        
         updateTruckInventory();
-
     }
 
     /*
@@ -583,8 +621,7 @@ public class MedHqController implements Initializable {
         truckInventoryPane.setVisible(!truckInventoryPane.isVisible());
     }
     
-    @FXML //REMOVES ITEMS FROM THE TRUCK
-    public void removeTruckInventoryOnClicked(int i){
+        public void removeTruckInventoryOnClicked(int i){
         truckInventory.removeItem(truckInventory.getKeys().get(i));
         updateTruckInventory();
         updateTruckLoadBar();
@@ -678,7 +715,7 @@ public class MedHqController implements Initializable {
      */
     @FXML
     private void handleTrash(MouseEvent event) {
-        //Change trashing state
+        //Change trashing state       
         trashingActive = !trashingActive;
 
         if (trashingActive) {
