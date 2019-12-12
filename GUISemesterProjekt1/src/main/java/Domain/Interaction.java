@@ -38,7 +38,7 @@ public class Interaction implements IInteraction{
     
     /**
      * 
-     * @return the option (which is what the player makes disicions based on).
+     * @return the option (which is what the player makes desicions based on).
      */
     @Override
     public String getOption() {

@@ -35,7 +35,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import Interfaces.INPC;
-
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Tooltip;
+import javafx.util.Duration;
 /**
  * FXML Controller class
  *
@@ -337,8 +339,66 @@ public class MedHqController implements Initializable {
     
     // Declaration for list of images in truckInventory
     ArrayList<ImageView> truckInventoryImageList;
+
+    ArrayList<Tooltip> truckTts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
+    Tooltip tt0 = new Tooltip(null);
+    Tooltip tt1 = new Tooltip(null);
+    Tooltip tt2 = new Tooltip(null);
+    Tooltip tt3 = new Tooltip(null);
+    Tooltip tt4 = new Tooltip(null);
+    Tooltip tt5 = new Tooltip(null);
+    Tooltip tt6 = new Tooltip(null);
+    Tooltip tt7 = new Tooltip(null);
+    Tooltip tt8 = new Tooltip(null);
+    Tooltip tt9 = new Tooltip(null);
+    Tooltip tt10 = new Tooltip(null);
+    Tooltip tt11 = new Tooltip(null);
+    Tooltip tt12 = new Tooltip(null);
+    Tooltip tt13 = new Tooltip(null);
+    Tooltip tt14 = new Tooltip(null);
+    Tooltip tt15 = new Tooltip(null);
+    Tooltip tt16 = new Tooltip(null);
+    Tooltip tt17 = new Tooltip(null);
+    Tooltip tt18 = new Tooltip(null);
+    Tooltip tt19 = new Tooltip(null);
+    Tooltip tt20 = new Tooltip(null);
+    Tooltip tt21 = new Tooltip(null);
+    Tooltip tt22 = new Tooltip(null);
+    Tooltip tt23 = new Tooltip(null);
+    Tooltip tt24 = new Tooltip(null);
+    Tooltip tt25 = new Tooltip(null);
+    Tooltip tt26 = new Tooltip(null);
+    Tooltip tt27 = new Tooltip(null);
+    Tooltip tt28 = new Tooltip(null);
+    Tooltip tt29 = new Tooltip(null);
+    Tooltip tt30 = new Tooltip(null);
+    Tooltip tt31 = new Tooltip(null);
+    Tooltip tt32 = new Tooltip(null);
+    Tooltip tt33 = new Tooltip(null);
+    Tooltip tt34 = new Tooltip(null);
+    Tooltip tt35 = new Tooltip(null);
+    Tooltip tt36 = new Tooltip(null);
+    Tooltip tt37 = new Tooltip(null);
+    Tooltip tt38 = new Tooltip(null);
+    Tooltip tt39 = new Tooltip(null);
     
-    //Delcaration and Initialization of the boolean know if the trashButton is activated.
+    Tooltip maskTT = new Tooltip("Masks for people with Tuberculosis");
+    Tooltip sprayTT = new Tooltip("Sprays for people with Malaria");
+    Tooltip condomTT = new Tooltip("Condoms for people with HIV");
+    Tooltip mMedTT = new Tooltip("Malaria Medication");
+    Tooltip tMedTT = new Tooltip("Tuberculosis Medication");
+    Tooltip hMedTT = new Tooltip("HIV Mediaction");
+    Tooltip cSyringeTT = new Tooltip("Syringes");
+    
+     //Delcaration and Initialization of the boolean know if the trashButton is activated.
     boolean trashingActive = false;
     
     //Declaration of the Time from the domainlayer.
@@ -479,6 +539,88 @@ public class MedHqController implements Initializable {
                 add(tck39); 
             }
         };
+        
+        //Install on nodes and remove delay from all tooltips.
+        Tooltip.install(field10_5, maskTT);
+        Tooltip.install(field11_5, maskTT);
+        maskTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field6_5, condomTT);
+        Tooltip.install(field7_5, condomTT);
+        condomTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field8_5, sprayTT);
+        Tooltip.install(field9_5, sprayTT);
+        sprayTT.setShowDelay(Duration.ZERO);
+        
+        Tooltip.install(field6_4, mMedTT);
+        Tooltip.install(field7_4, mMedTT);
+        mMedTT.setShowDelay(Duration.ZERO);        
+        
+        Tooltip.install(field10_4, tMedTT);
+        Tooltip.install(field11_4, tMedTT);
+        tMedTT.setShowDelay(Duration.ZERO);     
+        
+        Tooltip.install(field8_4, hMedTT);
+        Tooltip.install(field9_4, hMedTT);
+        hMedTT.setShowDelay(Duration.ZERO);   
+        
+        Tooltip.install(field4_2, cSyringeTT);
+        Tooltip.install(field5_5, cSyringeTT);
+        cSyringeTT.setShowDelay(Duration.ZERO);   
+
+        //Fill tooltip for truckinventory list.
+        truckTts = new ArrayList<>() {
+            {
+                add(tt0);
+                add(tt1);
+                add(tt2);
+                add(tt3);
+                add(tt4);
+                add(tt5);
+                add(tt6);
+                add(tt7);
+                add(tt8);
+                add(tt9);
+                add(tt10);
+                add(tt11);
+                add(tt12);
+                add(tt13);
+                add(tt14);
+                add(tt15);
+                add(tt16);
+                add(tt17);
+                add(tt18);
+                add(tt19);
+                add(tt20);
+                add(tt21);
+                add(tt22);
+                add(tt23);
+                add(tt24);
+                add(tt25);
+                add(tt26);
+                add(tt27);
+                add(tt28);
+                add(tt29);
+                add(tt30);
+                add(tt31);
+                add(tt32);
+                add(tt33);
+                add(tt34);
+                add(tt35);
+                add(tt36);
+                add(tt37);
+                add(tt38);
+                add(tt39);
+            }
+        };
+        
+        //Installs each tooltip on the correct inventory slot and makes then show with no delay.
+        for (int i = 0; i < truckTts.size(); i++) {
+            Tooltip.install(truckInventoryImageList.get(i), truckTts.get(i));
+            truckTts.get(i).setShowDelay(Duration.ZERO);
+        }
+
         //Updating the current state of playerInventory, points and truckInventory
         updateTruckInventory();
         updatePoints();
@@ -563,13 +705,16 @@ public class MedHqController implements Initializable {
         });
     }    
     
-    //METHOD FOR UPDATING THE POINTS, WHICH UPDATES THE LABEL THE THE PRESENT POINTS UPTAINED
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //METHOD FOR UPDATING THE CURRENT ITEMS INSIDE THE PLAYERINVENTORY, 
-    //WHICH UPDATES THE IMAGES AND ITEMS IN THE PRESENTATION AND DOMAINLAYER.
+     /*
+     * Method to update the inventory 
+    */
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -595,9 +740,10 @@ public class MedHqController implements Initializable {
         for (int j = 0; j < truckInventory.getKeys().size(); j++) {
             truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
             truckInventoryImageList.get(j).setVisible(true);
+            truckTts.get(j).setText(truckInventory.getValues().get(j).getName()); //Updates tooltip
         }
     }
-    
+
     //METHOD FOR UPDATING THE CURRENT LOAD OF THE TRUCK INTO THE PROGRESSBAR, 
     public void updateTruckLoadBar(){
         //Setting the progress to the bar
@@ -674,10 +820,14 @@ public class MedHqController implements Initializable {
         }
     }
     
-    //WHEN THE TRASHBUTTON IS CLICKED TRASHING IS ACTIVED AND THE COLOR OF THE SLOTS IS CHANGES.
+    
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
     @FXML
     private void handleTrash(MouseEvent event) {
-        //Change trashing state
+        //Change trashing state       
         trashingActive = !trashingActive;
 
         if (trashingActive) {

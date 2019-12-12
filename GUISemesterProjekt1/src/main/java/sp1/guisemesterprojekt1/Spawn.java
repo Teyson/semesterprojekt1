@@ -346,25 +346,33 @@ public class Spawn implements Initializable {
 
     }
     
-    //HANDLER FOR THE POINTS
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLER FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
-        //Clears inventory
-        for (int i = 0; i < inventoryImageList.size(); i++) {
-            inventoryImageList.get(i).setVisible(false);
-        }
+            //Clears inventory
+            for (int i = 0; i < inventoryImageList.size(); i++) {
+                    inventoryImageList.get(i).setVisible(false);
+            }
 
-        //Inserts items
-        for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-            inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-            inventoryImageList.get(j).setVisible(true);
-        }
+            //Inserts items
+            for (int j = 0; j < playerInventory.getKeys().size(); j++) {
+                    inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+                    inventoryImageList.get(j).setVisible(true);
+            }
     }
 
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -377,6 +385,7 @@ public class Spawn implements Initializable {
         }
     }
 
+    //These next 8 methods are used to trash the correct item when the specific slot is pressed.Q
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {

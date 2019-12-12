@@ -60,7 +60,9 @@ public class DomainAdministration {
 
     private HashMap<String, Room> roomMap;
 
-    //Initializers
+    /**
+     * Method to initialize all items used in the game along with adding them to the rooms in which they are.
+     */
     public void makeItems() {
         //Creating the HIV Items
         hivMed = new MedicineItem("HIV Medication", "Appears to be a pinkish liquid", 1, "HIV");
@@ -78,9 +80,6 @@ public class DomainAdministration {
         syringeC = new UtilityItem("Clean Syringe", "This syringe is clean.", 1, 0, "None");
         syringeD = new UtilityItem("Dirty Syringe", "This syringe is not clean.", 1, 0, "None");
 
-        spawn.addItem(condom.getName(), condom);
-                
-                
         medHQ.addItem(hivMed.getName(), hivMed);
         medHQ.addItem(condom.getName(), condom);
         medHQ.addItem(malMed.getName(), malMed);
@@ -91,6 +90,9 @@ public class DomainAdministration {
         medHQ.addItem(syringeD.getName(), syringeD);
     }
 
+    /**
+     * Method to initialize all rooms.
+     */
     public void makeRooms() {
         spawn = new Room("You're in WHO Facilities in Geneva.");
         medHQ = new Room("You're in the WHO Outpost in Mozambique.");
@@ -107,9 +109,11 @@ public class DomainAdministration {
         roomMap.put("hut2", hut2);
         roomMap.put("hut3", hut3);
         roomMap.put("tent", tent);
-
     }
 
+    /**
+     * Method to initialize all NPC's in the game, as well as putting them in the correct rooms.
+     */
     public void makeNPCS() {
         //Creating the NPCs (Female)
         Maria = new NPC("Maria Hoffmann");
@@ -156,9 +160,11 @@ public class DomainAdministration {
         hut3.addNPC("Brayton", Brayton);
         hut3.addNPC("Kelven", Kelven);
         hut3.addNPC("Faizal", Faizal);
-
     }
 
+    /**
+     * Method to initialize inventories used in the game.
+     */
     public void makeInventories() {
         playerInventory = new Inventory(8);
         truckInventory = new Inventory(40); //size can change
@@ -200,7 +206,7 @@ public class DomainAdministration {
     public void setRoom(Room room) {
         currentRoom = room;
 
-        if (eval.getPoints() >= 380) {
+        if (eval.getPoints() >= 400) {
             this.hasWon = true;
         } else {
             this.hasWon = false;
@@ -208,11 +214,9 @@ public class DomainAdministration {
         Time.timeCounter -= Time.CHANGEROOMTIMECOST;
     }
 
-    public HashMap<String, Room> getRoomMap() {
-        return roomMap;
-    }
-
-    //Setup
+    /**
+     * Method that runs all the initializations.
+     */
     public void setup() {
         currentRoom = spawn;
         makeRooms();

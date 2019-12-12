@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -227,6 +229,15 @@ public class Hut1Controller implements Initializable {
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
     ArrayList<Rectangle> rectList;
+    ArrayList<Tooltip> tts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
 
     boolean trashingActive = false;
     boolean treatActive = false;
@@ -365,6 +376,27 @@ public class Hut1Controller implements Initializable {
             add(rect8);
             }
         };
+        
+        //Fill tooltip list with tooltips for each slot in inventory.
+        tts = new ArrayList<>() {
+            {
+                add(t0);
+                add(t1);
+                add(t2);
+                add(t3);
+                add(t4);
+                add(t5);
+                add(t6);
+                add(t7);
+            }
+        };
+        
+        //Installs each tooltip on the correctinventory slot and makes then show with no delay.
+        for (int i = 0; i < tts.size(); i++) {
+            Tooltip.install(inventoryImageList.get(i), tts.get(i));
+            tts.get(i).setShowDelay(Duration.ZERO);
+        }
+        
         updatePoints();
         updateInventory();
     }
@@ -862,12 +894,18 @@ public class Hut1Controller implements Initializable {
         }
     }
     
-    //HANDLERS FOR THE POINT SYSTEM
+    
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLER FOR THE TREAT INTERACTION
+    /**
+     * Method to handle what happens when the treat button has been pressed.
+     * @param event 
+     */
     @FXML
     private void handleTreat(MouseEvent event) {
         treatActive = true;
@@ -897,7 +935,10 @@ public class Hut1Controller implements Initializable {
         }
     }
 
-    //HANDLER FOR THE GIVE INTERACTION
+    /**
+     * Method to handle what happens when the give button has been pressed.
+     * @param event 
+     */
     @FXML
     private void handleGive(MouseEvent event) {
         giveActive = true;
@@ -914,32 +955,35 @@ public class Hut1Controller implements Initializable {
         }
     }
 
-    //HANDLERS FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
             //Clears inventory
             for (int i = 0; i < inventoryImageList.size(); i++) {
-                    inventoryImageList.get(i).setVisible(false);
+                inventoryImageList.get(i).setVisible(false);
             }
 
             //Inserts items
             for (int j = 0; j < playerInventory.getKeys().size(); j++) {
-                    inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
-                    inventoryImageList.get(j).setVisible(true);
+                inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
+                inventoryImageList.get(j).setVisible(true);
+
+                //Sets correct tooltip
+                tts.get(j).setText(playerInventory.getValues().get(j).getName());
             }
 
-            if (!treatActive) {
-                    for (int i = 0; i < rectList.size(); i++) {
-                            rectList.get(i).setVisible(false);
-                    }
+            //Clears highlighting rectancles by making them invisible.
+            for (int i = 0; i < rectList.size(); i++) {
+                rectList.get(i).setVisible(false);
             }
-
-            if (!giveActive) {
-                    for (int i = 0; i < rectList.size(); i++) {
-                            rectList.get(i).setVisible(false);
-                    }
-            }        
     }
     
+    /**
+     * Method that handles what happens when an inventory slot is clicked.
+     * The action changes depending on states for deleting items, giving items, and using items to treat patients.
+     * @param i is the index in the list of inventory slots.
+     */
     private void inventorySlotClicked(int i) {
         //Trashing
         if (trashingActive) {
@@ -1018,7 +1062,11 @@ public class Hut1Controller implements Initializable {
         updateInventory(); 
     }
     
-     @FXML
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
+    @FXML
     private void handleTrash(MouseEvent event) {
             //Change trashing state
             trashingActive = !trashingActive;
@@ -1034,6 +1082,7 @@ public class Hut1Controller implements Initializable {
                     inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
     }
 
+    //These next 8 handlers call the above method for the corrosponding index in the inventory list.
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         inventorySlotClicked(0);
@@ -1080,7 +1129,6 @@ public class Hut1Controller implements Initializable {
         treatActive = false;
         giveActive = false;
         updateInventory();
-        
         dialogPane.setVisible(false);
     }
     

@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class VillageController implements Initializable {
 
@@ -170,6 +172,15 @@ public class VillageController implements Initializable {
     IInventory playerInventory;
     IInventory roomInventory;
     ArrayList<ImageView> inventoryImageList;
+    ArrayList<Tooltip> tts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
 
     boolean trashingActive = false;
     
@@ -259,6 +270,27 @@ public class VillageController implements Initializable {
                 add(inv8);
             }
         };
+        
+        //Fill tooltip list with tooltips for each slot in inventory.
+        tts = new ArrayList<>() {
+            {
+                add(t0);
+                add(t1);
+                add(t2);
+                add(t3);
+                add(t4);
+                add(t5);
+                add(t6);
+                add(t7);
+            }
+        };
+        
+        //Installs each tooltip on the correctinventory slot and makes then show with no delay.
+        for (int i = 0; i < tts.size(); i++) {
+            Tooltip.install(inventoryImageList.get(i), tts.get(i));
+            tts.get(i).setShowDelay(Duration.ZERO);
+        }
+        
         updatePoints();
         updateInventory();
 
@@ -275,12 +307,16 @@ public class VillageController implements Initializable {
     7. Easter Egg
     */
     
-    //HANDLER FOR THE POINTS
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLERS FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -291,9 +327,16 @@ public class VillageController implements Initializable {
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
+            
+            //Sets correct tooltip
+            tts.get(j).setText(playerInventory.getValues().get(j).getName());
         }
     }
     
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -305,7 +348,8 @@ public class VillageController implements Initializable {
             inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
         }
     }
-    
+
+    //These next 8 methods are used to trash the correct item when the specific slot is pressed.    
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {

@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -186,13 +188,63 @@ public class TentController implements Initializable {
     String spray = "img/Mosquito Spray.png";
     Image imgSpray = new Image(spray);
     HashMap<String, Image> itemImageMap;
-    HashMap<String, String> itemImageMapReverse;
 
     IInventory playerInventory;
     IInventory roomInventory;
     IInventory truckInventory;
     ArrayList<ImageView> inventoryImageList;
     ArrayList<ImageView> truckInventoryImageList;
+    ArrayList<Tooltip> tts;
+    ArrayList<Tooltip> truckTts;
+    Tooltip t0 = new Tooltip(null);
+    Tooltip t1 = new Tooltip(null);
+    Tooltip t2 = new Tooltip(null);
+    Tooltip t3 = new Tooltip(null);
+    Tooltip t4 = new Tooltip(null);
+    Tooltip t5 = new Tooltip(null);
+    Tooltip t6 = new Tooltip(null);
+    Tooltip t7 = new Tooltip(null);
+    Tooltip tt0 = new Tooltip(null);
+    Tooltip tt1 = new Tooltip(null);
+    Tooltip tt2 = new Tooltip(null);
+    Tooltip tt3 = new Tooltip(null);
+    Tooltip tt4 = new Tooltip(null);
+    Tooltip tt5 = new Tooltip(null);
+    Tooltip tt6 = new Tooltip(null);
+    Tooltip tt7 = new Tooltip(null);
+    Tooltip tt8 = new Tooltip(null);
+    Tooltip tt9 = new Tooltip(null);
+    Tooltip tt10 = new Tooltip(null);
+    Tooltip tt11 = new Tooltip(null);
+    Tooltip tt12 = new Tooltip(null);
+    Tooltip tt13 = new Tooltip(null);
+    Tooltip tt14 = new Tooltip(null);
+    Tooltip tt15 = new Tooltip(null);
+    Tooltip tt16 = new Tooltip(null);
+    Tooltip tt17 = new Tooltip(null);
+    Tooltip tt18 = new Tooltip(null);
+    Tooltip tt19 = new Tooltip(null);
+    Tooltip tt20 = new Tooltip(null);
+    Tooltip tt21 = new Tooltip(null);
+    Tooltip tt22 = new Tooltip(null);
+    Tooltip tt23 = new Tooltip(null);
+    Tooltip tt24 = new Tooltip(null);
+    Tooltip tt25 = new Tooltip(null);
+    Tooltip tt26 = new Tooltip(null);
+    Tooltip tt27 = new Tooltip(null);
+    Tooltip tt28 = new Tooltip(null);
+    Tooltip tt29 = new Tooltip(null);
+    Tooltip tt30 = new Tooltip(null);
+    Tooltip tt31 = new Tooltip(null);
+    Tooltip tt32 = new Tooltip(null);
+    Tooltip tt33 = new Tooltip(null);
+    Tooltip tt34 = new Tooltip(null);
+    Tooltip tt35 = new Tooltip(null);
+    Tooltip tt36 = new Tooltip(null);
+    Tooltip tt37 = new Tooltip(null);
+    Tooltip tt38 = new Tooltip(null);
+    Tooltip tt39 = new Tooltip(null);
+    
 
     boolean trashingActive = false;
     @FXML
@@ -283,7 +335,7 @@ public class TentController implements Initializable {
     private ImageView tck39;
     @FXML
     private ImageView closeTruckInventory;
-
+    
     /**
      * Initializes the controller class.
      *
@@ -345,20 +397,6 @@ public class TentController implements Initializable {
             }
         };
 
-        itemImageMapReverse = new HashMap<>() {
-            {
-                put("Clean Kanyle.png", "Clean Syringe");
-                put("Dirty Kanyle.png", "Dirty Syringe");
-                put("Condom.png", "Condom");
-                put("HIV Medicine.png", "HIV Medication");
-                put("Malaria Medicine.png", "Malaria Medication");
-                put("TB Medicine.png", "Tuberculosis Medication");
-                put("pill.png", "Pill");
-                put("mask.png", "Mask");
-                put("Mosquito Spray.png", "Mosquito Spray");
-            }
-        };
-
         //Make arraylist of inventory slots for easy iteration
         inventoryImageList = new ArrayList<>() {
             {
@@ -416,10 +454,82 @@ public class TentController implements Initializable {
                 add(tck39);
             }
         };
+        
+        //Fill tooltip list with tooltips for each slot in inventory.
+        tts = new ArrayList<>() {
+            {
+                add(t0);
+                add(t1);
+                add(t2);
+                add(t3);
+                add(t4);
+                add(t5);
+                add(t6);
+                add(t7);
+            }
+        };
+        
+        //Installs each tooltip on the correct inventory slot and makes then show with no delay.
+        for (int i = 0; i < tts.size(); i++) {
+            Tooltip.install(inventoryImageList.get(i), tts.get(i));
+            tts.get(i).setShowDelay(Duration.ZERO);
+        }
+        
+        //Fill tooltip for truckinventory list.
+        truckTts = new ArrayList<>() {
+            {
+                add(tt0);
+                add(tt1);
+                add(tt2);
+                add(tt3);
+                add(tt4);
+                add(tt5);
+                add(tt6);
+                add(tt7);
+                add(tt8);
+                add(tt9);
+                add(tt10);
+                add(tt11);
+                add(tt12);
+                add(tt13);
+                add(tt14);
+                add(tt15);
+                add(tt16);
+                add(tt17);
+                add(tt18);
+                add(tt19);
+                add(tt20);
+                add(tt21);
+                add(tt22);
+                add(tt23);
+                add(tt24);
+                add(tt25);
+                add(tt26);
+                add(tt27);
+                add(tt28);
+                add(tt29);
+                add(tt30);
+                add(tt31);
+                add(tt32);
+                add(tt33);
+                add(tt34);
+                add(tt35);
+                add(tt36);
+                add(tt37);
+                add(tt38);
+                add(tt39);
+            }
+        };
+        
+        //Installs each tooltip on the correct inventory slot and makes then show with no delay.
+        for (int i = 0; i < truckTts.size(); i++) {
+            Tooltip.install(truckInventoryImageList.get(i), truckTts.get(i));
+            truckTts.get(i).setShowDelay(Duration.ZERO);
+        }
+        
         updatePoints();
         updateInventory();
         updateTruckInventory();
-
     }
 
     /*
@@ -471,12 +581,16 @@ public class TentController implements Initializable {
         });
     }
     
-    //HANDLER FOR THE POINTS
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
 
-    //HANDLER FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -487,9 +601,16 @@ public class TentController implements Initializable {
         for (int j = 0; j < playerInventory.getKeys().size(); j++) {
             inventoryImageList.get(j).setImage(itemImageMap.get(playerInventory.getKeys().get(j)));
             inventoryImageList.get(j).setVisible(true);
+            
+            //Sets correct tooltip
+            tts.get(j).setText(playerInventory.getValues().get(j).getName());
         }
     }
     
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -510,10 +631,10 @@ public class TentController implements Initializable {
             playerInventory.removeItem(itemName);
             updateInventory();
             updateTruckInventory();
-            
         }
     }
-    
+
+    //These next 8 methods are used to trash the correct item when the specific slot is pressed.    
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {
@@ -593,11 +714,12 @@ public class TentController implements Initializable {
         for (int i = 0; i < truckInventoryImageList.size(); i++) {
             truckInventoryImageList.get(i).setVisible(false);
         }
-
+        
         //Inserts items
         for (int j = 0; j < truckInventory.getKeys().size(); j++) {
             truckInventoryImageList.get(j).setImage(itemImageMap.get(truckInventory.getKeys().get(j)));
             truckInventoryImageList.get(j).setVisible(true);
+            truckTts.get(j).setText(truckInventory.getValues().get(j).getName()); //Updates tooltip
         }
     }
     
@@ -615,7 +737,6 @@ public class TentController implements Initializable {
     
     public void pickUpItemToPlayerInventory(int i) {
         String itemName = truckInventory.getKeys().get(i);
-        System.out.println(itemName);
         //Add condition if playerInventory is full
         if (playerInventory.getSpaceUsed() < playerInventory.getInventorySize()) {
             playerInventory.addItem(itemName, truckInventory.getValues().get(truckInventory.getKeys().indexOf(itemName)));
