@@ -471,12 +471,16 @@ public class TentController implements Initializable {
         });
     }
     
-    //HANDLER FOR THE POINTS
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
 
-    //HANDLER FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
         //Clears inventory
         for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -490,6 +494,10 @@ public class TentController implements Initializable {
         }
     }
     
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
     @FXML
     private void handleTrash(MouseEvent event) {
         //Change trashing state
@@ -513,7 +521,8 @@ public class TentController implements Initializable {
             
         }
     }
-    
+
+    //These next 8 methods are used to trash the correct item when the specific slot is pressed.    
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         if (trashingActive) {

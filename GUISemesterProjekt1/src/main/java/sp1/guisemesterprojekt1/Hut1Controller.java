@@ -862,12 +862,18 @@ public class Hut1Controller implements Initializable {
         }
     }
     
-    //HANDLERS FOR THE POINT SYSTEM
+    
+    /**
+     * updates the label with the current points the player has obtained.
+     */
     public void updatePoints() {
         pointLabel.setText(String.valueOf(da.getEvaluation().getPoints()));
     }
     
-    //HANDLER FOR THE TREAT INTERACTION
+    /**
+     * Method to handle what happens when the treat button has been pressed.
+     * @param event 
+     */
     @FXML
     private void handleTreat(MouseEvent event) {
         treatActive = true;
@@ -897,7 +903,10 @@ public class Hut1Controller implements Initializable {
         }
     }
 
-    //HANDLER FOR THE GIVE INTERACTION
+    /**
+     * Method to handle what happens when the give button has been pressed.
+     * @param event 
+     */
     @FXML
     private void handleGive(MouseEvent event) {
         giveActive = true;
@@ -914,7 +923,9 @@ public class Hut1Controller implements Initializable {
         }
     }
 
-    //HANDLERS FOR THE INVENTORY
+    /**
+     * Method to update the inventory 
+     */
     public void updateInventory() {
             //Clears inventory
             for (int i = 0; i < inventoryImageList.size(); i++) {
@@ -927,19 +938,17 @@ public class Hut1Controller implements Initializable {
                     inventoryImageList.get(j).setVisible(true);
             }
 
-            if (!treatActive) {
-                    for (int i = 0; i < rectList.size(); i++) {
-                            rectList.get(i).setVisible(false);
-                    }
+            //Clears highlighting rectancles by making them invisible.
+            for (int i = 0; i < rectList.size(); i++) {
+                    rectList.get(i).setVisible(false);
             }
-
-            if (!giveActive) {
-                    for (int i = 0; i < rectList.size(); i++) {
-                            rectList.get(i).setVisible(false);
-                    }
-            }        
     }
     
+    /**
+     * Method that handles what happens when an inventory slot is clicked.
+     * The action changes depending on states for deleting items, giving items, and using items to treat patients.
+     * @param i is the index in the list of inventory slots.
+     */
     private void inventorySlotClicked(int i) {
         //Trashing
         if (trashingActive) {
@@ -1018,7 +1027,11 @@ public class Hut1Controller implements Initializable {
         updateInventory(); 
     }
     
-     @FXML
+    /**
+     * Method to handle trashing and change color of the grid when trashing is active.
+     * @param event 
+     */
+    @FXML
     private void handleTrash(MouseEvent event) {
             //Change trashing state
             trashingActive = !trashingActive;
@@ -1034,6 +1047,7 @@ public class Hut1Controller implements Initializable {
                     inventoryGrid.setStyle("-fx-background-color:#ffffff"); //White
     }
 
+    //These next 8 handlers call the above method for the corrosponding index in the inventory list.
     @FXML
     private void handleInventorySlotClicked1(MouseEvent event) {
         inventorySlotClicked(0);
@@ -1080,7 +1094,6 @@ public class Hut1Controller implements Initializable {
         treatActive = false;
         giveActive = false;
         updateInventory();
-        
         dialogPane.setVisible(false);
     }
     
