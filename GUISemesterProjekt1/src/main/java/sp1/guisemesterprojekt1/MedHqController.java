@@ -395,7 +395,7 @@ public class MedHqController implements Initializable {
     Tooltip condomTT = new Tooltip("Condoms for people with HIV");
     Tooltip mMedTT = new Tooltip("Malaria Medication");
     Tooltip tMedTT = new Tooltip("Tuberculosis Medication");
-    Tooltip hMedTT = new Tooltip("HIV Mediaction");
+    Tooltip hMedTT = new Tooltip("HIV Medication");
     Tooltip cSyringeTT = new Tooltip("Syringes");
     
      //Delcaration and Initialization of the boolean know if the trashButton is activated.
