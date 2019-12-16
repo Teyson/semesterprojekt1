@@ -1,9 +1,10 @@
 package Domain;
 
+import Interfaces.IUtilityItem;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class UtilityItem extends Item {
+public class UtilityItem extends Item implements IUtilityItem{
     private Interaction interaction;
     private int points;
     private String helps;
@@ -31,8 +32,7 @@ public class UtilityItem extends Item {
        this.helps = helps;
    }
    
-    
-    
+    @Override
     public int getPoints() {
         return points;
     }
@@ -41,6 +41,7 @@ public class UtilityItem extends Item {
         this.points = points;
     }
 
+    @Override
     public String getHelps() {
         return helps;
     }
@@ -64,7 +65,7 @@ public class UtilityItem extends Item {
                     
                     //Checks if input size is single digit
                     if (String.valueOf(input).length() == 1) {
-                        interactionPointer = interactionPointer.getChild(input); //Go to child which contained the option selected
+                        interactionPointer = (Interaction) interactionPointer.getChild(input); //Go to child which contained the option selected
                     }
                 } 
                 catch (IndexOutOfBoundsException | InputMismatchException e) { //Handles exceptions for invalid inputs

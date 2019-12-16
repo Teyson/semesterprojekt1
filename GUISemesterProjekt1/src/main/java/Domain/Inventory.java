@@ -1,14 +1,17 @@
 package Domain;
 
-import java.util.ArrayList;
+import Interfaces.IItem;
 import java.util.HashMap;
+import Interfaces.IInventory;
+import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory implements IInventory{
     
 
     private int inventorySize;
     private int spaceUsed;
-    private HashMap<String, Item> itemList;
+    private ArrayList<String> key;
+    private ArrayList<Item> value;
 
     /**
      * Constructor to create inventory of limited size
@@ -16,7 +19,8 @@ public class Inventory {
      * @param inventorySize determines the size of the inventory
      */
     public Inventory(int inventorySize) {
-        this.itemList = new HashMap<>();
+        this.key = new ArrayList<>();
+        this.value = new ArrayList<>();
         this.inventorySize = inventorySize;
     }
 
@@ -24,7 +28,8 @@ public class Inventory {
      * Constructor of unlimited size to create an inventory for rooms
      */
     public Inventory() { //perhaps add spaceUsed to make it possible to see how many items are actually in this room-inventory?
-        this.itemList = new HashMap<>();
+        this.key = new ArrayList<>();
+        this.value = new ArrayList<>();        
         this.inventorySize = 9999;
     }
 
@@ -33,11 +38,13 @@ public class Inventory {
      * @param name
      * @param item added to the itemList
      */
-    public void addItem(String name, Item item) {
-        if (spaceUsed + item.getItemSize() < inventorySize) {
-            itemList.put(name, item);
-            spaceUsed += item.getItemSize();
-            //System.out.println(item.getName() + " was successfully added to inventory.");
+    @Override
+    public void addItem(String name, IItem item) {
+        Item temp = (Item)item;
+        if (spaceUsed + temp.getItemSize() <= inventorySize) {
+            key.add(name);
+            value.add(temp);
+            spaceUsed += temp.getItemSize();
         } else {
             System.out.println("Your inventory is too full to contain this! Please remove some items to make room for others.");
         }
@@ -47,23 +54,25 @@ public class Inventory {
      *
      * @param item removed from the itemList
      */
+    @Override
     public void removeItem(String name) {
-        spaceUsed -= itemList.get(name).getItemSize();
-        itemList.remove(name);
-
-        //System.out.println(name + " was successfully removed from inventory.");
+        int index = key.indexOf(name);
+        spaceUsed -= value.get(index).getItemSize();
+        key.remove(index);
+        value.remove(index);
     }
 
     /**
      * method to print the itemList
      */
     public void printItemList() {
-        if (itemList.isEmpty()) {
+        if (key.isEmpty()) {
             System.out.println("Your inventory is empty");
         } else {
-            System.out.println(itemList.keySet());
+            System.out.println(key.toString());
         }
     }
+    @Override
     public int getInventorySize() {
         return inventorySize;
     }
@@ -71,7 +80,7 @@ public class Inventory {
     public void setInventorySize(int newInventorySize) {
         this.inventorySize = newInventorySize;
     }
-
+    @Override
     public int getSpaceUsed() {
         return spaceUsed;
     }
@@ -79,8 +88,29 @@ public class Inventory {
     public void setSpaceUsed(int newSpaceUsed) {
         this.spaceUsed = newSpaceUsed;
     }
+    
+    @Override
+    public ArrayList<String> getKeys() {
+        return this.key;
+    }
+    
+    /**
+     * The inventory is built like a hashMap but with arraylists.
+     * @return the value part of the inventory.
+     */
+    @Override
+    public ArrayList<IItem> getValues() {
+        ArrayList<IItem> temp;
+        temp = new ArrayList<IItem>(this.value); // Cast to IItem 
+        return temp;
+    }
 
-    public HashMap<String, Item> getItemList() {
-        return this.itemList;
+    /**
+     * Used to tell what amount of the inventory space is used
+     * in the trucks inventory.
+     */
+    @Override
+    public double calcPctUsed() {
+        return (double)spaceUsed/(double)inventorySize;
     }
 }

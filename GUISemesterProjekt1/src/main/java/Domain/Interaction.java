@@ -1,8 +1,9 @@
 package Domain;
 
+import Interfaces.IInteraction;
 import java.util.ArrayList;
 
-public class Interaction {
+public class Interaction implements IInteraction{
 
     //Attributes
     private String option;
@@ -37,8 +38,9 @@ public class Interaction {
     
     /**
      * 
-     * @return the option (which is what the player makes disicions based on).
+     * @return the option (which is what the player makes desicions based on).
      */
+    @Override
     public String getOption() {
         return this.option;
     }
@@ -47,8 +49,11 @@ public class Interaction {
      * 
      * @return all children for this object of the class.
      */
-    public ArrayList<Interaction> getChildren() {
-        return this.children;
+    @Override
+    public ArrayList<IInteraction> getChildren() {      
+        ArrayList<IInteraction> temp;
+        temp = new ArrayList<IInteraction>(this.children); // Cast to IInteraction 
+        return temp;
     }
 
     /**
@@ -75,6 +80,7 @@ public class Interaction {
      * 
      * @return the message of the current node.
      */
+    @Override
     public String getMessage() {
         return this.message;
     }
@@ -84,7 +90,8 @@ public class Interaction {
      * @param index in an integer used to decide which item in the ArrayList of children you wish to get.
      * @return the child on the position index in ArrayList children.
      */
-    public Interaction getChild(int index) {
+    @Override
+    public IInteraction getChild(int index) {
         return this.children.get(index);
     }
 }

@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.guisemesterprojekt1.TentController">
+    <children>
+        <GridPane fx:id="inventoryGrid" gridLinesVisible="true" layoutX="291.0" layoutY="52.0" prefHeight="30.0" prefWidth="287.0" scaleX="1.5" scaleY="1.5" AnchorPane.leftAnchor="291.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fx:id="inv1" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#handleInventorySlotClicked1" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv2" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv3" fitHeight="32.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv4" fitHeight="31.0" fitWidth="37.0" onMouseClicked="#handleInventorySlotClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv5" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv6" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv7" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked7" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="inv8" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#handleInventorySlotClicked8" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </GridPane>
+        <Label contentDisplay="CENTER" layoutX="156.0" layoutY="23.0" text="Inventory">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="pointLabel" layoutX="60.0" layoutY="40.0" text="999" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ProgressBar fx:id="timeProgressBar" layoutX="210.0" layoutY="102.0" prefHeight="20.0" prefWidth="430.0" progress="1.0" style="-fx-accent: lightgreen;" />
+        <Label layoutX="156.0" layoutY="103.0" text="Time Left" />
+        <ImageView fx:id="backgroundImage" fitHeight="375.0" fitWidth="750.0" layoutX="25.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
+        <GridPane fx:id="gameGrid" layoutX="25.0" layoutY="150.0" prefHeight="375.0" prefWidth="750.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fx:id="field5_1" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleExitEvent" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="field11_2" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="2">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="field11_3" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="3">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="field11_4" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="4">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="field11_5" fitHeight="57.0" fitWidth="62.0" onMouseClicked="#handleTruckClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="5">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            <ImageView fx:id="field8_2" fitHeight="55.0" fitWidth="63.0" onMouseClicked="#handleMariaClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <AnchorPane fx:id="dialogPane" layoutX="43.0" layoutY="360.0" prefHeight="231.0" prefWidth="718.0" style="-fx-background-color: lightblue; -fx-border-color: black;">
+            <children>
+                <ImageView fx:id="NPCImage" fitHeight="121.0" fitWidth="108.0" layoutX="36.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="NPCNameLabel" alignment="CENTER" layoutX="36.0" layoutY="18.0" text="NPC name" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <GridPane fx:id="dialogOptionsGrid" layoutX="209.0" layoutY="176.0" prefHeight="32.0" prefWidth="403.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="answer1" mnemonicParsing="false" prefWidth="120.0" text="Button">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="answer2" mnemonicParsing="false" prefWidth="120.0" text="Button" GridPane.columnIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="answer3" mnemonicParsing="false" prefWidth="120.0" text="Button" GridPane.columnIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                    </children>
+                </GridPane>
+                <Button fx:id="treatBtn" layoutX="536.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Treat">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="giveItemBtn" layoutX="612.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Give Item">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Label fx:id="dialogLabel" alignment="CENTER" contentDisplay="TOP" layoutX="165.0" layoutY="18.0" prefHeight="158.0" prefWidth="543.0" text="saæsndfnadsfonnnnnnnnnnnnnnnnnnnnnnnnnnddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="158.0" fitWidth="128.0" layoutX="26.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="closeDialog" fitHeight="30.0" fitWidth="30.0" layoutX="689.0" layoutY="-30.0" onMouseClicked="#handleCloseDialog" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            <ImageView fx:id="cleanSyringeView" fitHeight="93.0" fitWidth="108.0" layoutX="232.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dirtySyringeView" fitHeight="93.0" fitWidth="108.0" layoutX="536.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="58.0" layoutY="67.0" text="Points">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="trashBtn" fitHeight="35.0" fitWidth="35.0" layoutX="670.0" layoutY="49.0" onMouseClicked="#handleTrash" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fx:id="helpBtn" fitHeight="35.0" fitWidth="35.0" layoutX="714.0" layoutY="49.0" onMouseClicked="#handleOpenHelpPane" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <AnchorPane fx:id="helpPopup" layoutX="150.0" layoutY="140.0" prefHeight="174.0" prefWidth="497.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" visible="false">
+            <children>
+                <ImageView fx:id="closeHelp" fitHeight="30.0" fitWidth="30.0" layoutX="466.0" onMouseClicked="#handleCloseHelp" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <Label fx:id="helpLabel" layoutX="32.0" layoutY="15.0" prefHeight="140.0" prefWidth="433.0" text="THIS IS HOW YOU PLAY THE GAME" />
+            </children>
+        </AnchorPane>
+        <ImageView fx:id="openHandbook" fitHeight="45.0" fitWidth="52.0" layoutX="158.0" layoutY="45.0" onMouseClicked="#handleOpenBook" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <AnchorPane fx:id="truckInventoryPane" layoutX="165.0" layoutY="160.0" prefHeight="284.0" prefWidth="504.0" style="-fx-background-color: pink; -fx-border-color: black;" visible="false">
+            <children>
+                <Label alignment="CENTER" layoutX="188.0" layoutY="6.0" text="Truck Inventory" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="6.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <GridPane fx:id="truckInventoryGrid" gridLinesVisible="true" layoutX="52.0" layoutY="51.0" prefHeight="214.0" prefWidth="415.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView fx:id="tck0" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked1" pickOnBounds="true" preserveRatio="true">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck1" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck2" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck3" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck4" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck5" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck6" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked7" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck7" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked8" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck8" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked9" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck9" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked10" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck10" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked11" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck11" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked12" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck12" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked13" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck13" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked14" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck14" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked15" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck15" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked16" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck16" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked17" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck17" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked18" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck18" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked19" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck19" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked20" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck20" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked21" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck21" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked22" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck22" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked23" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck23" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked24" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck24" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked25" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck25" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked26" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck26" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked27" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck27" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked28" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck28" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked29" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck29" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked30" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck30" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked31" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck31" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked32" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck32" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked33" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck33" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked34" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck34" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked35" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck35" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked36" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck36" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked37" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck37" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked38" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck38" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked39" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                        <ImageView fx:id="tck39" fitHeight="44.0" fitWidth="52.0" onMouseClicked="#handleTruckInventorySlotClicked40" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                    </children>
+                </GridPane>
+                <ImageView fx:id="closeTruckInventory" fitHeight="30.0" fitWidth="30.0" layoutX="474.0" layoutY="-30.0" onMouseClicked="#handleTruckInventoryClose" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
